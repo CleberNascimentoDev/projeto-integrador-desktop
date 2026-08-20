@@ -1,0 +1,18 @@
+# Pasta de compilação (gerada automaticamente ao rodar o projeto)
+/build/
+/dist/
+
+# Logs e dados do NetBeans específicos do seu ambiente local
+/nbproject/private/
+nbproject/private/
+
+# Arquivos de dados e armazenamento do NetBeans
+/nbproject/project.dnb
+/nbproject/ws-gls.lock
+
+# Cache do Profiler do NetBeans
+/nbproject/profiler-build-impl.xml
+
+# Arquivos temporários do sistema operacional
+.DS_Store
+Thumbs.db
