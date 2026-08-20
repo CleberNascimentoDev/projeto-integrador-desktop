@@ -17,6 +17,8 @@ public class TelaMenu extends javax.swing.JFrame {
      */
     public TelaMenu() {
         initComponents();
+        // Maximiza a janela para ocupar a tela toda ao iniciar
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -28,11 +30,25 @@ public class TelaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jDesktopPane1.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(223, 233, 235));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mainrhCenter.png"))); // NOI18N
+        jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        jDesktopPane1.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("File");
         menuBar.add(jMenu1);
@@ -46,14 +62,15 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1203, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 744, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -82,8 +99,11 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 }
