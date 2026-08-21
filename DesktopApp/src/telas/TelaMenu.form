@@ -7,11 +7,13 @@
         <Menu class="javax.swing.JMenu" name="menu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gerenciamento"/>
+            <Property name="toolTipText" type="java.lang.String" value="Este &#xe9; o menu!"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuCargo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gerenciar Cargos"/>
+                <Property name="toolTipText" type="java.lang.String" value="Aqui voc&#xea; pode criar, editar, listar e excluir cargos!"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCargoActionPerformed"/>
@@ -20,11 +22,13 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuProcessoSeletivo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Abrir Processo Seletivo"/>
+                <Property name="toolTipText" type="java.lang.String" value="Aqui voc&#xea; pode criar, editar, listar e excluir processos seletivos!"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuRecrutador">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Vincular Recrutadores"/>
+                <Property name="toolTipText" type="java.lang.String" value="Aqui voc&#xea; pode vincular recrutadores a um processo seletivo!"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
@@ -32,6 +36,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuSair">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sair do Sistema"/>
+                <Property name="toolTipText" type="java.lang.String" value="Aqui voc&#xea; sai do sistema, fechando tudo!"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuSairActionPerformed"/>

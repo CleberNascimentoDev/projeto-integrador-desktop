@@ -57,19 +57,24 @@ public class TelaMenu extends javax.swing.JFrame {
         painelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         menu.setText("Gerenciamento");
+        menu.setToolTipText("Este é o menu!");
 
         menuCargo.setText("Gerenciar Cargos");
+        menuCargo.setToolTipText("Aqui você pode criar, editar, listar e excluir cargos!");
         menuCargo.addActionListener(this::menuCargoActionPerformed);
         menu.add(menuCargo);
 
         menuProcessoSeletivo.setText("Abrir Processo Seletivo");
+        menuProcessoSeletivo.setToolTipText("Aqui você pode criar, editar, listar e excluir processos seletivos!");
         menu.add(menuProcessoSeletivo);
 
         menuRecrutador.setText("Vincular Recrutadores");
+        menuRecrutador.setToolTipText("Aqui você pode vincular recrutadores a um processo seletivo!");
         menu.add(menuRecrutador);
         menu.add(jSeparator1);
 
         menuSair.setText("Sair do Sistema");
+        menuSair.setToolTipText("Aqui você sai do sistema, fechando tudo!");
         menuSair.addActionListener(this::menuSairActionPerformed);
         menu.add(menuSair);
 
@@ -97,17 +102,22 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCargoActionPerformed
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
-        int opcao = javax.swing.JOptionPane.showConfirmDialog(
-        this, 
-        "Tem certeza que deseja sair do sistema?", 
-        "Atenção", 
-        javax.swing.JOptionPane.YES_NO_OPTION,
-        javax.swing.JOptionPane.WARNING_MESSAGE
-    );
-    
-    if (opcao == javax.swing.JOptionPane.YES_OPTION) {
-        System.exit(0); // Fecha o sistema
-    }
+        Object[] opcoes = {"Sim", "Não"};
+
+        int opcao = javax.swing.JOptionPane.showOptionDialog(
+            this,
+            "Tem certeza que deseja sair do sistema?",
+            "Atenção",
+            javax.swing.JOptionPane.YES_NO_OPTION,
+            javax.swing.JOptionPane.WARNING_MESSAGE,
+            null,           // Ícone customizado (null usa o padrão de WARNING)
+            opcoes,         // Os textos dos seus botões
+            opcoes[1]       // Botão selecionado por padrão ao apertar Enter ("Não")
+        );
+
+        if (opcao == 0) {   // 0 é o primeiro botão ("Sim"), 1 é o segundo ("Não")
+            System.exit(0);
+        }
     }//GEN-LAST:event_menuSairActionPerformed
 
     /**
