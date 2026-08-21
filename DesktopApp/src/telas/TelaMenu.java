@@ -69,6 +69,7 @@ public class TelaMenu extends javax.swing.JFrame {
         menu.add(jSeparator1);
 
         menuSair.setText("Sair do Sistema");
+        menuSair.addActionListener(this::menuSairActionPerformed);
         menu.add(menuSair);
 
         menuBar.add(menu);
@@ -93,6 +94,20 @@ public class TelaMenu extends javax.swing.JFrame {
     private void menuCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuCargoActionPerformed
+
+    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+        int opcao = javax.swing.JOptionPane.showConfirmDialog(
+        this, 
+        "Tem certeza que deseja sair do sistema?", 
+        "Atenção", 
+        javax.swing.JOptionPane.YES_NO_OPTION,
+        javax.swing.JOptionPane.WARNING_MESSAGE
+    );
+    
+    if (opcao == javax.swing.JOptionPane.YES_OPTION) {
+        System.exit(0); // Fecha o sistema
+    }
+    }//GEN-LAST:event_menuSairActionPerformed
 
     /**
      * @param args the command line arguments
