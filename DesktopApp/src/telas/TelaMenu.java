@@ -49,7 +49,8 @@ public class TelaMenu extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mainrh.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Logo.png"))); // NOI18N
+        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 70, 0));
         jPanel1.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         painelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
