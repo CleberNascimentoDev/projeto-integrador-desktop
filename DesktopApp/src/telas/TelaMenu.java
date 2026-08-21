@@ -30,20 +30,20 @@ public class TelaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        painelPrincipal = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menu = new javax.swing.JMenu();
+        menuCargo = new javax.swing.JMenuItem();
+        menuProcessoSeletivo = new javax.swing.JMenuItem();
+        menuRecrutador = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jDesktopPane1.setLayout(new java.awt.BorderLayout());
+        painelPrincipal.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(223, 233, 235));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -52,25 +52,25 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/mainrh.png"))); // NOI18N
         jPanel1.add(jLabel2, java.awt.BorderLayout.CENTER);
 
-        jDesktopPane1.add(jPanel1, java.awt.BorderLayout.CENTER);
+        painelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("Gerenciamento");
+        menu.setText("Gerenciamento");
 
-        jMenuItem1.setText("Gerenciar Cargos");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        jMenu1.add(jMenuItem1);
+        menuCargo.setText("Gerenciar Cargos");
+        menuCargo.addActionListener(this::menuCargoActionPerformed);
+        menu.add(menuCargo);
 
-        jMenuItem2.setText("Abrir Processo Seletivo");
-        jMenu1.add(jMenuItem2);
+        menuProcessoSeletivo.setText("Abrir Processo Seletivo");
+        menu.add(menuProcessoSeletivo);
 
-        jMenuItem3.setText("Vincular Recrutadores");
-        jMenu1.add(jMenuItem3);
-        jMenu1.add(jSeparator1);
+        menuRecrutador.setText("Vincular Recrutadores");
+        menu.add(menuRecrutador);
+        menu.add(jSeparator1);
 
-        jMenuItem4.setText("Sair do Sistema");
-        jMenu1.add(jMenuItem4);
+        menuSair.setText("Sair do Sistema");
+        menu.add(menuSair);
 
-        menuBar.add(jMenu1);
+        menuBar.add(menu);
 
         setJMenuBar(menuBar);
 
@@ -78,20 +78,20 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuCargoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,15 +119,15 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenu menu;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem menuCargo;
+    private javax.swing.JMenuItem menuProcessoSeletivo;
+    private javax.swing.JMenuItem menuRecrutador;
+    private javax.swing.JMenuItem menuSair;
+    private javax.swing.JDesktopPane painelPrincipal;
     // End of variables declaration//GEN-END:variables
 }
