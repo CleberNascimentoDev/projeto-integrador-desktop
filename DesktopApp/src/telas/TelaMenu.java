@@ -45,7 +45,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         painelPrincipal.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(223, 233, 235));
+        jPanel1.setBackground(new java.awt.Color(233, 243, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
