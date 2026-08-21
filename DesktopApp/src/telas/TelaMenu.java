@@ -42,6 +42,7 @@ public class TelaMenu extends javax.swing.JFrame {
         menuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         painelPrincipal.setLayout(new java.awt.BorderLayout());
 
