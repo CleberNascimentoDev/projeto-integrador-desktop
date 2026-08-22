@@ -97,6 +97,8 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtCampoEmail">
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtCampoEmailFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtCampoEmailFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtCampoEmailActionPerformed"/>
           </Events>
         </Component>
@@ -119,6 +121,7 @@
         <Component class="javax.swing.JPasswordField" name="jpCampoSenha">
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jpCampoSenhaFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jpCampoSenhaFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jpCampoSenhaActionPerformed"/>
           </Events>
         </Component>

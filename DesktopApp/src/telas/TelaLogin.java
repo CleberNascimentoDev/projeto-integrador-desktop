@@ -20,7 +20,16 @@ public class TelaLogin extends javax.swing.JFrame {
         setSize(411, 500); //Define o tamanho da tela 
         setResizable(false); //Impede que a pessoa redimensione a janela
         setLocationRelativeTo(null); //Faz a janela abrir centralizada na tela
-    }
+        jpCampoSenha.setEchoChar((char) 0); //Mostra "Digite sua senha" sem ser ocultado 
+        jpCampoSenha.setText("Digite sua senha"); //Coloca o texto dentro do campo de senha 
+        jtCampoEmail.setText("Digite seu e-mail"); //COloca o texto dentro do campo de e-mail
+        
+        setFocusable(true);
+        java.awt.EventQueue.invokeLater(() -> {
+        requestFocusInWindow();  //Faz a tela iniciar sem nada selecionado 
+        });
+    }            
+       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,6 +55,14 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoLogin.png"))); // NOI18N
 
+        jtCampoEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtCampoEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtCampoEmailFocusLost(evt);
+            }
+        });
         jtCampoEmail.addActionListener(this::jtCampoEmailActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -57,6 +74,9 @@ public class TelaLogin extends javax.swing.JFrame {
         jpCampoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jpCampoSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jpCampoSenhaFocusLost(evt);
             }
         });
         jpCampoSenha.addActionListener(this::jpCampoSenhaActionPerformed);
@@ -118,8 +138,30 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jpCampoSenhaActionPerformed
 
     private void jpCampoSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpCampoSenhaFocusGained
-
+        if (String.valueOf(jpCampoSenha.getPassword()).equals("Digite sua senha")) {
+            jpCampoSenha.setText("");
+            jpCampoSenha.setEchoChar('•');
+        } // cria o evento de placeholder
     }//GEN-LAST:event_jpCampoSenhaFocusGained
+
+    private void jpCampoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpCampoSenhaFocusLost
+        if (jpCampoSenha.getPassword().length == 0) {
+            jpCampoSenha.setEchoChar((char) 0);
+            jpCampoSenha.setText("Digite sua senha");
+        }// cria o evento de placeholder
+    }//GEN-LAST:event_jpCampoSenhaFocusLost
+
+    private void jtCampoEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtCampoEmailFocusGained
+        if (jtCampoEmail.getText().equals("Digite seu e-mail")) {
+            jtCampoEmail.setText("");
+        } // cria o evento de placeholder
+    }//GEN-LAST:event_jtCampoEmailFocusGained
+
+    private void jtCampoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtCampoEmailFocusLost
+        if (jtCampoEmail.getText().isEmpty()) {
+            jtCampoEmail.setText("Digite seu e-mail");
+        }    
+    }//GEN-LAST:event_jtCampoEmailFocusLost
 
     /**
      * @param args the command line arguments
