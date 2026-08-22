@@ -17,6 +17,9 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        setSize(411, 500); //Define o tamanho da tela 
+        setResizable(false); //Impede que a pessoa redimensione a janela
+        setLocationRelativeTo(null); //Faz a janela abrir centralizada na tela
     }
 
     /**
@@ -28,47 +31,95 @@ public class TelaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JPcorFundo = new javax.swing.JPanel();
-        JLlogo = new javax.swing.JLabel();
+        jpCorFundo = new javax.swing.JPanel();
+        jlLogo = new javax.swing.JLabel();
+        jtCampoEmail = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jpCampoSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 500));
+        setPreferredSize(new java.awt.Dimension(411, 500));
 
-        JPcorFundo.setBackground(new java.awt.Color(233, 243, 255));
-        JPcorFundo.setPreferredSize(new java.awt.Dimension(450, 610));
+        jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
+        jpCorFundo.setPreferredSize(new java.awt.Dimension(450, 610));
 
-        JLlogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoLogin.png"))); // NOI18N
+        jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoLogin.png"))); // NOI18N
 
-        javax.swing.GroupLayout JPcorFundoLayout = new javax.swing.GroupLayout(JPcorFundo);
-        JPcorFundo.setLayout(JPcorFundoLayout);
-        JPcorFundoLayout.setHorizontalGroup(
-            JPcorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPcorFundoLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(JLlogo)
-                .addContainerGap(56, Short.MAX_VALUE))
+        jtCampoEmail.addActionListener(this::jtCampoEmailActionPerformed);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel1.setText("E-mail");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel2.setText("Senha");
+
+        jpCampoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpCampoSenhaFocusGained(evt);
+            }
+        });
+        jpCampoSenha.addActionListener(this::jpCampoSenhaActionPerformed);
+
+        javax.swing.GroupLayout jpCorFundoLayout = new javax.swing.GroupLayout(jpCorFundo);
+        jpCorFundo.setLayout(jpCorFundoLayout);
+        jpCorFundoLayout.setHorizontalGroup(
+            jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCorFundoLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
+                        .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jtCampoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpCampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(66, 66, 66))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
+                        .addComponent(jlLogo)
+                        .addGap(27, 27, 27))))
         );
-        JPcorFundoLayout.setVerticalGroup(
-            JPcorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPcorFundoLayout.createSequentialGroup()
+        jpCorFundoLayout.setVerticalGroup(
+            jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCorFundoLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(JLlogo)
-                .addContainerGap(475, Short.MAX_VALUE))
+                .addComponent(jlLogo)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtCampoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpCampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JPcorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JPcorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtCampoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCampoEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtCampoEmailActionPerformed
+
+    private void jpCampoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpCampoSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpCampoSenhaActionPerformed
+
+    private void jpCampoSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpCampoSenhaFocusGained
+
+    }//GEN-LAST:event_jpCampoSenhaFocusGained
 
     /**
      * @param args the command line arguments
@@ -96,7 +147,11 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JLlogo;
-    private javax.swing.JPanel JPcorFundo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jlLogo;
+    private javax.swing.JPasswordField jpCampoSenha;
+    private javax.swing.JPanel jpCorFundo;
+    private javax.swing.JTextField jtCampoEmail;
     // End of variables declaration//GEN-END:variables
 }
