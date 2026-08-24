@@ -87,9 +87,11 @@ public class TelaMenu extends javax.swing.JFrame {
         menuBar.add(menu1);
 
         menu2.setText("Cadastro");
+        menu2.setToolTipText("Menu para cadastro");
 
         menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         menuCadastro.setText("Cadastrar usuario");
+        menuCadastro.setToolTipText("Cadastre administrador ou recrutador por aqui");
         menuCadastro.addActionListener(this::menuCadastroActionPerformed);
         menu2.add(menuCadastro);
 

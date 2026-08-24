@@ -59,6 +59,7 @@
         <Menu class="javax.swing.JMenu" name="menu2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro"/>
+            <Property name="toolTipText" type="java.lang.String" value="Menu para cadastro"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuCadastro">
@@ -67,6 +68,7 @@
                   <KeyStroke key="F5"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastrar usuario"/>
+                <Property name="toolTipText" type="java.lang.String" value="Cadastre administrador ou recrutador por aqui"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCadastroActionPerformed"/>
