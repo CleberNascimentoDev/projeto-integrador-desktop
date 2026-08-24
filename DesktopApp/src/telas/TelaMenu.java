@@ -78,7 +78,7 @@ public class TelaMenu extends javax.swing.JFrame {
         menu1.add(menuRecrutador);
         menu1.add(jSeparator1);
 
-        menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         menuSair.setText("Sair do Sistema");
         menuSair.setToolTipText("Aqui você sai do sistema, fechando tudo!");
         menuSair.addActionListener(this::menuSairActionPerformed);

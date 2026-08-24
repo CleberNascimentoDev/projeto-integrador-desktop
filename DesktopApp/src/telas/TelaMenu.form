@@ -45,7 +45,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="menuSair">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="F4"/>
+                  <KeyStroke key="ESCAPE"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sair do Sistema"/>
                 <Property name="toolTipText" type="java.lang.String" value="Aqui voc&#xea; sai do sistema, fechando tudo!"/>
