@@ -115,7 +115,17 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargoActionPerformed
-        // TODO add your handling code here:
+        
+        TelaCargo telaCargo = new TelaCargo();
+        painelPrincipal.add(telaCargo);
+        telaCargo.setVisible(true);
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_menuCargoActionPerformed
 
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
