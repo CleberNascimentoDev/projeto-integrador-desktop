@@ -34,12 +34,14 @@ public class TelaMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
-        menu = new javax.swing.JMenu();
+        menu1 = new javax.swing.JMenu();
         menuCargo = new javax.swing.JMenuItem();
         menuProcessoSeletivo = new javax.swing.JMenuItem();
         menuRecrutador = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuSair = new javax.swing.JMenuItem();
+        menu2 = new javax.swing.JMenu();
+        menuCadastro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -56,29 +58,44 @@ public class TelaMenu extends javax.swing.JFrame {
 
         painelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        menu.setText("Gerenciamento");
-        menu.setToolTipText("Este é o menu!");
+        menu1.setText("Gerenciamento");
+        menu1.setToolTipText("Este é o menu!");
 
+        menuCargo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         menuCargo.setText("Gerenciar Cargos");
         menuCargo.setToolTipText("Aqui você pode criar, editar, listar e excluir cargos!");
         menuCargo.addActionListener(this::menuCargoActionPerformed);
-        menu.add(menuCargo);
+        menu1.add(menuCargo);
 
+        menuProcessoSeletivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         menuProcessoSeletivo.setText("Abrir Processo Seletivo");
         menuProcessoSeletivo.setToolTipText("Aqui você pode criar, editar, listar e excluir processos seletivos!");
-        menu.add(menuProcessoSeletivo);
+        menu1.add(menuProcessoSeletivo);
 
+        menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         menuRecrutador.setText("Vincular Recrutadores");
         menuRecrutador.setToolTipText("Aqui você pode vincular recrutadores a um processo seletivo!");
-        menu.add(menuRecrutador);
-        menu.add(jSeparator1);
+        menu1.add(menuRecrutador);
+        menu1.add(jSeparator1);
 
+        menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         menuSair.setText("Sair do Sistema");
         menuSair.setToolTipText("Aqui você sai do sistema, fechando tudo!");
         menuSair.addActionListener(this::menuSairActionPerformed);
-        menu.add(menuSair);
+        menu1.add(menuSair);
 
-        menuBar.add(menu);
+        menuBar.add(menu1);
+
+        menu2.setText("Cadastro");
+        menu2.setToolTipText("Menu para cadastro");
+
+        menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        menuCadastro.setText("Cadastrar usuario");
+        menuCadastro.setToolTipText("Cadastre administrador ou recrutador por aqui");
+        menuCadastro.addActionListener(this::menuCadastroActionPerformed);
+        menu2.add(menuCadastro);
+
+        menuBar.add(menu2);
 
         setJMenuBar(menuBar);
 
@@ -120,6 +137,10 @@ public class TelaMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuSairActionPerformed
 
+    private void menuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuCadastroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -149,8 +170,10 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JMenu menu;
+    private javax.swing.JMenu menu1;
+    private javax.swing.JMenu menu2;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem menuCadastro;
     private javax.swing.JMenuItem menuCargo;
     private javax.swing.JMenuItem menuProcessoSeletivo;
     private javax.swing.JMenuItem menuRecrutador;
