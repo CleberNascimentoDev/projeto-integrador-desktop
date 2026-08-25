@@ -49,6 +49,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jbBotaoEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(411, 500));
 
         jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
         jpCorFundo.setPreferredSize(new java.awt.Dimension(450, 610));
@@ -94,7 +95,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jbBotaoEntrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jbBotaoEntrar.setForeground(new java.awt.Color(255, 255, 255));
         jbBotaoEntrar.setText("Entrar");
-        jbBotaoEntrar.setToolTipText("");
+        jbBotaoEntrar.setToolTipText("Entrar no MainRH");
         jbBotaoEntrar.addActionListener(this::jbBotaoEntrarActionPerformed);
 
         javax.swing.GroupLayout jpCorFundoLayout = new javax.swing.GroupLayout(jpCorFundo);
@@ -140,9 +141,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpCampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(45, 45, 45)
                 .addComponent(jbBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
