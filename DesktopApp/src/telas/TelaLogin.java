@@ -46,6 +46,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jpCampoSenha = new javax.swing.JPasswordField();
         jbOcultarSenha = new javax.swing.JButton();
+        jbBotaoEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(411, 500));
@@ -90,12 +91,19 @@ public class TelaLogin extends javax.swing.JFrame {
         jbOcultarSenha.setPreferredSize(new java.awt.Dimension(30, 30));
         jbOcultarSenha.addActionListener(this::jbOcultarSenhaActionPerformed);
 
+        jbBotaoEntrar.setBackground(new java.awt.Color(31, 53, 80));
+        jbBotaoEntrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbBotaoEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbBotaoEntrar.setText("Entrar");
+        jbBotaoEntrar.setToolTipText("");
+        jbBotaoEntrar.addActionListener(this::jbBotaoEntrarActionPerformed);
+
         javax.swing.GroupLayout jpCorFundoLayout = new javax.swing.GroupLayout(jpCorFundo);
         jpCorFundo.setLayout(jpCorFundoLayout);
         jpCorFundoLayout.setHorizontalGroup(
             jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCorFundoLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
                         .addComponent(jlLogo)
@@ -113,6 +121,10 @@ public class TelaLogin extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jbOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(33, 33, 33))))
+            .addGroup(jpCorFundoLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(jbBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jpCorFundoLayout.setVerticalGroup(
             jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +141,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpCampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jbBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,6 +213,10 @@ public class TelaLogin extends javax.swing.JFrame {
         } // Alterna a visibilidade da senha e a imagem do olho
     }//GEN-LAST:event_jbOcultarSenhaActionPerformed
 
+    private void jbBotaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBotaoEntrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbBotaoEntrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -227,6 +245,7 @@ public class TelaLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jbBotaoEntrar;
     private javax.swing.JButton jbOcultarSenha;
     private javax.swing.JLabel jlLogo;
     private javax.swing.JPasswordField jpCampoSenha;
