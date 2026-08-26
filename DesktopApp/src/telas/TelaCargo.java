@@ -69,6 +69,15 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,6 +102,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setTitle("TELA PRINCIPAL DE CARGO");
 
         painelDesktopPane.setLayout(new java.awt.BorderLayout());
 
