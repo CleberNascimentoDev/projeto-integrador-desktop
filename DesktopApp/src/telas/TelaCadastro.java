@@ -32,50 +32,88 @@ public class TelaCadastro extends javax.swing.JFrame {
         jlLogo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jpComponentes = new javax.swing.JPanel();
+        jtfCampoNome = new javax.swing.JTextField();
+        jtfCampoDataNascimento = new javax.swing.JTextField();
+        jtfCampoCPF = new javax.swing.JTextField();
+        jpfCampoSenha = new javax.swing.JPasswordField();
+        jtfCampoEmail = new javax.swing.JTextField();
+        jpfCampoConfirmarSenha = new javax.swing.JPasswordField();
+        jtfCampoTelefone = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jtfCampoFuncao = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(707, 710));
 
         jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
+        jpCorFundo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoMenor.png"))); // NOI18N
+        jpCorFundo.add(jlLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 30, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Criar Conta");
+        jpCorFundo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 158, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(101, 101, 101));
         jLabel2.setText("Preencha os dados abaixo para criar uma conta");
+        jpCorFundo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 196, -1, -1));
 
-        javax.swing.GroupLayout jpCorFundoLayout = new javax.swing.GroupLayout(jpCorFundo);
-        jpCorFundo.setLayout(jpCorFundoLayout);
-        jpCorFundoLayout.setHorizontalGroup(
-            jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpCorFundoLayout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addComponent(jlLogo)
-                .addContainerGap(185, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)
-                        .addGap(111, 111, 111))
-                    .addComponent(jLabel2))
-                .addGap(168, 168, 168))
-        );
-        jpCorFundoLayout.setVerticalGroup(
-            jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpCorFundoLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jlLogo)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap(493, Short.MAX_VALUE))
-        );
+        jpComponentes.setOpaque(false);
+        jpComponentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jtfCampoNome.addActionListener(this::jtfCampoNomeActionPerformed);
+        jpComponentes.add(jtfCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 280, 44));
+        jpComponentes.add(jtfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 280, 44));
+        jpComponentes.add(jtfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 280, 44));
+        jpComponentes.add(jpfCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 280, 44));
+        jpComponentes.add(jtfCampoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 280, 44));
+        jpComponentes.add(jpfCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 280, 44));
+        jpComponentes.add(jtfCampoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 280, 44));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel3.setText("Nome");
+        jpComponentes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel4.setText("Data de Nascimento");
+        jpComponentes.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel5.setText("CPF");
+        jpComponentes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel6.setText("Senha");
+        jpComponentes.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel7.setText("E-mail");
+        jpComponentes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel8.setText("Confirmar Senha");
+        jpComponentes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel9.setText("Telefone");
+        jpComponentes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, -1, -1));
+        jpComponentes.add(jtfCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 280, 44));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel10.setText("Função");
+        jpComponentes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, -1, -1));
+
+        jpCorFundo.add(jpComponentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,6 +128,10 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtfCampoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCampoNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCampoNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,8 +160,25 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jlLogo;
+    private javax.swing.JPanel jpComponentes;
     private javax.swing.JPanel jpCorFundo;
+    private javax.swing.JPasswordField jpfCampoConfirmarSenha;
+    private javax.swing.JPasswordField jpfCampoSenha;
+    private javax.swing.JTextField jtfCampoCPF;
+    private javax.swing.JTextField jtfCampoDataNascimento;
+    private javax.swing.JTextField jtfCampoEmail;
+    private javax.swing.JTextField jtfCampoFuncao;
+    private javax.swing.JTextField jtfCampoNome;
+    private javax.swing.JTextField jtfCampoTelefone;
     // End of variables declaration//GEN-END:variables
 }
