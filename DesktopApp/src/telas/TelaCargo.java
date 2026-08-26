@@ -29,18 +29,18 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     
     private void customizarTabela() {
     // 1. Fundo do ScrollPane e Borda do Container
-    jScrollPane1.getViewport().setBackground(java.awt.Color.WHITE);
-    jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
+    scrollPane.getViewport().setBackground(java.awt.Color.WHITE);
+    scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
 
     // 2. Estilização e FONTE DAS LINHAS da Tabela
-    jTable1.setBackground(java.awt.Color.WHITE);
-    jTable1.setRowHeight(38);
-    jTable1.setShowGrid(false);
-    jTable1.setShowHorizontalLines(true);
-    jTable1.setGridColor(new java.awt.Color(245, 245, 245));
+    tbCargo.setBackground(java.awt.Color.WHITE);
+    tbCargo.setRowHeight(38);
+    tbCargo.setShowGrid(false);
+    tbCargo.setShowHorizontalLines(true);
+    tbCargo.setGridColor(new java.awt.Color(245, 245, 245));
     
     // ---> ALTERE O TAMANHO DA FONTE DOS DADOS AQUI <---
-    jTable1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
+    tbCargo.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
 
     // 3. Renderizador e FONTE DO CABEÇALHO
     javax.swing.table.DefaultTableCellRenderer headerRenderer = new javax.swing.table.DefaultTableCellRenderer() {
@@ -60,11 +60,11 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         }
     };
 
-    for (int i = 0; i < jTable1.getColumnModel().getColumnCount(); i++) {
-        jTable1.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+    for (int i = 0; i < tbCargo.getColumnModel().getColumnCount(); i++) {
+        tbCargo.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
     }
 
-    jTable1.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
+    tbCargo.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
 }
     
     
@@ -73,26 +73,28 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        painelDesktopPane = new javax.swing.JDesktopPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfPesquisa = new javax.swing.JTextField();
+        tfPesquisa.setText("Digite aqui...");
+        tfPesquisa.setForeground(java.awt.Color.GRAY);
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        scrollPane = new javax.swing.JScrollPane();
+        tbCargo = new javax.swing.JTable();
+        btExcluir = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btCadastrar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
 
-        jDesktopPane1.setLayout(new java.awt.BorderLayout());
+        painelDesktopPane.setLayout(new java.awt.BorderLayout());
 
         jPanel3.setBackground(new java.awt.Color(233, 243, 255));
         jPanel3.setLayout(new java.awt.BorderLayout());
@@ -101,13 +103,18 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 72, 30, -1));
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 95, 30, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 67, 470, 35));
+        tfPesquisa.setBackground(new java.awt.Color(255, 255, 255));
+        tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPesquisaFocusGained(evt);
+            }
+        });
+        jPanel5.add(tfPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 470, 35));
 
         jLabel1.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 35)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Cargos");
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 16, -1, -1));
@@ -126,13 +133,13 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(29, 45, 68));
         jLabel3.setText("Cargos cadastrados");
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        scrollPane.setBackground(new java.awt.Color(255, 255, 255));
+        scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbCargo.setBackground(new java.awt.Color(255, 255, 255));
+        tbCargo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tbCargo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"DEV SENIOR"},
                 {"DEV PLENO"},
@@ -163,18 +170,21 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                 "Cargos"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbCargo.setToolTipText("Aqui aparecem os cargos já cadastrados em sistema");
+        scrollPane.setViewportView(tbCargo);
 
-        jButton2.setBackground(new java.awt.Color(192, 1, 1));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Excluir");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        btExcluir.setBackground(new java.awt.Color(192, 1, 1));
+        btExcluir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btExcluir.setText("Excluir");
+        btExcluir.setToolTipText("Selecione um cargo da tabela e clique aqui caso deseje excluir o cargo");
+        btExcluir.addActionListener(this::btExcluirActionPerformed);
 
-        jButton3.setBackground(new java.awt.Color(11, 176, 142));
-        jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Editar");
+        btEditar.setBackground(new java.awt.Color(11, 176, 142));
+        btEditar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btEditar.setText("Editar");
+        btEditar.setToolTipText("Selecione um cargo da tabela e clique aqui caso deseje editar o cargo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -188,12 +198,12 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)))
+                            .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -202,11 +212,11 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -216,11 +226,12 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
         jPanel6.setBackground(new java.awt.Color(233, 243, 255));
 
-        jButton1.setBackground(new java.awt.Color(31, 53, 80));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        btCadastrar.setBackground(new java.awt.Color(31, 53, 80));
+        btCadastrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        btCadastrar.setText("Cadastrar");
+        btCadastrar.setToolTipText("Clique aqui para cadastrar um novo cargo");
+        btCadastrar.addActionListener(this::btCadastrarActionPerformed);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -228,39 +239,49 @@ public class TelaCargo extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(1258, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 21, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel6, java.awt.BorderLayout.PAGE_END);
 
-        jDesktopPane1.add(jPanel3, java.awt.BorderLayout.CENTER);
+        painelDesktopPane.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(painelDesktopPane, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btExcluirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
+        
+    if (tfPesquisa.getText().equals("Digite aqui...")) {
+    tfPesquisa.setText("");
+    tfPesquisa.setForeground(java.awt.Color.BLACK);
+}
+        
+        
+        
+    }//GEN-LAST:event_tfPesquisaFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -269,8 +290,9 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JDesktopPane painelDesktopPane;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTable tbCargo;
+    private javax.swing.JTextField tfPesquisa;
     // End of variables declaration//GEN-END:variables
 }
