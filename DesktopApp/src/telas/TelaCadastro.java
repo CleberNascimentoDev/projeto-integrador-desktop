@@ -30,6 +30,8 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jpCorFundo = new javax.swing.JPanel();
         jlLogo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(707, 710));
@@ -38,21 +40,41 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoMenor.png"))); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Criar Conta");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(101, 101, 101));
+        jLabel2.setText("Preencha os dados abaixo para criar uma conta");
+
         javax.swing.GroupLayout jpCorFundoLayout = new javax.swing.GroupLayout(jpCorFundo);
         jpCorFundo.setLayout(jpCorFundoLayout);
         jpCorFundoLayout.setHorizontalGroup(
             jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(288, 288, 288))
             .addGroup(jpCorFundoLayout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addComponent(jlLogo)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCorFundoLayout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jlLogo))
+                    .addGroup(jpCorFundoLayout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel2)))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         jpCorFundoLayout.setVerticalGroup(
             jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCorFundoLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jlLogo)
-                .addContainerGap(570, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(493, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -95,6 +117,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jlLogo;
     private javax.swing.JPanel jpCorFundo;
     // End of variables declaration//GEN-END:variables
