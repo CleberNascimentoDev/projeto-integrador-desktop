@@ -19,6 +19,7 @@ public class TelaMenu extends javax.swing.JFrame {
         initComponents();
         // Maximiza a janela para ocupar a tela toda ao iniciar
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        
     }
 
     /**
