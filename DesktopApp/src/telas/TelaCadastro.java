@@ -49,6 +49,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jtfCampoFuncao = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(707, 710));
@@ -113,6 +114,13 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel10.setText("Função");
         jpComponentes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(31, 53, 80));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Cadastrar");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+        jpComponentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 580, 40));
+
         jpCorFundo.add(jpComponentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,6 +140,10 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void jtfCampoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCampoNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCampoNomeActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +171,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
