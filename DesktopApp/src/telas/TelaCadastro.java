@@ -47,9 +47,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jtfCampoFuncao = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jcbCampoFuncao = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(707, 710));
@@ -108,7 +108,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel9.setText("Telefone");
         jpComponentes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, -1, -1));
-        jpComponentes.add(jtfCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 280, 44));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel10.setText("Função");
@@ -120,6 +119,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
         jpComponentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 580, 40));
+
+        jcbCampoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione uma função", "Administrador (a)", "Recrutador (a)" }));
+        jpComponentes.add(jcbCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 280, 44));
 
         jpCorFundo.add(jpComponentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 710));
 
@@ -182,6 +184,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> jcbCampoFuncao;
     private javax.swing.JLabel jlLogo;
     private javax.swing.JPanel jpComponentes;
     private javax.swing.JPanel jpCorFundo;
@@ -190,7 +193,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField jtfCampoCPF;
     private javax.swing.JTextField jtfCampoDataNascimento;
     private javax.swing.JTextField jtfCampoEmail;
-    private javax.swing.JTextField jtfCampoFuncao;
     private javax.swing.JTextField jtfCampoNome;
     private javax.swing.JTextField jtfCampoTelefone;
     // End of variables declaration//GEN-END:variables
