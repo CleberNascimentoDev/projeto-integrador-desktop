@@ -36,6 +36,7 @@ public class TelaMenu extends javax.swing.JFrame {
         painelPrincipal = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         botaoAjuda1 = new Classes.BotaoAjuda();
         menuBar = new javax.swing.JMenuBar();
         menu1 = new javax.swing.JMenu();
@@ -60,12 +61,30 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 70, 0));
         jPanel1.add(jLabel2, java.awt.BorderLayout.CENTER);
 
+        jPanel2.setBackground(new java.awt.Color(233, 243, 255));
+
         botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botaoAjuda1.setText(" ? ");
         botaoAjuda1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         botaoAjuda1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         botaoAjuda1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        jPanel1.add(botaoAjuda1, java.awt.BorderLayout.LINE_END);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 606, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_END);
 
         painelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -114,11 +133,11 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(painelPrincipal)
         );
 
         pack();
@@ -216,6 +235,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private Classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenu menu1;
     private javax.swing.JMenu menu2;

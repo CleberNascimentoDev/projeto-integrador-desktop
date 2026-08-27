@@ -17,6 +17,8 @@ public class BotaoAjuda extends JLabel {
         setFont(new Font("Arial", Font.BOLD, 30)); // Estilo da fonte
         setCursor(new Cursor(Cursor.HAND_CURSOR)); // Mãozinha ao passar o mouse
         atualizarDica();
+        
+        
     }
 
     public String getTextoAjuda() {
