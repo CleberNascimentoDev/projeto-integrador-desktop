@@ -93,7 +93,7 @@ public class TelaMenu extends javax.swing.JFrame {
         menu2.setToolTipText("Menu para cadastro");
 
         menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
-        menuCadastro.setText("Cadastrar usuario");
+        menuCadastro.setText("Cadastrar Usuário");
         menuCadastro.setToolTipText("Cadastre administrador ou recrutador por aqui");
         menuCadastro.addActionListener(this::menuCadastroActionPerformed);
         menu2.add(menuCadastro);
@@ -176,7 +176,8 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSairActionPerformed
 
     private void menuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroActionPerformed
-        // TODO add your handling code here:
+        abrirJanelaInterna(new Tela_Cadastro());
+
     }//GEN-LAST:event_menuCadastroActionPerformed
 
     /**

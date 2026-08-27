@@ -52,86 +52,80 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(707, 710));
 
         jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
-        jpCorFundo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpCorFundo.setLayout(new java.awt.GridBagLayout());
 
+        jpComponentes.setMaximumSize(new java.awt.Dimension(620, 660));
+        jpComponentes.setMinimumSize(new java.awt.Dimension(620, 660));
         jpComponentes.setOpaque(false);
+        jpComponentes.setPreferredSize(new java.awt.Dimension(620, 660));
         jpComponentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jtfCampoNome.addActionListener(this::jtfCampoNomeActionPerformed);
-        jpComponentes.add(jtfCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 280, 44));
-        jpComponentes.add(jtfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 280, 44));
-        jpComponentes.add(jtfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 280, 44));
-        jpComponentes.add(jpfCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 280, 44));
-        jpComponentes.add(jtfCampoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 280, 44));
-        jpComponentes.add(jpfCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 280, 44));
-        jpComponentes.add(jtfCampoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 280, 44));
+        jpComponentes.add(jtfCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 280, 44));
+        jpComponentes.add(jtfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 280, 44));
+        jpComponentes.add(jtfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 44));
+        jpComponentes.add(jpfCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 280, 44));
+        jpComponentes.add(jtfCampoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 280, 44));
+        jpComponentes.add(jpfCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 280, 44));
+        jpComponentes.add(jtfCampoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 280, 44));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setText("Nome");
-        jpComponentes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        jpComponentes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel4.setText("Data de Nascimento");
-        jpComponentes.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
+        jpComponentes.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel5.setText("CPF");
-        jpComponentes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
+        jpComponentes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel6.setText("E-mail");
-        jpComponentes.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, -1, -1));
+        jpComponentes.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel7.setText("Senha");
-        jpComponentes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+        jpComponentes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel8.setText("Confirmar Senha");
-        jpComponentes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
+        jpComponentes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel9.setText("Telefone");
-        jpComponentes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
+        jpComponentes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel10.setText("Função");
-        jpComponentes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, -1, -1));
+        jpComponentes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(31, 53, 80));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
-        jpComponentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 580, 40));
+        jpComponentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 580, 40));
 
         jcbCampoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione uma função", "Administrador (a)", "Recrutador (a)" }));
-        jpComponentes.add(jcbCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 280, 44));
+        jpComponentes.add(jcbCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 280, 44));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(101, 101, 101));
         jLabel2.setText("Preencha os dados abaixo para criar uma conta");
-        jpComponentes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        jpComponentes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Criar Conta");
-        jpComponentes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, -1));
+        jpComponentes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
 
         jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoMenor.png"))); // NOI18N
-        jpComponentes.add(jlLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
+        jpComponentes.add(jlLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
-        jpCorFundo.add(jpComponentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 710));
+        jpCorFundo.add(jpComponentes, new java.awt.GridBagConstraints());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jpCorFundo, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

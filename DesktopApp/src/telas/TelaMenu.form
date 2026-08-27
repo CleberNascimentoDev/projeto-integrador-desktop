@@ -67,7 +67,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F5"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Cadastrar usuario"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar Usu&#xe1;rio"/>
                 <Property name="toolTipText" type="java.lang.String" value="Cadastre administrador ou recrutador por aqui"/>
               </Properties>
               <Events>
