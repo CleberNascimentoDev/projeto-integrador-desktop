@@ -74,11 +74,14 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         painelDesktopPane = new javax.swing.JDesktopPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         tfPesquisa = new javax.swing.JTextField();
         tfPesquisa.setText("Digite aqui...");
         tfPesquisa.setForeground(java.awt.Color.GRAY);
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lbVoltar = new javax.swing.JLabel();
+        botaoAjuda1 = new Classes.BotaoAjuda();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -89,7 +92,6 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         btCadastrar = new javax.swing.JButton();
 
-        setClosable(true);
         setTitle("GERENCIAMENTO DE CARGOS");
 
         painelDesktopPane.setLayout(new java.awt.BorderLayout());
@@ -98,24 +100,70 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jPanel5.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel5.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 95, 30, -1));
+        jPanel2.setBackground(new java.awt.Color(233, 243, 255));
 
-        tfPesquisa.setBackground(new java.awt.Color(255, 255, 255));
         tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfPesquisaFocusGained(evt);
             }
         });
-        jPanel5.add(tfPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 470, 35));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(29, 45, 68));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 35)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Cargos");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 16, -1, -1));
+
+        lbVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Voltar.png"))); // NOI18N
+        lbVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbVoltarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(440, 440, 440)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(890, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lbVoltar)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lbVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel2))
+                    .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel5.add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        botaoAjuda1.setText("?");
+        botaoAjuda1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jPanel5.add(botaoAjuda1, java.awt.BorderLayout.PAGE_START);
 
         jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
@@ -135,7 +183,6 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane.setForeground(new java.awt.Color(255, 255, 255));
 
-        tbCargo.setBackground(new java.awt.Color(255, 255, 255));
         tbCargo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbCargo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,7 +243,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)))
+                            .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,7 +257,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,7 +283,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(1258, Short.MAX_VALUE)
+                .addContainerGap(1206, Short.MAX_VALUE)
                 .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
         );
@@ -275,8 +322,13 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_tfPesquisaFocusGained
 
+    private void lbVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVoltarMouseClicked
+       this.dispose(); 
+    }//GEN-LAST:event_lbVoltarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
@@ -284,10 +336,12 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lbVoltar;
     private javax.swing.JDesktopPane painelDesktopPane;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable tbCargo;

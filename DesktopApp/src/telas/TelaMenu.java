@@ -36,6 +36,7 @@ public class TelaMenu extends javax.swing.JFrame {
         painelPrincipal = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        botaoAjuda1 = new Classes.BotaoAjuda();
         menuBar = new javax.swing.JMenuBar();
         menu1 = new javax.swing.JMenu();
         menuCargo = new javax.swing.JMenuItem();
@@ -58,6 +59,13 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Logo.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 70, 0));
         jPanel1.add(jLabel2, java.awt.BorderLayout.CENTER);
+
+        botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botaoAjuda1.setText(" ? ");
+        botaoAjuda1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        botaoAjuda1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        botaoAjuda1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel1.add(botaoAjuda1, java.awt.BorderLayout.LINE_END);
 
         painelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -205,6 +213,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
