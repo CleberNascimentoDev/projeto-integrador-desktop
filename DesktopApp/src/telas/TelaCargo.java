@@ -66,18 +66,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
     tbCargo.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
 }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -101,8 +90,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         btCadastrar = new javax.swing.JButton();
 
         setClosable(true);
-        setIconifiable(true);
-        setTitle("TELA PRINCIPAL DE CARGO");
+        setTitle("GERENCIAMENTO DE CARGOS");
 
         painelDesktopPane.setLayout(new java.awt.BorderLayout());
 

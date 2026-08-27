@@ -4,6 +4,8 @@
  */
 package telas;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author RaphaelBispoIssa
@@ -117,18 +119,43 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void menuCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargoActionPerformed
         
-        TelaCargo telaCargo = new TelaCargo();
-        painelPrincipal.add(telaCargo);
-        telaCargo.setVisible(true);
-        
-        
-        
-        
-        
-        
-        
+        abrirJanelaInterna(new TelaCargo());
+  
     }//GEN-LAST:event_menuCargoActionPerformed
 
+    
+    
+    
+    private void abrirJanelaInterna(JInternalFrame frame) {
+        boolean aberta = false;
+        
+        for (JInternalFrame f : painelPrincipal.getAllFrames()) {
+            if (f.getClass().equals(frame.getClass())) {
+                aberta = true;
+                try {
+                    if (f.isIcon()) {
+                        f.setIcon(false); // Restaura se estiver minimizada
+                    }
+                    f.setSelected(true);
+                    f.toFront();
+                } catch (java.beans.PropertyVetoException e) {
+                    e.printStackTrace();
+                }
+                break;
+            }
+        }
+        
+        if (!aberta) {
+            painelPrincipal.add(frame);
+            frame.setVisible(true);
+        }
+    }
+    
+    
+    
+    
+    
+    
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
         Object[] opcoes = {"Sim", "Não"};
 
