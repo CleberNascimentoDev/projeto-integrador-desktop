@@ -91,24 +91,24 @@ public class TelaMenu extends javax.swing.JFrame {
         menu1.setText("Gerenciamento");
         menu1.setToolTipText("Este é o menu!");
 
-        menuCargo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        menuCargo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         menuCargo.setText("Gerenciar Cargos");
         menuCargo.setToolTipText("Aqui você pode criar, editar, listar e excluir cargos!");
         menuCargo.addActionListener(this::menuCargoActionPerformed);
         menu1.add(menuCargo);
 
-        menuProcessoSeletivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        menuProcessoSeletivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         menuProcessoSeletivo.setText("Abrir Processo Seletivo");
         menuProcessoSeletivo.setToolTipText("Aqui você pode criar, editar, listar e excluir processos seletivos!");
         menu1.add(menuProcessoSeletivo);
 
-        menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         menuRecrutador.setText("Vincular Recrutadores");
         menuRecrutador.setToolTipText("Aqui você pode vincular recrutadores a um processo seletivo!");
         menu1.add(menuRecrutador);
         menu1.add(jSeparator1);
 
-        menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         menuSair.setText("Sair do Sistema");
         menuSair.setToolTipText("Aqui você sai do sistema, fechando tudo!");
         menuSair.addActionListener(this::menuSairActionPerformed);
@@ -119,7 +119,7 @@ public class TelaMenu extends javax.swing.JFrame {
         menu2.setText("Cadastro");
         menu2.setToolTipText("Menu para cadastro");
 
-        menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         menuCadastro.setText("Cadastrar usuario");
         menuCadastro.setToolTipText("Cadastre administrador ou recrutador por aqui");
         menuCadastro.addActionListener(this::menuCadastroActionPerformed);
