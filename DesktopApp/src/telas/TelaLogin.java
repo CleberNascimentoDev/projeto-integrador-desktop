@@ -214,7 +214,11 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jbOcultarSenhaActionPerformed
 
     private void jbBotaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBotaoEntrarActionPerformed
-        // TODO add your handling code here:
+        
+        TelaMenu menu = new TelaMenu();
+        menu.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_jbBotaoEntrarActionPerformed
 
     /**
