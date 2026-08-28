@@ -99,6 +99,7 @@ public class TelaMenu extends javax.swing.JFrame {
         menuProcessoSeletivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         menuProcessoSeletivo.setText("Abrir Processo Seletivo");
         menuProcessoSeletivo.setToolTipText("Aqui você pode criar, editar, listar e excluir processos seletivos!");
+        menuProcessoSeletivo.addActionListener(this::menuProcessoSeletivoActionPerformed);
         menu1.add(menuProcessoSeletivo);
 
         menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
@@ -207,6 +208,10 @@ public class TelaMenu extends javax.swing.JFrame {
     private void menuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroActionPerformed
         abrirJanelaInterna(new Tela_Cadastro());
     }//GEN-LAST:event_menuCadastroActionPerformed
+
+    private void menuProcessoSeletivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProcessoSeletivoActionPerformed
+        abrirJanelaInterna(new TelaProcessoSeletivo());
+    }//GEN-LAST:event_menuProcessoSeletivoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -15,7 +15,50 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
      */
     public TelaProcessoSeletivo() {
         initComponents();
+        
+        customizarTabela();
+        //cor no cabeçalho da tabela 
     }
+    
+     private void customizarTabela() {
+    // 1. Fundo do ScrollPane e Borda do Container
+    jScrollPane1.getViewport().setBackground(java.awt.Color.WHITE);
+    jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
+
+    // 2. Estilização e FONTE DAS LINHAS da Tabela
+    jtProcessosSeletivos.setBackground(java.awt.Color.WHITE);
+    jtProcessosSeletivos.setRowHeight(38);
+    jtProcessosSeletivos.setShowGrid(true);
+    jtProcessosSeletivos.setShowHorizontalLines(true);
+    jtProcessosSeletivos.setGridColor(new java.awt.Color(150, 150, 150));
+    
+    // ---> ALTERE O TAMANHO DA FONTE DOS DADOS AQUI <---
+    jtProcessosSeletivos.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
+
+    // 3. Renderizador e FONTE DO CABEÇALHO
+    javax.swing.table.DefaultTableCellRenderer headerRenderer = new javax.swing.table.DefaultTableCellRenderer() {
+        @Override
+        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            setBackground(new java.awt.Color(29, 45, 68));
+            setForeground(java.awt.Color.WHITE);
+            
+            // ---> ALTERE O TAMANHO DA FONTE DO CABEÇALHO AQUI <---
+            setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
+            
+            setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 0));
+            setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+            return this;
+        }
+    };
+
+    for (int i = 0; i < jtProcessosSeletivos.getColumnModel().getColumnCount(); i++) {
+        jtProcessosSeletivos.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+    }
+
+    jtProcessosSeletivos.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,8 +75,10 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         jtfBarraPesquisa = new javax.swing.JTextField();
         jpListaProcessos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtProcessosSeletivos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
         jpCorFundo.setLayout(new java.awt.BorderLayout());
@@ -51,22 +96,33 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
 
         jpListaProcessos.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtProcessosSeletivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Processos", "Data de ínicio", "Data de fim"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtProcessosSeletivos.setShowGrid(true);
+        jScrollPane1.setViewportView(jtProcessosSeletivos);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(31, 53, 80));
         jLabel2.setText("Lista de processos seletivos");
+
+        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout jpListaProcessosLayout = new javax.swing.GroupLayout(jpListaProcessos);
         jpListaProcessos.setLayout(jpListaProcessosLayout);
@@ -74,9 +130,11 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
             jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpListaProcessosLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addGroup(jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jpListaProcessosLayout.setVerticalGroup(
@@ -86,10 +144,16 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        jpComponentes.add(jpListaProcessos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 930, 460));
+        jpComponentes.add(jpListaProcessos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 930, 440));
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
+        jpComponentes.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 580, -1, -1));
 
         jpCorFundo.add(jpComponentes, java.awt.BorderLayout.CENTER);
 
@@ -111,15 +175,21 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfBarraPesquisaActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel jpComponentes;
     private javax.swing.JPanel jpCorFundo;
     private javax.swing.JPanel jpListaProcessos;
+    private javax.swing.JTable jtProcessosSeletivos;
     private javax.swing.JTextField jtfBarraPesquisa;
     // End of variables declaration//GEN-END:variables
 }
