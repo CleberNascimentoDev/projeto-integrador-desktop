@@ -36,6 +36,8 @@ public class TelaMenu extends javax.swing.JFrame {
         painelPrincipal = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        botaoAjuda1 = new Classes.BotaoAjuda();
         menuBar = new javax.swing.JMenuBar();
         menu1 = new javax.swing.JMenu();
         menuCargo = new javax.swing.JMenuItem();
@@ -59,23 +61,47 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 70, 0));
         jPanel1.add(jLabel2, java.awt.BorderLayout.CENTER);
 
+        jPanel2.setBackground(new java.awt.Color(233, 243, 255));
+
+        botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botaoAjuda1.setText(" ? ");
+        botaoAjuda1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        botaoAjuda1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 606, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_END);
+
         painelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         menu1.setText("Gerenciamento");
         menu1.setToolTipText("Este é o menu!");
 
-        menuCargo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        menuCargo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         menuCargo.setText("Gerenciar Cargos");
         menuCargo.setToolTipText("Aqui você pode criar, editar, listar e excluir cargos!");
         menuCargo.addActionListener(this::menuCargoActionPerformed);
         menu1.add(menuCargo);
 
-        menuProcessoSeletivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        menuProcessoSeletivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         menuProcessoSeletivo.setText("Abrir Processo Seletivo");
         menuProcessoSeletivo.setToolTipText("Aqui você pode criar, editar, listar e excluir processos seletivos!");
         menu1.add(menuProcessoSeletivo);
 
-        menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         menuRecrutador.setText("Vincular Recrutadores");
         menuRecrutador.setToolTipText("Aqui você pode vincular recrutadores a um processo seletivo!");
         menu1.add(menuRecrutador);
@@ -92,7 +118,7 @@ public class TelaMenu extends javax.swing.JFrame {
         menu2.setText("Cadastro");
         menu2.setToolTipText("Menu para cadastro");
 
-        menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         menuCadastro.setText("Cadastrar usuario");
         menuCadastro.setToolTipText("Cadastre administrador ou recrutador por aqui");
         menuCadastro.addActionListener(this::menuCadastroActionPerformed);
@@ -106,11 +132,11 @@ public class TelaMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 936, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(painelPrincipal)
         );
 
         pack();
@@ -205,8 +231,10 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenu menu1;
     private javax.swing.JMenu menu2;
