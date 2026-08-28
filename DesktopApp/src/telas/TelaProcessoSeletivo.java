@@ -26,21 +26,100 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpCorFundo = new javax.swing.JPanel();
+        jpComponentes = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jtfBarraPesquisa = new javax.swing.JTextField();
+        jpListaProcessos = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+
+        jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
+        jpCorFundo.setLayout(new java.awt.BorderLayout());
+
+        jpComponentes.setOpaque(false);
+        jpComponentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(31, 53, 80));
+        jLabel1.setText("Processos Seletivos");
+        jpComponentes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+
+        jtfBarraPesquisa.addActionListener(this::jtfBarraPesquisaActionPerformed);
+        jpComponentes.add(jtfBarraPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 300, 30));
+
+        jpListaProcessos.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(31, 53, 80));
+        jLabel2.setText("Lista de processos seletivos");
+
+        javax.swing.GroupLayout jpListaProcessosLayout = new javax.swing.GroupLayout(jpListaProcessos);
+        jpListaProcessos.setLayout(jpListaProcessosLayout);
+        jpListaProcessosLayout.setHorizontalGroup(
+            jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpListaProcessosLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        jpListaProcessosLayout.setVerticalGroup(
+            jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpListaProcessosLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+
+        jpComponentes.add(jpListaProcessos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 930, 460));
+
+        jpCorFundo.add(jpComponentes, java.awt.BorderLayout.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 1013, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtfBarraPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBarraPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfBarraPesquisaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JPanel jpComponentes;
+    private javax.swing.JPanel jpCorFundo;
+    private javax.swing.JPanel jpListaProcessos;
+    private javax.swing.JTextField jtfBarraPesquisa;
     // End of variables declaration//GEN-END:variables
 }
