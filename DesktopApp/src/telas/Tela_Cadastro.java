@@ -69,6 +69,7 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
         jpCorFundo.setLayout(new java.awt.GridBagLayout());
 
+        jpComponentes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpComponentes.setMaximumSize(new java.awt.Dimension(620, 660));
         jpComponentes.setMinimumSize(new java.awt.Dimension(620, 660));
         jpComponentes.setOpaque(false);
@@ -101,6 +102,14 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
             }
         });
         jtfCampoDataNascimento.addActionListener(this::jtfCampoDataNascimentoActionPerformed);
+        jtfCampoDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfCampoDataNascimentoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCampoDataNascimentoKeyTyped(evt);
+            }
+        });
         jpComponentes.add(jtfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 280, 44));
 
         jtfCampoCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -112,6 +121,14 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfCampoCPFFocusLost(evt);
+            }
+        });
+        jtfCampoCPF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfCampoCPFKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCampoCPFKeyTyped(evt);
             }
         });
         jpComponentes.add(jtfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 44));
@@ -139,6 +156,14 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfCampoTelefoneFocusLost(evt);
+            }
+        });
+        jtfCampoTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfCampoTelefoneKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCampoTelefoneKeyTyped(evt);
             }
         });
         jpComponentes.add(jtfCampoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 280, 44));
@@ -450,6 +475,135 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         } // Restaura o placeholder sem máscara se o campo estiver vazio
 
     }//GEN-LAST:event_jbOlhoConfirmarSenhaFocusLost
+
+    private void jtfCampoCPFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCampoCPFKeyTyped
+        char caractere = evt.getKeyChar();
+
+        // Permite apenas números
+        if (!Character.isDigit(caractere)) {
+            evt.consume();
+            return;
+        }
+
+        // Limita o CPF a 14 caracteres contando pontos e hífen
+        if (jtfCampoCPF.getText().length() >= 14) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfCampoCPFKeyTyped
+
+    private void jtfCampoCPFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCampoCPFKeyReleased
+        String cpf = jtfCampoCPF.getText().replaceAll("\\D", "");
+
+    if (cpf.length() > 11) {
+        cpf = cpf.substring(0, 11);
+    }
+
+    if (cpf.length() <= 3) {
+        jtfCampoCPF.setText(cpf);
+    } else if (cpf.length() <= 6) {
+        jtfCampoCPF.setText(
+            cpf.substring(0, 3) + "." +
+            cpf.substring(3)
+        );
+    } else if (cpf.length() <= 9) {
+        jtfCampoCPF.setText(
+            cpf.substring(0, 3) + "." +
+            cpf.substring(3, 6) + "." +
+            cpf.substring(6)
+        );
+    } else {
+        jtfCampoCPF.setText(
+            cpf.substring(0, 3) + "." +
+            cpf.substring(3, 6) + "." +
+            cpf.substring(6, 9) + "-" +
+            cpf.substring(9)
+        );
+    }
+
+    // Formata automaticamente o CPF
+    }//GEN-LAST:event_jtfCampoCPFKeyReleased
+
+    private void jtfCampoDataNascimentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCampoDataNascimentoKeyTyped
+        char caractere = evt.getKeyChar();
+
+    // Permite apenas números
+    if (!Character.isDigit(caractere)) {
+        evt.consume();
+        return;
+    }
+
+    // Limita a data a 10 caracteres contando as barras
+    if (jtfCampoDataNascimento.getText().length() >= 10) {
+        evt.consume();
+      }
+    }//GEN-LAST:event_jtfCampoDataNascimentoKeyTyped
+
+    private void jtfCampoDataNascimentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCampoDataNascimentoKeyReleased
+        String data = jtfCampoDataNascimento.getText().replaceAll("\\D", "");
+
+    if (data.length() > 8) {
+        data = data.substring(0, 8);
+    }
+
+    if (data.length() <= 2) {
+        jtfCampoDataNascimento.setText(data);
+    } else if (data.length() <= 4) {
+        jtfCampoDataNascimento.setText(
+            data.substring(0, 2) + "/" +
+            data.substring(2)
+        );
+    } else {
+        jtfCampoDataNascimento.setText(
+            data.substring(0, 2) + "/" +
+            data.substring(2, 4) + "/" +
+            data.substring(4)
+        );
+    }
+
+    // Formata automaticamente a data de nascimento
+    }//GEN-LAST:event_jtfCampoDataNascimentoKeyReleased
+
+    private void jtfCampoTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCampoTelefoneKeyTyped
+        char caractere = evt.getKeyChar();
+
+    // Permite apenas números
+    if (!Character.isDigit(caractere)) {
+        evt.consume();
+        return;
+    }
+
+    // Limita o telefone a 15 caracteres contando a formatação
+    if (jtfCampoTelefone.getText().length() >= 15) {
+        evt.consume();
+    }
+    }//GEN-LAST:event_jtfCampoTelefoneKeyTyped
+
+    private void jtfCampoTelefoneKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCampoTelefoneKeyReleased
+        String telefone = jtfCampoTelefone.getText().replaceAll("\\D", "");
+
+    if (telefone.length() > 11) {
+        telefone = telefone.substring(0, 11);
+    }
+
+    if (telefone.length() <= 2) {
+        jtfCampoTelefone.setText(
+            "(" + telefone
+        );
+    } else if (telefone.length() <= 7) {
+        jtfCampoTelefone.setText(
+            "(" + telefone.substring(0, 2) + ") " +
+            telefone.substring(2)
+        );
+    } else {
+        jtfCampoTelefone.setText(
+            "(" + telefone.substring(0, 2) + ") " +
+            telefone.substring(2, 7) + "-" +
+            telefone.substring(7)
+        );
+    }
+
+    // Formata automaticamente o telefone
+    }//GEN-LAST:event_jtfCampoTelefoneKeyReleased
  
 
 
