@@ -77,8 +77,8 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtProcessosSeletivos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbEditar = new javax.swing.JButton();
+        jbCadastrar = new javax.swing.JButton();
 
         jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
         jpCorFundo.setLayout(new java.awt.BorderLayout());
@@ -122,7 +122,11 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(31, 53, 80));
         jLabel2.setText("Lista de processos seletivos");
 
-        jButton1.setText("jButton1");
+        jbEditar.setBackground(new java.awt.Color(11, 176, 142));
+        jbEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbEditar.setForeground(new java.awt.Color(255, 255, 255));
+        jbEditar.setText("Editar");
+        jbEditar.addActionListener(this::jbEditarActionPerformed);
 
         javax.swing.GroupLayout jpListaProcessosLayout = new javax.swing.GroupLayout(jpListaProcessos);
         jpListaProcessos.setLayout(jpListaProcessosLayout);
@@ -131,11 +135,11 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
             .addGroup(jpListaProcessosLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpListaProcessosLayout.setVerticalGroup(
             jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,16 +148,19 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbEditar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpComponentes.add(jpListaProcessos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 930, 440));
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
-        jpComponentes.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 580, -1, -1));
+        jbCadastrar.setBackground(new java.awt.Color(31, 53, 80));
+        jbCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(this::jbCadastrarActionPerformed);
+        jpComponentes.add(jbCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 580, 110, 30));
 
         jpCorFundo.add(jpComponentes, java.awt.BorderLayout.CENTER);
 
@@ -175,17 +182,21 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfBarraPesquisaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jbCadastrarActionPerformed
+
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbCadastrar;
+    private javax.swing.JButton jbEditar;
     private javax.swing.JPanel jpComponentes;
     private javax.swing.JPanel jpCorFundo;
     private javax.swing.JPanel jpListaProcessos;
