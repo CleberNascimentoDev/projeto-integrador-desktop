@@ -145,8 +145,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void menuCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargoActionPerformed
         
-        abrirJanelaInterna(new TelaCargo());
-  
+    System.out.println("Antes: " + painelPrincipal.getAllFrames().length);
+
+    abrirJanelaInterna(new TelaCargo());
+
+    System.out.println("Depois: " + painelPrincipal.getAllFrames().length);  
     }//GEN-LAST:event_menuCargoActionPerformed
 
     
@@ -202,7 +205,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSairActionPerformed
 
     private void menuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroActionPerformed
-
+      
     }//GEN-LAST:event_menuCadastroActionPerformed
 
     /**
