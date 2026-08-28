@@ -18,8 +18,58 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         
         customizarTabela();
         //cor no cabeçalho da tabela 
+        
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+          @Override
+           public void componentResized(java.awt.event.ComponentEvent evt) {
+          ajustarLayout();
+        } // Ajusta o layout ao redimensionar a tela
+      });             
     }
     
+   private void ajustarLayout() {
+    int largura = jpComponentes.getWidth();
+    int altura = jpComponentes.getHeight();
+
+    int margemEsquerda = 40;
+    int margemDireita = 40;
+    int margemInferior = 100;
+
+    int novaLargura = largura - margemEsquerda - margemDireita;
+    int novaAltura = altura - jpListaProcessos.getY() - margemInferior;
+
+    jpListaProcessos.setBounds(
+        margemEsquerda,
+        jpListaProcessos.getY(),
+        novaLargura,
+        novaAltura
+    );
+
+    int margemTabela = 20;
+
+    jScrollPane1.setBounds(
+        margemTabela,
+        jScrollPane1.getY(),
+        jpListaProcessos.getWidth() - (margemTabela * 2),
+        jpListaProcessos.getHeight() - jScrollPane1.getY() - 40
+    );
+
+    int larguraEditar = jbEditar.getWidth();
+    int larguraCadastrar = jbCadastrar.getWidth();
+
+    jbEditar.setLocation(
+        jpListaProcessos.getWidth() - larguraEditar - 20,
+        jpListaProcessos.getHeight() - jbEditar.getHeight() - 10
+    );
+
+    jbCadastrar.setLocation(
+        largura - larguraCadastrar - 40,
+        jpListaProcessos.getY() + jpListaProcessos.getHeight() + 10
+    );// Ajusta painel, tabela e botões ao tamanho da tela
+
+
+
+} // Ajusta painel e tabela ao tamanho da tela
      private void customizarTabela() {
     // 1. Fundo do ScrollPane e Borda do Container
     jScrollPane1.getViewport().setBackground(java.awt.Color.WHITE);
