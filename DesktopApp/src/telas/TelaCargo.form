@@ -365,6 +365,9 @@
                         <Property name="text" type="java.lang.String" value="Editar"/>
                         <Property name="toolTipText" type="java.lang.String" value="Selecione um cargo da tabela e clique aqui caso deseje editar o cargo"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEditarActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

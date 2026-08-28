@@ -239,6 +239,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         btEditar.setForeground(new java.awt.Color(255, 255, 255));
         btEditar.setText("Editar");
         btEditar.setToolTipText("Selecione um cargo da tabela e clique aqui caso deseje editar o cargo");
+        btEditar.addActionListener(this::btEditarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -351,6 +352,18 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     private void tfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesquisaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPesquisaActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+TelaEditarCargo telaEditar = new TelaEditarCargo();
+    painelDesktopPane.add(telaEditar);
+    telaEditar.setVisible(true);
+    try {
+        telaEditar.setSelected(true);
+        telaEditar.toFront();
+    } catch (java.beans.PropertyVetoException e) {
+        e.printStackTrace();
+    }  
+    }//GEN-LAST:event_btEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
