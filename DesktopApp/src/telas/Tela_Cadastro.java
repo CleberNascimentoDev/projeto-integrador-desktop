@@ -21,6 +21,11 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         jpfCampoSenha.setText("Digite a senha");
         jpfCampoConfirmarSenha.setText("Confirme a senha");
         // Configuração para placeholder em campos com senha 
+        
+        javax.swing.SwingUtilities.invokeLater(() -> {
+        jpCorFundo.requestFocusInWindow();
+        }); // Inicia a tela sem nenhum campo selecionado
+
     }
 
     /**
