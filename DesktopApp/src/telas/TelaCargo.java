@@ -109,6 +109,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                 tfPesquisaFocusGained(evt);
             }
         });
+        tfPesquisa.addActionListener(this::tfPesquisaActionPerformed);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
 
@@ -125,8 +126,6 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         });
 
         botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botaoAjuda1.setText("?");
-        botaoAjuda1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -340,6 +339,10 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     private void lbVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVoltarMouseClicked
        this.dispose(); 
     }//GEN-LAST:event_lbVoltarMouseClicked
+
+    private void tfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesquisaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPesquisaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -66,10 +66,10 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jButton7" min="-2" pref="168" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jButton8" min="-2" pref="168" max="-2" attributes="0"/>
+                                      <Component id="btCadastrarCargo" min="-2" pref="168" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField16" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
+                                      <Component id="tfSetor" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
                                       <Component id="jScrollPane8" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
@@ -84,11 +84,11 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="jTextField15" alignment="0" min="-2" pref="383" max="-2" attributes="0"/>
+                                                  <Component id="tfSalario" alignment="0" min="-2" pref="383" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jTextField13" alignment="0" min="-2" pref="373" max="-2" attributes="0"/>
+                                                  <Component id="tfNivel" alignment="0" min="-2" pref="373" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
@@ -113,7 +113,7 @@
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jTextField14" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
+                                              <Component id="tfNomeCargo" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -149,7 +149,7 @@
                           <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField14" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="tfNomeCargo" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -159,8 +159,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField13" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="jTextField15" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="tfNivel" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="tfSalario" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -168,7 +168,7 @@
                           <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField16" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="tfSetor" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -185,7 +185,7 @@
                       <Component id="jScrollPane8" min="-2" pref="103" max="-2" attributes="0"/>
                       <EmptySpace pref="56" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton8" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btCadastrarCargo" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="jButton7" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -227,7 +227,7 @@
                 <Property name="text" type="java.lang.String" value="*"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField13">
+            <Component class="javax.swing.JTextField" name="tfNivel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -243,6 +243,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="&#xd;&#xa;tfNivel.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfNivel.setForeground(java.awt.Color.GRAY);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel43">
               <Properties>
@@ -310,7 +313,7 @@
                 <Property name="text" type="java.lang.String" value="*"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField14">
+            <Component class="javax.swing.JTextField" name="tfNomeCargo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -327,10 +330,13 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField14jTextField2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfNomeCargojTextField2ActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfNomeCargo.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfNomeCargo.setForeground(java.awt.Color.BLACK);"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField15">
+            <Component class="javax.swing.JTextField" name="tfSalario">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -346,8 +352,11 @@
                   </Border>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfSalario.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfSalario.setForeground(java.awt.Color.GRAY);"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField16">
+            <Component class="javax.swing.JTextField" name="tfSetor">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -364,8 +373,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField16jTextField4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfSetorjTextField4ActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfSetor.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfSetor.setForeground(java.awt.Color.GRAY);"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel49">
               <Properties>
@@ -396,7 +408,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea7">
+                <Component class="javax.swing.JTextArea" name="tfRequisitos">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -410,6 +422,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfRequisitos.setText(&quot;Digite aqui...&quot;); tfRequisitos.setForeground(java.awt.Color.GRAY);"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -442,7 +457,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea8">
+                <Component class="javax.swing.JTextArea" name="tfAtividade">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -456,6 +471,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfAtividade.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfAtividade.setForeground(java.awt.Color.GRAY);"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -484,7 +502,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton8">
+            <Component class="javax.swing.JButton" name="btCadastrarCargo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="50" green="35" red="1f" type="rgb"/>
@@ -508,7 +526,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCadastrarCargoActionPerformed"/>
               </Events>
             </Component>
             <Component class="Classes.BotaoAjuda" name="botaoAjuda1">

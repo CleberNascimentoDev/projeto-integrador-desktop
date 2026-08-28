@@ -66,7 +66,6 @@ public class TelaMenu extends javax.swing.JFrame {
         botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botaoAjuda1.setText(" ? ");
         botaoAjuda1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        botaoAjuda1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         botaoAjuda1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -108,7 +107,7 @@ public class TelaMenu extends javax.swing.JFrame {
         menu1.add(menuRecrutador);
         menu1.add(jSeparator1);
 
-        menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         menuSair.setText("Sair do Sistema");
         menuSair.setToolTipText("Aqui você sai do sistema, fechando tudo!");
         menuSair.addActionListener(this::menuSairActionPerformed);

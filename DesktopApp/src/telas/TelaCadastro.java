@@ -32,26 +32,38 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        tfNivel = new javax.swing.JTextField();
+
+        tfNivel.setText("Digite aqui...");
+        tfNivel.setForeground(java.awt.Color.GRAY);
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
+        tfNomeCargo = new javax.swing.JTextField();
+        tfNomeCargo.setText("Digite aqui...");
+        tfNomeCargo.setForeground(java.awt.Color.BLACK);
+        tfSalario = new javax.swing.JTextField();
+        tfSalario.setText("Digite aqui...");
+        tfSalario.setForeground(java.awt.Color.GRAY);
+        tfSetor = new javax.swing.JTextField();
+        tfSetor.setText("Digite aqui...");
+        tfSetor.setForeground(java.awt.Color.GRAY);
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea7 = new javax.swing.JTextArea();
+        tfRequisitos = new javax.swing.JTextArea();
+        tfRequisitos.setText("Digite aqui..."); tfRequisitos.setForeground(java.awt.Color.GRAY);
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextArea8 = new javax.swing.JTextArea();
+        tfAtividade = new javax.swing.JTextArea();
+        tfAtividade.setText("Digite aqui...");
+        tfAtividade.setForeground(java.awt.Color.GRAY);
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btCadastrarCargo = new javax.swing.JButton();
         botaoAjuda1 = new Classes.BotaoAjuda();
 
         jPanel1.setBackground(new java.awt.Color(233, 243, 255));
@@ -72,9 +84,9 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         jLabel42.setForeground(new java.awt.Color(204, 0, 0));
         jLabel42.setText("*");
 
-        jTextField13.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField13.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField13.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        tfNivel.setBackground(new java.awt.Color(255, 255, 255));
+        tfNivel.setForeground(new java.awt.Color(0, 0, 0));
+        tfNivel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel43.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
@@ -100,19 +112,19 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         jLabel48.setForeground(new java.awt.Color(204, 0, 0));
         jLabel48.setText("*");
 
-        jTextField14.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField14.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
-        jTextField14.addActionListener(this::jTextField14jTextField2ActionPerformed);
+        tfNomeCargo.setBackground(new java.awt.Color(255, 255, 255));
+        tfNomeCargo.setForeground(new java.awt.Color(0, 0, 0));
+        tfNomeCargo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        tfNomeCargo.addActionListener(this::tfNomeCargojTextField2ActionPerformed);
 
-        jTextField15.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField15.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        tfSalario.setBackground(new java.awt.Color(255, 255, 255));
+        tfSalario.setForeground(new java.awt.Color(0, 0, 0));
+        tfSalario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        jTextField16.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField16.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField16.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
-        jTextField16.addActionListener(this::jTextField16jTextField4ActionPerformed);
+        tfSetor.setBackground(new java.awt.Color(255, 255, 255));
+        tfSetor.setForeground(new java.awt.Color(0, 0, 0));
+        tfSetor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        tfSetor.addActionListener(this::tfSetorjTextField4ActionPerformed);
 
         jLabel49.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(0, 0, 0));
@@ -122,12 +134,12 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         jLabel50.setForeground(new java.awt.Color(204, 0, 0));
         jLabel50.setText("*");
 
-        jTextArea7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea7.setColumns(20);
-        jTextArea7.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea7.setRows(5);
-        jTextArea7.setBorder(null);
-        jScrollPane7.setViewportView(jTextArea7);
+        tfRequisitos.setBackground(new java.awt.Color(255, 255, 255));
+        tfRequisitos.setColumns(20);
+        tfRequisitos.setForeground(new java.awt.Color(0, 0, 0));
+        tfRequisitos.setRows(5);
+        tfRequisitos.setBorder(null);
+        jScrollPane7.setViewportView(tfRequisitos);
 
         jLabel51.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(0, 0, 0));
@@ -137,12 +149,12 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         jLabel52.setForeground(new java.awt.Color(204, 0, 0));
         jLabel52.setText("*");
 
-        jTextArea8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea8.setColumns(20);
-        jTextArea8.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea8.setRows(5);
-        jTextArea8.setBorder(null);
-        jScrollPane8.setViewportView(jTextArea8);
+        tfAtividade.setBackground(new java.awt.Color(255, 255, 255));
+        tfAtividade.setColumns(20);
+        tfAtividade.setForeground(new java.awt.Color(0, 0, 0));
+        tfAtividade.setRows(5);
+        tfAtividade.setBorder(null);
+        jScrollPane8.setViewportView(tfAtividade);
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -156,13 +168,13 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         });
         jButton7.addActionListener(this::jButton7ActionPerformed);
 
-        jButton8.setBackground(new java.awt.Color(31, 53, 80));
-        jButton8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Cadastrar Cargo");
-        jButton8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
-        jButton8.setMargin(new java.awt.Insets(10, 20, 10, 20));
-        jButton8.addActionListener(this::jButton8ActionPerformed);
+        btCadastrarCargo.setBackground(new java.awt.Color(31, 53, 80));
+        btCadastrarCargo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btCadastrarCargo.setForeground(new java.awt.Color(255, 255, 255));
+        btCadastrarCargo.setText("Cadastrar Cargo");
+        btCadastrarCargo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btCadastrarCargo.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btCadastrarCargo.addActionListener(this::btCadastrarCargoActionPerformed);
 
         javax.swing.GroupLayout componentsLayout = new javax.swing.GroupLayout(components);
         components.setLayout(componentsLayout);
@@ -176,9 +188,9 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
                             .addGroup(componentsLayout.createSequentialGroup()
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btCadastrarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(componentsLayout.createSequentialGroup()
                                     .addComponent(jLabel51)
@@ -191,10 +203,10 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
                                                 .addComponent(jLabel43)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel44))
-                                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(tfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(31, 31, 31)
                                         .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(componentsLayout.createSequentialGroup()
                                                 .addComponent(jLabel45)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -213,7 +225,7 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel41)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(jLabel42))
-                                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(tfNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 3, Short.MAX_VALUE))
                     .addGroup(componentsLayout.createSequentialGroup()
                         .addComponent(jLabel40)
@@ -236,7 +248,7 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
                     .addComponent(jLabel41)
                     .addComponent(jLabel42))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43)
@@ -245,14 +257,14 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
                     .addComponent(jLabel46))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
                     .addComponent(jLabel48))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel49)
@@ -267,7 +279,7 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btCadastrarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
@@ -296,13 +308,13 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField14jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14jTextField2ActionPerformed
+    private void tfNomeCargojTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeCargojTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14jTextField2ActionPerformed
+    }//GEN-LAST:event_tfNomeCargojTextField2ActionPerformed
 
-    private void jTextField16jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16jTextField4ActionPerformed
+    private void tfSetorjTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSetorjTextField4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16jTextField4ActionPerformed
+    }//GEN-LAST:event_tfSetorjTextField4ActionPerformed
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
 
@@ -312,16 +324,16 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btCadastrarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarCargoActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btCadastrarCargoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Classes.BotaoAjuda botaoAjuda1;
+    private javax.swing.JButton btCadastrarCargo;
     private javax.swing.JPanel components;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -338,11 +350,11 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTextArea jTextArea7;
-    private javax.swing.JTextArea jTextArea8;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextArea tfAtividade;
+    private javax.swing.JTextField tfNivel;
+    private javax.swing.JTextField tfNomeCargo;
+    private javax.swing.JTextArea tfRequisitos;
+    private javax.swing.JTextField tfSalario;
+    private javax.swing.JTextField tfSetor;
     // End of variables declaration//GEN-END:variables
 }
