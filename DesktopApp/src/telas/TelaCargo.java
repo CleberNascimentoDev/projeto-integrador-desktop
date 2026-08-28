@@ -310,7 +310,20 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        // TODO add your handling code here:
+        // Obtém o JDesktopPane no qual a TelaCargo está inserida
+    javax.swing.JDesktopPane desktop = getDesktopPane();
+    
+    if (desktop != null) {
+        TelaCadastro telaCadastro = new TelaCadastro();
+        desktop.add(telaCadastro);
+        telaCadastro.setVisible(true);
+        try {
+            telaCadastro.setSelected(true);
+            telaCadastro.toFront();
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
+    }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
