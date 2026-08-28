@@ -15,6 +15,10 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
      */
     public Tela_Cadastro() {
         initComponents();
+        
+        jpfCampoSenha.setEchoChar((char) 0);
+        jpfCampoConfirmarSenha.setEchoChar((char) 0);
+        // Configuração para placeholder em campos com senha 
     }
 
     /**
@@ -60,13 +64,98 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         jpComponentes.setPreferredSize(new java.awt.Dimension(620, 660));
         jpComponentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jtfCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jtfCampoNome.setForeground(new java.awt.Color(153, 153, 153));
+        jtfCampoNome.setText("Digite o nome");
+        jtfCampoNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfCampoNomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfCampoNomeFocusLost(evt);
+            }
+        });
         jtfCampoNome.addActionListener(this::jtfCampoNomeActionPerformed);
         jpComponentes.add(jtfCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 280, 44));
+
+        jtfCampoDataNascimento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jtfCampoDataNascimento.setForeground(new java.awt.Color(153, 153, 153));
+        jtfCampoDataNascimento.setText("dd/mm/aaaa");
+        jtfCampoDataNascimento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfCampoDataNascimentoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfCampoDataNascimentoFocusLost(evt);
+            }
+        });
+        jtfCampoDataNascimento.addActionListener(this::jtfCampoDataNascimentoActionPerformed);
         jpComponentes.add(jtfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 280, 44));
+
+        jtfCampoCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jtfCampoCPF.setForeground(new java.awt.Color(153, 153, 153));
+        jtfCampoCPF.setText("000.000.000-00");
+        jtfCampoCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfCampoCPFFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfCampoCPFFocusLost(evt);
+            }
+        });
         jpComponentes.add(jtfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 44));
+
+        jpfCampoSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jpfCampoSenha.setForeground(new java.awt.Color(153, 153, 153));
+        jpfCampoSenha.setText("Digite a senha");
+        jpfCampoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpfCampoSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jpfCampoSenhaFocusLost(evt);
+            }
+        });
         jpComponentes.add(jpfCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 280, 44));
+
+        jtfCampoEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jtfCampoEmail.setForeground(new java.awt.Color(153, 153, 153));
+        jtfCampoEmail.setText("Digite o e-mail");
+        jtfCampoEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfCampoEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfCampoEmailFocusLost(evt);
+            }
+        });
+        jtfCampoEmail.addActionListener(this::jtfCampoEmailActionPerformed);
         jpComponentes.add(jtfCampoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 280, 44));
+
+        jpfCampoConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jpfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
+        jpfCampoConfirmarSenha.setText("Confirme a senha");
+        jpfCampoConfirmarSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpfCampoConfirmarSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jpfCampoConfirmarSenhaFocusLost(evt);
+            }
+        });
         jpComponentes.add(jpfCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 280, 44));
+
+        jtfCampoTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jtfCampoTelefone.setForeground(new java.awt.Color(153, 153, 153));
+        jtfCampoTelefone.setText("Digite o telefone");
+        jtfCampoTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtfCampoTelefoneFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfCampoTelefoneFocusLost(evt);
+            }
+        });
         jpComponentes.add(jtfCampoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 280, 44));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -114,11 +203,11 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(101, 101, 101));
         jLabel2.setText("Preencha os dados abaixo para criar uma conta");
-        jpComponentes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+        jpComponentes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Criar Conta");
-        jpComponentes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
+        jpComponentes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
         jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoMenor.png"))); // NOI18N
         jpComponentes.add(jlLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
@@ -137,6 +226,117 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtfCampoNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoNomeFocusGained
+        if (jtfCampoNome.getText().equals("Digite o nome")) {
+            jtfCampoNome.setText("");
+            jtfCampoNome.setForeground(java.awt.Color.BLACK);
+        }// Configura o placeholder do campo Nome
+    }//GEN-LAST:event_jtfCampoNomeFocusGained
+
+    private void jtfCampoNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoNomeFocusLost
+        if (jtfCampoNome.getText().isEmpty()) {
+            jtfCampoNome.setText("Digite o nome");
+            jtfCampoNome.setForeground(new java.awt.Color(153, 153, 153));
+        } // Configura o placeholder do campo Nome
+    }//GEN-LAST:event_jtfCampoNomeFocusLost
+
+    private void jtfCampoDataNascimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoDataNascimentoFocusGained
+        if (jtfCampoDataNascimento.getText().equals("dd/mm/aaaa")) {
+            jtfCampoDataNascimento.setText("");
+            jtfCampoDataNascimento.setForeground(java.awt.Color.BLACK); 
+        } // Configura o placeholder do campo Data de Nascimento
+    }//GEN-LAST:event_jtfCampoDataNascimentoFocusGained
+
+    private void jtfCampoDataNascimentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoDataNascimentoFocusLost
+      if (jtfCampoDataNascimento.getText().isEmpty()) {
+            jtfCampoDataNascimento.setText("dd/mm/aaaa");
+            jtfCampoDataNascimento.setForeground(new java.awt.Color(153, 153, 153));
+        } // Configura o placeholder do campo Data de Nascimento
+    }//GEN-LAST:event_jtfCampoDataNascimentoFocusLost
+
+    private void jtfCampoCPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoCPFFocusGained
+       if (jtfCampoCPF.getText().equals("000.000.000-00")) {
+            jtfCampoCPF.setText("");
+            jtfCampoCPF.setForeground(java.awt.Color.BLACK);
+        } // Configura o placeholder do campo CPF
+    }//GEN-LAST:event_jtfCampoCPFFocusGained
+
+    private void jtfCampoCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoCPFFocusLost
+        if (jtfCampoCPF.getText().isEmpty()) {
+            jtfCampoCPF.setText("000.000.000-00");
+            jtfCampoCPF.setForeground(new java.awt.Color(153, 153, 153));
+        } // Configura o placeholder do campo CPF
+    }//GEN-LAST:event_jtfCampoCPFFocusLost
+
+    private void jtfCampoDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCampoDataNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCampoDataNascimentoActionPerformed
+
+    private void jtfCampoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCampoEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCampoEmailActionPerformed
+
+    private void jtfCampoEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoEmailFocusGained
+         if (jtfCampoEmail.getText().equals("Digite o e-mail")) {
+            jtfCampoEmail.setText("");
+            jtfCampoEmail.setForeground(java.awt.Color.BLACK);
+        } // Configura o placeholder do campo E-mail 
+    }//GEN-LAST:event_jtfCampoEmailFocusGained
+
+    private void jtfCampoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoEmailFocusLost
+        if (jtfCampoEmail.getText().isEmpty()) {
+            jtfCampoEmail.setText("Digite o e-mail");
+            jtfCampoEmail.setForeground(new java.awt.Color(153, 153, 153));
+        } // Configura o placeholder do campo E-mail      
+    }//GEN-LAST:event_jtfCampoEmailFocusLost
+
+    private void jpfCampoSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpfCampoSenhaFocusGained
+        if (String.valueOf(jpfCampoSenha.getPassword()).equals("Digite a senha")) {
+            jpfCampoSenha.setText("");
+            jpfCampoSenha.setForeground(java.awt.Color.BLACK);
+            jpfCampoSenha.setEchoChar('•');
+        } // Configura o placeholder do campo senha
+    }//GEN-LAST:event_jpfCampoSenhaFocusGained
+
+    private void jpfCampoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpfCampoSenhaFocusLost
+        if (jpfCampoSenha.getPassword().length == 0) {
+            jpfCampoSenha.setEchoChar((char) 0);
+            jpfCampoSenha.setText("Digite a senha");
+            jpfCampoSenha.setForeground(new java.awt.Color(153, 153, 153));
+        }  // Configura o placeholder do campo senha 
+    }//GEN-LAST:event_jpfCampoSenhaFocusLost
+
+    private void jpfCampoConfirmarSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpfCampoConfirmarSenhaFocusGained
+        if (String.valueOf(jpfCampoConfirmarSenha.getPassword()).equals("Confirme a senha")) {
+            jpfCampoConfirmarSenha.setText("");
+            jpfCampoConfirmarSenha.setForeground(java.awt.Color.BLACK);
+            jpfCampoConfirmarSenha.setEchoChar('•');
+        } // Configura o placeholder do campo Confirmar Senha
+    }//GEN-LAST:event_jpfCampoConfirmarSenhaFocusGained
+
+    private void jpfCampoConfirmarSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpfCampoConfirmarSenhaFocusLost
+        if (jpfCampoConfirmarSenha.getPassword().length == 0) {
+            jpfCampoConfirmarSenha.setEchoChar((char) 0);
+            jpfCampoConfirmarSenha.setText("Confirme sua senha");
+            jpfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
+        } // Configura o placeholder do campo Confirmar Senha
+    }//GEN-LAST:event_jpfCampoConfirmarSenhaFocusLost
+
+    private void jtfCampoTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoTelefoneFocusGained
+        if (jtfCampoTelefone.getText().equals("Digite o telefone")) {
+            jtfCampoTelefone.setText("");
+            jtfCampoTelefone.setForeground(java.awt.Color.BLACK);
+        } // Configura o placeholder do campo telefone 
+    }//GEN-LAST:event_jtfCampoTelefoneFocusGained
+
+    private void jtfCampoTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCampoTelefoneFocusLost
+         if (jtfCampoTelefone.getText().isEmpty()) {
+            jtfCampoTelefone.setText("Digite o telefone");
+            jtfCampoTelefone.setForeground(new java.awt.Color(153, 153, 153));
+        } // Configura o placeholder do campo telefone    
+    }//GEN-LAST:event_jtfCampoTelefoneFocusLost
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
