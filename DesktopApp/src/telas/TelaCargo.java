@@ -215,7 +215,15 @@ public class TelaCargo extends javax.swing.JInternalFrame {
             new String [] {
                 "Cargos"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbCargo.setToolTipText("Aqui aparecem os cargos já cadastrados em sistema");
         scrollPane.setViewportView(tbCargo);
 

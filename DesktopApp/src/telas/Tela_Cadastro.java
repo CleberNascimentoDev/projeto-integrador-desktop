@@ -39,6 +39,7 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
 
         jpCorFundo = new javax.swing.JPanel();
         jpComponentes = new javax.swing.JPanel();
+        lbVoltar = new javax.swing.JLabel();
         jtfCampoNome = new javax.swing.JTextField();
         jtfCampoDataNascimento = new javax.swing.JTextField();
         jtfCampoCPF = new javax.swing.JTextField();
@@ -75,6 +76,18 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         jpComponentes.setOpaque(false);
         jpComponentes.setPreferredSize(new java.awt.Dimension(620, 660));
         jpComponentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbVoltar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Voltar.png"))); // NOI18N
+        lbVoltar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lbVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lbVoltar.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        lbVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbVoltarMouseClicked(evt);
+            }
+        });
+        jpComponentes.add(lbVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jtfCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jtfCampoNome.setForeground(new java.awt.Color(153, 153, 153));
@@ -604,6 +617,10 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
 
     // Formata automaticamente o telefone
     }//GEN-LAST:event_jtfCampoTelefoneKeyReleased
+
+    private void lbVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVoltarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_lbVoltarMouseClicked
  
 
 
@@ -634,5 +651,6 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfCampoEmail;
     private javax.swing.JTextField jtfCampoNome;
     private javax.swing.JTextField jtfCampoTelefone;
+    private javax.swing.JLabel lbVoltar;
     // End of variables declaration//GEN-END:variables
 }
