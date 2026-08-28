@@ -35,9 +35,7 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         jtfCampoNome = new javax.swing.JTextField();
         jtfCampoDataNascimento = new javax.swing.JTextField();
         jtfCampoCPF = new javax.swing.JTextField();
-        jpfCampoSenha = new javax.swing.JPasswordField();
         jtfCampoEmail = new javax.swing.JTextField();
-        jpfCampoConfirmarSenha = new javax.swing.JPasswordField();
         jtfCampoTelefone = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -52,6 +50,12 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jlLogo = new javax.swing.JLabel();
+        jpCampoSenha = new javax.swing.JPanel();
+        jbOlhoSenha = new javax.swing.JButton();
+        jpfCampoSenha = new javax.swing.JPasswordField();
+        jpCampoConfirmarSenha = new javax.swing.JPanel();
+        jbOlhoConfirmarSenha = new javax.swing.JButton();
+        jpfCampoConfirmarSenha = new javax.swing.JPasswordField();
 
         setPreferredSize(new java.awt.Dimension(707, 710));
 
@@ -105,19 +109,6 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         });
         jpComponentes.add(jtfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 44));
 
-        jpfCampoSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jpfCampoSenha.setForeground(new java.awt.Color(153, 153, 153));
-        jpfCampoSenha.setText("Digite a senha");
-        jpfCampoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jpfCampoSenhaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jpfCampoSenhaFocusLost(evt);
-            }
-        });
-        jpComponentes.add(jpfCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 280, 44));
-
         jtfCampoEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jtfCampoEmail.setForeground(new java.awt.Color(153, 153, 153));
         jtfCampoEmail.setText("Digite o e-mail");
@@ -131,19 +122,6 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         });
         jtfCampoEmail.addActionListener(this::jtfCampoEmailActionPerformed);
         jpComponentes.add(jtfCampoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 280, 44));
-
-        jpfCampoConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jpfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
-        jpfCampoConfirmarSenha.setText("Confirme a senha");
-        jpfCampoConfirmarSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jpfCampoConfirmarSenhaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jpfCampoConfirmarSenhaFocusLost(evt);
-            }
-        });
-        jpComponentes.add(jpfCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 280, 44));
 
         jtfCampoTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jtfCampoTelefone.setForeground(new java.awt.Color(153, 153, 153));
@@ -211,6 +189,56 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
 
         jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoMenor.png"))); // NOI18N
         jpComponentes.add(jlLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+
+        jpCampoSenha.setOpaque(false);
+        jpCampoSenha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbOlhoSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png"))); // NOI18N
+        jbOlhoSenha.setBorderPainted(false);
+        jbOlhoSenha.setContentAreaFilled(false);
+        jbOlhoSenha.setFocusPainted(false);
+        jbOlhoSenha.addActionListener(this::jbOlhoSenhaActionPerformed);
+        jpCampoSenha.add(jbOlhoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
+
+        jpfCampoSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jpfCampoSenha.setForeground(new java.awt.Color(153, 153, 153));
+        jpfCampoSenha.setText("Digite a senha");
+        jpfCampoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpfCampoSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jpfCampoSenhaFocusLost(evt);
+            }
+        });
+        jpCampoSenha.add(jpfCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 44));
+
+        jpComponentes.add(jpCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 280, 44));
+
+        jpCampoConfirmarSenha.setOpaque(false);
+        jpCampoConfirmarSenha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jbOlhoConfirmarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png"))); // NOI18N
+        jbOlhoConfirmarSenha.setBorderPainted(false);
+        jbOlhoConfirmarSenha.setContentAreaFilled(false);
+        jbOlhoConfirmarSenha.setFocusPainted(false);
+        jbOlhoConfirmarSenha.addActionListener(this::jbOlhoConfirmarSenhaActionPerformed);
+        jpCampoConfirmarSenha.add(jbOlhoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
+
+        jpfCampoConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jpfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
+        jpfCampoConfirmarSenha.setText("Confirme a senha");
+        jpfCampoConfirmarSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpfCampoConfirmarSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jpfCampoConfirmarSenhaFocusLost(evt);
+            }
+        });
+        jpCampoConfirmarSenha.add(jpfCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 44));
+
+        jpComponentes.add(jpCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 280, 44));
 
         jpCorFundo.add(jpComponentes, new java.awt.GridBagConstraints());
 
@@ -337,6 +365,46 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         } // Configura o placeholder do campo telefone    
     }//GEN-LAST:event_jtfCampoTelefoneFocusLost
 
+    private void jbOlhoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOlhoSenhaActionPerformed
+            if (jpfCampoSenha.getEchoChar() == 0) {
+                jpfCampoSenha.setEchoChar('•');
+
+                 jbOlhoSenha.setIcon(
+                    new javax.swing.ImageIcon(
+                        getClass().getResource("/icons/olhoAberto.png")
+                    )
+                );
+            } else {
+                jpfCampoSenha.setEchoChar((char) 0);
+
+                jbOlhoSenha.setIcon(
+                    new javax.swing.ImageIcon(
+                        getClass().getResource("/icons/olhoFechado.png")
+                    )
+                );
+            } // Alterna entre ocultar e exibir a senha
+    }//GEN-LAST:event_jbOlhoSenhaActionPerformed
+
+    private void jbOlhoConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOlhoConfirmarSenhaActionPerformed
+            if (jpfCampoConfirmarSenha.getEchoChar() == 0) {
+                jpfCampoConfirmarSenha.setEchoChar('•');
+
+                 jbOlhoConfirmarSenha.setIcon(
+                    new javax.swing.ImageIcon(
+                        getClass().getResource("/icons/olhoAberto.png")
+                    )
+                );
+            } else {
+                jpfCampoConfirmarSenha.setEchoChar((char) 0);
+
+                jbOlhoConfirmarSenha.setIcon(
+                    new javax.swing.ImageIcon(
+                        getClass().getResource("/icons/olhoFechado.png")
+                    )
+                );
+            } // Alterna entre ocultar e exibir a confirmação da senha
+    }//GEN-LAST:event_jbOlhoConfirmarSenhaActionPerformed
+ 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -351,8 +419,12 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jbOlhoConfirmarSenha;
+    private javax.swing.JButton jbOlhoSenha;
     private javax.swing.JComboBox<String> jcbCampoFuncao;
     private javax.swing.JLabel jlLogo;
+    private javax.swing.JPanel jpCampoConfirmarSenha;
+    private javax.swing.JPanel jpCampoSenha;
     private javax.swing.JPanel jpComponentes;
     private javax.swing.JPanel jpCorFundo;
     private javax.swing.JPasswordField jpfCampoConfirmarSenha;

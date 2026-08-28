@@ -49,7 +49,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jbBotaoEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(411, 500));
 
         jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
         jpCorFundo.setPreferredSize(new java.awt.Dimension(450, 610));
@@ -82,7 +81,7 @@ public class TelaLogin extends javax.swing.JFrame {
         });
         jpCampoSenha.addActionListener(this::jpCampoSenhaActionPerformed);
 
-        jbOcultarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/olhoAberto.png"))); // NOI18N
+        jbOcultarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png"))); // NOI18N
         jbOcultarSenha.setBorderPainted(false);
         jbOcultarSenha.setContentAreaFilled(false);
         jbOcultarSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -200,7 +199,7 @@ public class TelaLogin extends javax.swing.JFrame {
            senhaVisivel = false;
 
            jbOcultarSenha.setIcon(new javax.swing.ImageIcon(
-              getClass().getResource("/imagens/olhoFechado.png")
+              getClass().getResource("/icons/olhoFechado.png")
             ));
 
         } else {
@@ -208,7 +207,7 @@ public class TelaLogin extends javax.swing.JFrame {
              senhaVisivel = true;
 
              jbOcultarSenha.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/imagens/olhoAberto.png")
+                getClass().getResource("/icons/olhoAberto.png")
             ));
         } // Alterna a visibilidade da senha e a imagem do olho
     }//GEN-LAST:event_jbOcultarSenhaActionPerformed
