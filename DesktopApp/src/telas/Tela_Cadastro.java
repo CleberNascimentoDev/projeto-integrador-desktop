@@ -18,6 +18,8 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         
         jpfCampoSenha.setEchoChar((char) 0);
         jpfCampoConfirmarSenha.setEchoChar((char) 0);
+        jpfCampoSenha.setText("Digite a senha");
+        jpfCampoConfirmarSenha.setText("Confirme a senha");
         // Configuração para placeholder em campos com senha 
     }
 
@@ -197,6 +199,7 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         jbOlhoSenha.setBorderPainted(false);
         jbOlhoSenha.setContentAreaFilled(false);
         jbOlhoSenha.setFocusPainted(false);
+        jbOlhoSenha.setFocusable(false);
         jbOlhoSenha.addActionListener(this::jbOlhoSenhaActionPerformed);
         jpCampoSenha.add(jbOlhoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
 
@@ -222,6 +225,15 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
         jbOlhoConfirmarSenha.setBorderPainted(false);
         jbOlhoConfirmarSenha.setContentAreaFilled(false);
         jbOlhoConfirmarSenha.setFocusPainted(false);
+        jbOlhoConfirmarSenha.setFocusable(false);
+        jbOlhoConfirmarSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jbOlhoConfirmarSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jbOlhoConfirmarSenhaFocusLost(evt);
+            }
+        });
         jbOlhoConfirmarSenha.addActionListener(this::jbOlhoConfirmarSenhaActionPerformed);
         jpCampoConfirmarSenha.add(jbOlhoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
 
@@ -324,7 +336,7 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
             jpfCampoSenha.setText("");
             jpfCampoSenha.setForeground(java.awt.Color.BLACK);
             jpfCampoSenha.setEchoChar('•');
-        } // Configura o placeholder do campo senha
+        } // Configura o placeholder do campo senha, remove o placeholder e ativa a máscara da senha
     }//GEN-LAST:event_jpfCampoSenhaFocusGained
 
     private void jpfCampoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpfCampoSenhaFocusLost
@@ -332,22 +344,22 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
             jpfCampoSenha.setEchoChar((char) 0);
             jpfCampoSenha.setText("Digite a senha");
             jpfCampoSenha.setForeground(new java.awt.Color(153, 153, 153));
-        }  // Configura o placeholder do campo senha 
+        }  // Configura o placeholder do campo senha, restaura o placeholder sem máscara se o campo estiver vazio
     }//GEN-LAST:event_jpfCampoSenhaFocusLost
 
     private void jpfCampoConfirmarSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpfCampoConfirmarSenhaFocusGained
-        if (String.valueOf(jpfCampoConfirmarSenha.getPassword()).equals("Confirme a senha")) {
-            jpfCampoConfirmarSenha.setText("");
-            jpfCampoConfirmarSenha.setForeground(java.awt.Color.BLACK);
-            jpfCampoConfirmarSenha.setEchoChar('•');
-        } // Configura o placeholder do campo Confirmar Senha
+          if (String.valueOf(jpfCampoConfirmarSenha.getPassword()).equals("Confirme a senha")) {
+              jpfCampoConfirmarSenha.setText("");
+              jpfCampoConfirmarSenha.setForeground(java.awt.Color.BLACK);
+              jpfCampoConfirmarSenha.setEchoChar('•');
+       }// Remove o placeholder e ativa a máscara da confirmação da senha
     }//GEN-LAST:event_jpfCampoConfirmarSenhaFocusGained
 
     private void jpfCampoConfirmarSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpfCampoConfirmarSenhaFocusLost
-        if (jpfCampoConfirmarSenha.getPassword().length == 0) {
-            jpfCampoConfirmarSenha.setEchoChar((char) 0);
-            jpfCampoConfirmarSenha.setText("Confirme sua senha");
-            jpfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
+           if (jpfCampoConfirmarSenha.getPassword().length == 0) {
+               jpfCampoConfirmarSenha.setEchoChar((char) 0);
+               jpfCampoConfirmarSenha.setText("Confirme a senha");
+               jpfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
         } // Configura o placeholder do campo Confirmar Senha
     }//GEN-LAST:event_jpfCampoConfirmarSenhaFocusLost
 
@@ -366,44 +378,73 @@ public class Tela_Cadastro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfCampoTelefoneFocusLost
 
     private void jbOlhoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOlhoSenhaActionPerformed
-            if (jpfCampoSenha.getEchoChar() == 0) {
-                jpfCampoSenha.setEchoChar('•');
+    // Não altera a máscara enquanto o placeholder estiver aparecendo
+    if (String.valueOf(jpfCampoSenha.getPassword()).equals("Digite a senha")) {
+        return;
+    }
 
-                 jbOlhoSenha.setIcon(
-                    new javax.swing.ImageIcon(
-                        getClass().getResource("/icons/olhoAberto.png")
-                    )
-                );
-            } else {
-                jpfCampoSenha.setEchoChar((char) 0);
+    if (jpfCampoSenha.getEchoChar() == 0) {
+        jpfCampoSenha.setEchoChar('•');
 
-                jbOlhoSenha.setIcon(
-                    new javax.swing.ImageIcon(
-                        getClass().getResource("/icons/olhoFechado.png")
-                    )
-                );
-            } // Alterna entre ocultar e exibir a senha
+        jbOlhoSenha.setIcon(
+            new javax.swing.ImageIcon(
+                getClass().getResource("/icons/olhoAberto.png")
+            )
+        );
+    } else {
+        jpfCampoSenha.setEchoChar((char) 0);
+
+        jbOlhoSenha.setIcon(
+            new javax.swing.ImageIcon(
+                getClass().getResource("/icons/olhoFechado.png")
+            )
+        );
+      } // Alterna entre ocultar e exibir a senha
     }//GEN-LAST:event_jbOlhoSenhaActionPerformed
 
     private void jbOlhoConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOlhoConfirmarSenhaActionPerformed
-            if (jpfCampoConfirmarSenha.getEchoChar() == 0) {
-                jpfCampoConfirmarSenha.setEchoChar('•');
+    // Impede o uso do botão enquanto o placeholder estiver visível
+    if (String.valueOf(jpfCampoConfirmarSenha.getPassword()).equals("Confirme a senha")) {
+        return;
+    }
 
-                 jbOlhoConfirmarSenha.setIcon(
-                    new javax.swing.ImageIcon(
-                        getClass().getResource("/icons/olhoAberto.png")
-                    )
-                );
-            } else {
-                jpfCampoConfirmarSenha.setEchoChar((char) 0);
+    if (jpfCampoConfirmarSenha.getEchoChar() == 0) {
+        jpfCampoConfirmarSenha.setEchoChar('•');
 
-                jbOlhoConfirmarSenha.setIcon(
-                    new javax.swing.ImageIcon(
-                        getClass().getResource("/icons/olhoFechado.png")
-                    )
-                );
-            } // Alterna entre ocultar e exibir a confirmação da senha
+        jbOlhoConfirmarSenha.setIcon(
+            new javax.swing.ImageIcon(
+                getClass().getResource("/icons/olhoAberto.png")
+            )
+        );
+    } else {
+        jpfCampoConfirmarSenha.setEchoChar((char) 0);
+
+        jbOlhoConfirmarSenha.setIcon(
+            new javax.swing.ImageIcon(
+                getClass().getResource("/icons/olhoFechado.png")
+            )
+        );
+    }
+
+    // Alterna entre ocultar e exibir a confirmação da senha
     }//GEN-LAST:event_jbOlhoConfirmarSenhaActionPerformed
+
+    private void jbOlhoConfirmarSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jbOlhoConfirmarSenhaFocusGained
+        if (String.valueOf(jpfCampoConfirmarSenha.getPassword()).equals("Confirme a senha")) {
+            jpfCampoConfirmarSenha.setText("");
+            jpfCampoConfirmarSenha.setForeground(java.awt.Color.BLACK);
+            jpfCampoConfirmarSenha.setEchoChar('•');
+        }// Remove o placeholder e ativa a máscara da confirmação da senha
+    }//GEN-LAST:event_jbOlhoConfirmarSenhaFocusGained
+
+    private void jbOlhoConfirmarSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jbOlhoConfirmarSenhaFocusLost
+         if (jpfCampoConfirmarSenha.getPassword().length == 0) {
+             jpfCampoConfirmarSenha.setEchoChar((char) 0);
+             jpfCampoConfirmarSenha.setText("Confirme a senha");
+             jpfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
+        } // Restaura o placeholder sem máscara se o campo estiver vazio
+
+    }//GEN-LAST:event_jbOlhoConfirmarSenhaFocusLost
  
 
 
