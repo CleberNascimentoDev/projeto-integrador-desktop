@@ -62,7 +62,7 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         tfAtividade = new javax.swing.JTextArea();
         tfAtividade.setText("Digite aqui...");
         tfAtividade.setForeground(java.awt.Color.GRAY);
-        jButton7 = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
         btCadastrarCargo = new javax.swing.JButton();
         botaoAjuda1 = new Classes.BotaoAjuda();
 
@@ -156,17 +156,17 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         tfAtividade.setBorder(null);
         jScrollPane8.setViewportView(tfAtividade);
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
-        jButton7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(29, 45, 68));
-        jButton7.setText("Cancelar");
-        jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+        btCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btCancelar.setForeground(new java.awt.Color(29, 45, 68));
+        btCancelar.setText("Cancelar");
+        btCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
+                btCancelarMouseClicked(evt);
             }
         });
-        jButton7.addActionListener(this::jButton7ActionPerformed);
+        btCancelar.addActionListener(this::btCancelarActionPerformed);
 
         btCadastrarCargo.setBackground(new java.awt.Color(31, 53, 80));
         btCadastrarCargo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -186,7 +186,7 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
                     .addGroup(componentsLayout.createSequentialGroup()
                         .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(componentsLayout.createSequentialGroup()
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btCadastrarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +280,7 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCadastrarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
 
@@ -316,13 +316,13 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfSetorjTextField4ActionPerformed
 
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+    private void btCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCancelarMouseClicked
 
-    }//GEN-LAST:event_jButton7MouseClicked
+    }//GEN-LAST:event_btCancelarMouseClicked
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btCadastrarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarCargoActionPerformed
         dispose();
@@ -332,8 +332,8 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JButton btCadastrarCargo;
+    private javax.swing.JButton btCancelar;
     private javax.swing.JPanel components;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;

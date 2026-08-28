@@ -25,22 +25,336 @@ public class TelaEditarCargo extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        jPanel1 = new javax.swing.JPanel();
+        components = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        tfEditarNivel = new javax.swing.JTextField();
+
+        tfEditarNivel.setText("Digite aqui...");
+        tfEditarNivel.setForeground(java.awt.Color.GRAY);
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        tfEditarNomeCargo = new javax.swing.JTextField();
+        tfEditarNomeCargo.setText("Digite aqui...");
+        tfEditarNomeCargo.setForeground(java.awt.Color.BLACK);
+        tfEditarSalario = new javax.swing.JTextField();
+        tfEditarSalario.setText("Digite aqui...");
+        tfEditarSalario.setForeground(java.awt.Color.GRAY);
+        tfEditarSetor = new javax.swing.JTextField();
+        tfEditarSetor.setText("Digite aqui...");
+        tfEditarSetor.setForeground(java.awt.Color.GRAY);
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tfEditarRequisitos = new javax.swing.JTextArea();
+        tfEditarRequisitos.setText("Digite aqui..."); tfEditarRequisitos.setForeground(java.awt.Color.GRAY);
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tfEditarAtividade = new javax.swing.JTextArea();
+        tfEditarAtividade.setText("Digite aqui...");
+        tfEditarAtividade.setForeground(java.awt.Color.GRAY);
+        btEditarCancelar = new javax.swing.JButton();
+        btEditarCadastrarCargo = new javax.swing.JButton();
+        botaoAjuda1 = new Classes.BotaoAjuda();
+
+        jPanel1.setBackground(new java.awt.Color(233, 243, 255));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        components.setBackground(new java.awt.Color(255, 255, 255));
+        components.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        jLabel40.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(29, 45, 68));
+        jLabel40.setText("Editar Cargo");
+
+        jLabel41.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel41.setText("Nome do cargo");
+
+        jLabel42.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel42.setText("*");
+
+        tfEditarNivel.setBackground(new java.awt.Color(255, 255, 255));
+        tfEditarNivel.setForeground(new java.awt.Color(0, 0, 0));
+        tfEditarNivel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+
+        jLabel43.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel43.setText("Salário base");
+
+        jLabel44.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel44.setText("*");
+
+        jLabel45.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel45.setText("Nível");
+
+        jLabel46.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel46.setText("*");
+
+        jLabel47.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel47.setText("Setor");
+
+        jLabel48.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel48.setText("*");
+
+        tfEditarNomeCargo.setBackground(new java.awt.Color(255, 255, 255));
+        tfEditarNomeCargo.setForeground(new java.awt.Color(0, 0, 0));
+        tfEditarNomeCargo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        tfEditarNomeCargo.addActionListener(this::tfEditarNomeCargojTextField2ActionPerformed);
+
+        tfEditarSalario.setBackground(new java.awt.Color(255, 255, 255));
+        tfEditarSalario.setForeground(new java.awt.Color(0, 0, 0));
+        tfEditarSalario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+
+        tfEditarSetor.setBackground(new java.awt.Color(255, 255, 255));
+        tfEditarSetor.setForeground(new java.awt.Color(0, 0, 0));
+        tfEditarSetor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        tfEditarSetor.addActionListener(this::tfEditarSetorjTextField4ActionPerformed);
+
+        jLabel49.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel49.setText("Requisitos");
+
+        jLabel50.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel50.setText("*");
+
+        tfEditarRequisitos.setBackground(new java.awt.Color(255, 255, 255));
+        tfEditarRequisitos.setColumns(20);
+        tfEditarRequisitos.setForeground(new java.awt.Color(0, 0, 0));
+        tfEditarRequisitos.setRows(5);
+        tfEditarRequisitos.setBorder(null);
+        jScrollPane7.setViewportView(tfEditarRequisitos);
+
+        jLabel51.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel51.setText("Atividades");
+
+        jLabel52.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel52.setText("*");
+
+        tfEditarAtividade.setBackground(new java.awt.Color(255, 255, 255));
+        tfEditarAtividade.setColumns(20);
+        tfEditarAtividade.setForeground(new java.awt.Color(0, 0, 0));
+        tfEditarAtividade.setRows(5);
+        tfEditarAtividade.setBorder(null);
+        jScrollPane8.setViewportView(tfEditarAtividade);
+
+        btEditarCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btEditarCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btEditarCancelar.setForeground(new java.awt.Color(29, 45, 68));
+        btEditarCancelar.setText("Cancelar");
+        btEditarCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btEditarCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btEditarCancelarMouseClicked(evt);
+            }
+        });
+        btEditarCancelar.addActionListener(this::btEditarCancelarActionPerformed);
+
+        btEditarCadastrarCargo.setBackground(new java.awt.Color(31, 53, 80));
+        btEditarCadastrarCargo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btEditarCadastrarCargo.setForeground(new java.awt.Color(255, 255, 255));
+        btEditarCadastrarCargo.setText("Editar Cargo");
+        btEditarCadastrarCargo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btEditarCadastrarCargo.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btEditarCadastrarCargo.addActionListener(this::btEditarCadastrarCargoActionPerformed);
+
+        javax.swing.GroupLayout componentsLayout = new javax.swing.GroupLayout(components);
+        components.setLayout(componentsLayout);
+        componentsLayout.setHorizontalGroup(
+            componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(componentsLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(componentsLayout.createSequentialGroup()
+                        .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(componentsLayout.createSequentialGroup()
+                                .addComponent(btEditarCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btEditarCadastrarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tfEditarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(componentsLayout.createSequentialGroup()
+                                    .addComponent(jLabel51)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(componentsLayout.createSequentialGroup()
+                                        .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(componentsLayout.createSequentialGroup()
+                                                .addComponent(jLabel43)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel44))
+                                            .addComponent(tfEditarSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(31, 31, 31)
+                                        .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tfEditarNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(componentsLayout.createSequentialGroup()
+                                                .addComponent(jLabel45)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel46))))
+                                    .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(componentsLayout.createSequentialGroup()
+                                            .addComponent(jLabel49)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel50))
+                                        .addGroup(componentsLayout.createSequentialGroup()
+                                            .addComponent(jLabel47)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel48))
+                                        .addGroup(componentsLayout.createSequentialGroup()
+                                            .addComponent(jLabel41)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel42))
+                                        .addComponent(tfEditarNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 3, Short.MAX_VALUE))
+                    .addGroup(componentsLayout.createSequentialGroup()
+                        .addComponent(jLabel40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        componentsLayout.setVerticalGroup(
+            componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(componentsLayout.createSequentialGroup()
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(componentsLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel40))
+                    .addGroup(componentsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31)
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfEditarNomeCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel44)
+                    .addComponent(jLabel45)
+                    .addComponent(jLabel46))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfEditarNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfEditarSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel47)
+                    .addComponent(jLabel48))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfEditarSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel49)
+                    .addComponent(jLabel50))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel51)
+                    .addComponent(jLabel52))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btEditarCadastrarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btEditarCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 3;
+        gridBagConstraints.ipady = 50;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 139, 11, 139);
+        jPanel1.add(components, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1111, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tfEditarNomeCargojTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEditarNomeCargojTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEditarNomeCargojTextField2ActionPerformed
+
+    private void tfEditarSetorjTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEditarSetorjTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfEditarSetorjTextField4ActionPerformed
+
+    private void btEditarCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEditarCancelarMouseClicked
+
+    }//GEN-LAST:event_btEditarCancelarMouseClicked
+
+    private void btEditarCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btEditarCancelarActionPerformed
+
+    private void btEditarCadastrarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarCadastrarCargoActionPerformed
+        dispose();
+    }//GEN-LAST:event_btEditarCadastrarCargoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Classes.BotaoAjuda botaoAjuda1;
+    private javax.swing.JButton btEditarCadastrarCargo;
+    private javax.swing.JButton btEditarCancelar;
+    private javax.swing.JPanel components;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JTextArea tfEditarAtividade;
+    private javax.swing.JTextField tfEditarNivel;
+    private javax.swing.JTextField tfEditarNomeCargo;
+    private javax.swing.JTextArea tfEditarRequisitos;
+    private javax.swing.JTextField tfEditarSalario;
+    private javax.swing.JTextField tfEditarSetor;
     // End of variables declaration//GEN-END:variables
 }
