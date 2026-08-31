@@ -30,6 +30,9 @@
                 <Property name="text" type="java.lang.String" value="Abrir Processo Seletivo"/>
                 <Property name="toolTipText" type="java.lang.String" value="Aqui voc&#xea; pode criar, editar, listar e excluir processos seletivos!"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuProcessoSeletivoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuRecrutador">
               <Properties>
