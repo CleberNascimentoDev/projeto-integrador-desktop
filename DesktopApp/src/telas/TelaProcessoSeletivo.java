@@ -185,6 +185,14 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         tbProcessos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbProcessos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {" m.m.nl.nmlnl", ".nlnlnl", "nlnlnl"},
+                {" . m. .m", "nlnln", "nlnlnl"},
+                {"cp", "bb", "navdad"},
+                {"NVNVA", "N ,", "VFAPODACSE"},
+                {"D C", "AVBNVBN", "CV"},
+                {"BHKBKKBK", "PREBGTO", null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -192,7 +200,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -202,6 +210,11 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         tbProcessos.setToolTipText("Aqui aparecem os cargos já cadastrados em sistema");
         tbProcessos.setShowGrid(true);
         scrollPane.setViewportView(tbProcessos);
+        if (tbProcessos.getColumnModel().getColumnCount() > 0) {
+            tbProcessos.getColumnModel().getColumn(0).setResizable(false);
+            tbProcessos.getColumnModel().getColumn(1).setResizable(false);
+            tbProcessos.getColumnModel().getColumn(2).setResizable(false);
+        }
         tbProcessos.getAccessibleContext().setAccessibleName("");
         tbProcessos.getAccessibleContext().setAccessibleDescription("Aqui aparecem os processos já cadastrados em sistema");
 
@@ -221,9 +234,9 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
                     .addComponent(scrollPane)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addContainerGap(579, Short.MAX_VALUE))))
+                        .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(831, Short.MAX_VALUE)
                 .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -231,9 +244,10 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel4.add(jPanel1, java.awt.BorderLayout.CENTER);
