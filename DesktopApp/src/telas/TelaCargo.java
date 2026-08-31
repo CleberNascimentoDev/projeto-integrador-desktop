@@ -225,6 +225,11 @@ public class TelaCargo extends javax.swing.JInternalFrame {
             }
         });
         tbCargo.setToolTipText("Aqui aparecem os cargos já cadastrados em sistema");
+        tbCargo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbCargoMouseClicked(evt);
+            }
+        });
         scrollPane.setViewportView(tbCargo);
 
         btExcluir.setBackground(new java.awt.Color(192, 1, 1));
@@ -329,21 +334,9 @@ public class TelaCargo extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
-
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        TelaEditarCargo telaEditar = new TelaEditarCargo();
-        painelDesktopPane.add(telaEditar);
-        telaEditar.setVisible(true);
-        try {
-            telaEditar.setSelected(true);
-            telaEditar.toFront();
-        } catch (java.beans.PropertyVetoException e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btEditarActionPerformed
-
+                       
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void lbVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVoltarMouseClicked
@@ -354,14 +347,48 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPesquisaActionPerformed
 
+
     private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
 
-        if (tfPesquisa.getText().equals("Digite aqui...")) {
-            tfPesquisa.setText("");
-            tfPesquisa.setForeground(java.awt.Color.BLACK);
-        }
-
     }//GEN-LAST:event_tfPesquisaFocusGained
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+    TelaEditarCargo telaEditar = new TelaEditarCargo();
+    painelDesktopPane.add(telaEditar);
+    telaEditar.setVisible(true);
+    try {
+        telaEditar.setSelected(true);
+        telaEditar.toFront();
+    } catch (java.beans.PropertyVetoException e) {
+        e.printStackTrace();
+    }  
+    }//GEN-LAST:event_btEditarActionPerformed
+    
+
+    private void tbCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCargoMouseClicked
+        // Verifica se foi um duplo clique com o botão esquerdo do mouse
+    if (evt.getClickCount() == 2 && evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+        
+        int linhaSelecionada = tbCargo.getSelectedRow();
+        
+        // Garante que uma linha válida foi clicada
+        if (linhaSelecionada != -1) {
+            
+            // Exemplo: Pegando um valor da primeira coluna (índice 0)
+            Object id = tbCargo.getValueAt(linhaSelecionada, 0);
+            
+        TelaDetalhesCargo telaDetalhe = new TelaDetalhesCargo();
+        painelDesktopPane.add(telaDetalhe);
+        telaDetalhe.setVisible(true);
+        try {
+           telaDetalhe.setSelected(true);
+            telaDetalhe.toFront();
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }  
+            }
+      }
+    }//GEN-LAST:event_tbCargoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
