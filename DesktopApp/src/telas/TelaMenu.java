@@ -153,9 +153,6 @@ public class TelaMenu extends javax.swing.JFrame {
     System.out.println("Depois: " + painelPrincipal.getAllFrames().length);  
     }//GEN-LAST:event_menuCargoActionPerformed
 
-    
-    
-    
     private void abrirJanelaInterna(JInternalFrame frame) {
         boolean aberta = false;
         
@@ -180,11 +177,6 @@ public class TelaMenu extends javax.swing.JFrame {
             frame.setVisible(true);
         }
     }
-    
-    
-    
-    
-    
     
     private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
         Object[] opcoes = {"Sim", "Não"};

@@ -313,57 +313,55 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        // Obtém o JDesktopPane no qual a TelaCargo está inserida
+        javax.swing.JDesktopPane desktop = getDesktopPane();
+
+        if (desktop != null) {
+            TelaCadastro telaCadastro = new TelaCadastro();
+            desktop.add(telaCadastro);
+            telaCadastro.setVisible(true);
+            try {
+                telaCadastro.setSelected(true);
+                telaCadastro.toFront();
+            } catch (java.beans.PropertyVetoException e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        TelaEditarCargo telaEditar = new TelaEditarCargo();
+        painelDesktopPane.add(telaEditar);
+        telaEditar.setVisible(true);
+        try {
+            telaEditar.setSelected(true);
+            telaEditar.toFront();
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btEditarActionPerformed
+
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btExcluirActionPerformed
 
-    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        // Obtém o JDesktopPane no qual a TelaCargo está inserida
-    javax.swing.JDesktopPane desktop = getDesktopPane();
-    
-    if (desktop != null) {
-        TelaCadastro telaCadastro = new TelaCadastro();
-        desktop.add(telaCadastro);
-        telaCadastro.setVisible(true);
-        try {
-            telaCadastro.setSelected(true);
-            telaCadastro.toFront();
-        } catch (java.beans.PropertyVetoException e) {
-            e.printStackTrace();
-        }
-    }
-    }//GEN-LAST:event_btCadastrarActionPerformed
-
-    private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
-        
-    if (tfPesquisa.getText().equals("Digite aqui...")) {
-    tfPesquisa.setText("");
-    tfPesquisa.setForeground(java.awt.Color.BLACK);
-}
-        
-        
-        
-    }//GEN-LAST:event_tfPesquisaFocusGained
-
     private void lbVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVoltarMouseClicked
-       this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_lbVoltarMouseClicked
 
     private void tfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesquisaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPesquisaActionPerformed
 
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-TelaEditarCargo telaEditar = new TelaEditarCargo();
-    painelDesktopPane.add(telaEditar);
-    telaEditar.setVisible(true);
-    try {
-        telaEditar.setSelected(true);
-        telaEditar.toFront();
-    } catch (java.beans.PropertyVetoException e) {
-        e.printStackTrace();
-    }  
-    }//GEN-LAST:event_btEditarActionPerformed
+    private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
+
+        if (tfPesquisa.getText().equals("Digite aqui...")) {
+            tfPesquisa.setText("");
+            tfPesquisa.setForeground(java.awt.Color.BLACK);
+        }
+
+    }//GEN-LAST:event_tfPesquisaFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -13,77 +13,26 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaProcessoSeletivo
      */
+   
     public TelaProcessoSeletivo() {
-        initComponents();
-        
-        customizarTabela();
-        //cor no cabeçalho da tabela 
-        
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-          @Override
-           public void componentResized(java.awt.event.ComponentEvent evt) {
-          ajustarLayout();
-        } // Ajusta o layout ao redimensionar a tela
-      });             
+       initComponents();
+       customizarTabela();
     }
     
-   private void ajustarLayout() {
-    int largura = jpComponentes.getWidth();
-    int altura = jpComponentes.getHeight();
-
-    int margemEsquerda = 40;
-    int margemDireita = 40;
-    int margemInferior = 100;
-
-    int novaLargura = largura - margemEsquerda - margemDireita;
-    int novaAltura = altura - jpListaProcessos.getY() - margemInferior;
-
-    jpListaProcessos.setBounds(
-        margemEsquerda,
-        jpListaProcessos.getY(),
-        novaLargura,
-        novaAltura
-    );
-
-    int margemTabela = 20;
-
-    jScrollPane1.setBounds(
-        margemTabela,
-        jScrollPane1.getY(),
-        jpListaProcessos.getWidth() - (margemTabela * 2),
-        jpListaProcessos.getHeight() - jScrollPane1.getY() - 40
-    );
-
-    int larguraEditar = jbEditar.getWidth();
-    int larguraCadastrar = jbCadastrar.getWidth();
-
-    jbEditar.setLocation(
-        jpListaProcessos.getWidth() - larguraEditar - 20,
-        jpListaProcessos.getHeight() - jbEditar.getHeight() - 10
-    );
-
-    jbCadastrar.setLocation(
-        largura - larguraCadastrar - 40,
-        jpListaProcessos.getY() + jpListaProcessos.getHeight() + 10
-    );// Ajusta painel, tabela e botões ao tamanho da tela
-
-
-
-} // Ajusta painel e tabela ao tamanho da tela
      private void customizarTabela() {
     // 1. Fundo do ScrollPane e Borda do Container
-    jScrollPane1.getViewport().setBackground(java.awt.Color.WHITE);
-    jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
+    scrollPane.getViewport().setBackground(java.awt.Color.WHITE);
+    scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
 
     // 2. Estilização e FONTE DAS LINHAS da Tabela
-    jtProcessosSeletivos.setBackground(java.awt.Color.WHITE);
-    jtProcessosSeletivos.setRowHeight(38);
-    jtProcessosSeletivos.setShowGrid(true);
-    jtProcessosSeletivos.setShowHorizontalLines(true);
-    jtProcessosSeletivos.setGridColor(new java.awt.Color(150, 150, 150));
+    tbProcessos.setBackground(java.awt.Color.WHITE);
+    tbProcessos.setRowHeight(38);
+    tbProcessos.setShowGrid(true);
+    tbProcessos.setShowHorizontalLines(true);
+    tbProcessos.setGridColor(new java.awt.Color(153,153,153));
     
     // ---> ALTERE O TAMANHO DA FONTE DOS DADOS AQUI <---
-    jtProcessosSeletivos.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
+    tbProcessos.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
 
     // 3. Renderizador e FONTE DO CABEÇALHO
     javax.swing.table.DefaultTableCellRenderer headerRenderer = new javax.swing.table.DefaultTableCellRenderer() {
@@ -102,14 +51,18 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
             return this;
         }
     };
-
-    for (int i = 0; i < jtProcessosSeletivos.getColumnModel().getColumnCount(); i++) {
-        jtProcessosSeletivos.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+    
+    for (int i = 0; i < tbProcessos.getColumnModel().getColumnCount(); i++) {
+        tbProcessos.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
     }
 
-    jtProcessosSeletivos.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
+    tbProcessos.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
+    
+    
 }
 
+  
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,138 +72,272 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jpCorFundo = new javax.swing.JPanel();
-        jpComponentes = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jtfBarraPesquisa = new javax.swing.JTextField();
-        jpListaProcessos = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtProcessosSeletivos = new javax.swing.JTable();
+        painelDesktopPane = new javax.swing.JDesktopPane();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        tfPesquisa = new javax.swing.JTextField();
+        tfPesquisa.setText("Digite aqui...");
+        tfPesquisa.setForeground(java.awt.Color.GRAY);
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lbVoltar = new javax.swing.JLabel();
+        botaoAjuda1 = new Classes.BotaoAjuda();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        scrollPane = new javax.swing.JScrollPane();
+        tbProcessos = new javax.swing.JTable();
         jbEditar = new javax.swing.JButton();
-        jbCadastrar = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        btCadastrar = new javax.swing.JButton();
 
-        jpCorFundo.setBackground(new java.awt.Color(233, 243, 255));
-        jpCorFundo.setLayout(new java.awt.BorderLayout());
+        painelDesktopPane.setLayout(new java.awt.BorderLayout());
 
-        jpComponentes.setOpaque(false);
-        jpComponentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setBackground(new java.awt.Color(233, 243, 255));
+        jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(31, 53, 80));
+        jPanel5.setBackground(new java.awt.Color(233, 243, 255));
+        jPanel5.setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setBackground(new java.awt.Color(233, 243, 255));
+
+        tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfPesquisaFocusGained(evt);
+            }
+        });
+        tfPesquisa.addActionListener(this::tfPesquisaActionPerformed);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+
+        jLabel1.setBackground(new java.awt.Color(29, 45, 68));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 35)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Processos Seletivos");
-        jpComponentes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
-        jtfBarraPesquisa.addActionListener(this::jtfBarraPesquisaActionPerformed);
-        jpComponentes.add(jtfBarraPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 300, 30));
+        lbVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Voltar.png"))); // NOI18N
+        lbVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbVoltarMouseClicked(evt);
+            }
+        });
 
-        jpListaProcessos.setBackground(new java.awt.Color(255, 255, 255));
+        botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
-        jtProcessosSeletivos.setModel(new javax.swing.table.DefaultTableModel(
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(440, 440, 440)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(513, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lbVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(39, 39, 39)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel2))
+                    .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_START);
+
+        jPanel4.setBackground(new java.awt.Color(233, 243, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 32, 20, 32));
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 1, 32));
+
+        jLabel3.setBackground(new java.awt.Color(29, 45, 68));
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(29, 45, 68));
+        jLabel3.setText("Listas de processos seletivos ");
+
+        scrollPane.setBackground(new java.awt.Color(255, 255, 255));
+        scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane.setForeground(new java.awt.Color(255, 255, 255));
+
+        tbProcessos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tbProcessos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
-                "Processos", "Data de ínicio", "Data de fim"
+                "Processos", "Data de início", "Data de fim"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jtProcessosSeletivos.setShowGrid(true);
-        jScrollPane1.setViewportView(jtProcessosSeletivos);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(31, 53, 80));
-        jLabel2.setText("Lista de processos seletivos");
+        tbProcessos.setToolTipText("Aqui aparecem os cargos já cadastrados em sistema");
+        tbProcessos.setShowGrid(true);
+        scrollPane.setViewportView(tbProcessos);
+        tbProcessos.getAccessibleContext().setAccessibleName("");
+        tbProcessos.getAccessibleContext().setAccessibleDescription("Aqui aparecem os processos já cadastrados em sistema");
 
         jbEditar.setBackground(new java.awt.Color(11, 176, 142));
-        jbEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jbEditar.setForeground(new java.awt.Color(255, 255, 255));
         jbEditar.setText("Editar");
         jbEditar.addActionListener(this::jbEditarActionPerformed);
 
-        javax.swing.GroupLayout jpListaProcessosLayout = new javax.swing.GroupLayout(jpListaProcessos);
-        jpListaProcessos.setLayout(jpListaProcessosLayout);
-        jpListaProcessosLayout.setHorizontalGroup(
-            jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpListaProcessosLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPane)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(579, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jpListaProcessosLayout.setVerticalGroup(
-            jpListaProcessosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpListaProcessosLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel2)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbEditar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jpComponentes.add(jpListaProcessos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 930, 440));
+        jPanel4.add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        jbCadastrar.setBackground(new java.awt.Color(31, 53, 80));
-        jbCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jbCadastrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCadastrar.setText("Cadastrar");
-        jbCadastrar.addActionListener(this::jbCadastrarActionPerformed);
-        jpComponentes.add(jbCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 580, 110, 30));
+        jPanel3.add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        jpCorFundo.add(jpComponentes, java.awt.BorderLayout.CENTER);
+        jPanel6.setBackground(new java.awt.Color(233, 243, 255));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 1013, Short.MAX_VALUE)
+        btCadastrar.setBackground(new java.awt.Color(31, 53, 80));
+        btCadastrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        btCadastrar.setText("Cadastrar");
+        btCadastrar.setToolTipText("Clique aqui para cadastrar um novo cargo");
+        btCadastrar.addActionListener(this::btCadastrarActionPerformed);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(824, Short.MAX_VALUE)
+                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
+
+        jPanel3.add(jPanel6, java.awt.BorderLayout.PAGE_END);
+
+        painelDesktopPane.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(painelDesktopPane, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfBarraPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBarraPesquisaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfBarraPesquisaActionPerformed
+    private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
+       if (tfPesquisa.getText().equals("Digite aqui...")) {
+            tfPesquisa.setText("");
+            tfPesquisa.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_tfPesquisaFocusGained
 
-    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+    private void tfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesquisaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbCadastrarActionPerformed
+    }//GEN-LAST:event_tfPesquisaActionPerformed
+
+    private void lbVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVoltarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_lbVoltarMouseClicked
+
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        // Obtém o JDesktopPane no qual a TelaCargo está inserida
+        javax.swing.JDesktopPane desktop = getDesktopPane();
+
+        if (desktop != null) {
+            TelaCadastro telaCadastro = new TelaCadastro();
+            desktop.add(telaCadastro);
+            telaCadastro.setVisible(true);
+            try {
+                telaCadastro.setSelected(true);
+                telaCadastro.toFront();
+            } catch (java.beans.PropertyVetoException e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-        // TODO add your handling code here:
+         TelaEditarCargo telaEditar = new TelaEditarCargo();
+        painelDesktopPane.add(telaEditar);
+        telaEditar.setVisible(true);
+        try {
+            telaEditar.setSelected(true);
+            telaEditar.toFront();
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jbEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Classes.BotaoAjuda botaoAjuda1;
+    private javax.swing.JButton btCadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbCadastrar;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JButton jbEditar;
-    private javax.swing.JPanel jpComponentes;
-    private javax.swing.JPanel jpCorFundo;
-    private javax.swing.JPanel jpListaProcessos;
-    private javax.swing.JTable jtProcessosSeletivos;
-    private javax.swing.JTextField jtfBarraPesquisa;
+    private javax.swing.JLabel lbVoltar;
+    private javax.swing.JDesktopPane painelDesktopPane;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTable tbProcessos;
+    private javax.swing.JTextField tfPesquisa;
     // End of variables declaration//GEN-END:variables
 }
