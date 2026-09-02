@@ -4,6 +4,9 @@
  */
 package telas;
 
+import telas.processo.TelaProcessoSeletivo;
+import telas.gestao.TelaGestaoRec;
+import telas.cargo.TelaCargo;
 import javax.swing.JInternalFrame;
 
 /**

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package telas;
+package telas.cargo;
 
 /**
  *
@@ -77,19 +77,15 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         jLabel40.setText("Cadastrar Cargo");
 
         jLabel41.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(0, 0, 0));
         jLabel41.setText("Nome do cargo");
 
         jLabel42.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(204, 0, 0));
         jLabel42.setText("*");
 
-        tfNivel.setBackground(new java.awt.Color(255, 255, 255));
-        tfNivel.setForeground(new java.awt.Color(0, 0, 0));
         tfNivel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel43.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
         jLabel43.setText("Salário base");
 
         jLabel44.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -97,7 +93,6 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         jLabel44.setText("*");
 
         jLabel45.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(0, 0, 0));
         jLabel45.setText("Nível");
 
         jLabel46.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -105,58 +100,44 @@ public class TelaCadastro extends javax.swing.JInternalFrame {
         jLabel46.setText("*");
 
         jLabel47.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(0, 0, 0));
         jLabel47.setText("Setor");
 
         jLabel48.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(204, 0, 0));
         jLabel48.setText("*");
 
-        tfNomeCargo.setBackground(new java.awt.Color(255, 255, 255));
-        tfNomeCargo.setForeground(new java.awt.Color(0, 0, 0));
         tfNomeCargo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         tfNomeCargo.addActionListener(this::tfNomeCargojTextField2ActionPerformed);
 
-        tfSalario.setBackground(new java.awt.Color(255, 255, 255));
-        tfSalario.setForeground(new java.awt.Color(0, 0, 0));
         tfSalario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        tfSetor.setBackground(new java.awt.Color(255, 255, 255));
-        tfSetor.setForeground(new java.awt.Color(0, 0, 0));
         tfSetor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         tfSetor.addActionListener(this::tfSetorjTextField4ActionPerformed);
 
         jLabel49.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(0, 0, 0));
         jLabel49.setText("Requisitos");
 
         jLabel50.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(204, 0, 0));
         jLabel50.setText("*");
 
-        tfRequisitos.setBackground(new java.awt.Color(255, 255, 255));
         tfRequisitos.setColumns(20);
-        tfRequisitos.setForeground(new java.awt.Color(0, 0, 0));
         tfRequisitos.setRows(5);
         tfRequisitos.setBorder(null);
         jScrollPane7.setViewportView(tfRequisitos);
 
         jLabel51.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel51.setForeground(new java.awt.Color(0, 0, 0));
         jLabel51.setText("Atividades");
 
         jLabel52.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(204, 0, 0));
         jLabel52.setText("*");
 
-        tfAtividade.setBackground(new java.awt.Color(255, 255, 255));
         tfAtividade.setColumns(20);
-        tfAtividade.setForeground(new java.awt.Color(0, 0, 0));
         tfAtividade.setRows(5);
         tfAtividade.setBorder(null);
         jScrollPane8.setViewportView(tfAtividade);
 
-        btCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btCancelar.setForeground(new java.awt.Color(29, 45, 68));
         btCancelar.setText("Cancelar");
