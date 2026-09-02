@@ -77,19 +77,15 @@ public class TelaEditarCargo extends javax.swing.JInternalFrame {
         jLabel40.setText("Editar Cargo");
 
         jLabel41.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(0, 0, 0));
         jLabel41.setText("Nome do cargo");
 
         jLabel42.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(204, 0, 0));
         jLabel42.setText("*");
 
-        tfEditarNivel.setBackground(new java.awt.Color(255, 255, 255));
-        tfEditarNivel.setForeground(new java.awt.Color(0, 0, 0));
         tfEditarNivel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         jLabel43.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
         jLabel43.setText("Salário base");
 
         jLabel44.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -97,7 +93,6 @@ public class TelaEditarCargo extends javax.swing.JInternalFrame {
         jLabel44.setText("*");
 
         jLabel45.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(0, 0, 0));
         jLabel45.setText("Nível");
 
         jLabel46.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -105,58 +100,44 @@ public class TelaEditarCargo extends javax.swing.JInternalFrame {
         jLabel46.setText("*");
 
         jLabel47.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(0, 0, 0));
         jLabel47.setText("Setor");
 
         jLabel48.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(204, 0, 0));
         jLabel48.setText("*");
 
-        tfEditarNomeCargo.setBackground(new java.awt.Color(255, 255, 255));
-        tfEditarNomeCargo.setForeground(new java.awt.Color(0, 0, 0));
         tfEditarNomeCargo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         tfEditarNomeCargo.addActionListener(this::tfEditarNomeCargojTextField2ActionPerformed);
 
-        tfEditarSalario.setBackground(new java.awt.Color(255, 255, 255));
-        tfEditarSalario.setForeground(new java.awt.Color(0, 0, 0));
         tfEditarSalario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-        tfEditarSetor.setBackground(new java.awt.Color(255, 255, 255));
-        tfEditarSetor.setForeground(new java.awt.Color(0, 0, 0));
         tfEditarSetor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         tfEditarSetor.addActionListener(this::tfEditarSetorjTextField4ActionPerformed);
 
         jLabel49.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(0, 0, 0));
         jLabel49.setText("Requisitos");
 
         jLabel50.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(204, 0, 0));
         jLabel50.setText("*");
 
-        tfEditarRequisitos.setBackground(new java.awt.Color(255, 255, 255));
         tfEditarRequisitos.setColumns(20);
-        tfEditarRequisitos.setForeground(new java.awt.Color(0, 0, 0));
         tfEditarRequisitos.setRows(5);
         tfEditarRequisitos.setBorder(null);
         jScrollPane7.setViewportView(tfEditarRequisitos);
 
         jLabel51.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel51.setForeground(new java.awt.Color(0, 0, 0));
         jLabel51.setText("Atividades");
 
         jLabel52.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(204, 0, 0));
         jLabel52.setText("*");
 
-        tfEditarAtividade.setBackground(new java.awt.Color(255, 255, 255));
         tfEditarAtividade.setColumns(20);
-        tfEditarAtividade.setForeground(new java.awt.Color(0, 0, 0));
         tfEditarAtividade.setRows(5);
         tfEditarAtividade.setBorder(null);
         jScrollPane8.setViewportView(tfEditarAtividade);
 
-        btEditarCancelar.setBackground(new java.awt.Color(255, 255, 255));
         btEditarCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btEditarCancelar.setForeground(new java.awt.Color(29, 45, 68));
         btEditarCancelar.setText("Cancelar");

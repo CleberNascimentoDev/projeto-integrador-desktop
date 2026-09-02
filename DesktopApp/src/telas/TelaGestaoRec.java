@@ -30,7 +30,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     
     
     
-        private void customizarTabela() {
+    private void customizarTabela() {
     // 1. Fundo do ScrollPane e Borda do Container
     scrollPane.getViewport().setBackground(java.awt.Color.WHITE);
     scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
@@ -329,12 +329,12 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         javax.swing.JDesktopPane desktop = getDesktopPane();
 
         if (desktop != null) {
-            TelaCadastro telaCadastro = new TelaCadastro();
-            desktop.add(telaCadastro);
-            telaCadastro.setVisible(true);
+            TelaAtribuirRec tela = new TelaAtribuirRec();
+            desktop.add(tela);
+            tela.setVisible(true);
             try {
-                telaCadastro.setSelected(true);
-                telaCadastro.toFront();
+                tela.setSelected(true);
+                tela.toFront();
             } catch (java.beans.PropertyVetoException e) {
                 e.printStackTrace();
             }
