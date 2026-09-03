@@ -127,6 +127,7 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jbCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jbCancelar.setForeground(new java.awt.Color(31, 53, 80));
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(this::jbCancelarActionPerformed);
         jPanel2.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, 40));
 
         jcbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um cargo..." }));
@@ -191,6 +192,10 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
             jtDataFim.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_jtDataFimFocusLost
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+            this.dispose();
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
