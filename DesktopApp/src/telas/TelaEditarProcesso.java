@@ -37,6 +37,8 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jtDataFim = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jbEditar = new javax.swing.JButton();
+        jbCancelar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(233, 243, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -77,6 +79,17 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel5.setText("Data Fim");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
 
+        jbEditar.setBackground(new java.awt.Color(31, 53, 80));
+        jbEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbEditar.setForeground(new java.awt.Color(255, 255, 255));
+        jbEditar.setText("Editar");
+        jPanel2.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 90, 40));
+
+        jbCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbCancelar.setForeground(new java.awt.Color(31, 53, 80));
+        jbCancelar.setText("Cancelar");
+        jPanel2.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, 40));
+
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,6 +115,8 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton jbCancelar;
+    private javax.swing.JButton jbEditar;
     private javax.swing.JTextField jtCargo;
     private javax.swing.JTextField jtDataFim;
     private javax.swing.JTextField jtDataInicio;
