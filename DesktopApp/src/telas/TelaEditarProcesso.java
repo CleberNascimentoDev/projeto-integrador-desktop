@@ -28,23 +28,66 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jtNome = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jtCargo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jtDataInicio = new javax.swing.JTextField();
+        jtDataFim = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(233, 243, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setBackground(new java.awt.Color(29, 45, 68));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(29, 45, 68));
+        jLabel1.setText("Editar Processos Seletivo");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 290, 30));
+        jPanel2.add(jtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 660, 30));
+
+        jLabel2.setBackground(new java.awt.Color(29, 45, 68));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(29, 45, 68));
+        jLabel2.setText("Nome");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        jtCargo.setToolTipText("");
+        jPanel2.add(jtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 660, 30));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(29, 45, 68));
+        jLabel3.setText("Cargo");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel2.add(jtDataInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 310, 30));
+        jPanel2.add(jtDataFim, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 330, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(29, 45, 68));
+        jLabel4.setText("Data Início");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(29, 45, 68));
+        jLabel5.setText("Data Fim");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
+
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
         );
 
         pack();
@@ -52,7 +95,16 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jtCargo;
+    private javax.swing.JTextField jtDataFim;
+    private javax.swing.JTextField jtDataInicio;
+    private javax.swing.JTextField jtNome;
     // End of variables declaration//GEN-END:variables
 }
