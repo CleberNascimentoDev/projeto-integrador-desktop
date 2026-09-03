@@ -198,7 +198,8 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSairActionPerformed
 
     private void menuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroActionPerformed
-        abrirJanelaInterna(new Tela_Cadastro());
+        TelaCadastroUsuarioJd cadastroUsuario = new TelaCadastroUsuarioJd(null,true);
+        cadastroUsuario.setVisible(true);
     }//GEN-LAST:event_menuCadastroActionPerformed
 
 

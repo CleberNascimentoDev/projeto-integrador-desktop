@@ -4,8 +4,7 @@
  */
 package telas.processo;
 
-import telas.cargo.TelaEditarCargo;
-import telas.cargo.TelaCadastro;
+
 
 /**
  *
@@ -308,32 +307,11 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lbVoltarMouseClicked
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        // Obtém o JDesktopPane no qual a TelaCargo está inserida
-        javax.swing.JDesktopPane desktop = getDesktopPane();
 
-        if (desktop != null) {
-            TelaCadastro telaCadastro = new TelaCadastro();
-            desktop.add(telaCadastro);
-            telaCadastro.setVisible(true);
-            try {
-                telaCadastro.setSelected(true);
-                telaCadastro.toFront();
-            } catch (java.beans.PropertyVetoException e) {
-                e.printStackTrace();
-            }
-        }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-         TelaEditarCargo telaEditar = new TelaEditarCargo();
-        painelDesktopPane.add(telaEditar);
-        telaEditar.setVisible(true);
-        try {
-            telaEditar.setSelected(true);
-            telaEditar.toFront();
-        } catch (java.beans.PropertyVetoException e) {
-            e.printStackTrace();
-        }
+
     }//GEN-LAST:event_jbEditarActionPerformed
 
 

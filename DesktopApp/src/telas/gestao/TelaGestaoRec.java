@@ -325,20 +325,8 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tbProcessoMouseClicked
 
     private void btAtribuirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtribuirActionPerformed
-        // Obtém o JDesktopPane no qual a TelaCargo está inserida
-        javax.swing.JDesktopPane desktop = getDesktopPane();
-
-        if (desktop != null) {
-            TelaAtribuirRec tela = new TelaAtribuirRec();
-            desktop.add(tela);
-            tela.setVisible(true);
-            try {
-                tela.setSelected(true);
-                tela.toFront();
-            } catch (java.beans.PropertyVetoException e) {
-                e.printStackTrace();
-            }
-        }
+        TelaAtribuirRecJd atribuir = new TelaAtribuirRecJd(null, true);
+        atribuir.setVisible(true);
     }//GEN-LAST:event_btAtribuirActionPerformed
 
 
