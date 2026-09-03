@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
-  <Properties>
-    <Property name="title" type="java.lang.String" value="GERENCIAMENTO DE CARGOS"/>
-  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -153,6 +150,7 @@
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
+                        <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de gerenciamento de cargos do sistema MAINRH, utilizada para visualizar e administrar as posi&#xe7;&#xf5;es cadastradas. Utilize a barra de pesquisa no topo para filtrar cargos pelo nome. Na tabela **Cargos cadastrados**, selecione um item da lista para realizar a&#xe7;&#xf5;es espec&#xed;ficas: clique em **Editar** para alterar as informa&#xe7;&#xf5;es do cargo, em **Excluir** para remov&#xea;-lo do sistema, ou no bot&#xe3;o **Cadastrar** para abrir o formul&#xe1;rio de inclus&#xe3;o de uma nova posi&#xe7;&#xe3;o. Para retornar &#xe0; tela anterior, clique no bot&#xe3;o **Voltar** no canto superior esquerdo."/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btVoltar5">

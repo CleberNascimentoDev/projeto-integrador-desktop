@@ -59,6 +59,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jbOlhoConfirmarSenha = new javax.swing.JButton();
         jpfCampoConfirmarSenha = new javax.swing.JPasswordField();
         btVoltar2 = new javax.swing.JButton();
+        botaoAjuda1 = new Classes.BotaoAjuda();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -192,6 +193,9 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         btVoltar2.addActionListener(this::btVoltar2ActionPerformed);
         jpComponentes.add(btVoltar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 38));
 
+        botaoAjuda1.setTextoAjuda("Esta é a tela de criação de conta do sistema MAINRH, destinada ao cadastro de novos usuários administradores e recrutadores na plataforma. Para registrar o perfil, preencha os campos com o **Nome**, **Data de Nascimento** (formato dd/mm/aaaa), **CPF**, **E-mail**, **Telefone** e selecione o tipo de conta desejado na lista **Função** (Administrador ou Recrutador). Em seguida, defina a **Senha** e repita-a no campo **Confirmar Senha** para validação, podendo utilizar os ícones de olho para visualizar o texto digitado. Após preencher todos os dados, clique no botão **Cadastrar** para concluir o registro ou no botão **Voltar**, localizado no canto superior esquerdo, para retornar à tela anterior.");
+        jpComponentes.add(botaoAjuda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -269,6 +273,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JButton btVoltar2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

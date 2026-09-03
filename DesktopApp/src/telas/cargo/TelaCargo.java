@@ -92,8 +92,6 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         btCadastrar = new javax.swing.JButton();
 
-        setTitle("GERENCIAMENTO DE CARGOS");
-
         painelDesktopPane.setLayout(new java.awt.BorderLayout());
 
         jPanel3.setBackground(new java.awt.Color(233, 243, 255));
@@ -120,6 +118,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
         botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        botaoAjuda1.setTextoAjuda("Esta é a tela de gerenciamento de cargos do sistema MAINRH, utilizada para visualizar e administrar as posições cadastradas. Utilize a barra de pesquisa no topo para filtrar cargos pelo nome. Na tabela **Cargos cadastrados**, selecione um item da lista para realizar ações específicas: clique em **Editar** para alterar as informações do cargo, em **Excluir** para removê-lo do sistema, ou no botão **Cadastrar** para abrir o formulário de inclusão de uma nova posição. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
 
         btVoltar5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btVoltar5.setForeground(new java.awt.Color(31, 53, 80));
@@ -378,9 +377,6 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btVoltar2;
-    private javax.swing.JButton btVoltar3;
-    private javax.swing.JButton btVoltar4;
     private javax.swing.JButton btVoltar5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

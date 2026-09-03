@@ -31,7 +31,6 @@ public class TelaEditarJd extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         components = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
@@ -161,6 +160,8 @@ public class TelaEditarJd extends javax.swing.JDialog {
         btEditarCadastrarCargo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
         btEditarCadastrarCargo.setMargin(new java.awt.Insets(10, 20, 10, 20));
         btEditarCadastrarCargo.addActionListener(this::btEditarCadastrarCargoActionPerformed);
+
+        botaoAjuda1.setTextoAjuda("Esta é a tela de edição de cargos do sistema MAINRH, utilizada para alterar as informações de uma posição já existente. Nela, você pode atualizar os campos obrigatórios identificados com asterisco: **Nome do cargo**, **Salário base**, **Nível**, **Setor**, **Requisitos** e **Atividades**. Após fazer as alterações necessárias, clique no botão **Editar Cargo** para salvar as modificações ou no botão **Cancelar** para descartar as alterações e manter os dados originais.");
 
         javax.swing.GroupLayout componentsLayout = new javax.swing.GroupLayout(components);
         components.setLayout(componentsLayout);

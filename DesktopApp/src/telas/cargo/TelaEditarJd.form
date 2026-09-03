@@ -478,6 +478,9 @@
           </Events>
         </Component>
         <Component class="Classes.BotaoAjuda" name="botaoAjuda1">
+          <Properties>
+            <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de edi&#xe7;&#xe3;o de cargos do sistema MAINRH, utilizada para alterar as informa&#xe7;&#xf5;es de uma posi&#xe7;&#xe3;o j&#xe1; existente. Nela, voc&#xea; pode atualizar os campos obrigat&#xf3;rios identificados com asterisco: **Nome do cargo**, **Sal&#xe1;rio base**, **N&#xed;vel**, **Setor**, **Requisitos** e **Atividades**. Ap&#xf3;s fazer as altera&#xe7;&#xf5;es necess&#xe1;rias, clique no bot&#xe3;o **Editar Cargo** para salvar as modifica&#xe7;&#xf5;es ou no bot&#xe3;o **Cancelar** para descartar as altera&#xe7;&#xf5;es e manter os dados originais."/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

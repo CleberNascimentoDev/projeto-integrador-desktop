@@ -162,6 +162,7 @@
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
+                        <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de Gest&#xe3;o de Recrutadores do sistema MAINRH, utilizada para acompanhar e vincular respons&#xe1;veis aos processos seletivos da empresa. Use a barra de pesquisa no topo para filtrar um processo seletivo espec&#xed;fico. Na tabela central, consulte a rela&#xe7;&#xe3;o entre cada **Processo Seletivo** e o seu respectivo **Recrutador Alocado**. Para vincular ou alterar o respons&#xe1;vel por uma sele&#xe7;&#xe3;o, utilize o bot&#xe3;o **Atribuir Recrutador**, localizado no canto superior direito. Para retornar &#xe0; tela anterior, clique no bot&#xe3;o **Voltar** no canto superior esquerdo."/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btAtribuir">

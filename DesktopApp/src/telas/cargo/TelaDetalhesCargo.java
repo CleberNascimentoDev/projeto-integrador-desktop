@@ -234,6 +234,7 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
         jLabel45.setText("Requisitos");
 
         taRequisitos.setEditable(false);
+        taRequisitos.setBackground(new java.awt.Color(255, 255, 255));
         taRequisitos.setColumns(20);
         taRequisitos.setRows(5);
         taRequisitos.setBorder(null);
@@ -274,6 +275,7 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
         jLabel46.setText("Atividades");
 
         taAtividades.setEditable(false);
+        taAtividades.setBackground(new java.awt.Color(255, 255, 255));
         taAtividades.setColumns(20);
         taAtividades.setRows(5);
         taAtividades.setBorder(null);
@@ -336,6 +338,8 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
+
+        botaoAjuda1.setTextoAjuda("Esta é a tela de detalhes do cargo do sistema MAINRH, destinada exclusivamente à visualização das informações de uma posição selecionada. Nela, você pode consultar todos os dados cadastrados da vaga, incluindo **Nome do cargo**, **Salário base**, **Nível**, **Setor**, **Requisitos** e **Atividades** desempenhadas. Para sair da visualização e retornar à lista de gerenciamento de cargos, clique no botão **Voltar** no canto superior esquerdo da tela.");
 
         btVoltar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btVoltar2.setForeground(new java.awt.Color(31, 53, 80));

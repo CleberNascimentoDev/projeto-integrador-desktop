@@ -230,6 +230,7 @@
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value=" ? "/>
                     <Property name="verticalAlignment" type="int" value="1"/>
+                    <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de menu principal do sistema MAINRH, a partir da qual voc&#xea; pode navegar pelas funcionalidades da aplica&#xe7;&#xe3;o utilizando as abas superiores ou atalhos do teclado. No menu **Gerenciamento**, voc&#xea; encontra as op&#xe7;&#xf5;es para **Gerenciar Cargos** (atalho F2), **Abrir Processo Seletivo** (atalho F3), **Vincular Recrutadores** (atalho F4) e **Sair do Sistema** (atalho ESC). No menu **Cadastro**, &#xe9; poss&#xed;vel acessar a op&#xe7;&#xe3;o **Cadastrar Usu&#xe1;rio** (atalho F6) para registrar novos acessos no sistema."/>
                     <Property name="verticalTextPosition" type="int" value="1"/>
                   </Properties>
                 </Component>

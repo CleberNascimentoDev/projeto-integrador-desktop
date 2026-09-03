@@ -150,6 +150,7 @@
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
+                        <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de gerenciamento de processos seletivos do sistema MAINRH, destinada &#xe0; consulta e controle de sele&#xe7;&#xf5;es ativas e encerradas. Utilize o campo de busca superior para localizar um processo espec&#xed;fico. Na tabela Listas de processos seletivos, voc&#xea; pode visualizar os nomes dos processos cadastrados juntamente com suas respectivas Data de in&#xed;cio e Data de fim. Para gerenciar as informa&#xe7;&#xf5;es, selecione um item da lista e clique no bot&#xe3;o Editar para alterar seus dados, ou clique no bot&#xe3;o Cadastrar para abrir o formul&#xe1;rio de cria&#xe7;&#xe3;o de um novo processo seletivo. Para retornar &#xe0; tela anterior, utilize o bot&#xe3;o Voltar no canto superior esquerdo."/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btVoltar2">

@@ -69,6 +69,7 @@ public class TelaMenu extends javax.swing.JFrame {
         botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botaoAjuda1.setText(" ? ");
         botaoAjuda1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        botaoAjuda1.setTextoAjuda("Esta é a tela de menu principal do sistema MAINRH, a partir da qual você pode navegar pelas funcionalidades da aplicação utilizando as abas superiores ou atalhos do teclado. No menu **Gerenciamento**, você encontra as opções para **Gerenciar Cargos** (atalho F2), **Abrir Processo Seletivo** (atalho F3), **Vincular Recrutadores** (atalho F4) e **Sair do Sistema** (atalho ESC). No menu **Cadastro**, é possível acessar a opção **Cadastrar Usuário** (atalho F6) para registrar novos acessos no sistema.");
         botaoAjuda1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

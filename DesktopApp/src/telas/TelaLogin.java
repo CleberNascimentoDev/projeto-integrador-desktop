@@ -98,6 +98,8 @@ public class TelaLogin extends javax.swing.JFrame {
         jbBotaoEntrar.setToolTipText("Entrar no MainRH");
         jbBotaoEntrar.addActionListener(this::jbBotaoEntrarActionPerformed);
 
+        botaoAjuda1.setTextoAjuda("Esta é a tela de login do sistema MAINRH, utilizada para autenticação de acesso à plataforma. Para entrar no sistema, preencha o campo **E-mail** com o seu endereço cadastrado e digite sua senha de acesso no campo **Senha**, utilizando o ícone de olho ao lado para exibir ou ocultar os caracteres digitados conforme necessário. Após preencher as credenciais, clique no botão **Entrar** para validar seu acesso e ser redirecionado ao painel principal. Caso não possua um cadastro ativo ou tenha esquecido suas credenciais, entre em contato com o suporte ou com a equipe de administração da sua empresa.");
+
         javax.swing.GroupLayout jpCorFundoLayout = new javax.swing.GroupLayout(jpCorFundo);
         jpCorFundo.setLayout(jpCorFundoLayout);
         jpCorFundoLayout.setHorizontalGroup(

@@ -161,6 +161,8 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         btCadastrarCargo.setMargin(new java.awt.Insets(10, 20, 10, 20));
         btCadastrarCargo.addActionListener(this::btCadastrarCargoActionPerformed);
 
+        botaoAjuda1.setTextoAjuda("Esta é a tela de cadastramento de cargos do sistema MAINRH, utilizada para registrar novas posições profissionais na empresa. Para realizar o cadastro, preencha todos os campos obrigatórios indicados com asterisco: informe o **Nome do cargo**, o **Salário base**, o **Nível** hierárquico, o **Setor** correspondente, além de descrever os **Requisitos** necessários para a vaga e as **Atividades** que serão desempenhadas pela função. Após inserir todas as informações, clique no botão **Cadastrar Cargo** para salvar os dados ou no botão **Cancelar** para descartar a operação.");
+
         javax.swing.GroupLayout componentsLayout = new javax.swing.GroupLayout(components);
         components.setLayout(componentsLayout);
         componentsLayout.setHorizontalGroup(

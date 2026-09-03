@@ -135,6 +135,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
 
         botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        botaoAjuda1.setTextoAjuda("Esta é a tela de Gestão de Recrutadores do sistema MAINRH, utilizada para acompanhar e vincular responsáveis aos processos seletivos da empresa. Use a barra de pesquisa no topo para filtrar um processo seletivo específico. Na tabela central, consulte a relação entre cada **Processo Seletivo** e o seu respectivo **Recrutador Alocado**. Para vincular ou alterar o responsável por uma seleção, utilize o botão **Atribuir Recrutador**, localizado no canto superior direito. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
 
         btAtribuir.setBackground(new java.awt.Color(31, 53, 80));
         btAtribuir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N

@@ -260,6 +260,8 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                         .addContainerGap())))
         );
 
+        botaoAjuda1.setTextoAjuda("Esta é a tela de Selecionar Recrutador do sistema MAINRH, dedicada à vinculação de um responsável a um processo seletivo específico. No topo, confirme as informações do **Processo** e da **Data** correspondentes. Utilize a barra de busca para pesquisar um recrutador cadastrado pelo nome ou e-mail. Na tabela inferior, selecione o profissional desejado da lista contendo **Nome** e **E-mail** e clique no botão **Atribuir** para concluir a vinculação, ou no botão **Cancelar** para fechar a janela sem salvar.");
+
         javax.swing.GroupLayout components2Layout = new javax.swing.GroupLayout(components2);
         components2.setLayout(components2Layout);
         components2Layout.setHorizontalGroup(
@@ -369,33 +371,17 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     private Classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JButton btAtribuir;
     private javax.swing.JButton btCancelar;
-    private javax.swing.JPanel components;
-    private javax.swing.JPanel components1;
     private javax.swing.JPanel components2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JLabel lbData;
-    private javax.swing.JLabel lbData1;
     private javax.swing.JLabel lbData2;
-    private javax.swing.JLabel lbProcesso;
-    private javax.swing.JLabel lbProcesso1;
     private javax.swing.JLabel lbProcesso2;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable tbRecrutador;

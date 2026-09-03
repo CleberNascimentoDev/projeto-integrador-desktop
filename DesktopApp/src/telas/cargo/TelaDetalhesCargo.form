@@ -504,6 +504,9 @@
                         <Component class="javax.swing.JTextArea" name="taRequisitos">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -579,6 +582,9 @@
                         <Component class="javax.swing.JTextArea" name="taAtividades">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -593,6 +599,9 @@
               </SubComponents>
             </Container>
             <Component class="Classes.BotaoAjuda" name="botaoAjuda1">
+              <Properties>
+                <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de detalhes do cargo do sistema MAINRH, destinada exclusivamente &#xe0; visualiza&#xe7;&#xe3;o das informa&#xe7;&#xf5;es de uma posi&#xe7;&#xe3;o selecionada. Nela, voc&#xea; pode consultar todos os dados cadastrados da vaga, incluindo **Nome do cargo**, **Sal&#xe1;rio base**, **N&#xed;vel**, **Setor**, **Requisitos** e **Atividades** desempenhadas. Para sair da visualiza&#xe7;&#xe3;o e retornar &#xe0; lista de gerenciamento de cargos, clique no bot&#xe3;o **Voltar** no canto superior esquerdo da tela."/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btVoltar2">
               <Properties>

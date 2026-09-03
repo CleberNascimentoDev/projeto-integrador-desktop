@@ -120,6 +120,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
 
         botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        botaoAjuda1.setTextoAjuda("Esta é a tela de gerenciamento de processos seletivos do sistema MAINRH, destinada à consulta e controle de seleções ativas e encerradas. Utilize o campo de busca superior para localizar um processo específico. Na tabela Listas de processos seletivos, você pode visualizar os nomes dos processos cadastrados juntamente com suas respectivas Data de início e Data de fim. Para gerenciar as informações, selecione um item da lista e clique no botão Editar para alterar seus dados, ou clique no botão Cadastrar para abrir o formulário de criação de um novo processo seletivo. Para retornar à tela anterior, utilize o botão Voltar no canto superior esquerdo.");
 
         btVoltar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btVoltar2.setForeground(new java.awt.Color(31, 53, 80));

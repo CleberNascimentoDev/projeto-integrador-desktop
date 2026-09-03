@@ -478,6 +478,9 @@
           </Events>
         </Component>
         <Component class="Classes.BotaoAjuda" name="botaoAjuda1">
+          <Properties>
+            <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de cadastramento de cargos do sistema MAINRH, utilizada para registrar novas posi&#xe7;&#xf5;es profissionais na empresa. Para realizar o cadastro, preencha todos os campos obrigat&#xf3;rios indicados com asterisco: informe o **Nome do cargo**, o **Sal&#xe1;rio base**, o **N&#xed;vel** hier&#xe1;rquico, o **Setor** correspondente, al&#xe9;m de descrever os **Requisitos** necess&#xe1;rios para a vaga e as **Atividades** que ser&#xe3;o desempenhadas pela fun&#xe7;&#xe3;o. Ap&#xf3;s inserir todas as informa&#xe7;&#xf5;es, clique no bot&#xe3;o **Cadastrar Cargo** para salvar os dados ou no bot&#xe3;o **Cancelar** para descartar a opera&#xe7;&#xe3;o."/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
