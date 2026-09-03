@@ -52,7 +52,7 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         taAtividades = new javax.swing.JTextArea();
         botaoAjuda1 = new Classes.BotaoAjuda();
-        lbVoltar = new javax.swing.JLabel();
+        btVoltar2 = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(233, 243, 255));
         jPanel3.setLayout(new java.awt.GridBagLayout());
@@ -337,12 +337,11 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
-        lbVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Voltar.png"))); // NOI18N
-        lbVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbVoltarMouseClicked(evt);
-            }
-        });
+        btVoltar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btVoltar2.setForeground(new java.awt.Color(31, 53, 80));
+        btVoltar2.setText("◄ Voltar");
+        btVoltar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btVoltar2.addActionListener(this::btVoltar2ActionPerformed);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -356,7 +355,7 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbVoltar)
+                            .addComponent(btVoltar2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel40)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -366,8 +365,9 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(lbVoltar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(btVoltar2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -435,13 +435,14 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNomeCargoActionPerformed
 
-    private void lbVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_lbVoltarMouseClicked
+    private void btVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltar2ActionPerformed
+this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_btVoltar2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Classes.BotaoAjuda botaoAjuda1;
+    private javax.swing.JButton btVoltar2;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -460,7 +461,6 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lbVoltar;
     private javax.swing.JTextArea taAtividades;
     private javax.swing.JTextArea taRequisitos;
     private javax.swing.JTextField tfNivel;

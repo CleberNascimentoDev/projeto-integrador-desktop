@@ -34,7 +34,6 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jpComponentes = new javax.swing.JPanel();
-        lbVoltar = new javax.swing.JLabel();
         jtfCampoNome = new javax.swing.JTextField();
         jtfCampoDataNascimento = new javax.swing.JTextField();
         jtfCampoCPF = new javax.swing.JTextField();
@@ -59,6 +58,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jpCampoConfirmarSenha = new javax.swing.JPanel();
         jbOlhoConfirmarSenha = new javax.swing.JButton();
         jpfCampoConfirmarSenha = new javax.swing.JPasswordField();
+        btVoltar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -72,13 +72,6 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jpComponentes.setOpaque(false);
         jpComponentes.setPreferredSize(new java.awt.Dimension(620, 660));
         jpComponentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbVoltar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Voltar.png"))); // NOI18N
-        lbVoltar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        lbVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lbVoltar.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        jpComponentes.add(lbVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jtfCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jtfCampoNome.setForeground(new java.awt.Color(153, 153, 153));
@@ -192,6 +185,13 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
 
         jpComponentes.add(jpCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 280, 44));
 
+        btVoltar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btVoltar2.setForeground(new java.awt.Color(31, 53, 80));
+        btVoltar2.setText("◄ Voltar");
+        btVoltar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btVoltar2.addActionListener(this::btVoltar2ActionPerformed);
+        jpComponentes.add(btVoltar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 38));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -226,6 +226,10 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltar2ActionPerformed
+        this.dispose();       // TODO add your handling code here:
+    }//GEN-LAST:event_btVoltar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,6 +269,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btVoltar2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -291,6 +296,5 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     private javax.swing.JTextField jtfCampoEmail;
     private javax.swing.JTextField jtfCampoNome;
     private javax.swing.JTextField jtfCampoTelefone;
-    private javax.swing.JLabel lbVoltar;
     // End of variables declaration//GEN-END:variables
 }

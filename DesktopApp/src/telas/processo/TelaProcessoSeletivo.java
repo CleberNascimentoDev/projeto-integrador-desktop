@@ -83,8 +83,8 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         tfPesquisa.setForeground(java.awt.Color.GRAY);
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lbVoltar = new javax.swing.JLabel();
         botaoAjuda1 = new Classes.BotaoAjuda();
+        btVoltar2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -118,15 +118,14 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Processos Seletivos");
 
-        lbVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Voltar.png"))); // NOI18N
-        lbVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbVoltarMouseClicked(evt);
-            }
-        });
-
         botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        btVoltar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btVoltar2.setForeground(new java.awt.Color(31, 53, 80));
+        btVoltar2.setText("◄ Voltar");
+        btVoltar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btVoltar2.addActionListener(this::btVoltar2ActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -142,7 +141,8 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
                     .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(513, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lbVoltar)
+                .addContainerGap()
+                .addComponent(btVoltar2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -150,10 +150,11 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btVoltar2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,10 +303,6 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPesquisaActionPerformed
 
-    private void lbVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_lbVoltarMouseClicked
-
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
 
     }//GEN-LAST:event_btCadastrarActionPerformed
@@ -314,10 +311,15 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jbEditarActionPerformed
 
+    private void btVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltar2ActionPerformed
+        this.dispose();       // TODO add your handling code here:
+    }//GEN-LAST:event_btVoltar2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btVoltar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -328,7 +330,6 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JButton jbEditar;
-    private javax.swing.JLabel lbVoltar;
     private javax.swing.JDesktopPane painelDesktopPane;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable tbProcessos;

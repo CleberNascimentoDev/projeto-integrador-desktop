@@ -75,13 +75,13 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         tfPesquisa = new javax.swing.JTextField();
         tfPesquisa.setText("Digite aqui...");
         tfPesquisa.setForeground(java.awt.Color.GRAY);
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lbVoltar = new javax.swing.JLabel();
         botaoAjuda1 = new Classes.BotaoAjuda();
+        btVoltar5 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -104,6 +104,8 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(233, 243, 255));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+
         tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfPesquisaFocusGained(evt);
@@ -111,22 +113,19 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         });
         tfPesquisa.addActionListener(this::tfPesquisaActionPerformed);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
-
         jLabel1.setBackground(new java.awt.Color(29, 45, 68));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 35)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Cargos");
 
-        lbVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Voltar.png"))); // NOI18N
-        lbVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbVoltarMouseClicked(evt);
-            }
-        });
-
         botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        btVoltar5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btVoltar5.setForeground(new java.awt.Color(31, 53, 80));
+        btVoltar5.setText("◄ Voltar");
+        btVoltar5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btVoltar5.addActionListener(this::btVoltar5ActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -140,9 +139,10 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                         .addGap(440, 440, 440)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(890, Short.MAX_VALUE))
+                .addContainerGap(879, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lbVoltar)
+                .addContainerGap()
+                .addComponent(btVoltar5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -150,10 +150,11 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btVoltar5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +273,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,10 +328,6 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btExcluirActionPerformed
 
-    private void lbVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_lbVoltarMouseClicked
-
     private void tfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesquisaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPesquisaActionPerformed
@@ -371,12 +368,20 @@ public class TelaCargo extends javax.swing.JInternalFrame {
       }
     }//GEN-LAST:event_tbCargoMouseClicked
 
+    private void btVoltar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltar5ActionPerformed
+        this.dispose();       // TODO add your handling code here:
+    }//GEN-LAST:event_btVoltar5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btVoltar2;
+    private javax.swing.JButton btVoltar3;
+    private javax.swing.JButton btVoltar4;
+    private javax.swing.JButton btVoltar5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -386,7 +391,6 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JLabel lbVoltar;
     private javax.swing.JDesktopPane painelDesktopPane;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTable tbCargo;

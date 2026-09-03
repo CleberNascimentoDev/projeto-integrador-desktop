@@ -83,7 +83,7 @@ public class TelaMenu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 606, Short.MAX_VALUE))
+                .addGap(0, 605, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_END);
@@ -92,29 +92,39 @@ public class TelaMenu extends javax.swing.JFrame {
 
         menu1.setText("Gerenciamento");
         menu1.setToolTipText("Este é o menu!");
+        menu1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu1.setMargin(new java.awt.Insets(6, 9, 6, 9));
 
         menuCargo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        menuCargo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menuCargo.setText("Gerenciar Cargos");
         menuCargo.setToolTipText("Aqui você pode criar, editar, listar e excluir cargos!");
+        menuCargo.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuCargo.addActionListener(this::menuCargoActionPerformed);
         menu1.add(menuCargo);
 
         menuProcessoSeletivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        menuProcessoSeletivo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menuProcessoSeletivo.setText("Abrir Processo Seletivo");
         menuProcessoSeletivo.setToolTipText("Aqui você pode criar, editar, listar e excluir processos seletivos!");
+        menuProcessoSeletivo.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuProcessoSeletivo.addActionListener(this::menuProcessoSeletivoActionPerformed);
         menu1.add(menuProcessoSeletivo);
 
         menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        menuRecrutador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menuRecrutador.setText("Vincular Recrutadores");
         menuRecrutador.setToolTipText("Aqui você pode vincular recrutadores a um processo seletivo!");
+        menuRecrutador.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuRecrutador.addActionListener(this::menuRecrutadorActionPerformed);
         menu1.add(menuRecrutador);
         menu1.add(jSeparator1);
 
         menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        menuSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menuSair.setText("Sair do Sistema");
         menuSair.setToolTipText("Aqui você sai do sistema, fechando tudo!");
+        menuSair.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuSair.addActionListener(this::menuSairActionPerformed);
         menu1.add(menuSair);
 
@@ -122,10 +132,13 @@ public class TelaMenu extends javax.swing.JFrame {
 
         menu2.setText("Cadastro");
         menu2.setToolTipText("Menu para cadastro");
+        menu2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        menuCadastro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menuCadastro.setText("Cadastrar Usuário");
         menuCadastro.setToolTipText("Cadastre administrador ou recrutador por aqui");
+        menuCadastro.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuCadastro.addActionListener(this::menuCadastroActionPerformed);
         menu2.add(menuCadastro);
 
