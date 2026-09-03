@@ -322,15 +322,9 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-         TelaEditarCargo telaEditar = new TelaEditarCargo();
-        painelDesktopPane.add(telaEditar);
-        telaEditar.setVisible(true);
-        try {
-            telaEditar.setSelected(true);
-            telaEditar.toFront();
-        } catch (java.beans.PropertyVetoException e) {
-            e.printStackTrace();
-        }
+    TelaEditarProcesso tela = new TelaEditarProcesso();
+    getDesktopPane().add(tela);
+    tela.setVisible(true);
     }//GEN-LAST:event_jbEditarActionPerformed
 
 

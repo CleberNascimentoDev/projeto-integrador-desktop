@@ -4,19 +4,28 @@
  */
 package telas;
 
+import java.awt.Color;
+
 /**
  *
  * @author GabrielaCarvalhodeSo
- */
+ */ 
 public class TelaEditarProcesso extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form TelaEditarProcesso
      */
     public TelaEditarProcesso() {
-        initComponents();
-    }
+   initComponents();
 
+    jtNome.setForeground(Color.GRAY);
+    jtDataInicio.setForeground(Color.GRAY);
+
+    javax.swing.SwingUtilities.invokeLater(() -> {
+    jbCancelar.requestFocusInWindow();
+    
+    });
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +60,17 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Editar Processos Seletivo");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 290, 30));
+
+        jtNome.setForeground(new java.awt.Color(153, 153, 153));
+        jtNome.setText("Digite o nome do processo...");
+        jtNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtNomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtNomeFocusLost(evt);
+            }
+        });
         jPanel2.add(jtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 660, 30));
 
         jLabel2.setBackground(new java.awt.Color(29, 45, 68));
@@ -63,7 +83,29 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(29, 45, 68));
         jLabel3.setText("Cargo");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        jtDataInicio.setForeground(new java.awt.Color(153, 153, 153));
+        jtDataInicio.setText("dd/mm/aaaa");
+        jtDataInicio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtDataInicioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtDataInicioFocusLost(evt);
+            }
+        });
         jPanel2.add(jtDataInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 310, 30));
+
+        jtDataFim.setForeground(new java.awt.Color(153, 153, 153));
+        jtDataFim.setText("dd/mm/aaaa");
+        jtDataFim.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtDataFimFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtDataFimFocusLost(evt);
+            }
+        });
         jPanel2.add(jtDataFim, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 330, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -87,6 +129,8 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jbCancelar.setText("Cancelar");
         jPanel2.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, 40));
 
+        jcbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um cargo..." }));
+        jcbCargo.setToolTipText("");
         jPanel2.add(jcbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 152, 660, 30));
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -104,6 +148,49 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNomeFocusGained
+        if (jtNome.getText().equals("Digite o nome do processo...")) {
+            jtNome.setText("");
+            jtNome.setForeground(Color.BLACK);
+        }   // placeholder do campo nome   
+    }//GEN-LAST:event_jtNomeFocusGained
+
+    private void jtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNomeFocusLost
+        if (jtNome.getText().trim().isEmpty()) {
+            jtNome.setText("Digite o nome do processo...");
+            jtNome.setForeground(Color.GRAY);
+
+        }  //placeholder do campo nome 
+    }//GEN-LAST:event_jtNomeFocusLost
+
+    private void jtDataInicioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusGained
+        if (jtDataInicio.getText().equals("dd/mm/aaaa")) {
+            jtDataInicio.setText("");
+            jtDataInicio.setForeground(Color.BLACK);
+        } // placeholder do campo data inicio                                                          
+    }//GEN-LAST:event_jtDataInicioFocusGained
+
+    private void jtDataInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusLost
+        if (jtDataInicio.getText().trim().isEmpty()) {
+            jtDataInicio.setText("dd/mm/aaaa");
+            jtDataInicio.setForeground(Color.GRAY);
+        } //placeholder do campo data inicio       
+    }//GEN-LAST:event_jtDataInicioFocusLost
+
+    private void jtDataFimFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataFimFocusGained
+        if (jtDataFim.getText().equals("dd/mm/aaaa")) {
+            jtDataFim.setText("");
+            jtDataFim.setForeground(Color.BLACK);
+        } //placeholder do campo data fim 
+    }//GEN-LAST:event_jtDataFimFocusGained
+
+    private void jtDataFimFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataFimFocusLost
+        if (jtDataFim.getText().trim().isEmpty()) {
+            jtDataFim.setText("dd/mm/aaaa");
+            jtDataFim.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_jtDataFimFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
