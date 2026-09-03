@@ -19,9 +19,9 @@ public class TelaLogin extends javax.swing.JFrame {
         setSize(411, 500); //Define o tamanho da tela 
         setResizable(false); //Impede que a pessoa redimensione a janela
         setLocationRelativeTo(null); //Faz a janela abrir centralizada na tela
-        jpCampoSenha.setEchoChar((char) 0); //Mostra "Digite sua senha" sem ser ocultado 
-        jpCampoSenha.setText("Digite sua senha"); //Coloca o texto dentro do campo de senha 
-        jtCampoEmail.setText("Digite seu e-mail"); //COloca o texto dentro do campo de e-mail
+        pfCampoSenha.setEchoChar((char) 0); //Mostra "Digite sua senha" sem ser ocultado 
+        pfCampoSenha.setText("Digite sua senha"); //Coloca o texto dentro do campo de senha 
+        tfCampoEmail.setText("Digite seu e-mail"); //COloca o texto dentro do campo de e-mail
         
         setFocusable(true);
         java.awt.EventQueue.invokeLater(() -> {
@@ -41,13 +41,13 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jpCorFundo = new javax.swing.JPanel();
         jlLogo = new javax.swing.JLabel();
-        jtCampoEmail = new javax.swing.JTextField();
+        tfCampoEmail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jpCampoSenha = new javax.swing.JPasswordField();
-        jbOcultarSenha = new javax.swing.JButton();
-        jbBotaoEntrar = new javax.swing.JButton();
-        botaoAjuda1 = new Classes.BotaoAjuda();
+        pfCampoSenha = new javax.swing.JPasswordField();
+        btOcultarSenha = new javax.swing.JButton();
+        btBotaoEntrar = new javax.swing.JButton();
+        botaoAjuda = new Classes.BotaoAjuda();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,15 +56,15 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoLogin.png"))); // NOI18N
 
-        jtCampoEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+        tfCampoEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jtCampoEmailFocusGained(evt);
+                tfCampoEmailFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jtCampoEmailFocusLost(evt);
+                tfCampoEmailFocusLost(evt);
             }
         });
-        jtCampoEmail.addActionListener(this::jtCampoEmailActionPerformed);
+        tfCampoEmail.addActionListener(this::tfCampoEmailActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel1.setText("E-mail");
@@ -72,33 +72,33 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel2.setText("Senha");
 
-        jpCampoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+        pfCampoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jpCampoSenhaFocusGained(evt);
+                pfCampoSenhaFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jpCampoSenhaFocusLost(evt);
+                pfCampoSenhaFocusLost(evt);
             }
         });
-        jpCampoSenha.addActionListener(this::jpCampoSenhaActionPerformed);
+        pfCampoSenha.addActionListener(this::pfCampoSenhaActionPerformed);
 
-        jbOcultarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png"))); // NOI18N
-        jbOcultarSenha.setBorderPainted(false);
-        jbOcultarSenha.setContentAreaFilled(false);
-        jbOcultarSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbOcultarSenha.setFocusPainted(false);
-        jbOcultarSenha.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jbOcultarSenha.setPreferredSize(new java.awt.Dimension(30, 30));
-        jbOcultarSenha.addActionListener(this::jbOcultarSenhaActionPerformed);
+        btOcultarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png"))); // NOI18N
+        btOcultarSenha.setBorderPainted(false);
+        btOcultarSenha.setContentAreaFilled(false);
+        btOcultarSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btOcultarSenha.setFocusPainted(false);
+        btOcultarSenha.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btOcultarSenha.setPreferredSize(new java.awt.Dimension(30, 30));
+        btOcultarSenha.addActionListener(this::btOcultarSenhaActionPerformed);
 
-        jbBotaoEntrar.setBackground(new java.awt.Color(31, 53, 80));
-        jbBotaoEntrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jbBotaoEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        jbBotaoEntrar.setText("Entrar");
-        jbBotaoEntrar.setToolTipText("Entrar no MainRH");
-        jbBotaoEntrar.addActionListener(this::jbBotaoEntrarActionPerformed);
+        btBotaoEntrar.setBackground(new java.awt.Color(31, 53, 80));
+        btBotaoEntrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btBotaoEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        btBotaoEntrar.setText("Entrar");
+        btBotaoEntrar.setToolTipText("Entrar no MainRH");
+        btBotaoEntrar.addActionListener(this::btBotaoEntrarActionPerformed);
 
-        botaoAjuda1.setTextoAjuda("Esta é a tela de login do sistema MAINRH, utilizada para autenticação de acesso à plataforma. Para entrar no sistema, preencha o campo **E-mail** com o seu endereço cadastrado e digite sua senha de acesso no campo **Senha**, utilizando o ícone de olho ao lado para exibir ou ocultar os caracteres digitados conforme necessário. Após preencher as credenciais, clique no botão **Entrar** para validar seu acesso e ser redirecionado ao painel principal. Caso não possua um cadastro ativo ou tenha esquecido suas credenciais, entre em contato com o suporte ou com a equipe de administração da sua empresa.");
+        botaoAjuda.setTextoAjuda("Esta é a tela de login do sistema MAINRH, utilizada para autenticação de acesso à plataforma. Para entrar no sistema, preencha o campo **E-mail** com o seu endereço cadastrado e digite sua senha de acesso no campo **Senha**, utilizando o ícone de olho ao lado para exibir ou ocultar os caracteres digitados conforme necessário. Após preencher as credenciais, clique no botão **Entrar** para validar seu acesso e ser redirecionado ao painel principal. Caso não possua um cadastro ativo ou tenha esquecido suas credenciais, entre em contato com o suporte ou com a equipe de administração da sua empresa.");
 
         javax.swing.GroupLayout jpCorFundoLayout = new javax.swing.GroupLayout(jpCorFundo);
         jpCorFundo.setLayout(jpCorFundoLayout);
@@ -110,23 +110,23 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
                         .addComponent(jlLogo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
                             .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jpCampoSenha)
+                                .addComponent(pfCampoSenha)
                                 .addGroup(jpCorFundoLayout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addGap(211, 211, 211))
-                                .addComponent(jtCampoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tfCampoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jbOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(33, 33, 33)))))
             .addGroup(jpCorFundoLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
-                .addComponent(jbBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jpCorFundoLayout.setVerticalGroup(
@@ -136,19 +136,19 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addGroup(jpCorFundoLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jlLogo))
-                    .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtCampoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfCampoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpCampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pfCampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
-                .addComponent(jbBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(93, Short.MAX_VALUE))
         );
 
@@ -168,66 +168,66 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtCampoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCampoEmailActionPerformed
+    private void tfCampoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCampoEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtCampoEmailActionPerformed
+    }//GEN-LAST:event_tfCampoEmailActionPerformed
 
-    private void jpCampoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpCampoSenhaActionPerformed
+    private void pfCampoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfCampoSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jpCampoSenhaActionPerformed
+    }//GEN-LAST:event_pfCampoSenhaActionPerformed
 
-    private void jpCampoSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpCampoSenhaFocusGained
-        if (String.valueOf(jpCampoSenha.getPassword()).equals("Digite sua senha")) {
-            jpCampoSenha.setText("");
-            jpCampoSenha.setEchoChar('•');
+    private void pfCampoSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfCampoSenhaFocusGained
+        if (String.valueOf(pfCampoSenha.getPassword()).equals("Digite sua senha")) {
+            pfCampoSenha.setText("");
+            pfCampoSenha.setEchoChar('•');
         } // cria o evento de placeholder
-    }//GEN-LAST:event_jpCampoSenhaFocusGained
+    }//GEN-LAST:event_pfCampoSenhaFocusGained
 
-    private void jpCampoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpCampoSenhaFocusLost
-        if (jpCampoSenha.getPassword().length == 0) {
-            jpCampoSenha.setEchoChar((char) 0);
-            jpCampoSenha.setText("Digite sua senha");
+    private void pfCampoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfCampoSenhaFocusLost
+        if (pfCampoSenha.getPassword().length == 0) {
+            pfCampoSenha.setEchoChar((char) 0);
+            pfCampoSenha.setText("Digite sua senha");
         }// cria o evento de placeholder
-    }//GEN-LAST:event_jpCampoSenhaFocusLost
+    }//GEN-LAST:event_pfCampoSenhaFocusLost
 
-    private void jtCampoEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtCampoEmailFocusGained
-        if (jtCampoEmail.getText().equals("Digite seu e-mail")) {
-            jtCampoEmail.setText("");
+    private void tfCampoEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCampoEmailFocusGained
+        if (tfCampoEmail.getText().equals("Digite seu e-mail")) {
+            tfCampoEmail.setText("");
         } // cria o evento de placeholder
-    }//GEN-LAST:event_jtCampoEmailFocusGained
+    }//GEN-LAST:event_tfCampoEmailFocusGained
 
-    private void jtCampoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtCampoEmailFocusLost
-        if (jtCampoEmail.getText().isEmpty()) {
-            jtCampoEmail.setText("Digite seu e-mail");
+    private void tfCampoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCampoEmailFocusLost
+        if (tfCampoEmail.getText().isEmpty()) {
+            tfCampoEmail.setText("Digite seu e-mail");
         }    
-    }//GEN-LAST:event_jtCampoEmailFocusLost
+    }//GEN-LAST:event_tfCampoEmailFocusLost
 
-    private void jbOcultarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOcultarSenhaActionPerformed
+    private void btOcultarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOcultarSenhaActionPerformed
         if (senhaVisivel) {
-           jpCampoSenha.setEchoChar('•');
+           pfCampoSenha.setEchoChar('•');
            senhaVisivel = false;
 
-           jbOcultarSenha.setIcon(new javax.swing.ImageIcon(
+           btOcultarSenha.setIcon(new javax.swing.ImageIcon(
               getClass().getResource("/icons/olhoFechado.png")
             ));
 
         } else {
-             jpCampoSenha.setEchoChar((char) 0);
+             pfCampoSenha.setEchoChar((char) 0);
              senhaVisivel = true;
 
-             jbOcultarSenha.setIcon(new javax.swing.ImageIcon(
+             btOcultarSenha.setIcon(new javax.swing.ImageIcon(
                 getClass().getResource("/icons/olhoAberto.png")
             ));
         } // Alterna a visibilidade da senha e a imagem do olho
-    }//GEN-LAST:event_jbOcultarSenhaActionPerformed
+    }//GEN-LAST:event_btOcultarSenhaActionPerformed
 
-    private void jbBotaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBotaoEntrarActionPerformed
+    private void btBotaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBotaoEntrarActionPerformed
         
         TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
         this.dispose();
         
-    }//GEN-LAST:event_jbBotaoEntrarActionPerformed
+    }//GEN-LAST:event_btBotaoEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,14 +255,14 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda1;
+    private Classes.BotaoAjuda botaoAjuda;
+    private javax.swing.JButton btBotaoEntrar;
+    private javax.swing.JButton btOcultarSenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton jbBotaoEntrar;
-    private javax.swing.JButton jbOcultarSenha;
     private javax.swing.JLabel jlLogo;
-    private javax.swing.JPasswordField jpCampoSenha;
     private javax.swing.JPanel jpCorFundo;
-    private javax.swing.JTextField jtCampoEmail;
+    private javax.swing.JPasswordField pfCampoSenha;
+    private javax.swing.JTextField tfCampoEmail;
     // End of variables declaration//GEN-END:variables
 }

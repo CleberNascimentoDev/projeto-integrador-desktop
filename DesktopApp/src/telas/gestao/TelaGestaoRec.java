@@ -32,8 +32,8 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     
     private void customizarTabela() {
     // 1. Fundo do ScrollPane e Borda do Container
-    scrollPane.getViewport().setBackground(java.awt.Color.WHITE);
-    scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
+    spBarra.getViewport().setBackground(java.awt.Color.WHITE);
+    spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
 
     // 2. Estilização e FONTE DAS LINHAS da Tabela
     tbProcesso.setBackground(java.awt.Color.WHITE);
@@ -100,13 +100,13 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         tfPesquisa.setForeground(java.awt.Color.GRAY);
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        botaoAjuda1 = new Classes.BotaoAjuda();
+        botaoAjuda = new Classes.BotaoAjuda();
         btAtribuir = new javax.swing.JButton();
-        btVoltar2 = new javax.swing.JButton();
+        btVoltar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        scrollPane = new javax.swing.JScrollPane();
+        spBarra = new javax.swing.JScrollPane();
         tbProcesso = new javax.swing.JTable();
 
         painelDesktopPane.setLayout(new java.awt.BorderLayout());
@@ -133,9 +133,9 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Gestão de Recrutadores");
 
-        botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        botaoAjuda1.setTextoAjuda("Esta é a tela de Gestão de Recrutadores do sistema MAINRH, utilizada para acompanhar e vincular responsáveis aos processos seletivos da empresa. Use a barra de pesquisa no topo para filtrar um processo seletivo específico. Na tabela central, consulte a relação entre cada **Processo Seletivo** e o seu respectivo **Recrutador Alocado**. Para vincular ou alterar o responsável por uma seleção, utilize o botão **Atribuir Recrutador**, localizado no canto superior direito. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
+        botaoAjuda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        botaoAjuda.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        botaoAjuda.setTextoAjuda("Esta é a tela de Gestão de Recrutadores do sistema MAINRH, utilizada para acompanhar e vincular responsáveis aos processos seletivos da empresa. Use a barra de pesquisa no topo para filtrar um processo seletivo específico. Na tabela central, consulte a relação entre cada **Processo Seletivo** e o seu respectivo **Recrutador Alocado**. Para vincular ou alterar o responsável por uma seleção, utilize o botão **Atribuir Recrutador**, localizado no canto superior direito. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
 
         btAtribuir.setBackground(new java.awt.Color(31, 53, 80));
         btAtribuir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -144,11 +144,11 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         btAtribuir.setToolTipText("Clique aqui para atribuir um novo recrutador a um processo seletivo");
         btAtribuir.addActionListener(this::btAtribuirActionPerformed);
 
-        btVoltar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btVoltar2.setForeground(new java.awt.Color(31, 53, 80));
-        btVoltar2.setText("◄ Voltar");
-        btVoltar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
-        btVoltar2.addActionListener(this::btVoltar2ActionPerformed);
+        btVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btVoltar.setForeground(new java.awt.Color(31, 53, 80));
+        btVoltar.setText("◄ Voltar");
+        btVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btVoltar.addActionListener(this::btVoltarActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -171,9 +171,9 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
                         .addGap(59, 59, 59))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btVoltar2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -181,8 +181,8 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btVoltar2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
@@ -212,9 +212,9 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(29, 45, 68));
         jLabel3.setText("Processos Seletivos");
 
-        scrollPane.setBackground(new java.awt.Color(255, 255, 255));
-        scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane.setForeground(new java.awt.Color(255, 255, 255));
+        spBarra.setBackground(new java.awt.Color(255, 255, 255));
+        spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        spBarra.setForeground(new java.awt.Color(255, 255, 255));
 
         tbProcesso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         tbProcesso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -265,7 +265,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
                 tbProcessoMouseClicked(evt);
             }
         });
-        scrollPane.setViewportView(tbProcesso);
+        spBarra.setViewportView(tbProcesso);
         if (tbProcesso.getColumnModel().getColumnCount() > 0) {
             tbProcesso.getColumnModel().getColumn(0).setResizable(false);
             tbProcesso.getColumnModel().getColumn(1).setResizable(false);
@@ -281,7 +281,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 975, Short.MAX_VALUE))
+                    .addComponent(spBarra, javax.swing.GroupLayout.DEFAULT_SIZE, 975, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -290,7 +290,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addComponent(spBarra, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addGap(56, 56, 56))
         );
 
@@ -327,15 +327,15 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         atribuir.setVisible(true);
     }//GEN-LAST:event_btAtribuirActionPerformed
 
-    private void btVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltar2ActionPerformed
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         this.dispose();         // TODO add your handling code here:
-    }//GEN-LAST:event_btVoltar2ActionPerformed
+    }//GEN-LAST:event_btVoltarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda1;
+    private Classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btAtribuir;
-    private javax.swing.JButton btVoltar2;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -345,7 +345,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JDesktopPane painelDesktopPane;
-    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JScrollPane spBarra;
     private javax.swing.JTable tbProcesso;
     private javax.swing.JTextField tfPesquisa;
     // End of variables declaration//GEN-END:variables

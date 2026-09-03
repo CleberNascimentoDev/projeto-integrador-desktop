@@ -28,8 +28,8 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     
         private void customizarTabela() {
     // 1. Fundo do ScrollPane e Borda do Container
-    scrollPane.getViewport().setBackground(java.awt.Color.WHITE);
-    scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
+    spBarra.getViewport().setBackground(java.awt.Color.WHITE);
+    spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
 
     // 2. Estilização e FONTE DAS LINHAS da Tabela
     tbRecrutador.setBackground(java.awt.Color.WHITE);
@@ -86,19 +86,19 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        lbProcesso2 = new javax.swing.JLabel();
+        lbProcesso = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        lbData2 = new javax.swing.JLabel();
+        lbData = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         tfPesquisa = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        scrollPane = new javax.swing.JScrollPane();
+        spBarra = new javax.swing.JScrollPane();
         tbRecrutador = new javax.swing.JTable();
         btAtribuir = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
-        botaoAjuda1 = new Classes.BotaoAjuda();
+        botaoAjuda = new Classes.BotaoAjuda();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -122,15 +122,15 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         jLabel11.setForeground(new java.awt.Color(29, 45, 68));
         jLabel11.setText("Processo:");
 
-        lbProcesso2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbProcesso2.setText("Desenvolvedor Java");
+        lbProcesso.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lbProcesso.setText("Desenvolvedor Java");
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(29, 45, 68));
         jLabel12.setText("Data:");
 
-        lbData2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbData2.setText("10/10/2010");
+        lbData.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lbData.setText("10/10/2010");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -142,11 +142,11 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbProcesso2))
+                        .addComponent(lbProcesso))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbData2)))
+                        .addComponent(lbData)))
                 .addContainerGap(565, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -155,11 +155,11 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(lbProcesso2))
+                    .addComponent(lbProcesso))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(lbData2))
+                    .addComponent(lbData))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -177,9 +177,9 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         jLabel14.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(29, 45, 68));
 
-        scrollPane.setBackground(new java.awt.Color(255, 255, 255));
-        scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane.setForeground(new java.awt.Color(255, 255, 255));
+        spBarra.setBackground(new java.awt.Color(255, 255, 255));
+        spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        spBarra.setForeground(new java.awt.Color(255, 255, 255));
 
         tbRecrutador.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         tbRecrutador.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -207,7 +207,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                 tbRecrutadorMouseClicked(evt);
             }
         });
-        scrollPane.setViewportView(tbRecrutador);
+        spBarra.setViewportView(tbRecrutador);
 
         btAtribuir.setBackground(new java.awt.Color(31, 53, 80));
         btAtribuir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -240,13 +240,13 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                         .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btAtribuir, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
@@ -260,7 +260,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                         .addContainerGap())))
         );
 
-        botaoAjuda1.setTextoAjuda("Esta é a tela de Selecionar Recrutador do sistema MAINRH, dedicada à vinculação de um responsável a um processo seletivo específico. No topo, confirme as informações do **Processo** e da **Data** correspondentes. Utilize a barra de busca para pesquisar um recrutador cadastrado pelo nome ou e-mail. Na tabela inferior, selecione o profissional desejado da lista contendo **Nome** e **E-mail** e clique no botão **Atribuir** para concluir a vinculação, ou no botão **Cancelar** para fechar a janela sem salvar.");
+        botaoAjuda.setTextoAjuda("Esta é a tela de Selecionar Recrutador do sistema MAINRH, dedicada à vinculação de um responsável a um processo seletivo específico. No topo, confirme as informações do **Processo** e da **Data** correspondentes. Utilize a barra de busca para pesquisar um recrutador cadastrado pelo nome ou e-mail. Na tabela inferior, selecione o profissional desejado da lista contendo **Nome** e **E-mail** e clique no botão **Atribuir** para concluir a vinculação, ou no botão **Cancelar** para fechar a janela sem salvar.");
 
         javax.swing.GroupLayout components2Layout = new javax.swing.GroupLayout(components2);
         components2.setLayout(components2Layout);
@@ -279,7 +279,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                     .addGroup(components2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         components2Layout.setVerticalGroup(
@@ -287,7 +287,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
             .addGroup(components2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(components2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
@@ -368,7 +368,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda1;
+    private Classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btAtribuir;
     private javax.swing.JButton btCancelar;
     private javax.swing.JPanel components2;
@@ -381,9 +381,9 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JLabel lbData2;
-    private javax.swing.JLabel lbProcesso2;
-    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JLabel lbData;
+    private javax.swing.JLabel lbProcesso;
+    private javax.swing.JScrollPane spBarra;
     private javax.swing.JTable tbRecrutador;
     private javax.swing.JTextField tfPesquisa;
     // End of variables declaration//GEN-END:variables

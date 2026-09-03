@@ -40,7 +40,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        botaoAjuda1 = new Classes.BotaoAjuda();
+        botaoAjuda = new Classes.BotaoAjuda();
         menuBar = new javax.swing.JMenuBar();
         menu1 = new javax.swing.JMenu();
         menuCargo = new javax.swing.JMenuItem();
@@ -66,11 +66,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(233, 243, 255));
 
-        botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        botaoAjuda1.setText(" ? ");
-        botaoAjuda1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        botaoAjuda1.setTextoAjuda("Esta é a tela de menu principal do sistema MAINRH, a partir da qual você pode navegar pelas funcionalidades da aplicação utilizando as abas superiores ou atalhos do teclado. No menu **Gerenciamento**, você encontra as opções para **Gerenciar Cargos** (atalho F2), **Abrir Processo Seletivo** (atalho F3), **Vincular Recrutadores** (atalho F4) e **Sair do Sistema** (atalho ESC). No menu **Cadastro**, é possível acessar a opção **Cadastrar Usuário** (atalho F6) para registrar novos acessos no sistema.");
-        botaoAjuda1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        botaoAjuda.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botaoAjuda.setText(" ? ");
+        botaoAjuda.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        botaoAjuda.setTextoAjuda("Esta é a tela de menu principal do sistema MAINRH, a partir da qual você pode navegar pelas funcionalidades da aplicação utilizando as abas superiores ou atalhos do teclado. No menu **Gerenciamento**, você encontra as opções para **Gerenciar Cargos** (atalho F2), **Abrir Processo Seletivo** (atalho F3), **Vincular Recrutadores** (atalho F4) e **Sair do Sistema** (atalho ESC). No menu **Cadastro**, é possível acessar a opção **Cadastrar Usuário** (atalho F6) para registrar novos acessos no sistema.");
+        botaoAjuda.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -78,12 +78,12 @@ public class TelaMenu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 12, Short.MAX_VALUE)
-                .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 605, Short.MAX_VALUE))
         );
 
@@ -253,7 +253,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda1;
+    private Classes.BotaoAjuda botaoAjuda;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

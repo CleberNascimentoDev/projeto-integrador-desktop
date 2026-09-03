@@ -89,7 +89,7 @@
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jFormattedTextField1" min="-2" pref="377" max="-2" attributes="0"/>
+                                              <Component id="ffSalario" min="-2" pref="377" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -128,7 +128,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="botaoAjuda1" min="-2" max="-2" attributes="0"/>
+                          <Component id="botaoAjuda" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -145,7 +145,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="botaoAjuda1" min="-2" max="-2" attributes="0"/>
+                          <Component id="botaoAjuda" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -165,7 +165,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="tfNivel" pref="39" max="32767" attributes="0"/>
-                      <Component id="jFormattedTextField1" max="32767" attributes="0"/>
+                      <Component id="ffSalario" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -360,7 +360,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="tfRequisitos">
+            <Component class="javax.swing.JTextArea" name="taRequisitos">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -369,7 +369,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfRequisitos.setText(&quot;Digite aqui...&quot;); tfRequisitos.setForeground(java.awt.Color.GRAY);"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="taRequisitos.setText(&quot;Digite aqui...&quot;); taRequisitos.setForeground(java.awt.Color.GRAY);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -400,7 +400,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="tfAtividade">
+            <Component class="javax.swing.JTextArea" name="taAtividade">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -409,7 +409,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfAtividade.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfAtividade.setForeground(java.awt.Color.GRAY);"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="taAtividade.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;taAtividade.setForeground(java.awt.Color.GRAY);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -463,12 +463,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCadastrarCargoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="Classes.BotaoAjuda" name="botaoAjuda1">
+        <Component class="Classes.BotaoAjuda" name="botaoAjuda">
           <Properties>
             <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de cadastramento de cargos do sistema MAINRH, utilizada para registrar novas posi&#xe7;&#xf5;es profissionais na empresa. Para realizar o cadastro, preencha todos os campos obrigat&#xf3;rios indicados com asterisco: informe o **Nome do cargo**, o **Sal&#xe1;rio base**, o **N&#xed;vel** hier&#xe1;rquico, o **Setor** correspondente, al&#xe9;m de descrever os **Requisitos** necess&#xe1;rios para a vaga e as **Atividades** que ser&#xe3;o desempenhadas pela fun&#xe7;&#xe3;o. Ap&#xf3;s inserir todas as informa&#xe7;&#xf5;es, clique no bot&#xe3;o **Cadastrar Cargo** para salvar os dados ou no bot&#xe3;o **Cancelar** para descartar a opera&#xe7;&#xe3;o."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+        <Component class="javax.swing.JFormattedTextField" name="ffSalario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">

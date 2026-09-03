@@ -34,10 +34,10 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jpComponentes = new javax.swing.JPanel();
-        jtfCampoNome = new javax.swing.JTextField();
-        jtfCampoDataNascimento = new javax.swing.JTextField();
-        jtfCampoCPF = new javax.swing.JTextField();
-        jtfCampoEmail = new javax.swing.JTextField();
+        tfCampoNome = new javax.swing.JTextField();
+        tfCampoDataNascimento = new javax.swing.JTextField();
+        tfCampoCPF = new javax.swing.JTextField();
+        tfCampoEmail = new javax.swing.JTextField();
         jtfCampoTelefone = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -48,18 +48,18 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jcbCampoFuncao = new javax.swing.JComboBox<>();
+        cbCampoFuncao = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jlLogo = new javax.swing.JLabel();
         jpCampoSenha = new javax.swing.JPanel();
         jbOlhoSenha = new javax.swing.JButton();
-        jpfCampoSenha = new javax.swing.JPasswordField();
+        pfCampoSenha = new javax.swing.JPasswordField();
         jpCampoConfirmarSenha = new javax.swing.JPanel();
         jbOlhoConfirmarSenha = new javax.swing.JButton();
-        jpfCampoConfirmarSenha = new javax.swing.JPasswordField();
-        btVoltar2 = new javax.swing.JButton();
-        botaoAjuda1 = new Classes.BotaoAjuda();
+        pfCampoConfirmarSenha = new javax.swing.JPasswordField();
+        btVoltar = new javax.swing.JButton();
+        botaoAjuda = new Classes.BotaoAjuda();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -74,25 +74,25 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jpComponentes.setPreferredSize(new java.awt.Dimension(620, 660));
         jpComponentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtfCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jtfCampoNome.setForeground(new java.awt.Color(153, 153, 153));
-        jtfCampoNome.setText("Digite o nome");
-        jpComponentes.add(jtfCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 280, 44));
+        tfCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfCampoNome.setForeground(new java.awt.Color(153, 153, 153));
+        tfCampoNome.setText("Digite o nome");
+        jpComponentes.add(tfCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 280, 44));
 
-        jtfCampoDataNascimento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jtfCampoDataNascimento.setForeground(new java.awt.Color(153, 153, 153));
-        jtfCampoDataNascimento.setText("dd/mm/aaaa");
-        jpComponentes.add(jtfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 280, 44));
+        tfCampoDataNascimento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfCampoDataNascimento.setForeground(new java.awt.Color(153, 153, 153));
+        tfCampoDataNascimento.setText("dd/mm/aaaa");
+        jpComponentes.add(tfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 280, 44));
 
-        jtfCampoCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jtfCampoCPF.setForeground(new java.awt.Color(153, 153, 153));
-        jtfCampoCPF.setText("000.000.000-00");
-        jpComponentes.add(jtfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 44));
+        tfCampoCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfCampoCPF.setForeground(new java.awt.Color(153, 153, 153));
+        tfCampoCPF.setText("000.000.000-00");
+        jpComponentes.add(tfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 44));
 
-        jtfCampoEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jtfCampoEmail.setForeground(new java.awt.Color(153, 153, 153));
-        jtfCampoEmail.setText("Digite o e-mail");
-        jpComponentes.add(jtfCampoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 280, 44));
+        tfCampoEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfCampoEmail.setForeground(new java.awt.Color(153, 153, 153));
+        tfCampoEmail.setText("Digite o e-mail");
+        jpComponentes.add(tfCampoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 280, 44));
 
         jtfCampoTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jtfCampoTelefone.setForeground(new java.awt.Color(153, 153, 153));
@@ -137,8 +137,8 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jButton1.setText("Cadastrar");
         jpComponentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 580, 40));
 
-        jcbCampoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione uma função", "Administrador (a)", "Recrutador (a)" }));
-        jpComponentes.add(jcbCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 280, 44));
+        cbCampoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione uma função", "Administrador (a)", "Recrutador (a)" }));
+        jpComponentes.add(cbCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 280, 44));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(101, 101, 101));
@@ -162,10 +162,10 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jbOlhoSenha.setFocusable(false);
         jpCampoSenha.add(jbOlhoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
 
-        jpfCampoSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jpfCampoSenha.setForeground(new java.awt.Color(153, 153, 153));
-        jpfCampoSenha.setText("Digite a senha");
-        jpCampoSenha.add(jpfCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 44));
+        pfCampoSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pfCampoSenha.setForeground(new java.awt.Color(153, 153, 153));
+        pfCampoSenha.setText("Digite a senha");
+        jpCampoSenha.add(pfCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 44));
 
         jpComponentes.add(jpCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 280, 44));
 
@@ -179,22 +179,22 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jbOlhoConfirmarSenha.setFocusable(false);
         jpCampoConfirmarSenha.add(jbOlhoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
 
-        jpfCampoConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jpfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
-        jpfCampoConfirmarSenha.setText("Confirme a senha");
-        jpCampoConfirmarSenha.add(jpfCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 44));
+        pfCampoConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
+        pfCampoConfirmarSenha.setText("Confirme a senha");
+        jpCampoConfirmarSenha.add(pfCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 44));
 
         jpComponentes.add(jpCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 280, 44));
 
-        btVoltar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btVoltar2.setForeground(new java.awt.Color(31, 53, 80));
-        btVoltar2.setText("◄ Voltar");
-        btVoltar2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
-        btVoltar2.addActionListener(this::btVoltar2ActionPerformed);
-        jpComponentes.add(btVoltar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 38));
+        btVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btVoltar.setForeground(new java.awt.Color(31, 53, 80));
+        btVoltar.setText("◄ Voltar");
+        btVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btVoltar.addActionListener(this::btVoltarActionPerformed);
+        jpComponentes.add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 38));
 
-        botaoAjuda1.setTextoAjuda("Esta é a tela de criação de conta do sistema MAINRH, destinada ao cadastro de novos usuários administradores e recrutadores na plataforma. Para registrar o perfil, preencha os campos com o **Nome**, **Data de Nascimento** (formato dd/mm/aaaa), **CPF**, **E-mail**, **Telefone** e selecione o tipo de conta desejado na lista **Função** (Administrador ou Recrutador). Em seguida, defina a **Senha** e repita-a no campo **Confirmar Senha** para validação, podendo utilizar os ícones de olho para visualizar o texto digitado. Após preencher todos os dados, clique no botão **Cadastrar** para concluir o registro ou no botão **Voltar**, localizado no canto superior esquerdo, para retornar à tela anterior.");
-        jpComponentes.add(botaoAjuda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
+        botaoAjuda.setTextoAjuda("Esta é a tela de criação de conta do sistema MAINRH, destinada ao cadastro de novos usuários administradores e recrutadores na plataforma. Para registrar o perfil, preencha os campos com o **Nome**, **Data de Nascimento** (formato dd/mm/aaaa), **CPF**, **E-mail**, **Telefone** e selecione o tipo de conta desejado na lista **Função** (Administrador ou Recrutador). Em seguida, defina a **Senha** e repita-a no campo **Confirmar Senha** para validação, podendo utilizar os ícones de olho para visualizar o texto digitado. Após preencher todos os dados, clique no botão **Cadastrar** para concluir o registro ou no botão **Voltar**, localizado no canto superior esquerdo, para retornar à tela anterior.");
+        jpComponentes.add(botaoAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -231,9 +231,9 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltar2ActionPerformed
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         this.dispose();       // TODO add your handling code here:
-    }//GEN-LAST:event_btVoltar2ActionPerformed
+    }//GEN-LAST:event_btVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,8 +273,9 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda1;
-    private javax.swing.JButton btVoltar2;
+    private Classes.BotaoAjuda botaoAjuda;
+    private javax.swing.JButton btVoltar;
+    private javax.swing.JComboBox<String> cbCampoFuncao;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -289,17 +290,16 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbOlhoConfirmarSenha;
     private javax.swing.JButton jbOlhoSenha;
-    private javax.swing.JComboBox<String> jcbCampoFuncao;
     private javax.swing.JLabel jlLogo;
     private javax.swing.JPanel jpCampoConfirmarSenha;
     private javax.swing.JPanel jpCampoSenha;
     private javax.swing.JPanel jpComponentes;
-    private javax.swing.JPasswordField jpfCampoConfirmarSenha;
-    private javax.swing.JPasswordField jpfCampoSenha;
-    private javax.swing.JTextField jtfCampoCPF;
-    private javax.swing.JTextField jtfCampoDataNascimento;
-    private javax.swing.JTextField jtfCampoEmail;
-    private javax.swing.JTextField jtfCampoNome;
     private javax.swing.JTextField jtfCampoTelefone;
+    private javax.swing.JPasswordField pfCampoConfirmarSenha;
+    private javax.swing.JPasswordField pfCampoSenha;
+    private javax.swing.JTextField tfCampoCPF;
+    private javax.swing.JTextField tfCampoDataNascimento;
+    private javax.swing.JTextField tfCampoEmail;
+    private javax.swing.JTextField tfCampoNome;
     // End of variables declaration//GEN-END:variables
 }

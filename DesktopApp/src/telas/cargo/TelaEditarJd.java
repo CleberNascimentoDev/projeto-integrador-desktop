@@ -55,18 +55,18 @@ public class TelaEditarJd extends javax.swing.JDialog {
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        tfEditarRequisitos = new javax.swing.JTextArea();
-        tfEditarRequisitos.setText("Digite aqui..."); tfEditarRequisitos.setForeground(java.awt.Color.GRAY);
+        taEditarRequisitos = new javax.swing.JTextArea();
+        taEditarRequisitos.setText("Digite aqui..."); taEditarRequisitos.setForeground(java.awt.Color.GRAY);
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        tfEditarAtividade = new javax.swing.JTextArea();
-        tfEditarAtividade.setText("Digite aqui...");
-        tfEditarAtividade.setForeground(java.awt.Color.GRAY);
+        taEditarAtividade = new javax.swing.JTextArea();
+        taEditarAtividade.setText("Digite aqui...");
+        taEditarAtividade.setForeground(java.awt.Color.GRAY);
         btEditarCancelar = new javax.swing.JButton();
         btEditarCadastrarCargo = new javax.swing.JButton();
-        botaoAjuda1 = new Classes.BotaoAjuda();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        botaoAjuda = new Classes.BotaoAjuda();
+        ffSalario = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -121,10 +121,10 @@ public class TelaEditarJd extends javax.swing.JDialog {
         jLabel50.setForeground(new java.awt.Color(204, 0, 0));
         jLabel50.setText("*");
 
-        tfEditarRequisitos.setColumns(20);
-        tfEditarRequisitos.setRows(5);
-        tfEditarRequisitos.setBorder(null);
-        jScrollPane7.setViewportView(tfEditarRequisitos);
+        taEditarRequisitos.setColumns(20);
+        taEditarRequisitos.setRows(5);
+        taEditarRequisitos.setBorder(null);
+        jScrollPane7.setViewportView(taEditarRequisitos);
 
         jLabel51.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel51.setText("Atividades");
@@ -133,10 +133,10 @@ public class TelaEditarJd extends javax.swing.JDialog {
         jLabel52.setForeground(new java.awt.Color(204, 0, 0));
         jLabel52.setText("*");
 
-        tfEditarAtividade.setColumns(20);
-        tfEditarAtividade.setRows(5);
-        tfEditarAtividade.setBorder(null);
-        jScrollPane8.setViewportView(tfEditarAtividade);
+        taEditarAtividade.setColumns(20);
+        taEditarAtividade.setRows(5);
+        taEditarAtividade.setBorder(null);
+        jScrollPane8.setViewportView(taEditarAtividade);
 
         btEditarCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btEditarCancelar.setForeground(new java.awt.Color(29, 45, 68));
@@ -157,9 +157,9 @@ public class TelaEditarJd extends javax.swing.JDialog {
         btEditarCadastrarCargo.setMargin(new java.awt.Insets(10, 20, 10, 20));
         btEditarCadastrarCargo.addActionListener(this::btEditarCadastrarCargoActionPerformed);
 
-        botaoAjuda1.setTextoAjuda("Esta é a tela de edição de cargos do sistema MAINRH, utilizada para alterar as informações de uma posição já existente. Nela, você pode atualizar os campos obrigatórios identificados com asterisco: **Nome do cargo**, **Salário base**, **Nível**, **Setor**, **Requisitos** e **Atividades**. Após fazer as alterações necessárias, clique no botão **Editar Cargo** para salvar as modificações ou no botão **Cancelar** para descartar as alterações e manter os dados originais.");
+        botaoAjuda.setTextoAjuda("Esta é a tela de edição de cargos do sistema MAINRH, utilizada para alterar as informações de uma posição já existente. Nela, você pode atualizar os campos obrigatórios identificados com asterisco: **Nome do cargo**, **Salário base**, **Nível**, **Setor**, **Requisitos** e **Atividades**. Após fazer as alterações necessárias, clique no botão **Editar Cargo** para salvar as modificações ou no botão **Cancelar** para descartar as alterações e manter os dados originais.");
 
-        jFormattedTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        ffSalario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         javax.swing.GroupLayout componentsLayout = new javax.swing.GroupLayout(components);
         components.setLayout(componentsLayout);
@@ -188,7 +188,7 @@ public class TelaEditarJd extends javax.swing.JDialog {
                                                 .addComponent(jLabel43)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel44))
-                                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(ffSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(37, 37, 37)
                                         .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(tfEditarNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,7 +215,7 @@ public class TelaEditarJd extends javax.swing.JDialog {
                     .addGroup(componentsLayout.createSequentialGroup()
                         .addComponent(jLabel40)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         componentsLayout.setVerticalGroup(
@@ -227,7 +227,7 @@ public class TelaEditarJd extends javax.swing.JDialog {
                         .addComponent(jLabel40))
                     .addGroup(componentsLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
@@ -243,7 +243,7 @@ public class TelaEditarJd extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tfEditarNivel, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextField1))
+                    .addComponent(ffSalario))
                 .addGap(22, 22, 22)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
@@ -351,11 +351,11 @@ public class TelaEditarJd extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda1;
+    private Classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btEditarCadastrarCargo;
     private javax.swing.JButton btEditarCancelar;
     private javax.swing.JPanel components;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField ffSalario;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -371,10 +371,10 @@ public class TelaEditarJd extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTextArea tfEditarAtividade;
+    private javax.swing.JTextArea taEditarAtividade;
+    private javax.swing.JTextArea taEditarRequisitos;
     private javax.swing.JTextField tfEditarNivel;
     private javax.swing.JTextField tfEditarNomeCargo;
-    private javax.swing.JTextArea tfEditarRequisitos;
     private javax.swing.JTextField tfEditarSetor;
     // End of variables declaration//GEN-END:variables
 }

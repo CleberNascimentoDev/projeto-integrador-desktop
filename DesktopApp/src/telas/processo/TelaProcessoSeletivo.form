@@ -85,9 +85,9 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btVoltar2" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="btVoltar" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="botaoAjuda1" min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="botaoAjuda" min="-2" pref="28" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -97,8 +97,8 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="botaoAjuda1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btVoltar2" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="botaoAjuda" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btVoltar" min="-2" pref="38" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -146,14 +146,14 @@
                         <Property name="text" type="java.lang.String" value="Processos Seletivos"/>
                       </Properties>
                     </Component>
-                    <Component class="Classes.BotaoAjuda" name="botaoAjuda1">
+                    <Component class="Classes.BotaoAjuda" name="botaoAjuda">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
                         <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de gerenciamento de processos seletivos do sistema MAINRH, destinada &#xe0; consulta e controle de sele&#xe7;&#xf5;es ativas e encerradas. Utilize o campo de busca superior para localizar um processo espec&#xed;fico. Na tabela Listas de processos seletivos, voc&#xea; pode visualizar os nomes dos processos cadastrados juntamente com suas respectivas Data de in&#xed;cio e Data de fim. Para gerenciar as informa&#xe7;&#xf5;es, selecione um item da lista e clique no bot&#xe3;o Editar para alterar seus dados, ou clique no bot&#xe3;o Cadastrar para abrir o formul&#xe1;rio de cria&#xe7;&#xe3;o de um novo processo seletivo. Para retornar &#xe0; tela anterior, utilize o bot&#xe3;o Voltar no canto superior esquerdo."/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btVoltar2">
+                    <Component class="javax.swing.JButton" name="btVoltar">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="14" style="1"/>
@@ -171,7 +171,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVoltar2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVoltarActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -220,7 +220,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="scrollPane" max="32767" attributes="0"/>
+                                  <Component id="spBarra" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
@@ -229,7 +229,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace pref="831" max="32767" attributes="0"/>
-                              <Component id="jbEditar" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="btEditar" min="-2" pref="85" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -238,9 +238,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="scrollPane" pref="299" max="32767" attributes="0"/>
+                              <Component id="spBarra" pref="299" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jbEditar" min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="btEditar" min="-2" pref="44" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -261,7 +261,7 @@
                         <Property name="text" type="java.lang.String" value="Listas de processos seletivos "/>
                       </Properties>
                     </Component>
-                    <Container class="javax.swing.JScrollPane" name="scrollPane">
+                    <Container class="javax.swing.JScrollPane" name="spBarra">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -355,7 +355,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="jbEditar">
+                    <Component class="javax.swing.JButton" name="btEditar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="8e" green="b0" red="b" type="rgb"/>
@@ -369,7 +369,7 @@
                         <Property name="text" type="java.lang.String" value="Editar"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbEditarActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEditarActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

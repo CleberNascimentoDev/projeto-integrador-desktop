@@ -55,22 +55,22 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jlLogo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="botaoAjuda1" min="-2" max="-2" attributes="0"/>
+                          <Component id="botaoAjuda" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jpCampoSenha" max="32767" attributes="0"/>
+                                  <Component id="pfCampoSenha" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jtCampoEmail" min="-2" pref="255" max="-2" attributes="0"/>
+                                  <Component id="tfCampoEmail" min="-2" pref="255" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jbOcultarSenha" min="-2" max="-2" attributes="0"/>
+                              <Component id="btOcultarSenha" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -78,7 +78,7 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                  <Component id="jbBotaoEntrar" min="-2" pref="115" max="-2" attributes="0"/>
+                  <Component id="btBotaoEntrar" min="-2" pref="115" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -91,21 +91,21 @@
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="jlLogo" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="botaoAjuda1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="botaoAjuda" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jtCampoEmail" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="tfCampoEmail" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jpCampoSenha" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jbOcultarSenha" min="-2" max="-2" attributes="0"/>
+                      <Component id="pfCampoSenha" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btOcultarSenha" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="jbBotaoEntrar" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btBotaoEntrar" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace pref="93" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -119,11 +119,11 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtCampoEmail">
+        <Component class="javax.swing.JTextField" name="tfCampoEmail">
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtCampoEmailFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtCampoEmailFocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtCampoEmailActionPerformed"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCampoEmailFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCampoEmailFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCampoEmailActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -142,14 +142,14 @@
             <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jpCampoSenha">
+        <Component class="javax.swing.JPasswordField" name="pfCampoSenha">
           <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jpCampoSenhaFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jpCampoSenhaFocusLost"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jpCampoSenhaActionPerformed"/>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="pfCampoSenhaFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="pfCampoSenhaFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pfCampoSenhaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jbOcultarSenha">
+        <Component class="javax.swing.JButton" name="btOcultarSenha">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icons/olhoAberto.png"/>
@@ -168,10 +168,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbOcultarSenhaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btOcultarSenhaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jbBotaoEntrar">
+        <Component class="javax.swing.JButton" name="btBotaoEntrar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="50" green="35" red="1f" type="rgb"/>
@@ -186,10 +186,10 @@
             <Property name="toolTipText" type="java.lang.String" value="Entrar no MainRH"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBotaoEntrarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBotaoEntrarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="Classes.BotaoAjuda" name="botaoAjuda1">
+        <Component class="Classes.BotaoAjuda" name="botaoAjuda">
           <Properties>
             <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de login do sistema MAINRH, utilizada para autentica&#xe7;&#xe3;o de acesso &#xe0; plataforma. Para entrar no sistema, preencha o campo **E-mail** com o seu endere&#xe7;o cadastrado e digite sua senha de acesso no campo **Senha**, utilizando o &#xed;cone de olho ao lado para exibir ou ocultar os caracteres digitados conforme necess&#xe1;rio. Ap&#xf3;s preencher as credenciais, clique no bot&#xe3;o **Entrar** para validar seu acesso e ser redirecionado ao painel principal. Caso n&#xe3;o possua um cadastro ativo ou tenha esquecido suas credenciais, entre em contato com o suporte ou com a equipe de administra&#xe7;&#xe3;o da sua empresa."/>
           </Properties>

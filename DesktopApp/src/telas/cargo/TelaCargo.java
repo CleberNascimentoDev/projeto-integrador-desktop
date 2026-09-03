@@ -29,8 +29,8 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     
     private void customizarTabela() {
     // 1. Fundo do ScrollPane e Borda do Container
-    scrollPane.getViewport().setBackground(java.awt.Color.WHITE);
-    scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
+    spBarra.getViewport().setBackground(java.awt.Color.WHITE);
+    spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
 
     // 2. Estilização e FONTE DAS LINHAS da Tabela
     tbCargo.setBackground(java.awt.Color.WHITE);
@@ -80,12 +80,12 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         tfPesquisa.setText("Digite aqui...");
         tfPesquisa.setForeground(java.awt.Color.GRAY);
         jLabel1 = new javax.swing.JLabel();
-        botaoAjuda1 = new Classes.BotaoAjuda();
-        btVoltar5 = new javax.swing.JButton();
+        botaoAjuda = new Classes.BotaoAjuda();
+        btVoltar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        scrollPane = new javax.swing.JScrollPane();
+        spBarra = new javax.swing.JScrollPane();
         tbCargo = new javax.swing.JTable();
         btExcluir = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
@@ -116,15 +116,15 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Cargos");
 
-        botaoAjuda1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botaoAjuda1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        botaoAjuda1.setTextoAjuda("Esta é a tela de gerenciamento de cargos do sistema MAINRH, utilizada para visualizar e administrar as posições cadastradas. Utilize a barra de pesquisa no topo para filtrar cargos pelo nome. Na tabela **Cargos cadastrados**, selecione um item da lista para realizar ações específicas: clique em **Editar** para alterar as informações do cargo, em **Excluir** para removê-lo do sistema, ou no botão **Cadastrar** para abrir o formulário de inclusão de uma nova posição. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
+        botaoAjuda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        botaoAjuda.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        botaoAjuda.setTextoAjuda("Esta é a tela de gerenciamento de cargos do sistema MAINRH, utilizada para visualizar e administrar as posições cadastradas. Utilize a barra de pesquisa no topo para filtrar cargos pelo nome. Na tabela **Cargos cadastrados**, selecione um item da lista para realizar ações específicas: clique em **Editar** para alterar as informações do cargo, em **Excluir** para removê-lo do sistema, ou no botão **Cadastrar** para abrir o formulário de inclusão de uma nova posição. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
 
-        btVoltar5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btVoltar5.setForeground(new java.awt.Color(31, 53, 80));
-        btVoltar5.setText("◄ Voltar");
-        btVoltar5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
-        btVoltar5.addActionListener(this::btVoltar5ActionPerformed);
+        btVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btVoltar.setForeground(new java.awt.Color(31, 53, 80));
+        btVoltar.setText("◄ Voltar");
+        btVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        btVoltar.addActionListener(this::btVoltarActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -141,9 +141,9 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                 .addContainerGap(879, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btVoltar5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -151,8 +151,8 @@ public class TelaCargo extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botaoAjuda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btVoltar5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
@@ -180,9 +180,9 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(29, 45, 68));
         jLabel3.setText("Cargos cadastrados");
 
-        scrollPane.setBackground(new java.awt.Color(255, 255, 255));
-        scrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane.setForeground(new java.awt.Color(255, 255, 255));
+        spBarra.setBackground(new java.awt.Color(255, 255, 255));
+        spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        spBarra.setForeground(new java.awt.Color(255, 255, 255));
 
         tbCargo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbCargo.setModel(new javax.swing.table.DefaultTableModel(
@@ -230,7 +230,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                 tbCargoMouseClicked(evt);
             }
         });
-        scrollPane.setViewportView(tbCargo);
+        spBarra.setViewportView(tbCargo);
 
         btExcluir.setBackground(new java.awt.Color(192, 1, 1));
         btExcluir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -258,7 +258,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)))
+                            .addComponent(spBarra, javax.swing.GroupLayout.DEFAULT_SIZE, 1248, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,7 +272,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                .addComponent(spBarra, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -367,17 +367,17 @@ public class TelaCargo extends javax.swing.JInternalFrame {
       }
     }//GEN-LAST:event_tbCargoMouseClicked
 
-    private void btVoltar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltar5ActionPerformed
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         this.dispose();       // TODO add your handling code here:
-    }//GEN-LAST:event_btVoltar5ActionPerformed
+    }//GEN-LAST:event_btVoltarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda1;
+    private Classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btVoltar5;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -388,7 +388,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JDesktopPane painelDesktopPane;
-    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JScrollPane spBarra;
     private javax.swing.JTable tbCargo;
     private javax.swing.JTextField tfPesquisa;
     // End of variables declaration//GEN-END:variables

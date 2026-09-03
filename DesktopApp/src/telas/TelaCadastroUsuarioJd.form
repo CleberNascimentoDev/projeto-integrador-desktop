@@ -94,7 +94,7 @@
             <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="jtfCampoNome">
+            <Component class="javax.swing.JTextField" name="tfCampoNome">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -110,7 +110,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtfCampoDataNascimento">
+            <Component class="javax.swing.JTextField" name="tfCampoDataNascimento">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -126,7 +126,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtfCampoCPF">
+            <Component class="javax.swing.JTextField" name="tfCampoCPF">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -142,7 +142,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JTextField" name="jtfCampoEmail">
+            <Component class="javax.swing.JTextField" name="tfCampoEmail">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -297,7 +297,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jcbCampoFuncao">
+            <Component class="javax.swing.JComboBox" name="cbCampoFuncao">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
@@ -387,7 +387,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JPasswordField" name="jpfCampoSenha">
+                <Component class="javax.swing.JPasswordField" name="pfCampoSenha">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
@@ -435,7 +435,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JPasswordField" name="jpfCampoConfirmarSenha">
+                <Component class="javax.swing.JPasswordField" name="pfCampoConfirmarSenha">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
@@ -453,7 +453,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="btVoltar2">
+            <Component class="javax.swing.JButton" name="btVoltar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
@@ -471,7 +471,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVoltar2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVoltarActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -479,7 +479,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="Classes.BotaoAjuda" name="botaoAjuda1">
+            <Component class="Classes.BotaoAjuda" name="botaoAjuda">
               <Properties>
                 <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de cria&#xe7;&#xe3;o de conta do sistema MAINRH, destinada ao cadastro de novos usu&#xe1;rios administradores e recrutadores na plataforma. Para registrar o perfil, preencha os campos com o **Nome**, **Data de Nascimento** (formato dd/mm/aaaa), **CPF**, **E-mail**, **Telefone** e selecione o tipo de conta desejado na lista **Fun&#xe7;&#xe3;o** (Administrador ou Recrutador). Em seguida, defina a **Senha** e repita-a no campo **Confirmar Senha** para valida&#xe7;&#xe3;o, podendo utilizar os &#xed;cones de olho para visualizar o texto digitado. Ap&#xf3;s preencher todos os dados, clique no bot&#xe3;o **Cadastrar** para concluir o registro ou no bot&#xe3;o **Voltar**, localizado no canto superior esquerdo, para retornar &#xe0; tela anterior."/>
               </Properties>
