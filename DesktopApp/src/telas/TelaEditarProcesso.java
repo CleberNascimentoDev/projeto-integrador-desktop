@@ -31,7 +31,6 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jtCargo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jtDataInicio = new javax.swing.JTextField();
         jtDataFim = new javax.swing.JTextField();
@@ -39,6 +38,7 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jbEditar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
+        jcbCargo = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(233, 243, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -58,9 +58,6 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(29, 45, 68));
         jLabel2.setText("Nome");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
-
-        jtCargo.setToolTipText("");
-        jPanel2.add(jtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 660, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(29, 45, 68));
@@ -90,6 +87,8 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jbCancelar.setText("Cancelar");
         jPanel2.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, 40));
 
+        jPanel2.add(jcbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 152, 660, 30));
+
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,7 +99,7 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
         );
 
         pack();
@@ -117,7 +116,7 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbEditar;
-    private javax.swing.JTextField jtCargo;
+    private javax.swing.JComboBox<String> jcbCargo;
     private javax.swing.JTextField jtDataFim;
     private javax.swing.JTextField jtDataInicio;
     private javax.swing.JTextField jtNome;
