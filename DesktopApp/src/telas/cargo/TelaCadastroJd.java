@@ -49,9 +49,6 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         tfNomeCargo = new javax.swing.JTextField();
         tfNomeCargo.setText("Digite aqui...");
         tfNomeCargo.setForeground(java.awt.Color.BLACK);
-        tfSalario = new javax.swing.JTextField();
-        tfSalario.setText("Digite aqui...");
-        tfSalario.setForeground(java.awt.Color.GRAY);
         tfSetor = new javax.swing.JTextField();
         tfSetor.setText("Digite aqui...");
         tfSetor.setForeground(java.awt.Color.GRAY);
@@ -69,6 +66,7 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         btCancelar = new javax.swing.JButton();
         btCadastrarCargo = new javax.swing.JButton();
         botaoAjuda1 = new Classes.BotaoAjuda();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -112,8 +110,6 @@ public class TelaCadastroJd extends javax.swing.JDialog {
 
         tfNomeCargo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         tfNomeCargo.addActionListener(this::tfNomeCargojTextField2ActionPerformed);
-
-        tfSalario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
         tfSetor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         tfSetor.addActionListener(this::tfSetorjTextField4ActionPerformed);
@@ -163,12 +159,14 @@ public class TelaCadastroJd extends javax.swing.JDialog {
 
         botaoAjuda1.setTextoAjuda("Esta é a tela de cadastramento de cargos do sistema MAINRH, utilizada para registrar novas posições profissionais na empresa. Para realizar o cadastro, preencha todos os campos obrigatórios indicados com asterisco: informe o **Nome do cargo**, o **Salário base**, o **Nível** hierárquico, o **Setor** correspondente, além de descrever os **Requisitos** necessários para a vaga e as **Atividades** que serão desempenhadas pela função. Após inserir todas as informações, clique no botão **Cadastrar Cargo** para salvar os dados ou no botão **Cancelar** para descartar a operação.");
 
+        jFormattedTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+
         javax.swing.GroupLayout componentsLayout = new javax.swing.GroupLayout(components);
         components.setLayout(componentsLayout);
         componentsLayout.setHorizontalGroup(
             componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(componentsLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(10, 10, 10)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(componentsLayout.createSequentialGroup()
                         .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -190,8 +188,8 @@ public class TelaCadastroJd extends javax.swing.JDialog {
                                                 .addComponent(jLabel43)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel44))
-                                            .addComponent(tfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(31, 31, 31)
+                                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(37, 37, 37)
                                         .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(tfNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(componentsLayout.createSequentialGroup()
@@ -243,9 +241,9 @@ public class TelaCadastroJd extends javax.swing.JDialog {
                     .addComponent(jLabel45)
                     .addComponent(jLabel46))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfNivel, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(jFormattedTextField1))
                 .addGap(22, 22, 22)
                 .addGroup(componentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
@@ -275,7 +273,7 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 833, Short.MAX_VALUE)
+            .addGap(0, 808, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -357,6 +355,7 @@ public class TelaCadastroJd extends javax.swing.JDialog {
     private javax.swing.JButton btCadastrarCargo;
     private javax.swing.JButton btCancelar;
     private javax.swing.JPanel components;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -376,7 +375,6 @@ public class TelaCadastroJd extends javax.swing.JDialog {
     private javax.swing.JTextField tfNivel;
     private javax.swing.JTextField tfNomeCargo;
     private javax.swing.JTextArea tfRequisitos;
-    private javax.swing.JTextField tfSalario;
     private javax.swing.JTextField tfSetor;
     // End of variables declaration//GEN-END:variables
 }

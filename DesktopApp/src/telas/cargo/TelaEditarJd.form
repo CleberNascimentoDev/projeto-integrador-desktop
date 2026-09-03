@@ -84,14 +84,14 @@
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
                                                   <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="tfEditarSalario" alignment="0" min="-2" pref="383" max="-2" attributes="0"/>
+                                              <Component id="jFormattedTextField1" min="-2" pref="377" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="tfEditarNivel" alignment="0" min="-2" pref="373" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
@@ -163,9 +163,9 @@
                       <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tfEditarNivel" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="tfEditarSalario" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="tfEditarNivel" pref="39" max="32767" attributes="0"/>
+                      <Component id="jFormattedTextField1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -317,20 +317,6 @@
             <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfEditarNomeCargo.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfEditarNomeCargo.setForeground(java.awt.Color.BLACK);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfEditarSalario">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder roundedCorners="true">
-                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
-                </LineBorder>
-              </Border>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfEditarSalario.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfEditarSalario.setForeground(java.awt.Color.GRAY);"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JTextField" name="tfEditarSetor">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -480,6 +466,17 @@
         <Component class="Classes.BotaoAjuda" name="botaoAjuda1">
           <Properties>
             <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de edi&#xe7;&#xe3;o de cargos do sistema MAINRH, utilizada para alterar as informa&#xe7;&#xf5;es de uma posi&#xe7;&#xe3;o j&#xe1; existente. Nela, voc&#xea; pode atualizar os campos obrigat&#xf3;rios identificados com asterisco: **Nome do cargo**, **Sal&#xe1;rio base**, **N&#xed;vel**, **Setor**, **Requisitos** e **Atividades**. Ap&#xf3;s fazer as altera&#xe7;&#xf5;es necess&#xe1;rias, clique no bot&#xe3;o **Editar Cargo** para salvar as modifica&#xe7;&#xf5;es ou no bot&#xe3;o **Cancelar** para descartar as altera&#xe7;&#xf5;es e manter os dados originais."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder roundedCorners="true">
+                  <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                </LineBorder>
+              </Border>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
