@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package telas;
+package views;
 
-import telas.TelaCadastroJd;
+import views.TelaCadastroJd;
 import java.awt.Color;
 
 
@@ -81,7 +81,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         tfPesquisa.setText("Digite aqui...");
         tfPesquisa.setForeground(java.awt.Color.GRAY);
         jLabel1 = new javax.swing.JLabel();
-        botaoAjuda = new Classes.BotaoAjuda();
+        botaoAjuda = new classes.BotaoAjuda();
         btVoltar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -374,7 +374,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda;
+    private classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;

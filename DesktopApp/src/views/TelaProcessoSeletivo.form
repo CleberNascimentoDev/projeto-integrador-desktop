@@ -146,7 +146,7 @@
                         <Property name="text" type="java.lang.String" value="Processos Seletivos"/>
                       </Properties>
                     </Component>
-                    <Component class="Classes.BotaoAjuda" name="botaoAjuda">
+                    <Component class="classes.BotaoAjuda" name="botaoAjuda">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>

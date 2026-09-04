@@ -225,7 +225,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="Classes.BotaoAjuda" name="botaoAjuda">
+                <Component class="classes.BotaoAjuda" name="botaoAjuda">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value=" ? "/>

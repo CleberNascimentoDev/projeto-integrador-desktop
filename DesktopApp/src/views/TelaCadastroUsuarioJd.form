@@ -479,7 +479,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="Classes.BotaoAjuda" name="botaoAjuda">
+            <Component class="classes.BotaoAjuda" name="botaoAjuda">
               <Properties>
                 <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de cria&#xe7;&#xe3;o de conta do sistema MAINRH, destinada ao cadastro de novos usu&#xe1;rios administradores e recrutadores na plataforma. Para registrar o perfil, preencha os campos com o **Nome**, **Data de Nascimento** (formato dd/mm/aaaa), **CPF**, **E-mail**, **Telefone** e selecione o tipo de conta desejado na lista **Fun&#xe7;&#xe3;o** (Administrador ou Recrutador). Em seguida, defina a **Senha** e repita-a no campo **Confirmar Senha** para valida&#xe7;&#xe3;o, podendo utilizar os &#xed;cones de olho para visualizar o texto digitado. Ap&#xf3;s preencher todos os dados, clique no bot&#xe3;o **Cadastrar** para concluir o registro ou no bot&#xe3;o **Voltar**, localizado no canto superior esquerdo, para retornar &#xe0; tela anterior."/>
               </Properties>

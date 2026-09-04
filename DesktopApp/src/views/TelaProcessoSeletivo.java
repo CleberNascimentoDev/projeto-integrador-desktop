@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package telas;
+package views;
 
 
 
@@ -83,7 +83,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         tfPesquisa.setForeground(java.awt.Color.GRAY);
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        botaoAjuda = new Classes.BotaoAjuda();
+        botaoAjuda = new classes.BotaoAjuda();
         btVoltar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -320,7 +320,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda;
+    private classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btVoltar;

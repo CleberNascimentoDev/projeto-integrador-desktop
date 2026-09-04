@@ -24,7 +24,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="808" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="833" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -64,17 +64,17 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btCancelar" min="-2" pref="168" max="-2" attributes="0"/>
+                                  <Component id="btEditarCancelar" min="-2" pref="168" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btCadastrarCargo" min="-2" pref="168" max="-2" attributes="0"/>
+                                  <Component id="btEditarCadastrarCargo" min="-2" pref="168" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="tfSetor" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
+                                  <Component id="tfEditarSetor" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
                                   <Component id="jScrollPane8" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
@@ -93,7 +93,7 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="tfNivel" alignment="0" min="-2" pref="373" max="-2" attributes="0"/>
+                                              <Component id="tfEditarNivel" alignment="0" min="-2" pref="373" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
@@ -118,7 +118,7 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="tfNomeCargo" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
+                                          <Component id="tfEditarNomeCargo" alignment="0" min="-2" pref="787" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -154,7 +154,7 @@
                       <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tfNomeCargo" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="tfEditarNomeCargo" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -164,7 +164,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="tfNivel" pref="39" max="32767" attributes="0"/>
+                      <Component id="tfEditarNivel" pref="39" max="32767" attributes="0"/>
                       <Component id="ffSalario" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -173,7 +173,7 @@
                       <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tfSetor" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="tfEditarSetor" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -190,8 +190,8 @@
                   <Component id="jScrollPane8" min="-2" pref="103" max="-2" attributes="0"/>
                   <EmptySpace pref="56" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btCadastrarCargo" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="btCancelar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btEditarCadastrarCargo" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btEditarCancelar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
@@ -207,7 +207,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="44" green="2d" red="1d" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cadastrar Cargo"/>
+            <Property name="text" type="java.lang.String" value="Editar Cargo"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel41">
@@ -229,7 +229,7 @@
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfNivel">
+        <Component class="javax.swing.JTextField" name="tfEditarNivel">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -240,7 +240,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="&#xd;&#xa;tfNivel.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfNivel.setForeground(java.awt.Color.GRAY);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="&#xd;&#xa;tfEditarNivel.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfEditarNivel.setForeground(java.awt.Color.GRAY);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel43">
@@ -300,7 +300,7 @@
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfNomeCargo">
+        <Component class="javax.swing.JTextField" name="tfEditarNomeCargo">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -311,13 +311,13 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfNomeCargojTextField2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfEditarNomeCargojTextField2ActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfNomeCargo.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfNomeCargo.setForeground(java.awt.Color.BLACK);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfEditarNomeCargo.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfEditarNomeCargo.setForeground(java.awt.Color.BLACK);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfSetor">
+        <Component class="javax.swing.JTextField" name="tfEditarSetor">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -328,10 +328,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfSetorjTextField4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfEditarSetorjTextField4ActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfSetor.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfSetor.setForeground(java.awt.Color.GRAY);"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfEditarSetor.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfEditarSetor.setForeground(java.awt.Color.GRAY);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel49">
@@ -360,7 +360,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="taRequisitos">
+            <Component class="javax.swing.JTextArea" name="taEditarRequisitos">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -369,7 +369,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="taRequisitos.setText(&quot;Digite aqui...&quot;); taRequisitos.setForeground(java.awt.Color.GRAY);"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="taEditarRequisitos.setText(&quot;Digite aqui...&quot;); taEditarRequisitos.setForeground(java.awt.Color.GRAY);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -400,7 +400,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="taAtividade">
+            <Component class="javax.swing.JTextArea" name="taEditarAtividade">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -409,12 +409,12 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="taAtividade.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;taAtividade.setForeground(java.awt.Color.GRAY);"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="taEditarAtividade.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;taEditarAtividade.setForeground(java.awt.Color.GRAY);"/>
               </AuxValues>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btCancelar">
+        <Component class="javax.swing.JButton" name="btEditarCancelar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="0"/>
@@ -432,11 +432,11 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btCancelarMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCancelarActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btEditarCancelarMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEditarCancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btCadastrarCargo">
+        <Component class="javax.swing.JButton" name="btEditarCadastrarCargo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="50" green="35" red="1f" type="rgb"/>
@@ -447,7 +447,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cadastrar Cargo"/>
+            <Property name="text" type="java.lang.String" value="Editar Cargo"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder roundedCorners="true">
@@ -460,12 +460,12 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCadastrarCargoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEditarCadastrarCargoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="Classes.BotaoAjuda" name="botaoAjuda">
+        <Component class="classes.BotaoAjuda" name="botaoAjuda">
           <Properties>
-            <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de cadastramento de cargos do sistema MAINRH, utilizada para registrar novas posi&#xe7;&#xf5;es profissionais na empresa. Para realizar o cadastro, preencha todos os campos obrigat&#xf3;rios indicados com asterisco: informe o **Nome do cargo**, o **Sal&#xe1;rio base**, o **N&#xed;vel** hier&#xe1;rquico, o **Setor** correspondente, al&#xe9;m de descrever os **Requisitos** necess&#xe1;rios para a vaga e as **Atividades** que ser&#xe3;o desempenhadas pela fun&#xe7;&#xe3;o. Ap&#xf3;s inserir todas as informa&#xe7;&#xf5;es, clique no bot&#xe3;o **Cadastrar Cargo** para salvar os dados ou no bot&#xe3;o **Cancelar** para descartar a opera&#xe7;&#xe3;o."/>
+            <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de edi&#xe7;&#xe3;o de cargos do sistema MAINRH, utilizada para alterar as informa&#xe7;&#xf5;es de uma posi&#xe7;&#xe3;o j&#xe1; existente. Nela, voc&#xea; pode atualizar os campos obrigat&#xf3;rios identificados com asterisco: **Nome do cargo**, **Sal&#xe1;rio base**, **N&#xed;vel**, **Setor**, **Requisitos** e **Atividades**. Ap&#xf3;s fazer as altera&#xe7;&#xf5;es necess&#xe1;rias, clique no bot&#xe3;o **Editar Cargo** para salvar as modifica&#xe7;&#xf5;es ou no bot&#xe3;o **Cancelar** para descartar as altera&#xe7;&#xf5;es e manter os dados originais."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="ffSalario">

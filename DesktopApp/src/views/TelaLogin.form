@@ -189,7 +189,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBotaoEntrarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="Classes.BotaoAjuda" name="botaoAjuda">
+        <Component class="classes.BotaoAjuda" name="botaoAjuda">
           <Properties>
             <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de login do sistema MAINRH, utilizada para autentica&#xe7;&#xe3;o de acesso &#xe0; plataforma. Para entrar no sistema, preencha o campo **E-mail** com o seu endere&#xe7;o cadastrado e digite sua senha de acesso no campo **Senha**, utilizando o &#xed;cone de olho ao lado para exibir ou ocultar os caracteres digitados conforme necess&#xe1;rio. Ap&#xf3;s preencher as credenciais, clique no bot&#xe3;o **Entrar** para validar seu acesso e ser redirecionado ao painel principal. Caso n&#xe3;o possua um cadastro ativo ou tenha esquecido suas credenciais, entre em contato com o suporte ou com a equipe de administra&#xe7;&#xe3;o da sua empresa."/>
           </Properties>

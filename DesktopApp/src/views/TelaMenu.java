@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package telas;
+package views;
 
 import javax.swing.JInternalFrame;
 
@@ -37,7 +37,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        botaoAjuda = new Classes.BotaoAjuda();
+        botaoAjuda = new classes.BotaoAjuda();
         menuBar = new javax.swing.JMenuBar();
         menu1 = new javax.swing.JMenu();
         menuCargo = new javax.swing.JMenuItem();
@@ -250,7 +250,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda;
+    private classes.BotaoAjuda botaoAjuda;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

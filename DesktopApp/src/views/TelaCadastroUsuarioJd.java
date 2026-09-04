@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package telas;
+package views;
 
 /**
  *
@@ -59,7 +59,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jbOlhoConfirmarSenha = new javax.swing.JButton();
         pfCampoConfirmarSenha = new javax.swing.JPasswordField();
         btVoltar = new javax.swing.JButton();
-        botaoAjuda = new Classes.BotaoAjuda();
+        botaoAjuda = new classes.BotaoAjuda();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -273,7 +273,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda;
+    private classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btVoltar;
     private javax.swing.JComboBox<String> cbCampoFuncao;
     private javax.swing.JButton jButton1;

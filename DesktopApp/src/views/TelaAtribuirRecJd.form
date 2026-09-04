@@ -415,7 +415,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="Classes.BotaoAjuda" name="botaoAjuda">
+        <Component class="classes.BotaoAjuda" name="botaoAjuda">
           <Properties>
             <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de Selecionar Recrutador do sistema MAINRH, dedicada &#xe0; vincula&#xe7;&#xe3;o de um respons&#xe1;vel a um processo seletivo espec&#xed;fico. No topo, confirme as informa&#xe7;&#xf5;es do **Processo** e da **Data** correspondentes. Utilize a barra de busca para pesquisar um recrutador cadastrado pelo nome ou e-mail. Na tabela inferior, selecione o profissional desejado da lista contendo **Nome** e **E-mail** e clique no bot&#xe3;o **Atribuir** para concluir a vincula&#xe7;&#xe3;o, ou no bot&#xe3;o **Cancelar** para fechar a janela sem salvar."/>
           </Properties>

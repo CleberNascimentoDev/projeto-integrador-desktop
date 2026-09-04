@@ -598,7 +598,7 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Component class="Classes.BotaoAjuda" name="botaoAjuda">
+            <Component class="classes.BotaoAjuda" name="botaoAjuda">
               <Properties>
                 <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de detalhes do cargo do sistema MAINRH, destinada exclusivamente &#xe0; visualiza&#xe7;&#xe3;o das informa&#xe7;&#xf5;es de uma posi&#xe7;&#xe3;o selecionada. Nela, voc&#xea; pode consultar todos os dados cadastrados da vaga, incluindo **Nome do cargo**, **Sal&#xe1;rio base**, **N&#xed;vel**, **Setor**, **Requisitos** e **Atividades** desempenhadas. Para sair da visualiza&#xe7;&#xe3;o e retornar &#xe0; lista de gerenciamento de cargos, clique no bot&#xe3;o **Voltar** no canto superior esquerdo da tela."/>
               </Properties>

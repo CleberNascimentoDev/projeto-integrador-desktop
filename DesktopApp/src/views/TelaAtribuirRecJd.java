@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package telas;
+package views;
 
 /**
  *
@@ -98,7 +98,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         tbRecrutador = new javax.swing.JTable();
         btAtribuir = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
-        botaoAjuda = new Classes.BotaoAjuda();
+        botaoAjuda = new classes.BotaoAjuda();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -368,7 +368,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda;
+    private classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btAtribuir;
     private javax.swing.JButton btCancelar;
     private javax.swing.JPanel components2;

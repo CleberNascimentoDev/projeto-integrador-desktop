@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package telas;
+package views;
 
 /**
  *
@@ -51,7 +51,7 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
         jLabel46 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         taAtividades = new javax.swing.JTextArea();
-        botaoAjuda = new Classes.BotaoAjuda();
+        botaoAjuda = new classes.BotaoAjuda();
         btVoltar = new javax.swing.JButton();
 
         jPanel3.setBackground(new java.awt.Color(233, 243, 255));
@@ -445,7 +445,7 @@ this.dispose();         // TODO add your handling code here:
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Classes.BotaoAjuda botaoAjuda;
+    private classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
