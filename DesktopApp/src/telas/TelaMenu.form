@@ -42,6 +42,9 @@
                 <Property name="text" type="java.lang.String" value="Vincular Recrutadores"/>
                 <Property name="toolTipText" type="java.lang.String" value="Aqui voc&#xea; pode vincular recrutadores a um processo seletivo!"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuRecrutadorActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
             </MenuItem>

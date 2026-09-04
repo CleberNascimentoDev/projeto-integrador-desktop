@@ -4,6 +4,9 @@
  */
 package telas;
 
+import telas.processo.TelaProcessoSeletivo;
+import telas.gestao.TelaGestaoRec;
+import telas.cargo.TelaCargo;
 import javax.swing.JInternalFrame;
 
 /**
@@ -105,6 +108,7 @@ public class TelaMenu extends javax.swing.JFrame {
         menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         menuRecrutador.setText("Vincular Recrutadores");
         menuRecrutador.setToolTipText("Aqui você pode vincular recrutadores a um processo seletivo!");
+        menuRecrutador.addActionListener(this::menuRecrutadorActionPerformed);
         menu1.add(menuRecrutador);
         menu1.add(jSeparator1);
 
@@ -145,12 +149,8 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargoActionPerformed
-        
-    System.out.println("Antes: " + painelPrincipal.getAllFrames().length);
 
     abrirJanelaInterna(new TelaCargo());
-
-    System.out.println("Depois: " + painelPrincipal.getAllFrames().length);  
     }//GEN-LAST:event_menuCargoActionPerformed
 
     private void abrirJanelaInterna(JInternalFrame frame) {
@@ -201,9 +201,16 @@ public class TelaMenu extends javax.swing.JFrame {
         abrirJanelaInterna(new Tela_Cadastro());
     }//GEN-LAST:event_menuCadastroActionPerformed
 
+
+    private void menuRecrutadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRecrutadorActionPerformed
+
+        abrirJanelaInterna(new TelaGestaoRec());
+    }//GEN-LAST:event_menuRecrutadorActionPerformed
+
     private void menuProcessoSeletivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProcessoSeletivoActionPerformed
         abrirJanelaInterna(new TelaProcessoSeletivo());
     }//GEN-LAST:event_menuProcessoSeletivoActionPerformed
+
 
     /**
      * @param args the command line arguments
