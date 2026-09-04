@@ -305,16 +305,18 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
 
     
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                             
-            
-        }                                            
+        TelaCadastrarProcessoJd cadastrar = new TelaCadastrarProcessoJd(null, true);
+        cadastrar.setVisible(true);
+    }                                            
 
-        private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {                                         
-            
-        }                                        
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        TelaEditarProcessoJd editar = new TelaEditarProcessoJd(null, true);
+        editar.setVisible(true);
+    }                                        
 
-        private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {                                         
-            this.dispose();
-        }
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        this.dispose();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

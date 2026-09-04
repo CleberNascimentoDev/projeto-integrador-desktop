@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package telas;
 
@@ -8,25 +8,22 @@ import java.awt.Color;
 
 /**
  *
- * @author GabrielaCarvalhodeSo
+ * @author RaphaelBispoIssa
  */
-public class TelaCadastrarProcessos extends javax.swing.JInternalFrame {
+public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaCadastrarProcessoJd.class.getName());
 
     /**
-     * Creates new form TelaCadastrarProcessos
+     * Creates new form TelaCadastrarProcessoJd
      */
-    public TelaCadastrarProcessos() {
+    public TelaCadastrarProcessoJd(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        this.setUndecorated(false);
         initComponents();
-        
-        jtNome.setForeground(Color.GRAY);
-
-        javax.swing.SwingUtilities.invokeLater(() -> {
-        jbCancelar.requestFocusInWindow();
-        });
-    
-       ((javax.swing.text.MaskFormatter) jtDataInicio.getFormatter()).setPlaceholderCharacter('_');
-       ((javax.swing.text.MaskFormatter) jtDataFim.getFormatter()).setPlaceholderCharacter('_');
-     }
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +48,11 @@ public class TelaCadastrarProcessos extends javax.swing.JInternalFrame {
         jtDataInicio = new javax.swing.JFormattedTextField();
         jtDataFim = new javax.swing.JFormattedTextField();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+
         jPanel1.setBackground(new java.awt.Color(233, 243, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setOpaque(false);
@@ -141,11 +142,11 @@ public class TelaCadastrarProcessos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
         );
 
         pack();
@@ -170,14 +171,10 @@ public class TelaCadastrarProcessos extends javax.swing.JInternalFrame {
         javax.swing.JOptionPane.showMessageDialog(
             this,
             "Processo Seletivo cadastrado com sucesso!"
-    );
+        );
+           
 
-    TelaProcessoSeletivo tela = new TelaProcessoSeletivo();
-
-    getDesktopPane().add(tela);
-    tela.setVisible(true);
-
-    this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jbCadastarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
@@ -192,6 +189,42 @@ public class TelaCadastrarProcessos extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jtDataInicioFocusLost
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                TelaCadastrarProcessoJd dialog = new TelaCadastrarProcessoJd(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

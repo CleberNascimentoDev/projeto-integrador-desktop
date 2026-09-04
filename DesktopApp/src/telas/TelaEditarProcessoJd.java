@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package telas;
 
@@ -8,29 +8,23 @@ import java.awt.Color;
 
 /**
  *
- * @author GabrielaCarvalhodeSo
- */ 
-public class TelaEditarProcesso extends javax.swing.JInternalFrame {
+ * @author RaphaelBispoIssa
+ */
+public class TelaEditarProcessoJd extends javax.swing.JDialog {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaEditarProcessoJd.class.getName());
 
     /**
-     * Creates new form TelaEditarProcesso
+     * Creates new form TelaEditarProcessoJd
      */
-    public TelaEditarProcesso() {
-   initComponents();
-
-    jtNome.setForeground(Color.GRAY);
-
-    javax.swing.SwingUtilities.invokeLater(() -> {
-    jbCancelar.requestFocusInWindow();
-    });
-    
-    ((javax.swing.text.MaskFormatter) jtDataInicio.getFormatter()).setPlaceholderCharacter('_');
-    ((javax.swing.text.MaskFormatter) jtDataFim.getFormatter()).setPlaceholderCharacter('_');
-      
+    public TelaEditarProcessoJd(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        this.setUndecorated(false);
+        initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,9 +48,13 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jtDataInicio = new javax.swing.JFormattedTextField();
         jtDataFim = new javax.swing.JFormattedTextField();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+
         jPanel1.setBackground(new java.awt.Color(233, 243, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -144,11 +142,11 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -158,7 +156,7 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         if (jtNome.getText().equals("Digite o nome do processo...")) {
             jtNome.setText("");
             jtNome.setForeground(Color.BLACK);
-        }   // placeholder do campo nome   
+        }   // placeholder do campo nome
     }//GEN-LAST:event_jtNomeFocusGained
 
     private void jtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNomeFocusLost
@@ -166,11 +164,20 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
             jtNome.setText("Digite o nome do processo...");
             jtNome.setForeground(Color.GRAY);
 
-        }  //placeholder do campo nome 
+        }  //placeholder do campo nome
     }//GEN-LAST:event_jtNomeFocusLost
 
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Processo Seletivo editado com sucesso!"
+        );
+
+        this.dispose();
+    }//GEN-LAST:event_jbEditarActionPerformed
+
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-            this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     private void jtDataInicioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusGained
@@ -178,22 +185,45 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtDataInicioFocusGained
 
     private void jtDataInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusLost
+
     }//GEN-LAST:event_jtDataInicioFocusLost
 
-    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-       javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "Processo Seletivo editado com sucesso!"
-    );
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
-    TelaProcessoSeletivo tela = new TelaProcessoSeletivo();
-
-    getDesktopPane().add(tela);
-    tela.setVisible(true);
-
-    this.dispose();
-    }//GEN-LAST:event_jbEditarActionPerformed
-
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                TelaEditarProcessoJd dialog = new TelaEditarProcessoJd(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
