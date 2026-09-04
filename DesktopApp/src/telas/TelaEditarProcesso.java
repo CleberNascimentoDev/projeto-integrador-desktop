@@ -19,13 +19,15 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
    initComponents();
 
     jtNome.setForeground(Color.GRAY);
-    jtDataInicio.setForeground(Color.GRAY);
 
     javax.swing.SwingUtilities.invokeLater(() -> {
     jbCancelar.requestFocusInWindow();
-    
     });
-   }
+    
+    ((javax.swing.text.MaskFormatter) jtDataInicio.getFormatter()).setPlaceholderCharacter('_');
+    ((javax.swing.text.MaskFormatter) jtDataFim.getFormatter()).setPlaceholderCharacter('_');
+      
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,13 +43,13 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jtDataInicio = new javax.swing.JTextField();
-        jtDataFim = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jbEditar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jcbCargo = new javax.swing.JComboBox<>();
+        jtDataInicio = new javax.swing.JFormattedTextField();
+        jtDataFim = new javax.swing.JFormattedTextField();
 
         jPanel1.setBackground(new java.awt.Color(233, 243, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -71,7 +73,7 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
                 jtNomeFocusLost(evt);
             }
         });
-        jPanel2.add(jtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 660, 30));
+        jPanel2.add(jtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 620, 30));
 
         jLabel2.setBackground(new java.awt.Color(29, 45, 68));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -83,30 +85,6 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(29, 45, 68));
         jLabel3.setText("Cargo");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
-
-        jtDataInicio.setForeground(new java.awt.Color(153, 153, 153));
-        jtDataInicio.setText("dd/mm/aaaa");
-        jtDataInicio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jtDataInicioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jtDataInicioFocusLost(evt);
-            }
-        });
-        jPanel2.add(jtDataInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 310, 30));
-
-        jtDataFim.setForeground(new java.awt.Color(153, 153, 153));
-        jtDataFim.setText("dd/mm/aaaa");
-        jtDataFim.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jtDataFimFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jtDataFimFocusLost(evt);
-            }
-        });
-        jPanel2.add(jtDataFim, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 330, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(29, 45, 68));
@@ -122,17 +100,39 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jbEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jbEditar.setForeground(new java.awt.Color(255, 255, 255));
         jbEditar.setText("Editar");
-        jPanel2.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 90, 40));
+        jPanel2.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 90, 40));
 
         jbCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jbCancelar.setForeground(new java.awt.Color(31, 53, 80));
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(this::jbCancelarActionPerformed);
-        jPanel2.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, 40));
+        jPanel2.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, -1, 40));
 
         jcbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um cargo..." }));
         jcbCargo.setToolTipText("");
-        jPanel2.add(jcbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 152, 660, 30));
+        jPanel2.add(jcbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 152, 620, 30));
+
+        try {
+            jtDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jtDataInicio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtDataInicioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtDataInicioFocusLost(evt);
+            }
+        });
+        jPanel2.add(jtDataInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 290, 30));
+
+        try {
+            jtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(jtDataFim, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 290, 30));
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -140,11 +140,11 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
         );
 
         pack();
@@ -165,37 +165,16 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         }  //placeholder do campo nome 
     }//GEN-LAST:event_jtNomeFocusLost
 
-    private void jtDataInicioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusGained
-        if (jtDataInicio.getText().equals("dd/mm/aaaa")) {
-            jtDataInicio.setText("");
-            jtDataInicio.setForeground(Color.BLACK);
-        } // placeholder do campo data inicio                                                          
-    }//GEN-LAST:event_jtDataInicioFocusGained
-
-    private void jtDataInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusLost
-        if (jtDataInicio.getText().trim().isEmpty()) {
-            jtDataInicio.setText("dd/mm/aaaa");
-            jtDataInicio.setForeground(Color.GRAY);
-        } //placeholder do campo data inicio       
-    }//GEN-LAST:event_jtDataInicioFocusLost
-
-    private void jtDataFimFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataFimFocusGained
-        if (jtDataFim.getText().equals("dd/mm/aaaa")) {
-            jtDataFim.setText("");
-            jtDataFim.setForeground(Color.BLACK);
-        } //placeholder do campo data fim 
-    }//GEN-LAST:event_jtDataFimFocusGained
-
-    private void jtDataFimFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataFimFocusLost
-        if (jtDataFim.getText().trim().isEmpty()) {
-            jtDataFim.setText("dd/mm/aaaa");
-            jtDataFim.setForeground(Color.GRAY);
-        }
-    }//GEN-LAST:event_jtDataFimFocusLost
-
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
             this.dispose();
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jtDataInicioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusGained
+
+    }//GEN-LAST:event_jtDataInicioFocusGained
+
+    private void jtDataInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusLost
+    }//GEN-LAST:event_jtDataInicioFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -209,8 +188,8 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbEditar;
     private javax.swing.JComboBox<String> jcbCargo;
-    private javax.swing.JTextField jtDataFim;
-    private javax.swing.JTextField jtDataInicio;
+    private javax.swing.JFormattedTextField jtDataFim;
+    private javax.swing.JFormattedTextField jtDataInicio;
     private javax.swing.JTextField jtNome;
     // End of variables declaration//GEN-END:variables
 }
