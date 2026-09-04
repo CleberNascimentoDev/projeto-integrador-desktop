@@ -9,28 +9,25 @@ import java.awt.Color;
 /**
  *
  * @author GabrielaCarvalhodeSo
- */ 
-public class TelaEditarProcesso extends javax.swing.JInternalFrame {
+ */
+public class TelaCadastrarProcessos extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form TelaEditarProcesso
+     * Creates new form TelaCadastrarProcessos
      */
-    public TelaEditarProcesso() {
-   initComponents();
+    public TelaCadastrarProcessos() {
+        initComponents();
+        
+        jtNome.setForeground(Color.GRAY);
 
-    jtNome.setForeground(Color.GRAY);
+        javax.swing.SwingUtilities.invokeLater(() -> {
+        jbCancelar.requestFocusInWindow();
+        });
+    
+       ((javax.swing.text.MaskFormatter) jtDataInicio.getFormatter()).setPlaceholderCharacter('_');
+       ((javax.swing.text.MaskFormatter) jtDataFim.getFormatter()).setPlaceholderCharacter('_');
+     }
 
-    javax.swing.SwingUtilities.invokeLater(() -> {
-    jbCancelar.requestFocusInWindow();
-    });
-    
-    ((javax.swing.text.MaskFormatter) jtDataInicio.getFormatter()).setPlaceholderCharacter('_');
-    ((javax.swing.text.MaskFormatter) jtDataFim.getFormatter()).setPlaceholderCharacter('_');
-      
-    }
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +45,7 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jbEditar = new javax.swing.JButton();
+        jbCadastar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jcbCargo = new javax.swing.JComboBox<>();
         jtDataInicio = new javax.swing.JFormattedTextField();
@@ -63,8 +60,8 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel1.setBackground(new java.awt.Color(29, 45, 68));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel1.setText("Editar Processos Seletivo");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 290, 30));
+        jLabel1.setText("Cadastrar Processos Seletivo");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 340, 30));
 
         jtNome.setForeground(new java.awt.Color(153, 153, 153));
         jtNome.setText("Digite o nome do processo...");
@@ -99,18 +96,18 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jLabel5.setText("Data Fim");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
 
-        jbEditar.setBackground(new java.awt.Color(31, 53, 80));
-        jbEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jbEditar.setForeground(new java.awt.Color(255, 255, 255));
-        jbEditar.setText("Editar");
-        jbEditar.addActionListener(this::jbEditarActionPerformed);
-        jPanel2.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 90, 40));
+        jbCadastar.setBackground(new java.awt.Color(31, 53, 80));
+        jbCadastar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jbCadastar.setForeground(new java.awt.Color(255, 255, 255));
+        jbCadastar.setText("Cadastrar");
+        jbCadastar.addActionListener(this::jbCadastarActionPerformed);
+        jPanel2.add(jbCadastar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 110, 40));
 
         jbCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jbCancelar.setForeground(new java.awt.Color(31, 53, 80));
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(this::jbCancelarActionPerformed);
-        jPanel2.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, -1, 40));
+        jPanel2.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, 40));
 
         jcbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um cargo..." }));
         jcbCargo.setToolTipText("");
@@ -158,7 +155,7 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         if (jtNome.getText().equals("Digite o nome do processo...")) {
             jtNome.setText("");
             jtNome.setForeground(Color.BLACK);
-        }   // placeholder do campo nome   
+        }   // placeholder do campo nome
     }//GEN-LAST:event_jtNomeFocusGained
 
     private void jtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNomeFocusLost
@@ -166,24 +163,13 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
             jtNome.setText("Digite o nome do processo...");
             jtNome.setForeground(Color.GRAY);
 
-        }  //placeholder do campo nome 
+        }  //placeholder do campo nome
     }//GEN-LAST:event_jtNomeFocusLost
 
-    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-            this.dispose();
-    }//GEN-LAST:event_jbCancelarActionPerformed
-
-    private void jtDataInicioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusGained
-
-    }//GEN-LAST:event_jtDataInicioFocusGained
-
-    private void jtDataInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusLost
-    }//GEN-LAST:event_jtDataInicioFocusLost
-
-    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-       javax.swing.JOptionPane.showMessageDialog(
+    private void jbCadastarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastarActionPerformed
+        javax.swing.JOptionPane.showMessageDialog(
             this,
-            "Processo Seletivo editado com sucesso!"
+            "Processo Seletivo cadastrado com sucesso!"
     );
 
     TelaProcessoSeletivo tela = new TelaProcessoSeletivo();
@@ -192,7 +178,19 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
     tela.setVisible(true);
 
     this.dispose();
-    }//GEN-LAST:event_jbEditarActionPerformed
+    }//GEN-LAST:event_jbCadastarActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jtDataInicioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusGained
+
+    }//GEN-LAST:event_jtDataInicioFocusGained
+
+    private void jtDataInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusLost
+
+    }//GEN-LAST:event_jtDataInicioFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -203,8 +201,8 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton jbCadastar;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbEditar;
     private javax.swing.JComboBox<String> jcbCargo;
     private javax.swing.JFormattedTextField jtDataFim;
     private javax.swing.JFormattedTextField jtDataInicio;

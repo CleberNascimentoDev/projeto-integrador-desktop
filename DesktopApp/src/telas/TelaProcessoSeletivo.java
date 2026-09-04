@@ -189,7 +189,6 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
                 {" . m. .m", "nlnln", "nlnlnl"},
                 {"cp", "bb", "navdad"},
                 {"NVNVA", "N ,", "VFAPODACSE"},
-                {"D C", "AVBNVBN", "CV"},
                 {"BHKBKKBK", "PREBGTO", null},
                 {null, null, null},
                 {null, null, null},
@@ -305,20 +304,9 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_lbVoltarMouseClicked
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        // Obtém o JDesktopPane no qual a TelaCargo está inserida
-        javax.swing.JDesktopPane desktop = getDesktopPane();
-
-        if (desktop != null) {
-            TelaCadastro telaCadastro = new TelaCadastro();
-            desktop.add(telaCadastro);
-            telaCadastro.setVisible(true);
-            try {
-                telaCadastro.setSelected(true);
-                telaCadastro.toFront();
-            } catch (java.beans.PropertyVetoException e) {
-                e.printStackTrace();
-            }
-        }
+    TelaCadastrarProcessos tela = new TelaCadastrarProcessos();
+    getDesktopPane().add(tela);
+    tela.setVisible(true);
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
