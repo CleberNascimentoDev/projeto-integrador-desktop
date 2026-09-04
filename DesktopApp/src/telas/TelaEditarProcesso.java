@@ -100,6 +100,7 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
         jbEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jbEditar.setForeground(new java.awt.Color(255, 255, 255));
         jbEditar.setText("Editar");
+        jbEditar.addActionListener(this::jbEditarActionPerformed);
         jPanel2.add(jbEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 90, 40));
 
         jbCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -175,6 +176,20 @@ public class TelaEditarProcesso extends javax.swing.JInternalFrame {
 
     private void jtDataInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusLost
     }//GEN-LAST:event_jtDataInicioFocusLost
+
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+       javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Processo Seletivo editado com sucesso!"
+    );
+
+    TelaProcessoSeletivo tela = new TelaProcessoSeletivo();
+
+    getDesktopPane().add(tela);
+    tela.setVisible(true);
+
+    this.dispose();
+    }//GEN-LAST:event_jbEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
