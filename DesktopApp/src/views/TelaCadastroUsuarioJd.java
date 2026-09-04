@@ -149,7 +149,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jLabel1.setText("Criar Conta");
         jpComponentes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
-        jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/LogoMenor.png"))); // NOI18N
+        jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogoMenor.png"))); // NOI18N
         jpComponentes.add(jlLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
 
         jpCampoSenha.setOpaque(false);

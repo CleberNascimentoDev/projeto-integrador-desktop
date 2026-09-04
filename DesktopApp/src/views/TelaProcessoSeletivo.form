@@ -116,6 +116,13 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel2">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/images/lupa.png"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                     <Component class="javax.swing.JTextField" name="tfPesquisa">
                       <Events>
                         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfPesquisaFocusGained"/>
@@ -124,13 +131,6 @@
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="tfPesquisa.setText(&quot;Digite aqui...&quot;);&#xd;&#xa;tfPesquisa.setForeground(java.awt.Color.GRAY);"/>
                       </AuxValues>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel2">
-                      <Properties>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/imagens/lupa.png"/>
-                        </Property>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel1">
                       <Properties>

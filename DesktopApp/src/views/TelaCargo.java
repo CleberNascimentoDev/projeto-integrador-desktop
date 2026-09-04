@@ -103,7 +103,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(233, 243, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
 
         tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

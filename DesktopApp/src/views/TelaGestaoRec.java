@@ -97,10 +97,10 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         tfPesquisa = new javax.swing.JTextField();
         tfPesquisa.setText("Digite aqui...");
         tfPesquisa.setForeground(java.awt.Color.GRAY);
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botaoAjuda = new classes.BotaoAjuda();
         btAtribuir = new javax.swing.JButton();
@@ -121,14 +121,14 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(233, 243, 255));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
+
         tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfPesquisaFocusGained(evt);
             }
         });
         tfPesquisa.addActionListener(this::tfPesquisaActionPerformed);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(29, 45, 68));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 35)); // NOI18N

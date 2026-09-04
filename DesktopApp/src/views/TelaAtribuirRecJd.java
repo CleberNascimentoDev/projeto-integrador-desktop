@@ -166,7 +166,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
         jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 14, -1, -1));
         jPanel5.add(tfPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 420, 33));
 
