@@ -193,7 +193,6 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
                 {" . m. .m", "nlnln", "nlnlnl"},
                 {"cp", "bb", "navdad"},
                 {"NVNVA", "N ,", "VFAPODACSE"},
-                {"D C", "AVBNVBN", "CV"},
                 {"BHKBKKBK", "PREBGTO", null},
                 {null, null, null},
                 {null, null, null},
@@ -304,17 +303,18 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPesquisaActionPerformed
 
-    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+    
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                             
+            
+        }                                            
 
-    }//GEN-LAST:event_btCadastrarActionPerformed
+        private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {                                         
+            
+        }                                        
 
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-
-    }//GEN-LAST:event_btEditarActionPerformed
-
-    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
-        this.dispose();       // TODO add your handling code here:
-    }//GEN-LAST:event_btVoltarActionPerformed
+        private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {                                         
+            this.dispose();
+        }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
