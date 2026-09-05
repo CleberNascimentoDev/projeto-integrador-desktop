@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
-
+import classes.Login;
+import database.LoginDao;
+import javax.swing.JOptionPane;
 /**
  *
  * @author GabrielaCarvalhodeSo
@@ -222,11 +224,36 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btOcultarSenhaActionPerformed
 
     private void btBotaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBotaoEntrarActionPerformed
+
+        TelaMenu menu = new TelaMenu();
+        menu.setVisible(true);
+        this.dispose(); 
+        
+     /*   String email = tfCampoEmail.getText();
+        String senha = new String(pfCampoSenha.getPassword());
+
+        Login login = new Login(email, senha);
+
+        LoginDao loginDao = new LoginDao();
+
+    if (loginDao.realizarLogin(login)) {
+
+        //JOptionPane.showMessageDialog(
+                this,
+                "Login realizado com sucesso!"
+        );
         
         TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
-        this.dispose();
-        
+        this.dispose(); 
+
+    } else {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "E-mail ou senha incorretos!"
+        );
+      }*/
     }//GEN-LAST:event_btBotaoEntrarActionPerformed
 
     /**
