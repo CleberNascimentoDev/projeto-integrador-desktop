@@ -8,6 +8,9 @@ package database;
  *
  * @author RaphaelBispoIssa
  */
-public class Cargo {
-    
+public class CargoDao {
+    //insert
+    //select
+    //delete
+    //uptade
 }

@@ -105,6 +105,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         botaoAjuda = new classes.BotaoAjuda();
         btAtribuir = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -152,6 +153,13 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         btVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
         btVoltar.addActionListener(this::btVoltarActionPerformed);
 
+        btExcluir.setBackground(new java.awt.Color(192, 1, 1));
+        btExcluir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btExcluir.setText("Excluir");
+        btExcluir.setToolTipText("Selecione um cargo da tabela e clique aqui caso deseje excluir o cargo");
+        btExcluir.addActionListener(this::btExcluirActionPerformed);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -169,6 +177,8 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btAtribuir)
                         .addGap(59, 59, 59))))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -187,11 +197,12 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
                     .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btAtribuir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btAtribuir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel2)))
@@ -292,8 +303,8 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(spBarra, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                .addGap(56, 56, 56))
+                .addComponent(spBarra, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel4.add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -333,10 +344,15 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_btVoltarActionPerformed
 
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+
+    }//GEN-LAST:event_btExcluirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private classes.BotaoAjuda botaoAjuda;
     private javax.swing.JButton btAtribuir;
+    private javax.swing.JButton btExcluir;
     private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
