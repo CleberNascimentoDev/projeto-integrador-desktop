@@ -4,6 +4,12 @@
  */
 package views;
 
+import classes.Cargo;
+import database.CargoDao;
+import java.math.BigDecimal;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rapha
@@ -11,6 +17,8 @@ package views;
 public class TelaEditarJd extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaEditarJd.class.getName());
+    private Cargo cargo;
+    private boolean alteracaoRealizada;
 
     /**
      * Creates new form TelaEditarJd
@@ -21,6 +29,93 @@ public class TelaEditarJd extends javax.swing.JDialog {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+    }
+
+    public TelaEditarJd(java.awt.Frame parent, boolean modal, Cargo cargo) {
+        this(parent, modal);
+        this.cargo = cargo;
+        preencherFormulario();
+    }
+
+    public boolean isAlteracaoRealizada() {
+        return alteracaoRealizada;
+    }
+
+    private void preencherFormulario() {
+        if (cargo == null) {
+            return;
+        }
+
+        tfEditarNomeCargo.setText(cargo.getNome());
+        ffSalario.setText(cargo.getSalarioBase().toPlainString().replace('.', ','));
+        tfEditarNivel.setText(cargo.getNivel());
+        tfEditarSetor.setText(cargo.getSetor());
+        taEditarRequisitos.setText(cargo.getRequisitos());
+        taEditarAtividade.setText(cargo.getAtividades());
+    }
+
+    private Cargo obterCargoAtualizadoDoFormulario() {
+        if (cargo == null) {
+            throw new IllegalArgumentException("Nenhum cargo foi selecionado para edição.");
+        }
+
+        String nome = obterTexto(tfEditarNomeCargo.getText());
+        String nivel = obterTexto(tfEditarNivel.getText());
+        String setor = obterTexto(tfEditarSetor.getText());
+        String requisitos = obterTexto(taEditarRequisitos.getText());
+        String atividades = obterTexto(taEditarAtividade.getText());
+
+        if (nome.isEmpty() || nivel.isEmpty() || setor.isEmpty()
+                || requisitos.isEmpty() || atividades.isEmpty()
+                || ffSalario.getText().trim().isEmpty()) {
+            throw new IllegalArgumentException("Preencha todos os campos do cargo.");
+        }
+
+        validarTamanho(nome, "Nome do cargo");
+        validarTamanho(nivel, "Nível");
+        validarTamanho(setor, "Setor");
+
+        BigDecimal salario = converterSalario(ffSalario.getText());
+        if (salario.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("O salário deve ser maior que zero.");
+        }
+        if (salario.scale() > 2
+                || salario.compareTo(new BigDecimal("99999999.99")) > 0) {
+            throw new IllegalArgumentException(
+                    "O salário deve ter no máximo 8 dígitos inteiros e 2 casas decimais.");
+        }
+
+        return new Cargo(
+                cargo.getId(), nome, salario, requisitos, nivel, setor, atividades);
+    }
+
+    private void validarTamanho(String valor, String campo) {
+        if (valor.length() > 100) {
+            throw new IllegalArgumentException(
+                    campo + " deve ter no máximo 100 caracteres.");
+        }
+    }
+
+    private String obterTexto(String texto) {
+        String valor = texto == null ? "" : texto.trim();
+        return "Digite aqui...".equalsIgnoreCase(valor) ? "" : valor;
+    }
+
+    private BigDecimal converterSalario(String texto) {
+        String valor = texto.trim()
+                .replace("R$", "")
+                .replace(" ", "");
+
+        if (valor.contains(",")) {
+            valor = valor.replace(".", "").replace(',', '.');
+        }
+
+        try {
+            return new BigDecimal(valor);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(
+                    "Informe um salário válido. Exemplo: 3500,00.");
+        }
     }
 
     /**
@@ -310,7 +405,43 @@ public class TelaEditarJd extends javax.swing.JDialog {
     }//GEN-LAST:event_btEditarCancelarActionPerformed
 
     private void btEditarCadastrarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarCadastrarCargoActionPerformed
-        dispose();
+        try {
+            Cargo cargoAtualizado = obterCargoAtualizadoDoFormulario();
+            CargoDao cargoDao = new CargoDao();
+
+            if (cargoDao.editar(cargoAtualizado)) {
+                cargo = cargoAtualizado;
+                alteracaoRealizada = true;
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Cargo atualizado com sucesso!",
+                        "Edição de cargo",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "O cargo não foi encontrado para atualização.",
+                        "Edição de cargo",
+                        JOptionPane.WARNING_MESSAGE
+                );
+            }
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    e.getMessage(),
+                    "Dados inválidos",
+                    JOptionPane.WARNING_MESSAGE
+            );
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao atualizar o cargo:\n" + e.getMessage(),
+                    "Erro no banco de dados",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
     }//GEN-LAST:event_btEditarCadastrarCargoActionPerformed
 
     /**

@@ -4,6 +4,10 @@
  */
 package views;
 
+import classes.Cargo;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 /**
  *
  * @author RaphaelBispoIssa
@@ -15,6 +19,29 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
      */
     public TelaDetalhesCargo() {
         initComponents();
+    }
+
+    public TelaDetalhesCargo(Cargo cargo) {
+        this();
+        preencherCampos(cargo);
+    }
+
+    private void preencherCampos(Cargo cargo) {
+        if (cargo == null) {
+            return;
+        }
+
+        NumberFormat moeda = NumberFormat.getCurrencyInstance(
+                Locale.forLanguageTag("pt-BR"));
+
+        tfNomeCargo.setText(cargo.getNome());
+        tfSalario.setText(moeda.format(cargo.getSalarioBase()));
+        tfNivel.setText(cargo.getNivel());
+        tfSetor.setText(cargo.getSetor());
+        taRequisitos.setText(cargo.getRequisitos());
+        taAtividades.setText(cargo.getAtividades());
+        taRequisitos.setCaretPosition(0);
+        taAtividades.setCaretPosition(0);
     }
 
     /**
