@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class ConexaoBanco {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/mainrh?useSSL=false&serverTimezone=UTC";
+    private static final String URL = "jdbc:mysql://localhost:3306/mainrh?allowPublicKeyRetrieval=true&useSSL=false"; 
     private static final String USER = "root";
     private static final String PASSWORD = "root"; // Coloque sua senha aqui, se houver
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
