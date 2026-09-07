@@ -4,6 +4,16 @@
  */
 package views;
 
+import classes.ProcessoSeletivo;
+import database.ProcessoSeletivoDao;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import java.sql.SQLException;
+
 
 
 /**
@@ -19,33 +29,84 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     public TelaProcessoSeletivo() {
        initComponents();
        customizarTabela();
+       configurarBuscaDinamica();
+       carregarTabela("");
     }
     
+    
+    
+    
+    
+    
+    public void carregarTabela(String termo) {
+        DefaultTableModel model = (DefaultTableModel) tbProcessos.getModel();
+        model.setRowCount(0);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        try {
+            ProcessoSeletivoDao dao = new ProcessoSeletivoDao();
+            List<ProcessoSeletivo> lista = dao.listar(termo);
+
+            for (ProcessoSeletivo p : lista) {
+                String strInicio = (p.getDataInicio() != null) ? p.getDataInicio().format(dtf) : "-";
+                String strFim = (p.getDataFim() != null) ? p.getDataFim().format(dtf) : "-";
+
+                model.addRow(new Object[]{
+                    p.getNomeProcesso(),
+                    strInicio,
+                    strFim
+                });
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this,
+                "Erro ao carregar a lista de processos: " + e.getMessage(),
+                "Erro no Banco de Dados",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void configurarBuscaDinamica() {
+        tfPesquisa.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                carregarTabela(tfPesquisa.getText());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                carregarTabela(tfPesquisa.getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                carregarTabela(tfPesquisa.getText());
+            }
+        });
+    }
+    
+    
      private void customizarTabela() {
-    // 1. Fundo do ScrollPane e Borda do Container
+    
     spBarra.getViewport().setBackground(java.awt.Color.WHITE);
     spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
 
-    // 2. Estilização e FONTE DAS LINHAS da Tabela
     tbProcessos.setBackground(java.awt.Color.WHITE);
     tbProcessos.setRowHeight(38);
     tbProcessos.setShowGrid(true);
     tbProcessos.setShowHorizontalLines(true);
     tbProcessos.setGridColor(new java.awt.Color(153,153,153));
     
-    // ---> ALTERE O TAMANHO DA FONTE DOS DADOS AQUI <---
     tbProcessos.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
-
-    // 3. Renderizador e FONTE DO CABEÇALHO
+    
     javax.swing.table.DefaultTableCellRenderer headerRenderer = new javax.swing.table.DefaultTableCellRenderer() {
         @Override
         public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
+            boolean isSelected, boolean hasFocus, int row, int column) {
             super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             setBackground(new java.awt.Color(29, 45, 68));
             setForeground(java.awt.Color.WHITE);
             
-            // ---> ALTERE O TAMANHO DA FONTE DO CABEÇALHO AQUI <---
             setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
             
             setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -190,14 +251,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         tbProcessos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbProcessos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {" m.m.nl.nmlnl", ".nlnlnl", "nlnlnl"},
-                {" . m. .m", "nlnln", "nlnlnl"},
-                {"cp", "bb", "navdad"},
-                {"NVNVA", "N ,", "VFAPODACSE"},
-                {"BHKBKKBK", "PREBGTO", null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Processos", "Data de início", "Data de fim"
@@ -213,6 +267,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         });
         tbProcessos.setToolTipText("Aqui aparecem os cargos já cadastrados em sistema");
         tbProcessos.setShowGrid(true);
+        tbProcessos.getTableHeader().setReorderingAllowed(false);
         spBarra.setViewportView(tbProcessos);
         if (tbProcessos.getColumnModel().getColumnCount() > 0) {
             tbProcessos.getColumnModel().getColumn(0).setResizable(false);
@@ -316,18 +371,92 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfPesquisaActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        int linhaSelecionada = tbProcessos.getSelectedRow();
 
+            if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor, selecione um processo seletivo na tabela para excluir.",
+                "Nenhum Item Selecionado",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            ProcessoSeletivoDao dao = new ProcessoSeletivoDao();
+            List<ProcessoSeletivo> lista = dao.listar(tfPesquisa.getText());
+            ProcessoSeletivo processoSelecionado = lista.get(linhaSelecionada);
+
+            int confirmacao = JOptionPane.showConfirmDialog(
+                this,
+                "Tem certeza que deseja excluir o processo seletivo \"" + processoSelecionado.getNomeProcesso() + "\"?\nEsta ação não poderá ser desfeita.",
+                "Confirmar Exclusão",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+            );
+
+            if (confirmacao == JOptionPane.YES_OPTION) {
+                boolean excluiu = dao.excluir(processoSelecionado.getIdProcesso());
+
+                if (excluiu) {
+                    JOptionPane.showMessageDialog(this,
+                        "Processo Seletivo excluído com sucesso!",
+                        "Sucesso",
+                        JOptionPane.INFORMATION_MESSAGE);
+                    carregarTabela("");
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                        "Não foi possível excluir o processo seletivo.",
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 1451) {
+                JOptionPane.showMessageDialog(this,
+                    "Não é possível excluir este processo seletivo pois ele possui candidatos ou etapas vinculadas.",
+                    "Aviso de Restrição",
+                    JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this,
+                    "Erro ao excluir do banco de dados: " + e.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }    
     }//GEN-LAST:event_btExcluirActionPerformed
 
     
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        TelaCadastrarProcessoJd cadastrar = new TelaCadastrarProcessoJd(null, true);
+        TelaCadastrarProcessoJd cadastrar = new TelaCadastrarProcessoJd(null, true, this);
         cadastrar.setVisible(true);
     }                                            
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        TelaEditarProcessoJd editar = new TelaEditarProcessoJd(null, true);
-        editar.setVisible(true);
+        int linhaSelecionada = tbProcessos.getSelectedRow();
+
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor, selecione um processo seletivo na tabela para editar.", 
+                "Aviso", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            ProcessoSeletivoDao dao = new ProcessoSeletivoDao();
+            List<ProcessoSeletivo> lista = dao.listar(tfPesquisa.getText());
+            ProcessoSeletivo processoSelecionado = lista.get(linhaSelecionada);
+
+            TelaEditarProcessoJd editar = new TelaEditarProcessoJd(null, true, this, processoSelecionado);
+            editar.setVisible(true);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao carregar dados para edição: " + e.getMessage(), 
+                "Erro", 
+                JOptionPane.ERROR_MESSAGE);
+        }
     }                                        
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {                                         
