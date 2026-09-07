@@ -116,9 +116,30 @@ public class ProcessoSeletivoDao {
         }
     }
     return lista;
-}
+    }
     
     
+    public boolean atualizar(ProcessoSeletivo processo) throws SQLException {
+    String sql = """
+                 UPDATE Processo_seletivo 
+                 SET nome_proce = ?, 
+                     data_inicio_proce = ?, 
+                     data_fim_proce = ?, 
+                     id_cargo_fk = ?
+                 WHERE id_proce_pk = ?
+                 """;
+
+    Connection conexao = obterConexao();
+    try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+        stmt.setString(1, processo.getNomeProcesso());
+        stmt.setDate(2, processo.getDataInicio() != null ? Date.valueOf(processo.getDataInicio()) : null);
+        stmt.setDate(3, processo.getDataFim() != null ? Date.valueOf(processo.getDataFim()) : null);
+        stmt.setInt(4, processo.getIdCargo());
+        stmt.setInt(5, processo.getIdProcesso());
+
+        return stmt.executeUpdate() > 0;
+    }
+    }
     
     
     

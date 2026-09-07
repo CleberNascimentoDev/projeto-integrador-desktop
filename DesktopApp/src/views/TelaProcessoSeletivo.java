@@ -385,8 +385,30 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     }                                            
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        TelaEditarProcessoJd editar = new TelaEditarProcessoJd(null, true);
-        editar.setVisible(true);
+        int linhaSelecionada = tbProcessos.getSelectedRow();
+
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor, selecione um processo seletivo na tabela para editar.", 
+                "Aviso", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            ProcessoSeletivoDao dao = new ProcessoSeletivoDao();
+            List<ProcessoSeletivo> lista = dao.listar(tfPesquisa.getText());
+            ProcessoSeletivo processoSelecionado = lista.get(linhaSelecionada);
+
+            TelaEditarProcessoJd editar = new TelaEditarProcessoJd(null, true, this, processoSelecionado);
+            editar.setVisible(true);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao carregar dados para edição: " + e.getMessage(), 
+                "Erro", 
+                JOptionPane.ERROR_MESSAGE);
+        }
     }                                        
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {                                         
