@@ -78,4 +78,9 @@ public class ProcessoSeletivo {
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
+    
+    @Override
+    public String toString() {
+        return this.getNomeProcesso(); 
+    }
 }
