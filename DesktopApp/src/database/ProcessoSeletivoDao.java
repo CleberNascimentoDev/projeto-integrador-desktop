@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -72,7 +74,49 @@ public class ProcessoSeletivoDao {
     
     
     
+    public List<ProcessoSeletivo> listar(String termoBusca) throws SQLException {
+    List<ProcessoSeletivo> lista = new ArrayList<>();
     
+    String sql = """
+                 SELECT id_proce_pk, nome_proce, data_inicio_proce, data_fim_proce, id_cargo_fk, id_usuario_fk
+                 FROM Processo_seletivo
+                 """;
+
+    // Adiciona o filtro caso o usuário tenha digitado algo na busca
+    if (termoBusca != null && !termoBusca.trim().isEmpty() && !termoBusca.equals("Digite aqui...")) {
+        sql += " WHERE LOWER(nome_proce) LIKE LOWER(?)";
+    }
+
+    sql += " ORDER BY id_proce_pk DESC";
+
+    Connection conexao = obterConexao();
+    try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+        if (termoBusca != null && !termoBusca.trim().isEmpty() && !termoBusca.equals("Digite aqui...")) {
+            stmt.setString(1, "%" + termoBusca.trim() + "%");
+        }
+
+        try (ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                ProcessoSeletivo p = new ProcessoSeletivo();
+                p.setIdProcesso(rs.getInt("id_proce_pk"));
+                p.setNomeProcesso(rs.getString("nome_proce"));
+                
+                // Conversão de java.sql.Date para LocalDate
+                Date dtInicio = rs.getDate("data_inicio_proce");
+                if (dtInicio != null) p.setDataInicio(dtInicio.toLocalDate());
+
+                Date dtFim = rs.getDate("data_fim_proce");
+                if (dtFim != null) p.setDataFim(dtFim.toLocalDate());
+
+                p.setIdCargo(rs.getInt("id_cargo_fk"));
+                p.setIdUsuario(rs.getInt("id_usuario_fk"));
+
+                lista.add(p);
+            }
+        }
+    }
+    return lista;
+}
     
     
     

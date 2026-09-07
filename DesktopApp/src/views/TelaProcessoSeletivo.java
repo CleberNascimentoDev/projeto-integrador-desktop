@@ -4,6 +4,16 @@
  */
 package views;
 
+import classes.ProcessoSeletivo;
+import database.ProcessoSeletivoDao;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import java.sql.SQLException;
+
 
 
 /**
@@ -19,7 +29,62 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     public TelaProcessoSeletivo() {
        initComponents();
        customizarTabela();
+       configurarBuscaDinamica();
+       carregarTabela("");
     }
+    
+    
+    
+    
+    
+    
+    public void carregarTabela(String termo) {
+        DefaultTableModel model = (DefaultTableModel) tbProcessos.getModel();
+        model.setRowCount(0); // Limpa a tabela
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        try {
+            ProcessoSeletivoDao dao = new ProcessoSeletivoDao();
+            List<ProcessoSeletivo> lista = dao.listar(termo);
+
+            for (ProcessoSeletivo p : lista) {
+                String strInicio = (p.getDataInicio() != null) ? p.getDataInicio().format(dtf) : "-";
+                String strFim = (p.getDataFim() != null) ? p.getDataFim().format(dtf) : "-";
+
+                model.addRow(new Object[]{
+                    p.getNomeProcesso(),
+                    strInicio,
+                    strFim
+                });
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this,
+                "Erro ao carregar a lista de processos: " + e.getMessage(),
+                "Erro no Banco de Dados",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void configurarBuscaDinamica() {
+        tfPesquisa.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                carregarTabela(tfPesquisa.getText());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                carregarTabela(tfPesquisa.getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                carregarTabela(tfPesquisa.getText());
+            }
+        });
+    }
+    
     
      private void customizarTabela() {
     // 1. Fundo do ScrollPane e Borda do Container
@@ -315,7 +380,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
 
     
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        TelaCadastrarProcessoJd cadastrar = new TelaCadastrarProcessoJd(null, true);
+        TelaCadastrarProcessoJd cadastrar = new TelaCadastrarProcessoJd(null, true, this);
         cadastrar.setVisible(true);
     }                                            
 

@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
 /**
  *
  * @author RaphaelBispoIssa
@@ -22,13 +23,13 @@ import java.time.format.DateTimeParseException;
 public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaCadastrarProcessoJd.class.getName());
-
+    private TelaProcessoSeletivo telaPai;
     /**
      * Creates new form TelaCadastrarProcessoJd
      */
     public TelaCadastrarProcessoJd(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        this.setUndecorated(false);
+        super((java.awt.Frame) null, modal);
+        this.telaPai = telaPai;
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -36,7 +37,14 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
     }
 
 
-    
+    public TelaCadastrarProcessoJd(java.awt.Frame parent, boolean modal, TelaProcessoSeletivo telaPai) {
+        super((java.awt.Frame) null, modal);
+        this.telaPai = telaPai;
+        initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        carregarCargos();
+    }
     
     
     
@@ -263,7 +271,6 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
             return;
         }
 
-        // 4. Inserção no banco
         try {
             ProcessoSeletivo processo = new ProcessoSeletivo();
             processo.setNomeProcesso(nome);
@@ -274,7 +281,14 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
             ProcessoSeletivoDao dao = new ProcessoSeletivoDao();
             if (dao.cadastrar(processo)) {
                 JOptionPane.showMessageDialog(this, "Processo Seletivo cadastrado com sucesso!");
-                this.dispose();
+
+                // --- ADICIONE ESTA LINHA ---
+                // Se a tela pai existir, manda ela atualizar a tabela
+                if (this.telaPai != null) {
+                    this.telaPai.carregarTabela("");
+                }
+
+                this.dispose(); // Fecha a tela de cadastro
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar no banco: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
