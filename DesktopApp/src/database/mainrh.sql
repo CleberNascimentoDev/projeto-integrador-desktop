@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `Processo_seletivo` (
     `data_inicio_proce` DATE NOT NULL DEFAULT (CURRENT_DATE),
     `data_fim_proce` DATE,
     `id_cargo_fk` INT NOT NULL,
-    `id_usuario_fk` INT NOT NULL,
+    `id_usuario_fk` INT NULL,
     PRIMARY KEY (`id_proce_pk`),
     CONSTRAINT `fk_proce_cargo`
         FOREIGN KEY (`id_cargo_fk`) REFERENCES `Cargo` (`id_cargo_pk`),

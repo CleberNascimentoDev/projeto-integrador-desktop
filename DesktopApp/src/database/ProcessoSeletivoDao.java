@@ -138,7 +138,9 @@ public class ProcessoSeletivoDao {
         if (dtFim != null) p.setDataFim(dtFim.toLocalDate());
 
         p.setIdCargo(rs.getInt("id_cargo_fk"));
-        p.setIdUsuario(rs.getInt("id_usuario_fk"));
+
+        int idUsuario = rs.getInt("id_usuario_fk");
+        p.setIdUsuario(rs.wasNull() ? null : idUsuario);
 
         return p;
     }
