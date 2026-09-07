@@ -56,10 +56,10 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
             List<Cargo> cargos = cargoDao.listar();
 
             jcbCargo.removeAllItems();
-            jcbCargo.addItem("Selecione um cargo..."); // Placeholder como String
+            jcbCargo.addItem("Selecione um cargo...");
 
             for (Cargo cargo : cargos) {
-                jcbCargo.addItem(cargo.getNome()); // Adiciona apenas o nome (String)
+                jcbCargo.addItem(cargo.getNome());
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this,
@@ -71,11 +71,9 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
 
     private void preencherCampos() {
         if (processoParaEditar != null) {
-            // Nome
             jtNome.setText(processoParaEditar.getNomeProcesso());
             jtNome.setForeground(Color.BLACK);
 
-            // Datas
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             if (processoParaEditar.getDataInicio() != null) {
                 jtDataInicio.setText(processoParaEditar.getDataInicio().format(dtf));
@@ -84,7 +82,6 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
                 jtDataFim.setText(processoParaEditar.getDataFim().format(dtf));
             }
 
-            // Seleção do Cargo na ComboBox
             try {
                 CargoDao cargoDao = new CargoDao();
                 List<Cargo> cargos = cargoDao.listar();
@@ -236,7 +233,7 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
         if (jtNome.getText().equals("Digite o nome do processo...")) {
             jtNome.setText("");
             jtNome.setForeground(Color.BLACK);
-        }   // placeholder do campo nome
+        }
     }//GEN-LAST:event_jtNomeFocusGained
 
     private void jtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNomeFocusLost
@@ -244,19 +241,17 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
             jtNome.setText("Digite o nome do processo...");
             jtNome.setForeground(Color.GRAY);
 
-        }  //placeholder do campo nome
+        }
     }//GEN-LAST:event_jtNomeFocusLost
 
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
         String nome = jtNome.getText().trim();
 
-        // 1. Validação de nome
         if (nome.isEmpty() || nome.equals("Digite o nome do processo...")) {
             JOptionPane.showMessageDialog(this, "Informe o nome do processo seletivo.", "Campo Obrigatório", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        // 2. Validação do cargo
         String nomeCargoSelecionado = (String) jcbCargo.getSelectedItem();
         if (nomeCargoSelecionado == null || nomeCargoSelecionado.equals("Selecione um cargo...")) {
             JOptionPane.showMessageDialog(this, "Selecione um cargo válido.", "Campo Obrigatório", JOptionPane.WARNING_MESSAGE);
@@ -280,7 +275,6 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
             return;
         }
 
-        // 3. Validação das datas
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dataInicio = null;
         LocalDate dataFim = null;
@@ -301,14 +295,12 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
                 return;
             }
         }
-
-        // Validação: Data Fim < Data Início
+        
         if (dataFim != null && dataFim.isBefore(dataInicio)) {
             JOptionPane.showMessageDialog(this, "A data de fim não pode ser anterior à data de início!", "Data Inválida", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        // --- VERIFICAÇÃO SE HOUVE ALTERAÇÃO ---
         boolean mesmoNome = nome.equals(processoParaEditar.getNomeProcesso());
         boolean mesmoCargo = cargoSelecionado.getId() == processoParaEditar.getIdCargo();
         boolean mesmaDataInicio = dataInicio.equals(processoParaEditar.getDataInicio());
@@ -322,10 +314,9 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
                 "Sem Alterações", 
                 JOptionPane.INFORMATION_MESSAGE
             );
-            return; // Interrompe a execução antes de ir ao banco
+            return;
         }
 
-        // 4. Inserção das alterações no banco
         try {
             processoParaEditar.setNomeProcesso(nome);
             processoParaEditar.setIdCargo(cargoSelecionado.getId());

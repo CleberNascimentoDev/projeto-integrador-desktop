@@ -55,10 +55,10 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
             List<Cargo> cargos = cargoDao.listar();
 
             jcbCargo.removeAllItems();
-            jcbCargo.addItem("Selecione um cargo..."); // Placeholder como String
+            jcbCargo.addItem("Selecione um cargo...");
 
             for (Cargo cargo : cargos) {
-                jcbCargo.addItem(cargo.getNome()); // Adiciona apenas o nome (String)
+                jcbCargo.addItem(cargo.getNome());
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this,
@@ -197,7 +197,7 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
         if (jtNome.getText().equals("Digite o nome do processo...")) {
             jtNome.setText("");
             jtNome.setForeground(Color.BLACK);
-        }   // placeholder do campo nome
+        }   
     }//GEN-LAST:event_jtNomeFocusGained
 
     private void jtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNomeFocusLost
@@ -205,19 +205,17 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
             jtNome.setText("Digite o nome do processo...");
             jtNome.setForeground(Color.GRAY);
 
-        }  //placeholder do campo nome
+        }  
     }//GEN-LAST:event_jtNomeFocusLost
 
     private void jbCadastarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastarActionPerformed
     String nome = jtNome.getText().trim();
         
-        // 1. Validação de nome
         if (nome.isEmpty() || nome.equals("Digite o nome do processo...")) {
             JOptionPane.showMessageDialog(this, "Informe o nome do processo seletivo.", "Campo Obrigatório", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        // 2. Validação do cargo (tratado como String)
         String nomeCargoSelecionado = (String) jcbCargo.getSelectedItem();
 
         if (nomeCargoSelecionado == null || nomeCargoSelecionado.equals("Selecione um cargo...")) {
@@ -225,7 +223,6 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
             return;
         }
 
-        // Busca o objeto Cargo pelo nome no banco para obter o ID
         Cargo cargoSelecionado = null;
         try {
             CargoDao cargoDao = new CargoDao();
@@ -243,7 +240,6 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
             return;
         }
 
-        // 3. Validação das datas
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dataInicio = null;
         LocalDate dataFim = null;
@@ -265,7 +261,6 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
             }
         }
 
-        // --- VALIDAÇÃO: Data Fim < Data Início ---
         if (dataFim != null && dataFim.isBefore(dataInicio)) {
             JOptionPane.showMessageDialog(this, "A data de fim não pode ser anterior à data de início!", "Data Inválida", JOptionPane.WARNING_MESSAGE);
             return;
@@ -282,13 +277,11 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
             if (dao.cadastrar(processo)) {
                 JOptionPane.showMessageDialog(this, "Processo Seletivo cadastrado com sucesso!");
 
-                // --- ADICIONE ESTA LINHA ---
-                // Se a tela pai existir, manda ela atualizar a tabela
                 if (this.telaPai != null) {
                     this.telaPai.carregarTabela("");
                 }
 
-                this.dispose(); // Fecha a tela de cadastro
+                this.dispose();
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar no banco: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);

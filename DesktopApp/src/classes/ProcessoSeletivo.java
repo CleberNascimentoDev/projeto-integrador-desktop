@@ -17,8 +17,8 @@ public class ProcessoSeletivo {
     private LocalDate dataInicio;
     private LocalDate dataFim;
     private int idCargo;
-    private Integer idUsuario; // Integer permite valores nulos (já que id_usuario_fk pode ser NULL)
-
+    private Integer idUsuario; 
+    
     public ProcessoSeletivo() {
     }
 
