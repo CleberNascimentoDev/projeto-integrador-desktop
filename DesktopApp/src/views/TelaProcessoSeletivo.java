@@ -190,14 +190,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         tbProcessos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbProcessos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {" m.m.nl.nmlnl", ".nlnlnl", "nlnlnl"},
-                {" . m. .m", "nlnln", "nlnlnl"},
-                {"cp", "bb", "navdad"},
-                {"NVNVA", "N ,", "VFAPODACSE"},
-                {"BHKBKKBK", "PREBGTO", null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Processos", "Data de início", "Data de fim"
@@ -213,6 +206,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         });
         tbProcessos.setToolTipText("Aqui aparecem os cargos já cadastrados em sistema");
         tbProcessos.setShowGrid(true);
+        tbProcessos.getTableHeader().setReorderingAllowed(false);
         spBarra.setViewportView(tbProcessos);
         if (tbProcessos.getColumnModel().getColumnCount() > 0) {
             tbProcessos.getColumnModel().getColumn(0).setResizable(false);
