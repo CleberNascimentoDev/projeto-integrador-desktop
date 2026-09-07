@@ -8,13 +8,21 @@ import classes.Cargo;
 import database.CargoDao;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import javax.swing.JOptionPane;
+import javax.swing.text.JTextComponent;
 
 /**
  *
  * @author rapha
  */
 public class TelaCadastroJd extends javax.swing.JDialog {
+
+    private static final String TEXTO_PLACEHOLDER = "Digite aqui...";
+    private static final Color COR_PLACEHOLDER = new Color(153, 153, 153);
+    private static final Color COR_TEXTO = Color.BLACK;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaCadastroJd.class.getName());
     private boolean cadastroRealizado;
@@ -26,6 +34,7 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         super(parent, modal);
         this.setUndecorated(false);
         initComponents();
+        configurarPlaceholders();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
@@ -34,16 +43,51 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         return cadastroRealizado;
     }
 
+    private void configurarPlaceholders() {
+        configurarPlaceholder(tfNomeCargo);
+        configurarPlaceholder(ffSalario);
+        configurarPlaceholder(tfNivel);
+        configurarPlaceholder(tfSetor);
+        configurarPlaceholder(taRequisitos);
+        configurarPlaceholder(taAtividade);
+    }
+
+    private void configurarPlaceholder(JTextComponent campo) {
+        campo.setText(TEXTO_PLACEHOLDER);
+        campo.setForeground(COR_PLACEHOLDER);
+
+        campo.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent evt) {
+                if (TEXTO_PLACEHOLDER.equals(campo.getText())) {
+                    campo.setText("");
+                }
+                campo.setForeground(COR_TEXTO);
+            }
+
+            @Override
+            public void focusLost(FocusEvent evt) {
+                if (campo.getText().trim().isEmpty()) {
+                    campo.setText(TEXTO_PLACEHOLDER);
+                    campo.setForeground(COR_PLACEHOLDER);
+                } else {
+                    campo.setForeground(COR_TEXTO);
+                }
+            }
+        });
+    }
+
     private Cargo obterCargoDoFormulario() {
         String nome = obterTexto(tfNomeCargo.getText());
         String nivel = obterTexto(tfNivel.getText());
         String setor = obterTexto(tfSetor.getText());
         String requisitos = obterTexto(taRequisitos.getText());
         String atividades = obterTexto(taAtividade.getText());
+        String salarioTexto = obterTexto(ffSalario.getText());
 
         if (nome.isEmpty() || nivel.isEmpty() || setor.isEmpty()
                 || requisitos.isEmpty() || atividades.isEmpty()
-                || ffSalario.getText().trim().isEmpty()) {
+                || salarioTexto.isEmpty()) {
             throw new IllegalArgumentException("Preencha todos os campos do cargo.");
         }
 
@@ -51,7 +95,7 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         validarTamanho(nivel, "Nível");
         validarTamanho(setor, "Setor");
 
-        BigDecimal salario = converterSalario(ffSalario.getText());
+        BigDecimal salario = converterSalario(salarioTexto);
         if (salario.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("O salário deve ser maior que zero.");
         }
@@ -73,7 +117,7 @@ public class TelaCadastroJd extends javax.swing.JDialog {
 
     private String obterTexto(String texto) {
         String valor = texto == null ? "" : texto.trim();
-        return "Digite aqui...".equalsIgnoreCase(valor) ? "" : valor;
+        return TEXTO_PLACEHOLDER.equalsIgnoreCase(valor) ? "" : valor;
     }
 
     private BigDecimal converterSalario(String texto) {
