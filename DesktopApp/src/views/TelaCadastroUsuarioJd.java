@@ -205,6 +205,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jpComponentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 580, 40));
 
         cbCampoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione uma função", "Administrador (a)", "Recrutador (a)" }));
+        cbCampoFuncao.addActionListener(this::cbCampoFuncaoActionPerformed);
         jpComponentes.add(cbCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 280, 44));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
@@ -283,7 +284,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jpComponentes.add(jtfCampoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 280, 44));
 
         try {
-            tfCampoDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ")));
+            tfCampoDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -329,15 +330,15 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nome = tfCampoNome.getText().trim();
-    String email = tfCampoEmail.getText().trim();
+         String nome = tfCampoNome.getText().trim();
+         String email = tfCampoEmail.getText().trim();
 
-    String cpf = tfCampoCPF.getText()
+          String cpf = tfCampoCPF.getText()
             .replace(".", "")
             .replace("-", "")
             .trim();
 
-    String telefone = jtfCampoTelefone.getText()
+          String telefone = jtfCampoTelefone.getText()
             .replaceAll("\\D", "");
 
     String senha = String.valueOf(pfCampoSenha.getPassword());
@@ -402,24 +403,24 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
                     "Não foi possível cadastrar o usuário."
             );
         }
+        
+        } catch (SQLException e) {
 
-    } catch (SQLException e) {
+    JOptionPane.showMessageDialog(
+            this,
+            "Não foi possível realizar o cadastro. Verifique os dados informados e tente novamente.",
+            "Erro ao cadastrar",
+            JOptionPane.ERROR_MESSAGE
+    );
 
-        JOptionPane.showMessageDialog(
-                this,
-                "Erro no banco de dados:\n" + e.getMessage(),
-                "Erro",
-                JOptionPane.ERROR_MESSAGE
-        );
+   } catch (java.time.format.DateTimeParseException e) {
 
-    } catch (Exception e) {
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Verifique a data de nascimento.",
-                "Dados inválidos",
-                JOptionPane.WARNING_MESSAGE
-        );
+    JOptionPane.showMessageDialog(
+            this,
+            "Informe uma data de nascimento válida no formato dd/mm/aaaa.",
+            "Data inválida",
+            JOptionPane.WARNING_MESSAGE
+    );
     }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -479,6 +480,10 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         ));
     }
     }//GEN-LAST:event_jbOlhoConfirmarSenhaActionPerformed
+
+    private void cbCampoFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCampoFuncaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbCampoFuncaoActionPerformed
 
     /**
      * @param args the command line arguments
