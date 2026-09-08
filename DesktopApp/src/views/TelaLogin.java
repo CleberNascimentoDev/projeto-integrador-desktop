@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
+import classes.Usuario;
+import database.LoginDao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -222,10 +226,65 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btOcultarSenhaActionPerformed
 
     private void btBotaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBotaoEntrarActionPerformed
-        
-        TelaMenu menu = new TelaMenu();
-        menu.setVisible(true);
-        this.dispose();
+       
+    String email = tfCampoEmail.getText().trim();
+    String senha = String.valueOf(pfCampoSenha.getPassword());
+
+    // Verifica se os campos foram preenchidos
+    if (email.isEmpty()
+            || email.equals("Digite seu e-mail")
+            || senha.isEmpty()
+            || senha.equals("Digite sua senha")) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Preencha o e-mail e a senha.",
+                "Campos obrigatórios",
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        return;
+    }
+
+    try {
+
+        LoginDao dao = new LoginDao();
+
+        Usuario usuario = dao.realizarLogin(email, senha);
+
+        if (usuario != null) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Bem-vindo(a), " + usuario.getNome() + "!",
+                    "Login realizado",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+            TelaMenu menu = new TelaMenu();
+            menu.setVisible(true);
+
+            this.dispose();
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "E-mail ou senha inválidos.",
+                    "Login inválido",
+                    JOptionPane.WARNING_MESSAGE
+            );
+        }
+
+    } catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Erro ao acessar o banco de dados:\n" + e.getMessage(),
+                "Erro no Banco de Dados",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
         
     }//GEN-LAST:event_btBotaoEntrarActionPerformed
 
