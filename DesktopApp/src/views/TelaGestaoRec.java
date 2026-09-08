@@ -366,12 +366,49 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tbProcessoMouseClicked
 
     private void btAtribuirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtribuirActionPerformed
-     TelaAtribuirRecJd atribuir = new TelaAtribuirRecJd(null, true);
 
-    atribuir.setVisible(true);
+    int linhaSelecionada = tbProcesso.getSelectedRow();
 
-    // Atualiza a tabela depois que a tela de atribuição for fechada
-    carregarTabela(tfPesquisa.getText());
+    if (linhaSelecionada == -1) {
+        JOptionPane.showMessageDialog(
+                this,
+                "Selecione um processo seletivo na tabela.",
+                "Nenhum processo selecionado",
+                JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    try {
+
+        GestaoDao dao = new GestaoDao();
+
+        List<Object[]> lista = dao.listar(tfPesquisa.getText());
+
+        int idProcesso =
+                (int) lista.get(linhaSelecionada)[0];
+
+        TelaAtribuirRecJd atribuir =
+                new TelaAtribuirRecJd(
+                        null,
+                        true,
+                        idProcesso
+                );
+
+        atribuir.setVisible(true);
+
+        // Atualiza a tabela depois de fechar a tela
+        carregarTabela(tfPesquisa.getText());
+
+    } catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Não foi possível abrir o processo selecionado.",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
     }//GEN-LAST:event_btAtribuirActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
@@ -379,7 +416,84 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+    int linhaSelecionada = tbProcesso.getSelectedRow();
 
+    if (linhaSelecionada == -1) {
+        JOptionPane.showMessageDialog(
+                this,
+                "Selecione um processo seletivo na tabela.",
+                "Nenhum processo selecionado",
+                JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    // Verifica se já está sem recrutador
+    String recrutador = tbProcesso.getValueAt(linhaSelecionada, 1).toString();
+
+    if (recrutador.equals("Não atribuído")) {
+        JOptionPane.showMessageDialog(
+                this,
+                "Este processo não possui um recrutador atribuído.",
+                "Aviso",
+                JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    int confirmacao = JOptionPane.showConfirmDialog(
+            this,
+            "Deseja remover o recrutador deste processo seletivo?",
+            "Confirmar exclusão",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+    );
+
+    if (confirmacao != JOptionPane.YES_OPTION) {
+        return;
+    }
+
+    try {
+
+        GestaoDao dao = new GestaoDao();
+
+        // Pega novamente a lista para descobrir o ID do processo
+        List<Object[]> lista = dao.listar(tfPesquisa.getText());
+
+        int idProcesso = (int) lista.get(linhaSelecionada)[0];
+
+        boolean excluiu = dao.excluirRecrutador(idProcesso);
+
+        if (excluiu) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Recrutador removido do processo com sucesso!",
+                    "Sucesso",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+            carregarTabela(tfPesquisa.getText());
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Não foi possível remover o recrutador.",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+
+    } catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Não foi possível remover o recrutador.",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
     }//GEN-LAST:event_btExcluirActionPerformed
 
 
