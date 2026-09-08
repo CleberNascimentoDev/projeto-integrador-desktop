@@ -3,6 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package views;
+import classes.Usuario;
+import database.CadastroDao;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,9 +25,80 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         super(parent, modal);
         this.setUndecorated(false);
         initComponents();
+        configurarPlaceholders();
+        configurarPlaceholderSenha(pfCampoSenha, "Digite a senha");
+        configurarPlaceholderSenha(pfCampoConfirmarSenha, "Confirme a senha");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
+    
+    private void configurarPlaceholderSenha(
+        javax.swing.JPasswordField campo,
+        String placeholder) {
+
+    // Faz o placeholder aparecer normalmente, sem bolinhas
+    campo.setEchoChar((char) 0);
+
+    campo.addFocusListener(new java.awt.event.FocusAdapter() {
+
+        @Override
+        public void focusGained(java.awt.event.FocusEvent evt) {
+
+            String texto = String.valueOf(campo.getPassword());
+
+            if (texto.equals(placeholder)) {
+                campo.setText("");
+                campo.setForeground(java.awt.Color.BLACK);
+
+                // Volta a esconder a senha
+                campo.setEchoChar('•');
+            }
+        }
+
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+
+            if (campo.getPassword().length == 0) {
+                campo.setEchoChar((char) 0);
+                campo.setText(placeholder);
+                campo.setForeground(
+                        new java.awt.Color(153, 153, 153)
+                );
+            }
+        }
+    });
+}
+    
+    private void configurarPlaceholders() {
+
+    configurarPlaceholder(tfCampoNome, "Digite o nome");
+    configurarPlaceholder(tfCampoDataNascimento, "dd/mm/aaaa");
+    configurarPlaceholder(tfCampoCPF, "000.000.000-00");
+    configurarPlaceholder(tfCampoEmail, "Digite o e-mail");
+    configurarPlaceholder(jtfCampoTelefone, "Digite o telefone");
+}
+    
+    private void configurarPlaceholder(javax.swing.JTextField campo, String placeholder) {
+
+    campo.addFocusListener(new java.awt.event.FocusAdapter() {
+
+        @Override
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            if (campo.getText().equals(placeholder)) {
+                campo.setText("");
+                campo.setForeground(java.awt.Color.BLACK);
+            }
+        }
+
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            if (campo.getText().trim().isEmpty()) {
+                campo.setText(placeholder);
+                campo.setForeground(new java.awt.Color(153, 153, 153));
+            }
+        }
+    });
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -135,6 +212,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cadastrar");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
         jpComponentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 580, 40));
 
         cbCampoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione uma função", "Administrador (a)", "Recrutador (a)" }));
@@ -234,6 +312,101 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         this.dispose();       // TODO add your handling code here:
     }//GEN-LAST:event_btVoltarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String nome = tfCampoNome.getText().trim();
+    String email = tfCampoEmail.getText().trim();
+
+    String cpf = tfCampoCPF.getText()
+            .replace(".", "")
+            .replace("-", "")
+            .trim();
+
+    String telefone = jtfCampoTelefone.getText()
+            .replaceAll("\\D", "");
+
+    String senha = String.valueOf(pfCampoSenha.getPassword());
+    String confirmarSenha = String.valueOf(pfCampoConfirmarSenha.getPassword());
+
+    String funcao;
+
+    if (cbCampoFuncao.getSelectedIndex() == 1) {
+        funcao = "ADM";
+    } else if (cbCampoFuncao.getSelectedIndex() == 2) {
+        funcao = "RECRUTADOR";
+    } else {
+        JOptionPane.showMessageDialog(
+                this,
+                "Selecione uma função."
+        );
+        return;
+    }
+
+    if (!senha.equals(confirmarSenha)) {
+        JOptionPane.showMessageDialog(
+                this,
+                "As senhas não coincidem."
+        );
+        return;
+    }
+
+    try {
+
+        DateTimeFormatter formato =
+                DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        LocalDate dataNascimento =
+                LocalDate.parse(tfCampoDataNascimento.getText(), formato);
+
+        Usuario usuario = new Usuario();
+
+        usuario.setNome(nome);
+        usuario.setEmail(email);
+        usuario.setCpf(cpf);
+        usuario.setTelefone(telefone);
+        usuario.setFuncao(funcao);
+        usuario.setDataNascimento(dataNascimento);
+
+        CadastroDao dao = new CadastroDao();
+
+        boolean cadastrou = dao.cadastrar(usuario, senha);
+
+        if (cadastrou) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Usuário cadastrado com sucesso!"
+            );
+
+            this.dispose();
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Não foi possível cadastrar o usuário."
+            );
+        }
+
+    } catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Erro no banco de dados:\n" + e.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+        );
+
+    } catch (Exception e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Verifique a data de nascimento.",
+                "Dados inválidos",
+                JOptionPane.WARNING_MESSAGE
+        );
+    }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
