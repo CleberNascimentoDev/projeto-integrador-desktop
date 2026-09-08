@@ -339,61 +339,9 @@
                               <Font name="Arial" size="14" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="2" rowCount="25">
-                                <Column editable="false" title="Processo Seletivo" type="java.lang.Object">
-                                  <Data value="DEV SENIOR"/>
-                                  <Data value="DEV PLENO"/>
-                                  <Data value="DEV JUNIOR"/>
-                                  <Data value="DEVEDOR DO SERASA"/>
-                                  <Data value="sdvsv"/>
-                                  <Data value="sdvsvsvsdv"/>
-                                  <Data value="sdvsdvsv"/>
-                                  <Data value="sdvsvsv"/>
-                                  <Data value="sdvsvsdv"/>
-                                  <Data value="sdvsvsv"/>
-                                  <Data value="sdvsvsv"/>
-                                  <Data value="svsvsvsvsvvsvdsvsv"/>
-                                  <Data value="svsvsvsvsvsdvsvsvsvsvs"/>
-                                  <Data value="svsvssv"/>
-                                  <Data value="sdvsvsvsvsssssssssssssssssssssss"/>
-                                  <Data value="svsvsvsv"/>
-                                  <Data value="svsvsvsvs"/>
-                                  <Data value="sdvsvsvsvs"/>
-                                  <Data value="svsvsvsvsv"/>
-                                  <Data value="svsvsvsvsvs"/>
-                                  <Data value="svsvsv"/>
-                                  <Data value="svsvsvsdvs"/>
-                                  <Data value="svsdvsvsvsv"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                </Column>
-                                <Column editable="false" title="Recrutador Alocado" type="java.lang.Object">
-                                  <Data value="Gabiru do boleto"/>
-                                  <Data value=""/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                  <Data value="null"/>
-                                </Column>
+                              <Table columnCount="2" rowCount="0">
+                                <Column editable="false" title="Processo Seletivo" type="java.lang.Object"/>
+                                <Column editable="false" title="Recrutador Alocado" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="toolTipText" type="java.lang.String" value="Aqui aparecem os processos seletivos j&#xe1; cadastrados em sistema, al&#xe9;m dos recrutadores atribuidos"/>

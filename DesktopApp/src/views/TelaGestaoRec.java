@@ -3,6 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package views;
+import database.GestaoDao;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import views.TelaAtribuirRecJd;
 
@@ -16,9 +23,73 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
      * Creates new form TelaGestaoRec
      */
     public TelaGestaoRec() {
-        initComponents();
-        customizarTabela();
+    initComponents();
+    customizarTabela();
+    configurarBuscaDinamica();
+    carregarTabela("");
+}
+    
+    private void carregarTabela(String termo) {
+
+    DefaultTableModel model =
+            (DefaultTableModel) tbProcesso.getModel();
+
+    model.setRowCount(0);
+
+    try {
+
+        GestaoDao dao = new GestaoDao();
+
+        List<Object[]> lista = dao.listar(termo);
+
+        for (Object[] item : lista) {
+
+            String nomeProcesso = (String) item[1];
+            String recrutador = (String) item[2];
+
+            if (recrutador == null || recrutador.isBlank()) {
+                recrutador = "Não atribuído";
+            }
+
+            model.addRow(new Object[]{
+                nomeProcesso,
+                recrutador
+            });
+        }
+
+    } catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Não foi possível carregar os processos seletivos.",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+        );
     }
+}
+    
+    private void configurarBuscaDinamica() {
+
+    tfPesquisa.getDocument().addDocumentListener(
+            new DocumentListener() {
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            carregarTabela(tfPesquisa.getText());
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            carregarTabela(tfPesquisa.getText());
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            carregarTabela(tfPesquisa.getText());
+        }
+    });
+}
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,24 +142,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
 
     tbProcesso.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
 }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -233,31 +287,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         tbProcesso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbProcesso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"DEV SENIOR", "Gabiru do boleto"},
-                {"DEV PLENO", ""},
-                {"DEV JUNIOR", null},
-                {"DEVEDOR DO SERASA", null},
-                {"sdvsv", null},
-                {"sdvsvsvsdv", null},
-                {"sdvsdvsv", null},
-                {"sdvsvsv", null},
-                {"sdvsvsdv", null},
-                {"sdvsvsv", null},
-                {"sdvsvsv", null},
-                {"svsvsvsvsvvsvdsvsv", null},
-                {"svsvsvsvsvsdvsvsvsvsvs", null},
-                {"svsvssv", null},
-                {"sdvsvsvsvsssssssssssssssssssssss", null},
-                {"svsvsvsv", null},
-                {"svsvsvsvs", null},
-                {"sdvsvsvsvs", null},
-                {"svsvsvsvsv", null},
-                {"svsvsvsvsvs", null},
-                {"svsvsv", null},
-                {"svsvsvsdvs", null},
-                {"svsdvsvsvsv", null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Processo Seletivo", "Recrutador Alocado"
@@ -336,8 +366,12 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tbProcessoMouseClicked
 
     private void btAtribuirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtribuirActionPerformed
-        TelaAtribuirRecJd atribuir = new TelaAtribuirRecJd(null, true);
-        atribuir.setVisible(true);
+     TelaAtribuirRecJd atribuir = new TelaAtribuirRecJd(null, true);
+
+    atribuir.setVisible(true);
+
+    // Atualiza a tabela depois que a tela de atribuição for fechada
+    carregarTabela(tfPesquisa.getText());
     }//GEN-LAST:event_btAtribuirActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
