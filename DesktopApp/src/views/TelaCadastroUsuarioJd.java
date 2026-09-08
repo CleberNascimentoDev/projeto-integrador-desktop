@@ -30,7 +30,79 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        configurarPlaceholder(tfCampoNome, "Digite o nome");
+        configurarPlaceholder(tfCampoEmail, "Digite o e-mail");
+
+        configurarPlaceholderSenha(pfCampoSenha, "Digite a senha");
+        configurarPlaceholderSenha(pfCampoConfirmarSenha, "Confirme a senha");
     }
+    
+    private void configurarPlaceholder(
+        javax.swing.JTextField campo,
+        String placeholder) {
+
+    campo.setText(placeholder);
+    campo.setForeground(new java.awt.Color(153, 153, 153));
+
+    campo.addFocusListener(new java.awt.event.FocusAdapter() {
+
+        @Override
+        public void focusGained(java.awt.event.FocusEvent evt) {
+
+            if (campo.getText().equals(placeholder)) {
+                campo.setText("");
+                campo.setForeground(java.awt.Color.BLACK);
+            }
+        }
+
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+
+            if (campo.getText().trim().isEmpty()) {
+                campo.setText(placeholder);
+                campo.setForeground(
+                        new java.awt.Color(153, 153, 153)
+                );
+            }
+        }
+    });
+}
+    
+    private void configurarPlaceholderSenha(
+        javax.swing.JPasswordField campo,
+        String placeholder) {
+
+    campo.setEchoChar((char) 0);
+    campo.setText(placeholder);
+    campo.setForeground(new java.awt.Color(153, 153, 153));
+
+    campo.addFocusListener(new java.awt.event.FocusAdapter() {
+
+        @Override
+        public void focusGained(java.awt.event.FocusEvent evt) {
+
+            String texto = String.valueOf(campo.getPassword());
+
+            if (texto.equals(placeholder)) {
+                campo.setText("");
+                campo.setForeground(java.awt.Color.BLACK);
+                campo.setEchoChar('•');
+            }
+        }
+
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+
+            if (campo.getPassword().length == 0) {
+                campo.setEchoChar((char) 0);
+                campo.setText(placeholder);
+                campo.setForeground(
+                        new java.awt.Color(153, 153, 153)
+                );
+            }
+        }
+    });
+}
     
     /**
      * This method is called from within the constructor to initialize the form.
