@@ -160,9 +160,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpCorFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jpCorFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,20 +252,34 @@ public class TelaLogin extends javax.swing.JFrame {
 
         if (usuario != null) {
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Bem-vindo(a), " + usuario.getNome() + "!",
-                    "Login realizado",
-                    JOptionPane.INFORMATION_MESSAGE
+         String funcao = usuario.getFuncao();
+
+        if ("ADM".equals(funcao) || "RECRUTADOR".equals(funcao)) {
+    
+        JOptionPane.showMessageDialog(
+                this,
+                "Bem-vindo(a), " + usuario.getNome() + "!",
+                "Login realizado",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        TelaMenu menu = new TelaMenu();
+        menu.setVisible(true);
+
+        this.dispose();
+
+         } else {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Este usuário não possui permissão para acessar o sistema.",
+                "Acesso negado",
+                JOptionPane.WARNING_MESSAGE
             );
-
-            TelaMenu menu = new TelaMenu();
-            menu.setVisible(true);
-
-            this.dispose();
+        }
 
         } else {
-
+            
             JOptionPane.showMessageDialog(
                     this,
                     "E-mail ou senha inválidos.",
