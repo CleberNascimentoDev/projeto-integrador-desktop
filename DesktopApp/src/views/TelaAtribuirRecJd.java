@@ -437,8 +437,8 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     }//GEN-LAST:event_tbRecrutadorMouseClicked
 
     private void btAtribuirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtribuirActionPerformed
-    int linhaSelecionada =
-            tbRecrutador.getSelectedRow();
+
+    int linhaSelecionada = tbRecrutador.getSelectedRow();
 
     if (linhaSelecionada == -1) {
 
@@ -463,6 +463,21 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
 
         Usuario recrutadorSelecionado =
                 recrutadores.get(linhaSelecionada);
+
+        // Verifica se o recrutador selecionado já está atribuído
+        if (dao.mesmoRecrutador(
+                idProcesso,
+                recrutadorSelecionado.getIdUsuario())) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Este recrutador já está atribuído a este processo seletivo.",
+                    "Recrutador já atribuído",
+                    JOptionPane.WARNING_MESSAGE
+            );
+
+            return;
+        }
 
         boolean atribuiu =
                 dao.atribuirRecrutador(

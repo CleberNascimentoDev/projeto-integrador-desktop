@@ -241,26 +241,64 @@ public class GestaoDao {
 
 
     // Atribui ou troca o recrutador de um processo
-    public boolean atribuirRecrutador(
-            int idProcesso,
-            int idUsuario) throws SQLException {
+   public boolean atribuirRecrutador(
+        int idProcesso,
+        int idUsuario) throws SQLException {
 
-        String sql = """
-                     UPDATE Processo_seletivo
-                     SET id_usuario_fk = ?
-                     WHERE id_proce_pk = ?
-                     """;
+    String sql = """
+                 UPDATE Processo_seletivo
+                 SET id_usuario_fk = ?
+                 WHERE id_proce_pk = ?
+                   AND (
+                       id_usuario_fk IS NULL
+                       OR id_usuario_fk <> ?
+                   )
+                 """;
 
-        Connection conexao = obterConexao();
+    Connection conexao = obterConexao();
 
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+    try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
-            stmt.setInt(1, idUsuario);
-            stmt.setInt(2, idProcesso);
+        stmt.setInt(1, idUsuario);
+        stmt.setInt(2, idProcesso);
+        stmt.setInt(3, idUsuario);
 
-            return stmt.executeUpdate() > 0;
+        return stmt.executeUpdate() > 0;
+    }
+}
+    
+    public boolean mesmoRecrutador(int idProcesso, int idUsuario) throws SQLException {
+
+    String sql = """
+                 SELECT id_usuario_fk
+                 FROM Processo_seletivo
+                 WHERE id_proce_pk = ?
+                 """;
+
+    Connection conexao = obterConexao();
+
+    try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+        stmt.setInt(1, idProcesso);
+
+        try (ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+
+                int idAtual = rs.getInt("id_usuario_fk");
+
+                // Se estiver NULL, ainda não existe recrutador
+                if (rs.wasNull()) {
+                    return false;
+                }
+
+                return idAtual == idUsuario;
+            }
         }
     }
+
+    return false;
+}
 
 
     // Obtém uma conexão válida com o banco
