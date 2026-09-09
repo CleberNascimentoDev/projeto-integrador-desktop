@@ -3,12 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package views;
+import classes.Usuario;
+import database.CadastroDao;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author rapha
  */
 public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
+    
+    private boolean senhaVisivel = false;
+    private boolean confirmarSenhaVisivel = false;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaCadastroUsuarioJd.class.getName());
 
@@ -21,8 +30,80 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-    }
+        configurarPlaceholder(tfCampoNome, "Digite o nome");
+        configurarPlaceholder(tfCampoEmail, "Digite o e-mail");
 
+        configurarPlaceholderSenha(pfCampoSenha, "Digite a senha");
+        configurarPlaceholderSenha(pfCampoConfirmarSenha, "Confirme a senha");
+    }
+    
+    private void configurarPlaceholder(
+        javax.swing.JTextField campo,
+        String placeholder) {
+
+    campo.setText(placeholder);
+    campo.setForeground(new java.awt.Color(153, 153, 153));
+
+    campo.addFocusListener(new java.awt.event.FocusAdapter() {
+
+        @Override
+        public void focusGained(java.awt.event.FocusEvent evt) {
+
+            if (campo.getText().equals(placeholder)) {
+                campo.setText("");
+                campo.setForeground(java.awt.Color.BLACK);
+            }
+        }
+
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+
+            if (campo.getText().trim().isEmpty()) {
+                campo.setText(placeholder);
+                campo.setForeground(
+                        new java.awt.Color(153, 153, 153)
+                );
+            }
+        }
+    });
+}
+    
+    private void configurarPlaceholderSenha(
+        javax.swing.JPasswordField campo,
+        String placeholder) {
+
+    campo.setEchoChar((char) 0);
+    campo.setText(placeholder);
+    campo.setForeground(new java.awt.Color(153, 153, 153));
+
+    campo.addFocusListener(new java.awt.event.FocusAdapter() {
+
+        @Override
+        public void focusGained(java.awt.event.FocusEvent evt) {
+
+            String texto = String.valueOf(campo.getPassword());
+
+            if (texto.equals(placeholder)) {
+                campo.setText("");
+                campo.setForeground(java.awt.Color.BLACK);
+                campo.setEchoChar('•');
+            }
+        }
+
+        @Override
+        public void focusLost(java.awt.event.FocusEvent evt) {
+
+            if (campo.getPassword().length == 0) {
+                campo.setEchoChar((char) 0);
+                campo.setText(placeholder);
+                campo.setForeground(
+                        new java.awt.Color(153, 153, 153)
+                );
+            }
+        }
+    });
+}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,10 +116,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jpComponentes = new javax.swing.JPanel();
         tfCampoNome = new javax.swing.JTextField();
-        tfCampoDataNascimento = new javax.swing.JTextField();
-        tfCampoCPF = new javax.swing.JTextField();
         tfCampoEmail = new javax.swing.JTextField();
-        jtfCampoTelefone = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -60,6 +138,9 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         pfCampoConfirmarSenha = new javax.swing.JPasswordField();
         btVoltar = new javax.swing.JButton();
         botaoAjuda = new classes.BotaoAjuda();
+        tfCampoCPF = new javax.swing.JFormattedTextField();
+        jtfCampoTelefone = new javax.swing.JFormattedTextField();
+        tfCampoDataNascimento = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -77,27 +158,13 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         tfCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tfCampoNome.setForeground(new java.awt.Color(153, 153, 153));
         tfCampoNome.setText("Digite o nome");
+        tfCampoNome.addActionListener(this::tfCampoNomeActionPerformed);
         jpComponentes.add(tfCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 280, 44));
-
-        tfCampoDataNascimento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tfCampoDataNascimento.setForeground(new java.awt.Color(153, 153, 153));
-        tfCampoDataNascimento.setText("dd/mm/aaaa");
-        jpComponentes.add(tfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 280, 44));
-
-        tfCampoCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tfCampoCPF.setForeground(new java.awt.Color(153, 153, 153));
-        tfCampoCPF.setText("000.000.000-00");
-        jpComponentes.add(tfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 44));
 
         tfCampoEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tfCampoEmail.setForeground(new java.awt.Color(153, 153, 153));
         tfCampoEmail.setText("Digite o e-mail");
         jpComponentes.add(tfCampoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 280, 44));
-
-        jtfCampoTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jtfCampoTelefone.setForeground(new java.awt.Color(153, 153, 153));
-        jtfCampoTelefone.setText("Digite o telefone");
-        jpComponentes.add(jtfCampoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 280, 44));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setText("Nome");
@@ -135,9 +202,11 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cadastrar");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
         jpComponentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 580, 40));
 
         cbCampoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione uma função", "Administrador (a)", "Recrutador (a)" }));
+        cbCampoFuncao.addActionListener(this::cbCampoFuncaoActionPerformed);
         jpComponentes.add(cbCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 280, 44));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
@@ -160,6 +229,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jbOlhoSenha.setContentAreaFilled(false);
         jbOlhoSenha.setFocusPainted(false);
         jbOlhoSenha.setFocusable(false);
+        jbOlhoSenha.addActionListener(this::jbOlhoSenhaActionPerformed);
         jpCampoSenha.add(jbOlhoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
 
         pfCampoSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -177,6 +247,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jbOlhoConfirmarSenha.setContentAreaFilled(false);
         jbOlhoConfirmarSenha.setFocusPainted(false);
         jbOlhoConfirmarSenha.setFocusable(false);
+        jbOlhoConfirmarSenha.addActionListener(this::jbOlhoConfirmarSenhaActionPerformed);
         jpCampoConfirmarSenha.add(jbOlhoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
 
         pfCampoConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -195,6 +266,30 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
 
         botaoAjuda.setTextoAjuda("Esta é a tela de criação de conta do sistema MAINRH, destinada ao cadastro de novos usuários administradores e recrutadores na plataforma. Para registrar o perfil, preencha os campos com o **Nome**, **Data de Nascimento** (formato dd/mm/aaaa), **CPF**, **E-mail**, **Telefone** e selecione o tipo de conta desejado na lista **Função** (Administrador ou Recrutador). Em seguida, defina a **Senha** e repita-a no campo **Confirmar Senha** para validação, podendo utilizar os ícones de olho para visualizar o texto digitado. Após preencher todos os dados, clique no botão **Cadastrar** para concluir o registro ou no botão **Voltar**, localizado no canto superior esquerdo, para retornar à tela anterior.");
         jpComponentes.add(botaoAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
+
+        try {
+            tfCampoCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-## ")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tfCampoCPF.setMinimumSize(new java.awt.Dimension(64, 26));
+        tfCampoCPF.setName(""); // NOI18N
+        tfCampoCPF.setPreferredSize(new java.awt.Dimension(105, 26));
+        jpComponentes.add(tfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 44));
+
+        try {
+            jtfCampoTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jpComponentes.add(jtfCampoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 280, 44));
+
+        try {
+            tfCampoDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jpComponentes.add(tfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 280, 44));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -234,6 +329,166 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         this.dispose();       // TODO add your handling code here:
     }//GEN-LAST:event_btVoltarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         String nome = tfCampoNome.getText().trim().toUpperCase();
+         String email = tfCampoEmail.getText().trim();
+
+          String cpf = tfCampoCPF.getText()
+            .replace(".", "")
+            .replace("-", "")
+            .trim();
+
+          String telefone = jtfCampoTelefone.getText()
+            .replaceAll("\\D", "");
+
+    String senha = String.valueOf(pfCampoSenha.getPassword());
+    String confirmarSenha = String.valueOf(pfCampoConfirmarSenha.getPassword());
+
+    String funcao;
+
+    if (cbCampoFuncao.getSelectedIndex() == 1) {
+        funcao = "ADM";
+    } else if (cbCampoFuncao.getSelectedIndex() == 2) {
+        funcao = "RECRUTADOR";
+    } else {
+        JOptionPane.showMessageDialog(
+                this,
+                "Selecione uma função."
+        );
+        return;
+    }
+
+    if (!senha.equals(confirmarSenha)) {
+        JOptionPane.showMessageDialog(
+                this,
+                "As senhas não coincidem."
+        );
+        return;
+    }
+
+    try {
+
+        DateTimeFormatter formato =
+                DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        LocalDate dataNascimento =
+                LocalDate.parse(tfCampoDataNascimento.getText(), formato);
+
+        Usuario usuario = new Usuario();
+
+        usuario.setNome(nome);
+        usuario.setEmail(email);
+        usuario.setCpf(cpf);
+        usuario.setTelefone(telefone);
+        usuario.setFuncao(funcao);
+        usuario.setDataNascimento(dataNascimento);
+
+        CadastroDao dao = new CadastroDao();
+
+        boolean cadastrou = dao.cadastrar(usuario, senha);
+
+        if (cadastrou) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Usuário cadastrado com sucesso!"
+            );
+
+            this.dispose();
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Não foi possível cadastrar o usuário."
+            );
+        }
+        
+        } catch (SQLException e) {
+
+    JOptionPane.showMessageDialog(
+            this,
+            "Não foi possível realizar o cadastro. Verifique os dados informados e tente novamente.",
+            "Erro ao cadastrar",
+            JOptionPane.ERROR_MESSAGE
+    );
+
+   } catch (java.time.format.DateTimeParseException e) {
+
+    JOptionPane.showMessageDialog(
+            this,
+            "Informe uma data de nascimento válida no formato dd/mm/aaaa.",
+            "Data inválida",
+            JOptionPane.WARNING_MESSAGE
+    );
+    }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbOlhoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOlhoSenhaActionPerformed
+         String senha = String.valueOf(pfCampoSenha.getPassword());
+
+    // Não faz nada se estiver mostrando o placeholder
+    if (senha.equals("Digite a senha")) {
+        return;
+    }
+
+    if (senhaVisivel) {
+
+        pfCampoSenha.setEchoChar('•');
+        senhaVisivel = false;
+
+        jbOlhoSenha.setIcon(new javax.swing.ImageIcon(
+                getClass().getResource("/icons/olhoFechado.png")
+        ));
+
+    } else {
+
+        pfCampoSenha.setEchoChar((char) 0);
+        senhaVisivel = true;
+
+        jbOlhoSenha.setIcon(new javax.swing.ImageIcon(
+                getClass().getResource("/icons/olhoAberto.png")
+        ));
+    }
+    }//GEN-LAST:event_jbOlhoSenhaActionPerformed
+
+    private void jbOlhoConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOlhoConfirmarSenhaActionPerformed
+
+    String senha = String.valueOf(pfCampoConfirmarSenha.getPassword());
+
+    // Não faz nada se estiver mostrando o placeholder
+    if (senha.equals("Confirme a senha")) {
+        return;
+    }
+
+    if (confirmarSenhaVisivel) {
+
+        pfCampoConfirmarSenha.setEchoChar('•');
+        confirmarSenhaVisivel = false;
+
+        jbOlhoConfirmarSenha.setIcon(new javax.swing.ImageIcon(
+                getClass().getResource("/icons/olhoFechado.png")
+        ));
+
+    } else {
+
+        pfCampoConfirmarSenha.setEchoChar((char) 0);
+        confirmarSenhaVisivel = true;
+
+        jbOlhoConfirmarSenha.setIcon(new javax.swing.ImageIcon(
+                getClass().getResource("/icons/olhoAberto.png")
+        ));
+    }
+    }//GEN-LAST:event_jbOlhoConfirmarSenhaActionPerformed
+
+    private void cbCampoFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCampoFuncaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbCampoFuncaoActionPerformed
+
+    private void tfCampoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCampoNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCampoNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,11 +549,11 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     private javax.swing.JPanel jpCampoConfirmarSenha;
     private javax.swing.JPanel jpCampoSenha;
     private javax.swing.JPanel jpComponentes;
-    private javax.swing.JTextField jtfCampoTelefone;
+    private javax.swing.JFormattedTextField jtfCampoTelefone;
     private javax.swing.JPasswordField pfCampoConfirmarSenha;
     private javax.swing.JPasswordField pfCampoSenha;
-    private javax.swing.JTextField tfCampoCPF;
-    private javax.swing.JTextField tfCampoDataNascimento;
+    private javax.swing.JFormattedTextField tfCampoCPF;
+    private javax.swing.JFormattedTextField tfCampoDataNascimento;
     private javax.swing.JTextField tfCampoEmail;
     private javax.swing.JTextField tfCampoNome;
     // End of variables declaration//GEN-END:variables

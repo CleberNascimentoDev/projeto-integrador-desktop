@@ -3,7 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package views;
-
+import classes.Usuario;
+import database.GestaoDao;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import classes.ProcessoSeletivo;
 /**
  *
  * @author rapha
@@ -11,7 +19,7 @@ package views;
 public class TelaAtribuirRecJd extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaAtribuirRecJd.class.getName());
-
+    private int idProcesso;
     /**
      * Creates new form TelaAtribuirRecJd
      */
@@ -22,7 +30,118 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         customizarTabela();
+        configurarBuscaDinamica();
+        carregarTabela("");
     }
+    
+    public TelaAtribuirRecJd(
+        java.awt.Frame parent,
+        boolean modal,
+        int idProcesso) {
+
+    this(parent, modal);
+
+    this.idProcesso = idProcesso;
+
+    carregarProcesso();
+}
+    
+    private void carregarProcesso() {
+
+    try {
+
+        GestaoDao dao = new GestaoDao();
+
+        ProcessoSeletivo processo =
+                dao.buscarProcessoPorId(idProcesso);
+
+        if (processo != null) {
+
+            lbProcesso.setText(
+                    processo.getNomeProcesso()
+            );
+
+            if (processo.getDataInicio() != null) {
+
+                java.time.format.DateTimeFormatter formato =
+                        java.time.format.DateTimeFormatter
+                                .ofPattern("dd/MM/yyyy");
+
+                lbData.setText(
+                        processo.getDataInicio().format(formato)
+                );
+
+            } else {
+
+                lbData.setText("-");
+            }
+        }
+
+    } catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Não foi possível carregar os dados do processo.",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+}
+    
+    private void carregarTabela(String termo) {
+
+    DefaultTableModel model =
+            (DefaultTableModel) tbRecrutador.getModel();
+
+    model.setRowCount(0);
+
+    try {
+
+        GestaoDao dao = new GestaoDao();
+
+        List<Usuario> recrutadores =
+                dao.listarRecrutadores(termo);
+
+        for (Usuario usuario : recrutadores) {
+
+            model.addRow(new Object[]{
+                usuario.getNome(),
+                usuario.getEmail()
+            });
+        }
+
+    } catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Não foi possível carregar os recrutadores.",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+}
+    
+    private void configurarBuscaDinamica() {
+
+    tfPesquisa.getDocument().addDocumentListener(
+            new DocumentListener() {
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            carregarTabela(tfPesquisa.getText());
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            carregarTabela(tfPesquisa.getText());
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            carregarTabela(tfPesquisa.getText());
+        }
+    });
+}
 
     
     
@@ -185,8 +304,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         tbRecrutador.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tbRecrutador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Cleber", "SHOW@VAGAS.COM"},
-                {"ASDVCSADVSV", "drfhdhdhdfhdhdh"}
+
             },
             new String [] {
                 "Nome", "E-mail"
@@ -319,7 +437,84 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     }//GEN-LAST:event_tbRecrutadorMouseClicked
 
     private void btAtribuirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtribuirActionPerformed
-        dispose();
+
+    int linhaSelecionada = tbRecrutador.getSelectedRow();
+
+    if (linhaSelecionada == -1) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Selecione um recrutador na tabela.",
+                "Nenhum recrutador selecionado",
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        return;
+    }
+
+    try {
+
+        GestaoDao dao = new GestaoDao();
+
+        List<Usuario> recrutadores =
+                dao.listarRecrutadores(
+                        tfPesquisa.getText()
+                );
+
+        Usuario recrutadorSelecionado =
+                recrutadores.get(linhaSelecionada);
+
+        // Verifica se o recrutador selecionado já está atribuído
+        if (dao.mesmoRecrutador(
+                idProcesso,
+                recrutadorSelecionado.getIdUsuario())) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Este recrutador já está atribuído a este processo seletivo.",
+                    "Recrutador já atribuído",
+                    JOptionPane.WARNING_MESSAGE
+            );
+
+            return;
+        }
+
+        boolean atribuiu =
+                dao.atribuirRecrutador(
+                        idProcesso,
+                        recrutadorSelecionado.getIdUsuario()
+                );
+
+        if (atribuiu) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Recrutador atribuído com sucesso!",
+                    "Sucesso",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+
+            dispose();
+
+        } else {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Não foi possível atribuir o recrutador.",
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+
+    } catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Não foi possível atribuir o recrutador.",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
     }//GEN-LAST:event_btAtribuirActionPerformed
 
     private void btCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCancelarMouseClicked

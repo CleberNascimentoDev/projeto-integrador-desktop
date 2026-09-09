@@ -4,6 +4,7 @@
  */
 package views;
 
+import classes.Usuario;
 import javax.swing.JInternalFrame;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.JInternalFrame;
 public class TelaMenu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaMenu.class.getName());
-
+    private Usuario usuarioLogado;
     /**
      * Creates new form TelaMenu
      */
@@ -23,7 +24,27 @@ public class TelaMenu extends javax.swing.JFrame {
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         
     }
+    
+    public TelaMenu(Usuario usuario) {
+        this();
+        this.usuarioLogado = usuario;
+        aplicarPermissoes(); // Ajusta a visibilidade dos menus conforme a função
+    }
+    
+    
+    private void aplicarPermissoes() {
+        if (usuarioLogado != null) {
+            String funcao = usuarioLogado.getFuncao();
 
+            if ("RECRUTADOR".equalsIgnoreCase(funcao)) {
+                // Oculta o menu inteiro de Cadastro e a opção de Vincular Recrutadores
+                menu2.setVisible(false);
+                menuRecrutador.setVisible(false);
+            }
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

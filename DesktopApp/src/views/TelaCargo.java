@@ -4,9 +4,15 @@
  */
 package views;
 
-import views.TelaCadastroJd;
-import java.awt.Color;
-
+import classes.Cargo;
+import database.CargoDao;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,12 +20,90 @@ import java.awt.Color;
  */
 public class TelaCargo extends javax.swing.JInternalFrame {
 
+    private final CargoDao cargoDao = new CargoDao();
+    private List<Cargo> cargosExibidos = new ArrayList<>();
+
     /**
      * Creates new form TelaCargo
      */
     public TelaCargo() {
         initComponents();
         customizarTabela();
+        configurarPesquisa();
+        carregarCargos();
+    }
+
+    private void configurarPesquisa() {
+        tfPesquisa.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                carregarCargos();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                carregarCargos();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                carregarCargos();
+            }
+        });
+    }
+
+    private void carregarCargos() {
+        String pesquisa = tfPesquisa.getText().trim();
+        if ("Digite aqui...".equalsIgnoreCase(pesquisa)) {
+            pesquisa = "";
+        }
+
+        try {
+            cargosExibidos = cargoDao.buscarPorNome(pesquisa);
+            DefaultTableModel modelo = new DefaultTableModel(
+                    new Object[]{"Cargos"}, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+
+            for (Cargo cargo : cargosExibidos) {
+                modelo.addRow(new Object[]{cargo.getNome()});
+            }
+            tbCargo.setModel(modelo);
+            customizarTabela();
+        } catch (SQLException e) {
+            mostrarErroBanco("carregar os cargos", e);
+        }
+    }
+
+    private Cargo obterCargoSelecionado() {
+        int linhaSelecionada = tbCargo.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Selecione um cargo na tabela.",
+                    "Cargo não selecionado",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return null;
+        }
+
+        int linhaModelo = tbCargo.convertRowIndexToModel(linhaSelecionada);
+        if (linhaModelo < 0 || linhaModelo >= cargosExibidos.size()) {
+            return null;
+        }
+        return cargosExibidos.get(linhaModelo);
+    }
+
+    private void mostrarErroBanco(String operacao, SQLException e) {
+        JOptionPane.showMessageDialog(
+                this,
+                "Erro ao " + operacao + ":\n" + e.getMessage(),
+                "Erro no banco de dados",
+                JOptionPane.ERROR_MESSAGE
+        );
     }
 
     /**
@@ -322,50 +406,123 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         TelaCadastroJd cadastro = new TelaCadastroJd(null, true);
         cadastro.setVisible(true);
+        if (cadastro.isCadastroRealizado()) {
+            carregarCargos();
+        }
     }//GEN-LAST:event_btCadastrarActionPerformed
                        
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        Cargo cargo = obterCargoSelecionado();
+        if (cargo == null) {
+            return;
+        }
 
+        int resposta = JOptionPane.showConfirmDialog(
+                this,
+                "Deseja realmente excluir o cargo \"" + cargo.getNome() + "\"?",
+                "Confirmar exclusão",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        if (resposta != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        try {
+            if (cargoDao.excluir(cargo.getId())) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Cargo excluído com sucesso!",
+                        "Exclusão de cargo",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+                carregarCargos();
+            } else {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "O cargo não foi encontrado.",
+                        "Exclusão de cargo",
+                        JOptionPane.WARNING_MESSAGE
+                );
+            }
+        } catch (SQLException e) {
+            if (e.getSQLState() != null && e.getSQLState().startsWith("23")) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Este cargo está vinculado a um processo seletivo e não pode ser excluído.",
+                        "Cargo em uso",
+                        JOptionPane.WARNING_MESSAGE
+                );
+            } else {
+                mostrarErroBanco("excluir o cargo", e);
+            }
+        }
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void tfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesquisaActionPerformed
-        // TODO add your handling code here:
+        carregarCargos();
     }//GEN-LAST:event_tfPesquisaActionPerformed
 
 
     private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
-
+        if ("Digite aqui...".equalsIgnoreCase(tfPesquisa.getText().trim())) {
+            tfPesquisa.setText("");
+            tfPesquisa.setForeground(java.awt.Color.BLACK);
+        }
     }//GEN-LAST:event_tfPesquisaFocusGained
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        TelaEditarJd editar = new TelaEditarJd(null, true);
+        Cargo cargo = obterCargoSelecionado();
+        if (cargo == null) {
+            return;
+        }
+
+        TelaEditarJd editar = new TelaEditarJd(null, true, cargo);
         editar.setVisible(true);
+        if (editar.isAlteracaoRealizada()) {
+            carregarCargos();
+        }
     }//GEN-LAST:event_btEditarActionPerformed
     
 
     private void tbCargoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCargoMouseClicked
-        // Verifica se foi um duplo clique com o botão esquerdo do mouse
-    if (evt.getClickCount() == 2 && evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
-        
-        int linhaSelecionada = tbCargo.getSelectedRow();
-        
-        // Garante que uma linha válida foi clicada
-        if (linhaSelecionada != -1) {
-            
-            // Exemplo: Pegando um valor da primeira coluna (índice 0)
-            Object id = tbCargo.getValueAt(linhaSelecionada, 0);
-            
-        TelaDetalhesCargo telaDetalhe = new TelaDetalhesCargo();
-        painelDesktopPane.add(telaDetalhe);
-        telaDetalhe.setVisible(true);
-        try {
-           telaDetalhe.setSelected(true);
-            telaDetalhe.toFront();
-        } catch (java.beans.PropertyVetoException e) {
-            e.printStackTrace();
-        }  
+        if (evt.getClickCount() == 2
+                && evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+            Cargo cargoSelecionado = obterCargoSelecionado();
+            if (cargoSelecionado == null) {
+                return;
             }
-      }
+
+            try {
+                Cargo cargo = cargoDao.buscarPorId(cargoSelecionado.getId());
+                if (cargo == null) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "O cargo selecionado não foi encontrado.",
+                            "Cargo não encontrado",
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                    carregarCargos();
+                    return;
+                }
+
+                TelaDetalhesCargo telaDetalhe = new TelaDetalhesCargo(cargo);
+                painelDesktopPane.add(telaDetalhe);
+                telaDetalhe.setVisible(true);
+                telaDetalhe.setSelected(true);
+                telaDetalhe.toFront();
+            } catch (SQLException e) {
+                mostrarErroBanco("consultar os detalhes do cargo", e);
+            } catch (java.beans.PropertyVetoException e) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Não foi possível abrir os detalhes do cargo.",
+                        "Erro ao abrir tela",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
+        }
     }//GEN-LAST:event_tbCargoMouseClicked
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed

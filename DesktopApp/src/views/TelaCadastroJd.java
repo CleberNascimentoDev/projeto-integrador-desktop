@@ -4,13 +4,28 @@
  */
 package views;
 
+import classes.Cargo;
+import database.CargoDao;
+import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import javax.swing.JOptionPane;
+import javax.swing.text.JTextComponent;
+
 /**
  *
  * @author rapha
  */
 public class TelaCadastroJd extends javax.swing.JDialog {
+
+    private static final String TEXTO_PLACEHOLDER = "Digite aqui...";
+    private static final Color COR_PLACEHOLDER = new Color(153, 153, 153);
+    private static final Color COR_TEXTO = Color.BLACK;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaCadastroJd.class.getName());
+    private boolean cadastroRealizado;
 
     /**
      * Creates new form TelaCadastroJd
@@ -19,8 +34,107 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         super(parent, modal);
         this.setUndecorated(false);
         initComponents();
+        configurarPlaceholders();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+    }
+
+    public boolean isCadastroRealizado() {
+        return cadastroRealizado;
+    }
+
+    private void configurarPlaceholders() {
+        configurarPlaceholder(tfNomeCargo);
+        configurarPlaceholder(ffSalario);
+        configurarPlaceholder(tfNivel);
+        configurarPlaceholder(tfSetor);
+        configurarPlaceholder(taRequisitos);
+        configurarPlaceholder(taAtividade);
+    }
+
+    private void configurarPlaceholder(JTextComponent campo) {
+        campo.setText(TEXTO_PLACEHOLDER);
+        campo.setForeground(COR_PLACEHOLDER);
+
+        campo.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent evt) {
+                if (TEXTO_PLACEHOLDER.equals(campo.getText())) {
+                    campo.setText("");
+                }
+                campo.setForeground(COR_TEXTO);
+            }
+
+            @Override
+            public void focusLost(FocusEvent evt) {
+                if (campo.getText().trim().isEmpty()) {
+                    campo.setText(TEXTO_PLACEHOLDER);
+                    campo.setForeground(COR_PLACEHOLDER);
+                } else {
+                    campo.setForeground(COR_TEXTO);
+                }
+            }
+        });
+    }
+
+    private Cargo obterCargoDoFormulario() {
+        String nome = obterTexto(tfNomeCargo.getText().toUpperCase());
+        String nivel = obterTexto(tfNivel.getText().toUpperCase());
+        String setor = obterTexto(tfSetor.getText().toUpperCase());
+        String requisitos = obterTexto(taRequisitos.getText().toUpperCase());
+        String atividades = obterTexto(taAtividade.getText().toUpperCase());
+        String salarioTexto = obterTexto(ffSalario.getText());
+
+        if (nome.isEmpty() || nivel.isEmpty() || setor.isEmpty()
+                || requisitos.isEmpty() || atividades.isEmpty()
+                || salarioTexto.isEmpty()) {
+            throw new IllegalArgumentException("Preencha todos os campos do cargo.");
+        }
+
+        validarTamanho(nome, "Nome do cargo");
+        validarTamanho(nivel, "Nível");
+        validarTamanho(setor, "Setor");
+
+        BigDecimal salario = converterSalario(salarioTexto);
+        if (salario.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("O salário deve ser maior que zero.");
+        }
+        if (salario.scale() > 2
+                || salario.compareTo(new BigDecimal("99999999.99")) > 0) {
+            throw new IllegalArgumentException(
+                    "O salário deve ter no máximo 8 dígitos inteiros e 2 casas decimais.");
+        }
+
+        return new Cargo(nome, salario, requisitos, nivel, setor, atividades);
+    }
+
+    private void validarTamanho(String valor, String campo) {
+        if (valor.length() > 100) {
+            throw new IllegalArgumentException(
+                    campo + " deve ter no máximo 100 caracteres.");
+        }
+    }
+
+    private String obterTexto(String texto) {
+        String valor = texto == null ? "" : texto.trim();
+        return TEXTO_PLACEHOLDER.equalsIgnoreCase(valor) ? "" : valor;
+    }
+
+    private BigDecimal converterSalario(String texto) {
+        String valor = texto.trim()
+                .replace("R$", "")
+                .replace(" ", "");
+
+        if (valor.contains(",")) {
+            valor = valor.replace(".", "").replace(',', '.');
+        }
+
+        try {
+            return new BigDecimal(valor);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(
+                    "Informe um salário válido. Exemplo: 3500,00.");
+        }
     }
 
     /**
@@ -310,7 +424,42 @@ public class TelaCadastroJd extends javax.swing.JDialog {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btCadastrarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarCargoActionPerformed
-        dispose();
+        try {
+            Cargo cargo = obterCargoDoFormulario();
+            CargoDao cargoDao = new CargoDao();
+
+            if (cargoDao.cadastrar(cargo)) {
+                cadastroRealizado = true;
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Cargo cadastrado com sucesso!",
+                        "Cadastro de cargo",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Não foi possível cadastrar o cargo.",
+                        "Cadastro de cargo",
+                        JOptionPane.WARNING_MESSAGE
+                );
+            }
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    e.getMessage(),
+                    "Dados inválidos",
+                    JOptionPane.WARNING_MESSAGE
+            );
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao cadastrar o cargo:\n" + e.getMessage(),
+                    "Erro no banco de dados",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
     }//GEN-LAST:event_btCadastrarCargoActionPerformed
 
     /**

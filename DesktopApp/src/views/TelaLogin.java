@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
+import classes.Usuario;
+import database.LoginDao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -156,9 +160,7 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpCorFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jpCorFundo, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,10 +224,79 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btOcultarSenhaActionPerformed
 
     private void btBotaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBotaoEntrarActionPerformed
-        
-        TelaMenu menu = new TelaMenu();
+       
+    String email = tfCampoEmail.getText().trim();
+    String senha = String.valueOf(pfCampoSenha.getPassword());
+
+    // Verifica se os campos foram preenchidos
+    if (email.isEmpty()
+            || email.equals("Digite seu e-mail")
+            || senha.isEmpty()
+            || senha.equals("Digite sua senha")) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Preencha o e-mail e a senha.",
+                "Campos obrigatórios",
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        return;
+    }
+
+    try {
+
+        LoginDao dao = new LoginDao();
+
+        Usuario usuario = dao.realizarLogin(email, senha);
+
+        if (usuario != null) {
+
+         String funcao = usuario.getFuncao();
+
+        if ("ADM".equals(funcao) || "RECRUTADOR".equals(funcao)) {
+    
+        JOptionPane.showMessageDialog(
+                this,
+                "Bem-vindo(a), " + usuario.getNome() + "!",
+                "Login realizado",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        TelaMenu menu = new TelaMenu(usuario);
         menu.setVisible(true);
+
         this.dispose();
+
+         } else {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Este usuário não possui permissão para acessar o sistema.",
+                "Acesso negado",
+                JOptionPane.WARNING_MESSAGE
+            );
+        }
+
+        } else {
+            
+            JOptionPane.showMessageDialog(
+                    this,
+                    "E-mail ou senha inválidos.",
+                    "Login inválido",
+                    JOptionPane.WARNING_MESSAGE
+            );
+        }
+
+    } catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Erro ao acessar o banco de dados:\n" + e.getMessage(),
+                "Erro no Banco de Dados",
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
         
     }//GEN-LAST:event_btBotaoEntrarActionPerformed
 

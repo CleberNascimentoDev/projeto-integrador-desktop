@@ -4,7 +4,18 @@
  */
 package views;
 
+import classes.Cargo;
+import classes.ProcessoSeletivo;
+import database.CargoDao;
+import database.ProcessoSeletivoDao;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import java.sql.SQLException;
 
 /**
  *
@@ -13,18 +24,83 @@ import java.awt.Color;
 public class TelaEditarProcessoJd extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaEditarProcessoJd.class.getName());
-
+    private TelaProcessoSeletivo telaPai;
+    private ProcessoSeletivo processoParaEditar;
     /**
      * Creates new form TelaEditarProcessoJd
      */
     public TelaEditarProcessoJd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.setUndecorated(false);
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
+    
+    
+    public TelaEditarProcessoJd(java.awt.Frame parent, boolean modal, TelaProcessoSeletivo telaPai, ProcessoSeletivo processo) {
+        super((java.awt.Frame) null, modal);
+        this.telaPai = telaPai;
+        this.processoParaEditar = processo; 
+        initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        carregarCargos();
+        preencherCampos();  
+    }
+    
+    
+    
+    private void carregarCargos() {
+        try {   
+            CargoDao cargoDao = new CargoDao();
+            List<Cargo> cargos = cargoDao.listar();
 
+            jcbCargo.removeAllItems();
+            jcbCargo.addItem("Selecione um cargo...");
+
+            for (Cargo cargo : cargos) {
+                jcbCargo.addItem(cargo.getNome());
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this,
+                "Erro ao carregar os cargos: " + e.getMessage(),
+                "Erro no Banco de Dados",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void preencherCampos() {
+        if (processoParaEditar != null) {
+            jtNome.setText(processoParaEditar.getNomeProcesso());
+            jtNome.setForeground(Color.BLACK);
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            if (processoParaEditar.getDataInicio() != null) {
+                jtDataInicio.setText(processoParaEditar.getDataInicio().format(dtf));
+            }
+            if (processoParaEditar.getDataFim() != null) {
+                jtDataFim.setText(processoParaEditar.getDataFim().format(dtf));
+            }
+
+            try {
+                CargoDao cargoDao = new CargoDao();
+                List<Cargo> cargos = cargoDao.listar();
+                for (Cargo c : cargos) {
+                    if (c.getId() == processoParaEditar.getIdCargo()) {
+                        jcbCargo.setSelectedItem(c.getNome());
+                        break;
+                    }
+                }
+            } catch (SQLException e) {
+                logger.log(java.util.logging.Level.SEVERE, "Erro ao carregar cargo selecionado", e);
+            }
+        }
+    }
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,6 +188,7 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
 
         jcbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um cargo..." }));
         jcbCargo.setToolTipText("");
+        jcbCargo.addActionListener(this::jcbCargoActionPerformed);
         jPanel2.add(jcbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 152, 620, 30));
 
         try {
@@ -156,7 +233,7 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
         if (jtNome.getText().equals("Digite o nome do processo...")) {
             jtNome.setText("");
             jtNome.setForeground(Color.BLACK);
-        }   // placeholder do campo nome
+        }
     }//GEN-LAST:event_jtNomeFocusGained
 
     private void jtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtNomeFocusLost
@@ -164,16 +241,101 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
             jtNome.setText("Digite o nome do processo...");
             jtNome.setForeground(Color.GRAY);
 
-        }  //placeholder do campo nome
+        }
     }//GEN-LAST:event_jtNomeFocusLost
 
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-        javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "Processo Seletivo editado com sucesso!"
-        );
+        String nome = jtNome.getText().trim().toUpperCase();
 
-        this.dispose();
+        if (nome.isEmpty() || nome.equals("Digite o nome do processo...")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome do processo seletivo.", "Campo Obrigatório", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String nomeCargoSelecionado = (String) jcbCargo.getSelectedItem();
+        if (nomeCargoSelecionado == null || nomeCargoSelecionado.equals("Selecione um cargo...")) {
+            JOptionPane.showMessageDialog(this, "Selecione um cargo válido.", "Campo Obrigatório", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Cargo cargoSelecionado = null;
+        try {
+            CargoDao cargoDao = new CargoDao();
+            List<Cargo> lista = cargoDao.buscarPorNome(nomeCargoSelecionado);
+            if (!lista.isEmpty()) {
+                cargoSelecionado = lista.get(0);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar dados do cargo: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (cargoSelecionado == null) {
+            JOptionPane.showMessageDialog(this, "Cargo não encontrado no sistema.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataInicio = null;
+        LocalDate dataFim = null;
+
+        try {
+            dataInicio = LocalDate.parse(jtDataInicio.getText().trim(), dtf);
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Data de início inválida. Preencha no formato DD/MM/AAAA.", "Data Inválida", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String strDataFim = jtDataFim.getText().replace("/", "").trim();
+        if (!strDataFim.isEmpty()) {
+            try {
+                dataFim = LocalDate.parse(jtDataFim.getText().trim(), dtf);
+            } catch (DateTimeParseException e) {
+                JOptionPane.showMessageDialog(this, "Data de fim inválida. Preencha no formato DD/MM/AAAA.", "Data Inválida", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+        
+        if (dataFim != null && dataFim.isBefore(dataInicio)) {
+            JOptionPane.showMessageDialog(this, "A data de fim não pode ser anterior à data de início!", "Data Inválida", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        boolean mesmoNome = nome.equals(processoParaEditar.getNomeProcesso());
+        boolean mesmoCargo = cargoSelecionado.getId() == processoParaEditar.getIdCargo();
+        boolean mesmaDataInicio = dataInicio.equals(processoParaEditar.getDataInicio());
+        boolean mesmaDataFim = (dataFim == null && processoParaEditar.getDataFim() == null) ||
+                               (dataFim != null && dataFim.equals(processoParaEditar.getDataFim()));
+
+        if (mesmoNome && mesmoCargo && mesmaDataInicio && mesmaDataFim) {
+            JOptionPane.showMessageDialog(
+                this, 
+                "Nenhuma alteração foi realizada. Altere pelo menos um campo para salvar.", 
+                "Sem Alterações", 
+                JOptionPane.INFORMATION_MESSAGE
+            );
+            return;
+        }
+
+        try {
+            processoParaEditar.setNomeProcesso(nome);
+            processoParaEditar.setIdCargo(cargoSelecionado.getId());
+            processoParaEditar.setDataInicio(dataInicio);
+            processoParaEditar.setDataFim(dataFim);
+
+            ProcessoSeletivoDao dao = new ProcessoSeletivoDao();
+            if (dao.atualizar(processoParaEditar)) {
+                JOptionPane.showMessageDialog(this, "Processo Seletivo alterado com sucesso!");
+
+                if (this.telaPai != null) {
+                    this.telaPai.carregarTabela("");
+                }
+
+                this.dispose();
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar alterações no banco: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jbEditarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
@@ -187,6 +349,10 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
     private void jtDataInicioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDataInicioFocusLost
 
     }//GEN-LAST:event_jtDataInicioFocusLost
+
+    private void jcbCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbCargoActionPerformed
 
     /**
      * @param args the command line arguments
