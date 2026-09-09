@@ -21,7 +21,7 @@ public class LoginDao {
                          cpf_usu,
                          telefone_usu,
                          data_nascimento_usu
-                     FROM Usuario
+                     FROM Usuario   
                      WHERE email_usu = ?
                        AND senha_hash_usu = SHA2(?, 256)
                      """;

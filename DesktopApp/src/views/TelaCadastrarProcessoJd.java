@@ -209,7 +209,7 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
     }//GEN-LAST:event_jtNomeFocusLost
 
     private void jbCadastarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastarActionPerformed
-    String nome = jtNome.getText().trim();
+    String nome = jtNome.getText().trim().toUpperCase();
         
         if (nome.isEmpty() || nome.equals("Digite o nome do processo...")) {
             JOptionPane.showMessageDialog(this, "Informe o nome do processo seletivo.", "Campo Obrigatório", JOptionPane.WARNING_MESSAGE);

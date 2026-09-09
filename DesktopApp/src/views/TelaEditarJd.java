@@ -52,6 +52,11 @@ public class TelaEditarJd extends javax.swing.JDialog {
         tfEditarSetor.setText(cargo.getSetor());
         taEditarRequisitos.setText(cargo.getRequisitos());
         taEditarAtividade.setText(cargo.getAtividades());
+        
+        tfEditarNivel.setForeground(java.awt.Color.BLACK);
+        tfEditarSetor.setForeground(java.awt.Color.BLACK);
+        taEditarRequisitos.setForeground(java.awt.Color.BLACK);
+        taEditarAtividade.setForeground(java.awt.Color.BLACK);
     }
 
     private Cargo obterCargoAtualizadoDoFormulario() {
@@ -59,11 +64,11 @@ public class TelaEditarJd extends javax.swing.JDialog {
             throw new IllegalArgumentException("Nenhum cargo foi selecionado para edição.");
         }
 
-        String nome = obterTexto(tfEditarNomeCargo.getText());
-        String nivel = obterTexto(tfEditarNivel.getText());
-        String setor = obterTexto(tfEditarSetor.getText());
-        String requisitos = obterTexto(taEditarRequisitos.getText());
-        String atividades = obterTexto(taEditarAtividade.getText());
+        String nome = obterTexto(tfEditarNomeCargo.getText().toUpperCase());
+        String nivel = obterTexto(tfEditarNivel.getText().toUpperCase());
+        String setor = obterTexto(tfEditarSetor.getText().toUpperCase());
+        String requisitos = obterTexto(taEditarRequisitos.getText().toUpperCase());
+        String atividades = obterTexto(taEditarAtividade.getText().toUpperCase());
 
         if (nome.isEmpty() || nivel.isEmpty() || setor.isEmpty()
                 || requisitos.isEmpty() || atividades.isEmpty()
@@ -181,6 +186,7 @@ public class TelaEditarJd extends javax.swing.JDialog {
         jLabel42.setText("*");
 
         tfEditarNivel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        tfEditarNivel.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jLabel43.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel43.setText("Salário base");
@@ -207,6 +213,7 @@ public class TelaEditarJd extends javax.swing.JDialog {
         tfEditarNomeCargo.addActionListener(this::tfEditarNomeCargojTextField2ActionPerformed);
 
         tfEditarSetor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        tfEditarSetor.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         tfEditarSetor.addActionListener(this::tfEditarSetorjTextField4ActionPerformed);
 
         jLabel49.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -219,6 +226,7 @@ public class TelaEditarJd extends javax.swing.JDialog {
         taEditarRequisitos.setColumns(20);
         taEditarRequisitos.setRows(5);
         taEditarRequisitos.setBorder(null);
+        taEditarRequisitos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jScrollPane7.setViewportView(taEditarRequisitos);
 
         jLabel51.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -231,6 +239,7 @@ public class TelaEditarJd extends javax.swing.JDialog {
         taEditarAtividade.setColumns(20);
         taEditarAtividade.setRows(5);
         taEditarAtividade.setBorder(null);
+        taEditarAtividade.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jScrollPane8.setViewportView(taEditarAtividade);
 
         btEditarCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N

@@ -263,7 +263,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE
         );
 
-        TelaMenu menu = new TelaMenu();
+        TelaMenu menu = new TelaMenu(usuario);
         menu.setVisible(true);
 
         this.dispose();

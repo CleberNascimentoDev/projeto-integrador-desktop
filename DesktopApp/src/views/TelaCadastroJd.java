@@ -78,11 +78,11 @@ public class TelaCadastroJd extends javax.swing.JDialog {
     }
 
     private Cargo obterCargoDoFormulario() {
-        String nome = obterTexto(tfNomeCargo.getText());
-        String nivel = obterTexto(tfNivel.getText());
-        String setor = obterTexto(tfSetor.getText());
-        String requisitos = obterTexto(taRequisitos.getText());
-        String atividades = obterTexto(taAtividade.getText());
+        String nome = obterTexto(tfNomeCargo.getText().toUpperCase());
+        String nivel = obterTexto(tfNivel.getText().toUpperCase());
+        String setor = obterTexto(tfSetor.getText().toUpperCase());
+        String requisitos = obterTexto(taRequisitos.getText().toUpperCase());
+        String atividades = obterTexto(taAtividade.getText().toUpperCase());
         String salarioTexto = obterTexto(ffSalario.getText());
 
         if (nome.isEmpty() || nivel.isEmpty() || setor.isEmpty()

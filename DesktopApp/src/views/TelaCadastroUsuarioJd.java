@@ -158,6 +158,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         tfCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tfCampoNome.setForeground(new java.awt.Color(153, 153, 153));
         tfCampoNome.setText("Digite o nome");
+        tfCampoNome.addActionListener(this::tfCampoNomeActionPerformed);
         jpComponentes.add(tfCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 280, 44));
 
         tfCampoEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -330,7 +331,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String nome = tfCampoNome.getText().trim();
+         String nome = tfCampoNome.getText().trim().toUpperCase();
          String email = tfCampoEmail.getText().trim();
 
           String cpf = tfCampoCPF.getText()
@@ -484,6 +485,10 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     private void cbCampoFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCampoFuncaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbCampoFuncaoActionPerformed
+
+    private void tfCampoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCampoNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfCampoNomeActionPerformed
 
     /**
      * @param args the command line arguments
