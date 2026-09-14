@@ -254,7 +254,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
          String funcao = usuario.getFuncao();
 
-        if ("ADM".equals(funcao) || "RECRUTADOR".equals(funcao)) {
+        if ("ADM".equals(funcao)) {
     
         JOptionPane.showMessageDialog(
                 this,
@@ -263,7 +263,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 JOptionPane.INFORMATION_MESSAGE
         );
 
-        TelaMenu menu = new TelaMenu(usuario);
+        TelaMenu menu = new TelaMenu();
         menu.setVisible(true);
 
         this.dispose();
