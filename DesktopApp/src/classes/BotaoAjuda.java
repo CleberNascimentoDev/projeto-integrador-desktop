@@ -1,5 +1,6 @@
 package classes;
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -7,6 +8,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -21,21 +23,38 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class BotaoAjuda extends JLabel {
+public class BotaoAjuda extends JButton {
 
     private String tituloJanela = "Ajuda";
     private String textoAjuda = "Digite o texto de ajuda aqui...";
 
     public BotaoAjuda() {
-        setText("?");
-        setFont(new Font("Arial", Font.BOLD, 30));
+        super("?"); 
+        // Fonte aumentada e cor preta
+        setFont(new Font("Segoe UI", Font.BOLD, 32));
+        setForeground(Color.BLACK); 
+        
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setToolTipText("Clique para obter ajuda");
+        
+        // Remove totalmente fundos e bordas
+        setContentAreaFilled(false);
+        setBorderPainted(false);
+        setFocusPainted(false);
+        setOpaque(false);
+        setPreferredSize(new Dimension(40, 40));
 
+        addActionListener(e -> abrirJanelaAjuda());
+        
+        // Efeito visual mudando a cor da interrogação ao passar o mouse
         addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                abrirJanelaAjuda();
+            public void mouseEntered(MouseEvent e) {
+                setForeground(Color.DARK_GRAY);
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                setForeground(Color.BLACK);
             }
         });
     }
@@ -54,10 +73,8 @@ public class BotaoAjuda extends JLabel {
             BorderFactory.createEmptyBorder(25, 25, 25, 25)
         ));
 
-        // Ícone customizado de triângulo vermelho com exclamação branca
-        Icon iconeVermelho = new IconeExclamacao(28, Color.WHITE, new Color(220, 53, 69));
+        Icon iconeVermelho = new IconeExclamacao(32, Color.WHITE, new Color(220, 53, 69));
 
-        // Painel centralizado contendo: [Ícone] [ATENÇÃO!] [Ícone]
         JPanel painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 0));
         painelTitulo.setOpaque(false);
 
@@ -65,21 +82,19 @@ public class BotaoAjuda extends JLabel {
         JLabel labelIconeDir = new JLabel(iconeVermelho);
         JLabel labelTexto = new JLabel("ATENÇÃO");
 
-        labelTexto.setFont(new Font("Arial", Font.BOLD, 26));
+        labelTexto.setFont(new Font("Segoe UI", Font.BOLD, 26));
         labelTexto.setForeground(new Color(220, 53, 69));
 
         painelTitulo.add(labelIconeEsq);
         painelTitulo.add(labelTexto);
         painelTitulo.add(labelIconeDir);
 
-        // Formata o negrito no HTML do Swing
         String textoFormatadoHTML = textoAjuda.replaceAll("\\*\\*(.*?)\\*\\*", "<b>$1</b>");
 
-        String textoFinal = "<html><body style='width: 420px; text-align: justify; font-size: 14pt; font-family: Arial; color: #333333;'>" 
+        String textoFinal = "<html><body style='width: 420px; text-align: justify; font-size: 14pt; font-family: Segoe UI, Arial; color: #333333;'>" 
                           + textoFormatadoHTML + "</body></html>";
         JLabel labelMensagem = new JLabel(textoFinal);
 
-        // Botão ENTENDI com Joinha (👍)
         JButton btnFechar = new JButton("👍  ENTENDI");
         btnFechar.setFont(new Font("Segoe UI Emoji", Font.BOLD, 18));
         btnFechar.setBackground(new Color(220, 53, 69));
@@ -103,7 +118,6 @@ public class BotaoAjuda extends JLabel {
         dialog.setVisible(true);
     }
 
-    // Classe gráfica do triângulo de alerta preenchido em vermelho
     private static class IconeExclamacao implements Icon {
         private final int tamanho;
         private final Color corFundo;
@@ -120,19 +134,22 @@ public class BotaoAjuda extends JLabel {
             Graphics2D g2 = (Graphics2D) g.create();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            int[] xPoints = {x + tamanho / 2, x, x + tamanho};
-            int[] yPoints = {y, y + tamanho, y + tamanho};
+            int margem = 3; 
+            int[] xPoints = {x + tamanho / 2, x + margem, x + tamanho - margem};
+            int[] yPoints = {y + margem, y + tamanho - margem, y + tamanho - margem};
 
-            // Preenche o triângulo vermelho
             g2.setColor(corSinal);
             g2.fillPolygon(xPoints, yPoints, 3);
-
-            // Escreve a exclamação branca
-            g2.setColor(corFundo);
-            g2.setFont(new Font("Arial", Font.BOLD, (int)(tamanho * 0.65)));
             
-            int textX = x + (tamanho / 2) - (g2.getFontMetrics().stringWidth("!") / 2);
-            int textY = y + (int)(tamanho * 0.82);
+            g2.setStroke(new BasicStroke(4f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+            g2.drawPolygon(xPoints, yPoints, 3);
+
+            g2.setColor(corFundo);
+            g2.setFont(new Font("Segoe UI", Font.BOLD, (int)(tamanho * 0.55)));
+            FontMetrics fm = g2.getFontMetrics();
+            
+            int textX = x + (tamanho / 2) - (fm.stringWidth("!") / 2);
+            int textY = y + (int)(tamanho * 0.75); 
             g2.drawString("!", textX, textY);
 
             g2.dispose();

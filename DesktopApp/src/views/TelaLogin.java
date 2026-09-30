@@ -27,9 +27,10 @@ public class TelaLogin extends javax.swing.JFrame {
         pfCampoSenha.setText("Digite sua senha"); //Coloca o texto dentro do campo de senha 
         tfCampoEmail.setText("Digite seu e-mail"); //COloca o texto dentro do campo de e-mail
         
-        setFocusable(true);
+        
         java.awt.EventQueue.invokeLater(() -> {
-        requestFocusInWindow();  //Faz a tela iniciar sem nada selecionado 
+        tfCampoEmail.requestFocusInWindow();  // Força o foco no campo de e-mail
+        tfCampoEmail.setCaretPosition(0);
         });
     }            
        
@@ -51,7 +52,10 @@ public class TelaLogin extends javax.swing.JFrame {
         pfCampoSenha = new javax.swing.JPasswordField();
         btOcultarSenha = new javax.swing.JButton();
         btBotaoEntrar = new javax.swing.JButton();
-        botaoAjuda = new classes.BotaoAjuda();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        botaoAjuda1 = new classes.BotaoAjuda();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,45 +106,57 @@ public class TelaLogin extends javax.swing.JFrame {
         btBotaoEntrar.setToolTipText("Entrar no MainRH");
         btBotaoEntrar.addActionListener(this::btBotaoEntrarActionPerformed);
 
-        botaoAjuda.setTextoAjuda("Esta é a tela de login do sistema MAINRH, utilizada para autenticação de acesso à plataforma. Para entrar no sistema, preencha o campo **E-mail** com o seu endereço cadastrado e digite sua senha de acesso no campo **Senha**, utilizando o ícone de olho ao lado para exibir ou ocultar os caracteres digitados conforme necessário. Após preencher as credenciais, clique no botão **Entrar** para validar seu acesso e ser redirecionado ao painel principal. Caso não possua um cadastro ativo ou tenha esquecido suas credenciais, entre em contato com o suporte ou com a equipe de administração da sua empresa.");
+        jPanel1.setBackground(new java.awt.Color(233, 243, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acessib.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 10, -1, -1));
+
+        botaoAjuda1.addActionListener(this::botaoAjuda1ActionPerformed);
+        jPanel1.add(botaoAjuda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, -10, 60, 60));
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setText("Acessibilidade");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 204, 255), 1, true));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 5, 160, 38));
 
         javax.swing.GroupLayout jpCorFundoLayout = new javax.swing.GroupLayout(jpCorFundo);
         jpCorFundo.setLayout(jpCorFundoLayout);
         jpCorFundoLayout.setHorizontalGroup(
             jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCorFundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
-                        .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(pfCampoSenha)
-                            .addGroup(jpCorFundoLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(211, 211, 211))
-                            .addComponent(tfCampoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))))
-            .addGroup(jpCorFundoLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(btBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpCorFundoLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(btBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117))
+                    .addComponent(jlLogo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
+                            .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(pfCampoSenha)
+                                .addGroup(jpCorFundoLayout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(211, 211, 211))
+                                .addComponent(tfCampoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(3, 3, 3))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
-                .addGap(0, 30, Short.MAX_VALUE)
-                .addComponent(jlLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jpCorFundoLayout.setVerticalGroup(
             jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCorFundoLayout.createSequentialGroup()
-                .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpCorFundoLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jlLogo))
-                    .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,7 +169,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(btOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addComponent(btBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,7 +180,7 @@ public class TelaLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+            .addComponent(jpCorFundo, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
         );
 
         pack();
@@ -300,6 +316,10 @@ public class TelaLogin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btBotaoEntrarActionPerformed
 
+    private void botaoAjuda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAjuda1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoAjuda1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -326,11 +346,14 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private classes.BotaoAjuda botaoAjuda;
+    private classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JButton btBotaoEntrar;
     private javax.swing.JButton btOcultarSenha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlLogo;
     private javax.swing.JPanel jpCorFundo;
     private javax.swing.JPasswordField pfCampoSenha;

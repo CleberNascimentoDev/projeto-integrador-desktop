@@ -31,8 +31,63 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         customizarTabela();
         configurarPesquisa();
         carregarCargos();
-    }
+        
+        java.awt.EventQueue.invokeLater(() -> {
+        btVoltar.requestFocusInWindow();  // Força o foco no campo de e-mail
+        acessibilidade();
 
+        });
+    }   
+
+    
+    private void acessibilidade(){
+        // 1. Permite que a tabela receba o foco ao navegar com o TAB
+        tbCargo.setFocusable(true);
+
+        // 2. Altera o comportamento do TAB dentro da tabela para APENAS passar o foco adiante
+        tbCargo.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+            .put(javax.swing.KeyStroke.getKeyStroke("TAB"), "proximoCampo");
+
+        tbCargo.getActionMap().put("proximoCampo", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                tbCargo.transferFocus(); 
+            }
+        });
+
+        // 3. Faz o mesmo para o Shift+TAB voltar para o campo anterior
+        tbCargo.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+            .put(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"), "campoAnterior");
+
+        tbCargo.getActionMap().put("campoAnterior", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                tbCargo.transferFocusBackward(); 
+            }
+        });
+
+        // COLOQUE O NOVO BLOCO AQUI (No final do método)
+        // Seleciona automaticamente a primeira linha ao ganhar o foco pelo teclado
+        tbCargo.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (tbCargo.getRowCount() > 0 && tbCargo.getSelectedRow() == -1) {
+                    tbCargo.setRowSelectionInterval(0, 0); // Seleciona a primeira linha
+                }
+            }
+            
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                tbCargo.clearSelection(); // Remove a seleção azul quando o foco sai da tabela
+            }
+            
+        });
+    }    
+    
+    
+    
+    
+    
     private void configurarPesquisa() {
         tfPesquisa.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -192,6 +247,9 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 tfPesquisaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfPesquisaFocusLost(evt);
             }
         });
         tfPesquisa.addActionListener(this::tfPesquisaActionPerformed);
@@ -472,6 +530,8 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tfPesquisaFocusGained
 
+    
+        
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         Cargo cargo = obterCargoSelecionado();
         if (cargo == null) {
@@ -528,6 +588,13 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         this.dispose();       // TODO add your handling code here:
     }//GEN-LAST:event_btVoltarActionPerformed
+
+    private void tfPesquisaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusLost
+        if (tfPesquisa.getText().trim().isEmpty()) {
+        tfPesquisa.setText("Digite aqui...");
+        tfPesquisa.setForeground(java.awt.Color.GRAY);
+    }
+    }//GEN-LAST:event_tfPesquisaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
