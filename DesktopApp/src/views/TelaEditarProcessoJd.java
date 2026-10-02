@@ -32,6 +32,7 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
     public TelaEditarProcessoJd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
@@ -42,6 +43,7 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
         this.telaPai = telaPai;
         this.processoParaEditar = processo; 
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         carregarCargos();

@@ -19,6 +19,7 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
      */
     public TelaDetalhesCargo() {
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
     }
 
     public TelaDetalhesCargo(Cargo cargo) {

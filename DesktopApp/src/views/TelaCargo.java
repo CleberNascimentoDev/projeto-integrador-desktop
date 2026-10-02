@@ -28,6 +28,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
      */
     public TelaCargo() {
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
         customizarTabela();
         configurarPesquisa();
         carregarCargos();

@@ -20,6 +20,7 @@ public class TelaLogin extends javax.swing.JFrame {
     
     public TelaLogin() {
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
         setSize(411, 500); //Define o tamanho da tela 
         setResizable(false); //Impede que a pessoa redimensione a janela
         setLocationRelativeTo(null); //Faz a janela abrir centralizada na tela

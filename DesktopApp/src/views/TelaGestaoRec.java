@@ -24,6 +24,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
      */
     public TelaGestaoRec() {
     initComponents();
+        classes.Acessibilidade.configurarTela(this);
     customizarTabela();
     configurarBuscaDinamica();
     carregarTabela("");

@@ -31,6 +31,7 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
         super((java.awt.Frame) null, modal);
         this.telaPai = telaPai;
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         carregarCargos();
@@ -41,6 +42,7 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
         super((java.awt.Frame) null, modal);
         this.telaPai = telaPai;
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         carregarCargos();

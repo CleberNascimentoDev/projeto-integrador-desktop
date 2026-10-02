@@ -28,6 +28,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
    
     public TelaProcessoSeletivo() {
        initComponents();
+        classes.Acessibilidade.configurarTela(this);
        customizarTabela();
        configurarBuscaDinamica();
        carregarTabela("");
