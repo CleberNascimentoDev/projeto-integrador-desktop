@@ -265,7 +265,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         jpComponentes.add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 38));
 
         botaoAjuda.setTextoAjuda("Esta é a tela de criação de conta do sistema MAINRH, destinada ao cadastro de novos usuários administradores e recrutadores na plataforma. Para registrar o perfil, preencha os campos com o **Nome**, **Data de Nascimento** (formato dd/mm/aaaa), **CPF**, **E-mail**, **Telefone** e selecione o tipo de conta desejado na lista **Função** (Administrador ou Recrutador). Em seguida, defina a **Senha** e repita-a no campo **Confirmar Senha** para validação, podendo utilizar os ícones de olho para visualizar o texto digitado. Após preencher todos os dados, clique no botão **Cadastrar** para concluir o registro ou no botão **Voltar**, localizado no canto superior esquerdo, para retornar à tela anterior.");
-        jpComponentes.add(botaoAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
+        jpComponentes.add(botaoAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 70, 50));
 
         try {
             tfCampoCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-## ")));

@@ -63,10 +63,10 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(233, 243, 255));
 
-        botaoAjuda.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botaoAjuda.setText(" ? ");
-        botaoAjuda.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        botaoAjuda.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botaoAjuda.setTextoAjuda("Esta é a tela de menu principal do sistema MAINRH, a partir da qual você pode navegar pelas funcionalidades da aplicação utilizando as abas superiores ou atalhos do teclado. No menu **Gerenciamento**, você encontra as opções para **Gerenciar Cargos** (atalho F2), **Abrir Processo Seletivo** (atalho F3), **Vincular Recrutadores** (atalho F4) e **Sair do Sistema** (atalho ESC). No menu **Cadastro**, é possível acessar a opção **Cadastrar Usuário** (atalho F6) para registrar novos acessos no sistema.");
+        botaoAjuda.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         botaoAjuda.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -74,14 +74,14 @@ public class TelaMenu extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
-                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 605, Short.MAX_VALUE))
+                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 584, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_END);
