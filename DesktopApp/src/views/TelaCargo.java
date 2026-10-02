@@ -33,7 +33,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         carregarCargos();
         
         java.awt.EventQueue.invokeLater(() -> {
-        btVoltar.requestFocusInWindow();  // Força o foco no campo de e-mail
+        if (classes.Acessibilidade.isTecladoAtivo()) btVoltar.requestFocusInWindow();
         acessibilidade();
 
         });
@@ -41,6 +41,9 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
     
     private void acessibilidade(){
+        javax.swing.InputMap mapa = tbCargo.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        Object tabOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("TAB"));
+        Object shiftOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"));
         // 1. Permite que a tabela receba o foco ao navegar com o TAB
         tbCargo.setFocusable(true);
 
@@ -71,18 +74,35 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         tbCargo.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent e) {
-                if (tbCargo.getRowCount() > 0 && tbCargo.getSelectedRow() == -1) {
+                if (classes.Acessibilidade.isTecladoAtivo() && tbCargo.getRowCount() > 0 && tbCargo.getSelectedRow() == -1) {
                     tbCargo.setRowSelectionInterval(0, 0); // Seleciona a primeira linha
                 }
             }
             
             @Override
             public void focusLost(java.awt.event.FocusEvent e) {
-                tbCargo.clearSelection(); // Remove a seleção azul quando o foco sai da tabela
+                // Preserva a seleção para acionar Editar, Excluir e Detalhes.
             }
             
         });
-    }    
+        preferenciaTeclado = e -> aplicarNavegacao(mapa, tabOriginal, shiftOriginal);
+        classes.Acessibilidade.adicionarListener(preferenciaTeclado);
+        aplicarNavegacao(mapa, tabOriginal, shiftOriginal);
+    }
+
+    private java.beans.PropertyChangeListener preferenciaTeclado;
+
+    private void aplicarNavegacao(javax.swing.InputMap mapa, Object tabOriginal, Object shiftOriginal) {
+        boolean ativo = classes.Acessibilidade.isTecladoAtivo();
+        mapa.put(javax.swing.KeyStroke.getKeyStroke("TAB"), ativo ? "proximoCampo" : tabOriginal);
+        mapa.put(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"), ativo ? "campoAnterior" : shiftOriginal);
+        botaoAjuda.setFocusPainted(ativo);
+    }
+
+    @Override public void dispose() {
+        if (preferenciaTeclado != null) classes.Acessibilidade.removerListener(preferenciaTeclado);
+        super.dispose();
+    }
     
     
     

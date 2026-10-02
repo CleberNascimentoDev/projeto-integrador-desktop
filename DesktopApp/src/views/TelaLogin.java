@@ -28,6 +28,7 @@ public class TelaLogin extends javax.swing.JFrame {
         tfCampoEmail.setText("Digite seu e-mail"); //COloca o texto dentro do campo de e-mail
         
         
+        configurarAcessibilidade();
         java.awt.EventQueue.invokeLater(() -> {
         tfCampoEmail.requestFocusInWindow();  // Força o foco no campo de e-mail
         tfCampoEmail.setCaretPosition(0);
@@ -53,9 +54,8 @@ public class TelaLogin extends javax.swing.JFrame {
         btOcultarSenha = new javax.swing.JButton();
         btBotaoEntrar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         botaoAjuda1 = new classes.BotaoAjuda();
-        jButton1 = new javax.swing.JButton();
+        btAcessibilidade = new classes.BotaoAcessibilidade();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,7 +93,7 @@ public class TelaLogin extends javax.swing.JFrame {
         btOcultarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png"))); // NOI18N
         btOcultarSenha.setBorderPainted(false);
         btOcultarSenha.setContentAreaFilled(false);
-        btOcultarSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btOcultarSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btOcultarSenha.setFocusPainted(false);
         btOcultarSenha.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btOcultarSenha.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -109,16 +109,13 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(233, 243, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acessib.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 10, -1, -1));
-
         botaoAjuda1.addActionListener(this::botaoAjuda1ActionPerformed);
         jPanel1.add(botaoAjuda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, -10, 60, 60));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Acessibilidade");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 204, 255), 1, true));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 5, 160, 38));
+        btAcessibilidade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 204, 255), 1, true));
+        btAcessibilidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btAcessibilidade.addActionListener(this::btAcessibilidadeActionPerformed);
+        jPanel1.add(btAcessibilidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 5, 160, 38));
 
         javax.swing.GroupLayout jpCorFundoLayout = new javax.swing.GroupLayout(jpCorFundo);
         jpCorFundo.setLayout(jpCorFundoLayout);
@@ -154,7 +151,7 @@ public class TelaLogin extends javax.swing.JFrame {
             jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCorFundoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -186,12 +183,54 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private final java.beans.PropertyChangeListener preferenciaTeclado = e -> aplicarNavegacao();
+
+    private void configurarAcessibilidade() {
+        jlLogo.setIcon(new classes.IconeImagem("/images/Logo.png", 337, 110));
+        jPanel1.removeAll();
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 8));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 7));
+        btAcessibilidade.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 13));
+        jPanel1.add(btAcessibilidade);
+        javax.swing.JPanel separador = new javax.swing.JPanel();
+        separador.setBackground(new java.awt.Color(145, 175, 204));
+        separador.setPreferredSize(new java.awt.Dimension(1, 28));
+        jPanel1.add(separador);
+        botaoAjuda1.setPreferredSize(new java.awt.Dimension(36, 34));
+        botaoAjuda1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        botaoAjuda1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        botaoAjuda1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 27));
+        botaoAjuda1.setTextoAjuda("Preencha seu **e-mail** e sua **senha** e clique em **Entrar**. Use **Acessibilidade** para escolher o modo de navegação.");
+        jPanel1.add(botaoAjuda1);
+        jLabel1.setLabelFor(tfCampoEmail);
+        jLabel2.setLabelFor(pfCampoSenha);
+        classes.Acessibilidade.adicionarListener(preferenciaTeclado);
+        aplicarNavegacao();
+    }
+
+    private void aplicarNavegacao() {
+        boolean ativo = classes.Acessibilidade.isTecladoAtivo();
+        if (ativo) {
+            getRootPane().registerKeyboardAction(e -> btBotaoEntrar.doClick(),
+                    javax.swing.KeyStroke.getKeyStroke("ENTER"), javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW);
+        } else {
+            getRootPane().unregisterKeyboardAction(javax.swing.KeyStroke.getKeyStroke("ENTER"));
+        }
+        btOcultarSenha.setFocusPainted(ativo);
+        botaoAjuda1.setFocusPainted(ativo);
+    }
+
+    @Override public void dispose() {
+        classes.Acessibilidade.removerListener(preferenciaTeclado);
+        super.dispose();
+    }
+
     private void tfCampoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCampoEmailActionPerformed
-        // TODO add your handling code here:
+        if (classes.Acessibilidade.isTecladoAtivo()) btBotaoEntrar.doClick();
     }//GEN-LAST:event_tfCampoEmailActionPerformed
 
     private void pfCampoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfCampoSenhaActionPerformed
-        // TODO add your handling code here:
+        if (classes.Acessibilidade.isTecladoAtivo()) btBotaoEntrar.doClick();
     }//GEN-LAST:event_pfCampoSenhaActionPerformed
 
     private void pfCampoSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfCampoSenhaFocusGained
@@ -320,6 +359,10 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoAjuda1ActionPerformed
 
+    private void btAcessibilidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAcessibilidadeActionPerformed
+        new TelaAcessibilidade(this).setVisible(true);
+    }//GEN-LAST:event_btAcessibilidadeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -349,10 +392,9 @@ public class TelaLogin extends javax.swing.JFrame {
     private classes.BotaoAjuda botaoAjuda1;
     private javax.swing.JButton btBotaoEntrar;
     private javax.swing.JButton btOcultarSenha;
-    private javax.swing.JButton jButton1;
+    private classes.BotaoAcessibilidade btAcessibilidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlLogo;
     private javax.swing.JPanel jpCorFundo;
