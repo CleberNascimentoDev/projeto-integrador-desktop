@@ -44,6 +44,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         javax.swing.InputMap mapa = tbCargo.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         Object tabOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("TAB"));
         Object shiftOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"));
+        
         // 1. Permite que a tabela receba o foco ao navegar com o TAB
         tbCargo.setFocusable(true);
 
@@ -69,22 +70,28 @@ public class TelaCargo extends javax.swing.JInternalFrame {
             }
         });
 
-        // COLOQUE O NOVO BLOCO AQUI (No final do método)
-        // Seleciona automaticamente a primeira linha ao ganhar o foco pelo teclado
+        // 4. Controla visual e seleção baseado no ganho/perda de foco
         tbCargo.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent e) {
+                // Seleciona automaticamente a primeira linha se a navegação for por teclado e nada estiver selecionado
                 if (classes.Acessibilidade.isTecladoAtivo() && tbCargo.getRowCount() > 0 && tbCargo.getSelectedRow() == -1) {
-                    tbCargo.setRowSelectionInterval(0, 0); // Seleciona a primeira linha
+                    tbCargo.setRowSelectionInterval(0, 0);
                 }
             }
             
             @Override
             public void focusLost(java.awt.event.FocusEvent e) {
-                // Preserva a seleção para acionar Editar, Excluir e Detalhes.
+                // Captura para onde o foco está indo ao sair da tabela
+                java.awt.Component destino = e.getOppositeComponent();
+                
+                // Limpa a marcação azul APENAS se o foco NÃO for para os botões btEditar e btExcluir
+                if (destino != btEditar && destino != btExcluir) {
+                    tbCargo.clearSelection(); 
+                }
             }
-            
         });
+        
         preferenciaTeclado = e -> aplicarNavegacao(mapa, tabOriginal, shiftOriginal);
         classes.Acessibilidade.adicionarListener(preferenciaTeclado);
         aplicarNavegacao(mapa, tabOriginal, shiftOriginal);

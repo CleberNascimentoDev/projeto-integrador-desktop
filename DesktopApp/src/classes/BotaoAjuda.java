@@ -30,14 +30,12 @@ public class BotaoAjuda extends JButton {
 
     public BotaoAjuda() {
         super("?"); 
-        // Fonte aumentada e cor preta
         setFont(new Font("Segoe UI", Font.BOLD, 32));
         setForeground(Color.BLACK); 
         
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setToolTipText("Clique para obter ajuda");
         
-        // Remove totalmente fundos e bordas
         setContentAreaFilled(false);
         setBorderPainted(false);
         setFocusPainted(false);
@@ -46,7 +44,6 @@ public class BotaoAjuda extends JButton {
 
         addActionListener(e -> abrirJanelaAjuda());
         
-        // Efeito visual mudando a cor da interrogação ao passar o mouse
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -68,22 +65,26 @@ public class BotaoAjuda extends JButton {
 
         JPanel painelConteudo = new JPanel(new BorderLayout(15, 15));
         painelConteudo.setBackground(Color.WHITE);
+        
+        // CORRIGIDO: Borda agora utiliza a cor amarela (RGB: 255, 193, 7)
         painelConteudo.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(new Color(220, 53, 69), 3),
+            BorderFactory.createLineBorder(new Color(255, 193, 7), 3),
             BorderFactory.createEmptyBorder(25, 25, 25, 25)
         ));
 
-        Icon iconeVermelho = new IconeExclamacao(32, Color.WHITE, new Color(220, 53, 69));
+        // CORRIGIDO: Instância do ícone ajustada para a cor amarela e renomeada
+        Icon iconeAmarelo = new IconeExclamacao(32, Color.WHITE, new Color(255, 193, 7));
 
         JPanel painelTitulo = new JPanel(new FlowLayout(FlowLayout.CENTER, 12, 0));
         painelTitulo.setOpaque(false);
 
-        JLabel labelIconeEsq = new JLabel(iconeVermelho);
-        JLabel labelIconeDir = new JLabel(iconeVermelho);
+        JLabel labelIconeEsq = new JLabel(iconeAmarelo);
+        JLabel labelIconeDir = new JLabel(iconeAmarelo);
         JLabel labelTexto = new JLabel("ATENÇÃO");
 
         labelTexto.setFont(new Font("Segoe UI", Font.BOLD, 26));
-        labelTexto.setForeground(new Color(220, 53, 69));
+        // CORRIGIDO: Cor do título alterada para amarelo
+        labelTexto.setForeground(new Color(255, 193, 7));
 
         painelTitulo.add(labelIconeEsq);
         painelTitulo.add(labelTexto);
@@ -97,8 +98,13 @@ public class BotaoAjuda extends JButton {
 
         JButton btnFechar = new JButton("👍  ENTENDI");
         btnFechar.setFont(new Font("Segoe UI Emoji", Font.BOLD, 18));
-        btnFechar.setBackground(new Color(220, 53, 69));
-        btnFechar.setForeground(Color.WHITE);
+        
+        // CORRIGIDO: Fundo do botão alterado para amarelo
+        btnFechar.setBackground(new Color(255, 193, 7));
+        
+        // MELHORIA DE UI: Texto branco no fundo amarelo causa baixo contraste. Alterado para preto.
+        btnFechar.setForeground(Color.BLACK);
+        
         btnFechar.setPreferredSize(new Dimension(210, 50));
         btnFechar.setFocusPainted(false);
         btnFechar.setCursor(new Cursor(Cursor.HAND_CURSOR));
