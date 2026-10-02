@@ -28,6 +28,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
    
     public TelaProcessoSeletivo() {
        initComponents();
+        classes.Acessibilidade.configurarTela(this);
        customizarTabela();
        configurarBuscaDinamica();
        carregarTabela("");
@@ -136,7 +137,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         boolean ativo = classes.Acessibilidade.isTecladoAtivo();
         mapa.put(javax.swing.KeyStroke.getKeyStroke("TAB"), ativo ? "proximoCampo" : tabOriginal);
         mapa.put(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"), ativo ? "campoAnterior" : shiftOriginal);
-        botaoAjuda.setFocusPainted(ativo);
+        botaoAjuda.setFocusPainted(ativo || classes.Acessibilidade.isBaixaVisaoAtiva());
     }
 
     @Override public void dispose() {

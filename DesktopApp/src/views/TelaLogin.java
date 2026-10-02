@@ -20,6 +20,7 @@ public class TelaLogin extends javax.swing.JFrame {
     
     public TelaLogin() {
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
         setSize(411, 500); //Define o tamanho da tela 
         setResizable(false); //Impede que a pessoa redimensione a janela
         setLocationRelativeTo(null); //Faz a janela abrir centralizada na tela
@@ -216,8 +217,8 @@ public class TelaLogin extends javax.swing.JFrame {
         } else {
             getRootPane().unregisterKeyboardAction(javax.swing.KeyStroke.getKeyStroke("ENTER"));
         }
-        btOcultarSenha.setFocusPainted(ativo);
-        botaoAjuda1.setFocusPainted(ativo);
+        btOcultarSenha.setFocusPainted(ativo || classes.Acessibilidade.isBaixaVisaoAtiva());
+        botaoAjuda1.setFocusPainted(ativo || classes.Acessibilidade.isBaixaVisaoAtiva());
     }
 
     @Override public void dispose() {

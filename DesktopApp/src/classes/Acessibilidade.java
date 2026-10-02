@@ -6,11 +6,29 @@ import java.beans.PropertyChangeSupport;
 /** Preferência compartilhada pelas telas durante a execução do sistema. */
 public final class Acessibilidade {
     private static boolean tecladoAtivo = true;
+    private static boolean baixaVisaoAtiva = false;
     private static final PropertyChangeSupport eventos = new PropertyChangeSupport(Acessibilidade.class);
 
     private Acessibilidade() { }
 
     public static boolean isTecladoAtivo() { return tecladoAtivo; }
+
+    public static boolean isBaixaVisaoAtiva() { return baixaVisaoAtiva; }
+
+    public static void setBaixaVisaoAtiva(boolean ativo) {
+        if (!javax.swing.SwingUtilities.isEventDispatchThread()) {
+            javax.swing.SwingUtilities.invokeLater(() -> setBaixaVisaoAtiva(ativo));
+            return;
+        }
+        boolean anterior = baixaVisaoAtiva;
+        baixaVisaoAtiva = ativo;
+        BaixaVisao.atualizarTelas();
+        eventos.firePropertyChange("baixaVisaoAtiva", anterior, ativo);
+    }
+
+    public static void configurarTela(javax.swing.RootPaneContainer tela) {
+        BaixaVisao.configurarTela(tela);
+    }
 
     public static void setTecladoAtivo(boolean ativo) {
         boolean anterior = tecladoAtivo;

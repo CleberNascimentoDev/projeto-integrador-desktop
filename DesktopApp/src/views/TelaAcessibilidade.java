@@ -22,6 +22,11 @@ public class TelaAcessibilidade extends JDialog {
         JLabel orientacao = new JLabel("<html>Use Tab e Shift+Tab para navegar.<br>Use Espaço nos botões e as setas nas tabelas.</html>");
         JButton teclado = new JButton("Navegação por teclado");
         JButton padrao = new JButton("Voltar à navegação padrão");
+        JCheckBox baixaVisao = new JCheckBox("Modo de baixa visão", Acessibilidade.isBaixaVisaoAtiva());
+        baixaVisao.setOpaque(false);
+        baixaVisao.getAccessibleContext().setAccessibleDescription(
+                "Amplia textos e controles e aumenta o contraste em todas as telas.");
+        JLabel orientacaoBaixaVisao = new JLabel("<html>Textos e controles ampliados, alto contraste<br>e rolagem para acessar todo o formulário.</html>");
         JButton fechar = new JButton("Fechar");
         Runnable atualizar = () -> {
             estado.setText("Modo atual: " + (Acessibilidade.isTecladoAtivo() ? "navegação por teclado" : "navegação padrão"));
@@ -30,10 +35,12 @@ public class TelaAcessibilidade extends JDialog {
         };
         teclado.addActionListener(e -> { Acessibilidade.setTecladoAtivo(true); atualizar.run(); padrao.requestFocusInWindow(); });
         padrao.addActionListener(e -> { Acessibilidade.setTecladoAtivo(false); atualizar.run(); teclado.requestFocusInWindow(); });
+        baixaVisao.addActionListener(e -> Acessibilidade.setBaixaVisaoAtiva(baixaVisao.isSelected()));
         fechar.addActionListener(e -> dispose());
-        for (JComponent componente : new JComponent[]{titulo, estado, orientacao, teclado, padrao, fechar}) {
+        for (JComponent componente : new JComponent[]{titulo, estado, orientacao, teclado, padrao,
+                baixaVisao, orientacaoBaixaVisao, fechar}) {
             componente.setAlignmentX(Component.LEFT_ALIGNMENT);
-            if (componente instanceof JButton) componente.setMaximumSize(new Dimension(300, 34));
+            if (componente instanceof JButton) componente.setMaximumSize(new Dimension(Integer.MAX_VALUE, 54));
             painel.add(componente);
             painel.add(Box.createVerticalStrut(12));
         }
@@ -42,5 +49,6 @@ public class TelaAcessibilidade extends JDialog {
         getRootPane().registerKeyboardAction(e -> dispose(), KeyStroke.getKeyStroke("ESCAPE"), JComponent.WHEN_IN_FOCUSED_WINDOW);
         pack();
         setLocationRelativeTo(owner);
+        Acessibilidade.configurarTela(this);
     }
 }

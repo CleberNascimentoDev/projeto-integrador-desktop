@@ -20,6 +20,11 @@ public class TelaMenu extends javax.swing.JFrame {
      */
     public TelaMenu() {
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
+        classes.BotaoAcessibilidade btAcessibilidade = new classes.BotaoAcessibilidade();
+        btAcessibilidade.addActionListener(e -> new TelaAcessibilidade(this).setVisible(true));
+        menuBar.add(javax.swing.Box.createHorizontalGlue());
+        menuBar.add(btAcessibilidade);
         // Maximiza a janela para ocupar a tela toda ao iniciar
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         

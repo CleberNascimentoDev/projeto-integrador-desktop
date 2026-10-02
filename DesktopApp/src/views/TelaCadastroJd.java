@@ -34,6 +34,7 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         super(parent, modal);
         this.setUndecorated(false);
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
         configurarPlaceholders();
         this.setResizable(false);
         this.setLocationRelativeTo(null);

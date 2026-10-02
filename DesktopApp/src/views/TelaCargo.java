@@ -28,6 +28,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
      */
     public TelaCargo() {
         initComponents();
+        classes.Acessibilidade.configurarTela(this);
         customizarTabela();
         configurarPesquisa();
         carregarCargos();
@@ -136,7 +137,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         boolean ativo = classes.Acessibilidade.isTecladoAtivo();
         mapa.put(javax.swing.KeyStroke.getKeyStroke("TAB"), ativo ? "proximoCampo" : tabOriginal);
         mapa.put(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"), ativo ? "campoAnterior" : shiftOriginal);
-        botaoAjuda.setFocusPainted(ativo);
+        botaoAjuda.setFocusPainted(ativo || classes.Acessibilidade.isBaixaVisaoAtiva());
     }
 
     @Override public void dispose() {
