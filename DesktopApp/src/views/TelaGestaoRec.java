@@ -27,7 +27,129 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     customizarTabela();
     configurarBuscaDinamica();
     carregarTabela("");
-}
+        java.awt.EventQueue.invokeLater(() -> {
+        if (classes.Acessibilidade.isTecladoAtivo()) btVoltar.requestFocusInWindow();
+        acessibilidade();
+
+        });  
+    }
+    
+    
+    
+    
+    
+            private void acessibilidade(){
+        javax.swing.InputMap mapa = tbProcesso.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        Object tabOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("TAB"));
+        Object shiftOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"));
+        
+        // 1. Permite que a tabela receba o foco ao navegar com o TAB
+        tbProcesso.setFocusable(true);
+
+        // 2. Altera o comportamento do TAB dentro da tabela para APENAS passar o foco adiante
+        tbProcesso.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+            .put(javax.swing.KeyStroke.getKeyStroke("TAB"), "proximoCampo");
+
+        tbProcesso.getActionMap().put("proximoCampo", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                tbProcesso.transferFocus(); 
+            }
+        });
+
+        // 3. Faz o mesmo para o Shift+TAB voltar para o campo anterior
+        tbProcesso.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+            .put(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"), "campoAnterior");
+
+        tbProcesso.getActionMap().put("campoAnterior", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                tbProcesso.transferFocusBackward(); 
+            }
+        });
+
+        // 4. Controla visual (Borda de Foco) e seleção baseado no ganho/perda de foco
+        javax.swing.border.Border bordaFoco = javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 120, 215), 3);
+        javax.swing.border.Border bordaSpOriginal = spBarra.getBorder();
+
+        java.awt.event.FocusAdapter controladorDeFoco = new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent e) {
+                java.awt.Component fonte = (java.awt.Component) e.getSource();
+
+                // Adiciona a borda de destaque visualmente
+                if (fonte == tbProcesso) {
+                    spBarra.setBorder(bordaFoco);
+                    if (classes.Acessibilidade.isTecladoAtivo() && tbProcesso.getRowCount() > 0 && tbProcesso.getSelectedRow() == -1) {
+                        tbProcesso.setRowSelectionInterval(0, 0);
+                    }
+                } else if (fonte instanceof javax.swing.JButton) {
+                    javax.swing.JButton btn = (javax.swing.JButton) fonte;
+                    if (btn.getClientProperty("bordaOriginal") == null) {
+                        btn.putClientProperty("bordaOriginal", btn.getBorder());
+                    }
+                    btn.setBorder(bordaFoco);
+                }
+            }
+            
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                java.awt.Component fonte = (java.awt.Component) e.getSource();
+
+                // Restaura a borda original de quem perdeu o foco
+                if (fonte == tbProcesso) {
+                    spBarra.setBorder(bordaSpOriginal);
+                } else if (fonte instanceof javax.swing.JButton) {
+                    javax.swing.JButton btn = (javax.swing.JButton) fonte;
+                    javax.swing.border.Border original = (javax.swing.border.Border) btn.getClientProperty("bordaOriginal");
+                    if (original != null) {
+                        btn.setBorder(original);
+                    }
+                }
+
+                // Mantém a regra de limpar a marcação azul da tabela ao sair do grupo de ação
+                javax.swing.SwingUtilities.invokeLater(() -> {
+                    java.awt.Component focado = java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+                    if (focado != tbProcesso && focado != btAtribuir && focado != btExcluir) {
+                        tbProcesso.clearSelection();
+                    }
+                });
+            }
+        };
+
+        tbProcesso.addFocusListener(controladorDeFoco);
+        btAtribuir.addFocusListener(controladorDeFoco);
+        btExcluir.addFocusListener(controladorDeFoco);
+        btVoltar.addFocusListener(controladorDeFoco);
+
+        preferenciaTeclado = e -> aplicarNavegacao(mapa, tabOriginal, shiftOriginal);
+        classes.Acessibilidade.adicionarListener(preferenciaTeclado);
+        aplicarNavegacao(mapa, tabOriginal, shiftOriginal);
+    }
+    
+    private java.beans.PropertyChangeListener preferenciaTeclado;
+
+    private void aplicarNavegacao(javax.swing.InputMap mapa, Object tabOriginal, Object shiftOriginal) {
+        boolean ativo = classes.Acessibilidade.isTecladoAtivo();
+        mapa.put(javax.swing.KeyStroke.getKeyStroke("TAB"), ativo ? "proximoCampo" : tabOriginal);
+        mapa.put(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"), ativo ? "campoAnterior" : shiftOriginal);
+        botaoAjuda.setFocusPainted(ativo);
+    }
+
+    @Override public void dispose() {
+        if (preferenciaTeclado != null) classes.Acessibilidade.removerListener(preferenciaTeclado);
+        super.dispose();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     private void carregarTabela(String termo) {
 

@@ -40,7 +40,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     }   
 
     
-    private void acessibilidade(){
+        private void acessibilidade(){
         javax.swing.InputMap mapa = tbCargo.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         Object tabOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("TAB"));
         Object shiftOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"));
@@ -70,33 +70,66 @@ public class TelaCargo extends javax.swing.JInternalFrame {
             }
         });
 
-        // 4. Controla visual e seleção baseado no ganho/perda de foco
-        tbCargo.addFocusListener(new java.awt.event.FocusAdapter() {
+        // 4. Controla visual (Borda de Foco) e seleção baseado no ganho/perda de foco
+        javax.swing.border.Border bordaFoco = javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 120, 215), 3);
+        javax.swing.border.Border bordaSpOriginal = spBarra.getBorder();
+
+        java.awt.event.FocusAdapter controladorDeFoco = new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent e) {
-                // Seleciona automaticamente a primeira linha se a navegação for por teclado e nada estiver selecionado
-                if (classes.Acessibilidade.isTecladoAtivo() && tbCargo.getRowCount() > 0 && tbCargo.getSelectedRow() == -1) {
-                    tbCargo.setRowSelectionInterval(0, 0);
+                java.awt.Component fonte = (java.awt.Component) e.getSource();
+
+                // Adiciona a borda de destaque visualmente
+                if (fonte == tbCargo) {
+                    spBarra.setBorder(bordaFoco);
+                    if (classes.Acessibilidade.isTecladoAtivo() && tbCargo.getRowCount() > 0 && tbCargo.getSelectedRow() == -1) {
+                        tbCargo.setRowSelectionInterval(0, 0);
+                    }
+                } else if (fonte instanceof javax.swing.JButton) {
+                    javax.swing.JButton btn = (javax.swing.JButton) fonte;
+                    if (btn.getClientProperty("bordaOriginal") == null) {
+                        btn.putClientProperty("bordaOriginal", btn.getBorder());
+                    }
+                    btn.setBorder(bordaFoco);
                 }
             }
             
             @Override
             public void focusLost(java.awt.event.FocusEvent e) {
-                // Captura para onde o foco está indo ao sair da tabela
-                java.awt.Component destino = e.getOppositeComponent();
-                
-                // Limpa a marcação azul APENAS se o foco NÃO for para os botões btEditar e btExcluir
-                if (destino != btEditar && destino != btExcluir) {
-                    tbCargo.clearSelection(); 
+                java.awt.Component fonte = (java.awt.Component) e.getSource();
+
+                // Restaura a borda original de quem perdeu o foco
+                if (fonte == tbCargo) {
+                    spBarra.setBorder(bordaSpOriginal);
+                } else if (fonte instanceof javax.swing.JButton) {
+                    javax.swing.JButton btn = (javax.swing.JButton) fonte;
+                    javax.swing.border.Border original = (javax.swing.border.Border) btn.getClientProperty("bordaOriginal");
+                    if (original != null) {
+                        btn.setBorder(original);
+                    }
                 }
+
+                // Mantém a regra de limpar a marcação azul da tabela ao sair do grupo de ação
+                javax.swing.SwingUtilities.invokeLater(() -> {
+                    java.awt.Component focado = java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+                    if (focado != tbCargo && focado != btEditar && focado != btExcluir) {
+                        tbCargo.clearSelection();
+                    }
+                });
             }
-        });
-        
+        };
+
+        tbCargo.addFocusListener(controladorDeFoco);
+        btEditar.addFocusListener(controladorDeFoco);
+        btExcluir.addFocusListener(controladorDeFoco);
+        btCadastrar.addFocusListener(controladorDeFoco);
+        btVoltar.addFocusListener(controladorDeFoco);
+
         preferenciaTeclado = e -> aplicarNavegacao(mapa, tabOriginal, shiftOriginal);
         classes.Acessibilidade.adicionarListener(preferenciaTeclado);
         aplicarNavegacao(mapa, tabOriginal, shiftOriginal);
     }
-
+    
     private java.beans.PropertyChangeListener preferenciaTeclado;
 
     private void aplicarNavegacao(javax.swing.InputMap mapa, Object tabOriginal, Object shiftOriginal) {
@@ -110,6 +143,8 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         if (preferenciaTeclado != null) classes.Acessibilidade.removerListener(preferenciaTeclado);
         super.dispose();
     }
+    
+    
     
     
     
