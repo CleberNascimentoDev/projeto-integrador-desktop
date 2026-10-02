@@ -20,8 +20,6 @@ public class TelaAcessibilidade extends JDialog {
         titulo.setForeground(new Color(17, 48, 82));
         JLabel estado = new JLabel();
         JLabel orientacao = new JLabel("<html>Use Tab e Shift+Tab para navegar.<br>Use Espaço nos botões e as setas nas tabelas.</html>");
-        JButton teclado = new JButton("Navegação por teclado");
-        JButton padrao = new JButton("Voltar à navegação padrão");
         JButton baixaVisao = new JButton("Modo de baixa visão");
         baixaVisao.getAccessibleContext().setAccessibleDescription(
                 "Amplia textos e controles e aumenta o contraste em todas as telas.");
@@ -32,18 +30,13 @@ public class TelaAcessibilidade extends JDialog {
         JLabel orientacaoDaltonismo = new JLabel("<html>Ações em azul e laranja, com texto para identificá-las.<br>Campos com * são obrigatórios.</html>");
         JButton fechar = new JButton("Fechar");
         Runnable atualizar = () -> {
-            estado.setText("<html>Navegação: " + (Acessibilidade.isTecladoAtivo() ? "por teclado" : "padrão")
-                    + "<br>Baixa visão: " + (Acessibilidade.isBaixaVisaoAtiva() ? "ativada" : "desativada")
+            estado.setText("<html>Baixa visão: " + (Acessibilidade.isBaixaVisaoAtiva() ? "ativada" : "desativada")
                     + "<br>Daltonismo: " + (Acessibilidade.isDaltonismoAtivo() ? "ativado" : "desativado") + "</html>");
-            teclado.setEnabled(!Acessibilidade.isTecladoAtivo());
-            padrao.setEnabled(Acessibilidade.isTecladoAtivo());
             baixaVisao.setText(Acessibilidade.isBaixaVisaoAtiva()
                     ? "Desativar modo de baixa visão" : "Ativar modo de baixa visão");
             daltonismo.setText(Acessibilidade.isDaltonismoAtivo()
                     ? "Desativar modo daltonismo" : "Ativar modo daltonismo");
         };
-        teclado.addActionListener(e -> { Acessibilidade.setTecladoAtivo(true); atualizar.run(); padrao.requestFocusInWindow(); });
-        padrao.addActionListener(e -> { Acessibilidade.setTecladoAtivo(false); atualizar.run(); teclado.requestFocusInWindow(); });
         baixaVisao.addActionListener(e -> {
             Acessibilidade.setBaixaVisaoAtiva(!Acessibilidade.isBaixaVisaoAtiva());
             atualizar.run();
@@ -53,7 +46,7 @@ public class TelaAcessibilidade extends JDialog {
             atualizar.run();
         });
         fechar.addActionListener(e -> dispose());
-        for (JComponent componente : new JComponent[]{titulo, estado, orientacao, teclado, padrao,
+        for (JComponent componente : new JComponent[]{titulo, estado, orientacao,
                 baixaVisao, orientacaoBaixaVisao, daltonismo, orientacaoDaltonismo, fechar}) {
             componente.setAlignmentX(Component.LEFT_ALIGNMENT);
             if (componente instanceof JButton) componente.setMaximumSize(new Dimension(Integer.MAX_VALUE, 54));
