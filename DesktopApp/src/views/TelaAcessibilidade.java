@@ -22,8 +22,7 @@ public class TelaAcessibilidade extends JDialog {
         JLabel orientacao = new JLabel("<html>Use Tab e Shift+Tab para navegar.<br>Use Espaço nos botões e as setas nas tabelas.</html>");
         JButton teclado = new JButton("Navegação por teclado");
         JButton padrao = new JButton("Voltar à navegação padrão");
-        JCheckBox baixaVisao = new JCheckBox("Modo de baixa visão", Acessibilidade.isBaixaVisaoAtiva());
-        baixaVisao.setOpaque(false);
+        JButton baixaVisao = new JButton("Modo de baixa visão");
         baixaVisao.getAccessibleContext().setAccessibleDescription(
                 "Amplia textos e controles e aumenta o contraste em todas as telas.");
         JLabel orientacaoBaixaVisao = new JLabel("<html>Textos e controles ampliados, alto contraste<br>e rolagem para acessar todo o formulário.</html>");
@@ -32,10 +31,15 @@ public class TelaAcessibilidade extends JDialog {
             estado.setText("Modo atual: " + (Acessibilidade.isTecladoAtivo() ? "navegação por teclado" : "navegação padrão"));
             teclado.setEnabled(!Acessibilidade.isTecladoAtivo());
             padrao.setEnabled(Acessibilidade.isTecladoAtivo());
+            baixaVisao.setText(Acessibilidade.isBaixaVisaoAtiva()
+                    ? "Desativar modo de baixa visão" : "Ativar modo de baixa visão");
         };
         teclado.addActionListener(e -> { Acessibilidade.setTecladoAtivo(true); atualizar.run(); padrao.requestFocusInWindow(); });
         padrao.addActionListener(e -> { Acessibilidade.setTecladoAtivo(false); atualizar.run(); teclado.requestFocusInWindow(); });
-        baixaVisao.addActionListener(e -> Acessibilidade.setBaixaVisaoAtiva(baixaVisao.isSelected()));
+        baixaVisao.addActionListener(e -> {
+            Acessibilidade.setBaixaVisaoAtiva(!Acessibilidade.isBaixaVisaoAtiva());
+            atualizar.run();
+        });
         fechar.addActionListener(e -> dispose());
         for (JComponent componente : new JComponent[]{titulo, estado, orientacao, teclado, padrao,
                 baixaVisao, orientacaoBaixaVisao, fechar}) {
