@@ -7,6 +7,7 @@ import java.beans.PropertyChangeSupport;
 public final class Acessibilidade {
     private static boolean tecladoAtivo = true;
     private static boolean baixaVisaoAtiva = false;
+    private static boolean daltonismoAtivo = false;
     private static final PropertyChangeSupport eventos = new PropertyChangeSupport(Acessibilidade.class);
 
     private Acessibilidade() { }
@@ -15,19 +16,39 @@ public final class Acessibilidade {
 
     public static boolean isBaixaVisaoAtiva() { return baixaVisaoAtiva; }
 
+    public static boolean isDaltonismoAtivo() { return daltonismoAtivo; }
+
     public static void setBaixaVisaoAtiva(boolean ativo) {
         if (!javax.swing.SwingUtilities.isEventDispatchThread()) {
             javax.swing.SwingUtilities.invokeLater(() -> setBaixaVisaoAtiva(ativo));
             return;
         }
         boolean anterior = baixaVisaoAtiva;
+        Daltonismo.restaurarTelas();
+        BaixaVisao.restaurarTelas();
         baixaVisaoAtiva = ativo;
         BaixaVisao.atualizarTelas();
+        Daltonismo.atualizarTelas();
         eventos.firePropertyChange("baixaVisaoAtiva", anterior, ativo);
     }
 
     public static void configurarTela(javax.swing.RootPaneContainer tela) {
         BaixaVisao.configurarTela(tela);
+        Daltonismo.configurarTela(tela);
+    }
+
+    public static void setDaltonismoAtivo(boolean ativo) {
+        if (!javax.swing.SwingUtilities.isEventDispatchThread()) {
+            javax.swing.SwingUtilities.invokeLater(() -> setDaltonismoAtivo(ativo));
+            return;
+        }
+        boolean anterior = daltonismoAtivo;
+        Daltonismo.restaurarTelas();
+        BaixaVisao.restaurarTelas();
+        daltonismoAtivo = ativo;
+        BaixaVisao.atualizarTelas();
+        Daltonismo.atualizarTelas();
+        eventos.firePropertyChange("daltonismoAtivo", anterior, ativo);
     }
 
     public static void setTecladoAtivo(boolean ativo) {

@@ -144,13 +144,13 @@ public class BotaoAjuda extends JButton {
             int[] xPoints = {x + tamanho / 2, x + margem, x + tamanho - margem};
             int[] yPoints = {y + margem, y + tamanho - margem, y + tamanho - margem};
 
-            g2.setColor(corSinal);
+            g2.setColor(Acessibilidade.isDaltonismoAtivo() ? new Color(255, 210, 128) : corSinal);
             g2.fillPolygon(xPoints, yPoints, 3);
             
             g2.setStroke(new BasicStroke(4f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
             g2.drawPolygon(xPoints, yPoints, 3);
 
-            g2.setColor(corFundo);
+            g2.setColor(Acessibilidade.isDaltonismoAtivo() ? Color.BLACK : corFundo);
             g2.setFont(new Font("Segoe UI", Font.BOLD, (int)(tamanho * 0.55)));
             FontMetrics fm = g2.getFontMetrics();
             

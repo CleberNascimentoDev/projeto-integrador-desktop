@@ -58,8 +58,18 @@ public final class BaixaVisao {
     }
 
     private static void atualizarTela(JRootPane raiz) {
+        atualizarTela(raiz, Acessibilidade.isBaixaVisaoAtiva());
+    }
+
+    public static void restaurarTelas() {
+        for (WeakReference<JRootPane> referencia : new ArrayList<>(telas)) {
+            JRootPane raiz = referencia.get();
+            if (raiz != null) atualizarTela(raiz, false);
+        }
+    }
+
+    private static void atualizarTela(JRootPane raiz, boolean ativo) {
         EstadoTela estado = (EstadoTela) raiz.getClientProperty(chaveEstado);
-        boolean ativo = Acessibilidade.isBaixaVisaoAtiva();
         if (estado == null || estado.ativo == ativo) return;
         estado.tela.getContentPane().validate();
         if (ativo) {
@@ -291,6 +301,12 @@ public final class BaixaVisao {
         if (campo instanceof AbstractButton && (!((AbstractButton) campo).isContentAreaFilled()
                 || campo instanceof JCheckBox || campo instanceof JRadioButton)) {
             campo.setForeground(texto);
+        }
+        if (Acessibilidade.isDaltonismoAtivo()) {
+            Color corFundo = Daltonismo.adaptarFundo(campo, campo.getBackground());
+            Color corTexto = Daltonismo.adaptarTexto(campo, campo.getForeground(), campo.getBackground());
+            campo.setBackground(corFundo);
+            campo.setForeground(corTexto);
         }
     }
 
