@@ -23,11 +23,12 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
      * Creates new form TelaGestaoRec
      */
     public TelaGestaoRec() {
-    initComponents();
+        initComponents();
         classes.Acessibilidade.configurarTela(this);
-    customizarTabela();
-    configurarBuscaDinamica();
-    carregarTabela("");
+        configurarAtalhos();
+        customizarTabela();
+        configurarBuscaDinamica();
+        carregarTabela("");
         java.awt.EventQueue.invokeLater(() -> {
         if (classes.Acessibilidade.isTecladoAtivo()) btVoltar.requestFocusInWindow();
         acessibilidade();
@@ -38,8 +39,51 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     
     
     
+        private void configurarAtalhos() {
+        javax.swing.InputMap inputMap = this.getRootPane().getInputMap(javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW);
+        javax.swing.ActionMap actionMap = this.getRootPane().getActionMap();
+
+        // 1.1 Atalho para Cadastrar: Ctrl + N
+        inputMap.put(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK), "cadastrar");
+        actionMap.put("cadastrar", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                btAtribuir.doClick(); 
+            }
+        });
+
+        // 1.3 Atalho para Excluir: Ctrl + D
+        inputMap.put(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK), "excluir");
+        actionMap.put("excluir", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                // Dispara o clique diretamente; a validação e o JOptionPane já ocorrem dentro da ação do botão
+                btExcluir.doClick();
+            }
+        });
+        
+        btAtribuir.setToolTipText(btAtribuir.getToolTipText() + " (Ctrl + N)");
+        btExcluir.setToolTipText(btExcluir.getToolTipText() + " (Ctrl + D)");
+    }
     
-            private void acessibilidade(){
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        private void acessibilidade(){
         javax.swing.InputMap mapa = tbProcesso.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         Object tabOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("TAB"));
         Object shiftOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"));

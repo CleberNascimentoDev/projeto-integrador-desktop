@@ -32,6 +32,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         customizarTabela();
         configurarPesquisa();
         carregarCargos();
+        configurarAtalhos();
         
         java.awt.EventQueue.invokeLater(() -> {
         if (classes.Acessibilidade.isTecladoAtivo()) btVoltar.requestFocusInWindow();
@@ -40,6 +41,50 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         });
     }   
 
+    
+    
+    private void configurarAtalhos() {
+        javax.swing.InputMap inputMap = this.getRootPane().getInputMap(javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW);
+        javax.swing.ActionMap actionMap = this.getRootPane().getActionMap();
+
+        // 1.1 Atalho para Cadastrar: Ctrl + N
+        inputMap.put(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK), "cadastrar");
+        actionMap.put("cadastrar", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                btCadastrar.doClick(); 
+            }
+        });
+
+        // 1.2 Atalho para Editar: Ctrl + E
+        inputMap.put(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK), "editar");
+        actionMap.put("editar", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                // Dispara o clique diretamente; a validação e o JOptionPane já ocorrem dentro da ação do botão
+                btEditar.doClick();
+            }
+        });
+
+        // 1.3 Atalho para Excluir: Ctrl + D
+        inputMap.put(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK), "excluir");
+        actionMap.put("excluir", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                // Dispara o clique diretamente; a validação e o JOptionPane já ocorrem dentro da ação do botão
+                btExcluir.doClick();
+            }
+        });
+        
+        btCadastrar.setToolTipText(btCadastrar.getToolTipText() + " (Ctrl + N)");
+        btEditar.setToolTipText(btEditar.getToolTipText() + " (Ctrl + E)");
+        btExcluir.setToolTipText(btExcluir.getToolTipText() + " (Ctrl + D)");
+    }
+    
+    
+    
+    
+    
     
         private void acessibilidade(){
         javax.swing.InputMap mapa = tbCargo.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
