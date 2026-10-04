@@ -64,6 +64,7 @@ public class BaixaVisaoTeste {
                 desktop.add((JInternalFrame) tela);
                 ((JInternalFrame) tela).addNotify();
                 ((JInternalFrame) tela).pack();
+                ((JInternalFrame) tela).setMaximum(true);
             }
             organizar((Container) tela);
             Container conteudo = tela.getContentPane();
@@ -84,6 +85,9 @@ public class BaixaVisaoTeste {
                 exigir(tela.getContentPane() == conteudo, "Baixa visão adicionou rolagem à janela");
                 exigir(contarRolagens(conteudo) == rolagens, "Baixa visão criou barras adicionais");
                 if (tela instanceof JInternalFrame) {
+                    exigir(((Component) tela).getBounds().equals(new Rectangle(0, 0,
+                                    desktop.getWidth(), desktop.getHeight())),
+                            "Tela maximizada deixou parte do menu descoberto");
                     exigir(((Component) tela).getWidth() <= desktop.getWidth()
                                     && ((Component) tela).getHeight() <= desktop.getHeight(),
                             "Janela interna excedeu a área do menu");

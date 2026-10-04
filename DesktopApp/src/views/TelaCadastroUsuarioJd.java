@@ -28,6 +28,9 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         super(parent, modal);
         this.setUndecorated(false);
         initComponents();
+        jlLogo.setIcon(new classes.IconeImagem("/images/Logo.png", 337, 110));
+        jlLogo.putClientProperty("baixaVisao.logo", true);
+        jlLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);

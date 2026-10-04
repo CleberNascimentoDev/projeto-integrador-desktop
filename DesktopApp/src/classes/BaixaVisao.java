@@ -106,7 +106,9 @@ public final class BaixaVisao {
             aplicarComponentes(estado.conteudo, false);
             if (raiz.getJMenuBar() != null) aplicarComponentes(raiz.getJMenuBar(), false);
             estado.conteudo.setPreferredSize(estado.preferencia);
-            if (!possuiDesktop(estado.conteudo) || estado.tela instanceof JInternalFrame)
+            if (estado.tela instanceof JInternalFrame && ((JInternalFrame) estado.tela).isMaximum())
+                ajustarJanela((Component) estado.tela, estado.tamanho);
+            else if (!possuiDesktop(estado.conteudo) || estado.tela instanceof JInternalFrame)
                 ((Component) estado.tela).setSize(estado.tamanho);
         }
         estado.ativo = ativo;
@@ -120,6 +122,12 @@ public final class BaixaVisao {
         for (Component filho : painel.getComponents()) {
             if (filho instanceof Container && !(filho instanceof JInternalFrame))
                 organizarComponentes((Container) filho);
+            if (filho instanceof JLabel && Boolean.TRUE.equals(
+                    ((JLabel) filho).getClientProperty("baixaVisao.logo"))) {
+                EstadoComponente estado = (EstadoComponente) ((JLabel) filho).getClientProperty(chaveEstado);
+                if (estado != null && estado.ativo)
+                    filho.setLocation((painel.getWidth() - filho.getWidth()) / 2, filho.getY());
+            }
         }
     }
 
@@ -133,6 +141,11 @@ public final class BaixaVisao {
 
     private static void ajustarJanela(Component janela, Dimension tamanho) {
         Dimension limite = limiteJanela(janela);
+        if (janela instanceof JInternalFrame && ((JInternalFrame) janela).isMaximum()
+                && janela.getParent() != null) {
+            janela.setBounds(0, 0, limite.width, limite.height);
+            return;
+        }
         janela.setSize(Math.min(tamanho.width, limite.width), Math.min(tamanho.height, limite.height));
         if (janela instanceof Window) ((Window) janela).setLocationRelativeTo(((Window) janela).getOwner());
     }
@@ -200,6 +213,12 @@ public final class BaixaVisao {
                 ((AbstractButton) campo).setBorderPainted(true);
             }
             if (estado.preferencia != null) campo.setPreferredSize(ampliar(estado.preferencia, fator));
+            if (campo instanceof JLabel && Boolean.TRUE.equals(campo.getClientProperty("baixaVisao.logo"))
+                    && estado.icone != null) {
+                ((JLabel) campo).setIcon(new IconeImagem("/images/Logo.png",
+                        (int) Math.ceil(estado.icone.getIconWidth() * 1.25),
+                        (int) Math.ceil(estado.icone.getIconHeight() * 1.25)));
+            }
             if (campo instanceof JButton) {
                 Dimension necessario = tamanhoBotao((JButton) campo);
                 Dimension preferencia = campo.getPreferredSize();
@@ -223,6 +242,8 @@ public final class BaixaVisao {
             campo.setBackground(estado.fundo);
             campo.setBorder(estado.borda);
             campo.setPreferredSize(estado.preferencia);
+            if (campo instanceof JLabel && Boolean.TRUE.equals(campo.getClientProperty("baixaVisao.logo")))
+                ((JLabel) campo).setIcon(estado.icone);
             if (campo instanceof JMenuItem) {
                 campo.putClientProperty("Nimbus.Overrides", estado.temaMenu);
                 campo.putClientProperty("Nimbus.Overrides.InheritDefaults", estado.herdarTemaMenu);
@@ -402,6 +423,7 @@ public final class BaixaVisao {
         final boolean layoutFixo, focoPintado, bordaPintada;
         final int alturaLinha;
         final String html;
+        final Icon icone;
         final List<EstadoColuna> colunas = new ArrayList<>();
         final Object temaMenu, herdarTemaMenu;
         final PropertyChangeListener preferenciaCores;
@@ -411,6 +433,7 @@ public final class BaixaVisao {
 
         EstadoComponente(JComponent campo) {
             fonte = campo.getFont();
+            icone = campo instanceof JLabel ? ((JLabel) campo).getIcon() : null;
             frente = campo.getForeground();
             fundo = campo.getBackground();
             borda = campo.getBorder();

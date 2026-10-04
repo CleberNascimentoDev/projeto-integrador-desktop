@@ -193,6 +193,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void configurarAcessibilidade() {
         jlLogo.setIcon(new classes.IconeImagem("/images/Logo.png", 337, 110));
+        jlLogo.putClientProperty("baixaVisao.logo", true);
+        jlLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.removeAll();
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 8));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 7));

@@ -180,6 +180,7 @@ public class TelaMenu extends javax.swing.JFrame {
                     if (f.isIcon()) {
                         f.setIcon(false); // Restaura se estiver minimizada
                     }
+                    f.setMaximum(true);
                     f.setSelected(true);
                     f.toFront();
                 } catch (java.beans.PropertyVetoException e) {
@@ -192,6 +193,12 @@ public class TelaMenu extends javax.swing.JFrame {
         if (!aberta) {
             painelPrincipal.add(frame);
             frame.setVisible(true);
+            try {
+                frame.setMaximum(true);
+                frame.setSelected(true);
+            } catch (java.beans.PropertyVetoException e) {
+                e.printStackTrace();
+            }
         }
     }
     
