@@ -38,6 +38,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         if (classes.Acessibilidade.isTecladoAtivo()) btVoltar.requestFocusInWindow();
         acessibilidade();
         });
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
     }
     
     

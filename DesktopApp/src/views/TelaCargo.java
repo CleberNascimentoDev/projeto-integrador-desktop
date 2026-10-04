@@ -39,6 +39,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         acessibilidade();
 
         });
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
     }   
 
     

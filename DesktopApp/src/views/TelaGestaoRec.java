@@ -34,6 +34,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         acessibilidade();
 
         });  
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
     }
     
     
