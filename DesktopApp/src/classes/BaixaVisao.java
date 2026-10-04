@@ -16,6 +16,8 @@ import javax.swing.text.JTextComponent;
 /** Adapta as telas em execução sem alterar os formulários do NetBeans. */
 public final class BaixaVisao {
     private static final double ampliacao = 1.5;
+    // Reserva espaço para bordas e espaçamentos dos painéis aninhados.
+    private static final int margemLayout = 48;
     private static final Color fundo = Color.WHITE;
     private static final Color texto = Color.BLACK;
     private static final Color destaque = new Color(17, 48, 82);
@@ -71,43 +73,54 @@ public final class BaixaVisao {
     private static void atualizarTela(JRootPane raiz, boolean ativo) {
         EstadoTela estado = (EstadoTela) raiz.getClientProperty(chaveEstado);
         if (estado == null || estado.ativo == ativo) return;
-        estado.tela.getContentPane().validate();
+        organizarComponentes((Container) estado.tela);
         if (ativo) {
             estado.conteudo = estado.tela.getContentPane();
             estado.tamanho = ((Component) estado.tela).getSize();
             estado.preferencia = estado.conteudo.isPreferredSizeSet()
                     ? estado.conteudo.getPreferredSize() : null;
             Dimension tamanhoConteudo = estado.conteudo.getSize();
+            Dimension limite = limiteJanela((Component) estado.tela);
+            int margemLargura = Math.max(0, estado.tamanho.width - tamanhoConteudo.width);
+            int margemAltura = Math.max(0, estado.tamanho.height - tamanhoConteudo.height);
+            int alturaMenu = raiz.getJMenuBar() != null ? raiz.getJMenuBar().getPreferredSize().height : 0;
+            double fator = Math.min(ampliacao, Math.min(
+                    (double) Math.max(1, limite.width - margemLargura - margemLayout) / Math.max(1, tamanhoConteudo.width),
+                    (double) Math.max(1, limite.height - margemAltura - alturaMenu * (ampliacao - 1) - margemLayout)
+                            / Math.max(1, tamanhoConteudo.height)));
             guardarComponentes(estado.conteudo);
             if (raiz.getJMenuBar() != null) guardarComponentes(raiz.getJMenuBar());
-            aplicarComponentes(estado.conteudo, true);
+            aplicarComponentes(estado.conteudo, true, fator);
             if (raiz.getJMenuBar() != null) aplicarComponentes(raiz.getJMenuBar(), true);
-            // O menu mantém seu desktop flexível; cada janela interna possui sua própria rolagem.
-            if (!possuiDesktop(estado.conteudo)) {
+            // Amplia os controles dentro da área disponível, sem envolver a tela em rolagem.
+            if (!possuiDesktop(estado.conteudo) || estado.tela instanceof JInternalFrame) {
                 Dimension necessario = estado.conteudo.getPreferredSize();
-                Dimension minimo = ampliar(tamanhoConteudo);
+                Dimension minimo = ampliar(tamanhoConteudo, fator);
                 estado.conteudo.setPreferredSize(new Dimension(Math.max(necessario.width, minimo.width),
                         Math.max(necessario.height, minimo.height)));
-                estado.rolagem = new JScrollPane(estado.conteudo);
-                estado.rolagem.getVerticalScrollBar().setUnitIncrement(24);
-                estado.rolagem.getHorizontalScrollBar().setUnitIncrement(24);
-                estado.tela.setContentPane(estado.rolagem);
-                ajustarJanela((Component) estado.tela, ampliar(estado.tamanho));
+                ajustarJanela((Component) estado.tela, new Dimension(
+                        estado.conteudo.getPreferredSize().width + margemLargura,
+                        estado.conteudo.getPreferredSize().height + margemAltura));
             }
         } else {
-            if (estado.rolagem != null) {
-                estado.rolagem.setViewportView(null);
-                estado.tela.setContentPane(estado.conteudo);
-                estado.conteudo.setPreferredSize(estado.preferencia);
-                ((Component) estado.tela).setSize(estado.tamanho);
-                estado.rolagem = null;
-            }
             aplicarComponentes(estado.conteudo, false);
             if (raiz.getJMenuBar() != null) aplicarComponentes(raiz.getJMenuBar(), false);
+            estado.conteudo.setPreferredSize(estado.preferencia);
+            if (!possuiDesktop(estado.conteudo) || estado.tela instanceof JInternalFrame)
+                ((Component) estado.tela).setSize(estado.tamanho);
         }
         estado.ativo = ativo;
         raiz.revalidate();
+        organizarComponentes((Container) estado.tela);
         raiz.repaint();
+    }
+
+    private static void organizarComponentes(Container painel) {
+        painel.doLayout();
+        for (Component filho : painel.getComponents()) {
+            if (filho instanceof Container && !(filho instanceof JInternalFrame))
+                organizarComponentes((Container) filho);
+        }
     }
 
     private static boolean possuiDesktop(Container painel) {
@@ -119,6 +132,12 @@ public final class BaixaVisao {
     }
 
     private static void ajustarJanela(Component janela, Dimension tamanho) {
+        Dimension limite = limiteJanela(janela);
+        janela.setSize(Math.min(tamanho.width, limite.width), Math.min(tamanho.height, limite.height));
+        if (janela instanceof Window) ((Window) janela).setLocationRelativeTo(((Window) janela).getOwner());
+    }
+
+    private static Dimension limiteJanela(Component janela) {
         Dimension limite;
         if (janela instanceof JInternalFrame && janela.getParent() != null) {
             limite = janela.getParent().getSize();
@@ -131,13 +150,12 @@ public final class BaixaVisao {
             limite = new Dimension(area.width - margens.left - margens.right,
                     area.height - margens.top - margens.bottom);
         }
-        janela.setSize(Math.min(tamanho.width, limite.width), Math.min(tamanho.height, limite.height));
-        if (janela instanceof Window) ((Window) janela).setLocationRelativeTo(((Window) janela).getOwner());
+        return limite;
     }
 
-    private static Dimension ampliar(Dimension tamanho) {
-        return new Dimension((int) Math.ceil(tamanho.width * ampliacao),
-                (int) Math.ceil(tamanho.height * ampliacao));
+    private static Dimension ampliar(Dimension tamanho, double fator) {
+        return new Dimension((int) Math.ceil(tamanho.width * fator),
+                (int) Math.ceil(tamanho.height * fator));
     }
 
     private static void guardarComponentes(Component componente) {
@@ -157,6 +175,10 @@ public final class BaixaVisao {
     }
 
     private static void aplicarComponentes(Component componente, boolean ativo) {
+        aplicarComponentes(componente, ativo, ampliacao);
+    }
+
+    private static void aplicarComponentes(Component componente, boolean ativo, double fator) {
         // Não percorre o interior das janelas internas nem os filhos criados pelo Look and Feel.
         if (componente instanceof JInternalFrame) return;
         if (!(componente instanceof JComponent)) return;
@@ -168,28 +190,26 @@ public final class BaixaVisao {
         }
         if (estado == null) return;
         estado.ativo = ativo;
-        if (!ativo && campo instanceof JDesktopPane) {
-            for (JScrollPane rolagem : estado.paineisRolagem) {
-                Component painel = rolagem.getViewport().getView();
-                rolagem.setViewportView(null);
-                campo.remove(rolagem);
-                campo.add(painel, BorderLayout.CENTER);
-            }
-            estado.paineisRolagem.clear();
-        }
         if (ativo) {
             if (estado.fonte != null) campo.setFont(estado.fonte.deriveFont(
                     Math.max(18f, (float) (estado.fonte.getSize2D() * ampliacao))));
             aplicarCores(campo);
+            if (campo instanceof JMenuItem) configurarMenu((JMenuItem) campo);
             if (campo instanceof AbstractButton) {
                 ((AbstractButton) campo).setFocusPainted(true);
                 ((AbstractButton) campo).setBorderPainted(true);
             }
-            if (estado.preferencia != null) campo.setPreferredSize(ampliar(estado.preferencia));
+            if (estado.preferencia != null) campo.setPreferredSize(ampliar(estado.preferencia, fator));
+            if (campo instanceof JButton) {
+                Dimension necessario = tamanhoBotao((JButton) campo);
+                Dimension preferencia = campo.getPreferredSize();
+                campo.setPreferredSize(new Dimension(Math.max(preferencia.width, necessario.width),
+                        Math.max(preferencia.height, necessario.height)));
+            }
             if (campo instanceof JTable) {
                 JTable tabela = (JTable) campo;
                 tabela.setRowHeight((int) Math.ceil(estado.alturaLinha * ampliacao));
-                aplicarComponentes(tabela.getTableHeader(), true);
+                aplicarComponentes(tabela.getTableHeader(), true, fator);
                 for (EstadoColuna coluna : estado.colunas) coluna.aplicar(tabela, true);
             }
             if (estado.html != null) {
@@ -203,6 +223,10 @@ public final class BaixaVisao {
             campo.setBackground(estado.fundo);
             campo.setBorder(estado.borda);
             campo.setPreferredSize(estado.preferencia);
+            if (campo instanceof JMenuItem) {
+                campo.putClientProperty("Nimbus.Overrides", estado.temaMenu);
+                campo.putClientProperty("Nimbus.Overrides.InheritDefaults", estado.herdarTemaMenu);
+            }
             if (campo instanceof AbstractButton) {
                 ((AbstractButton) campo).setFocusPainted(estado.focoPintado);
                 ((AbstractButton) campo).setBorderPainted(estado.bordaPintada);
@@ -228,7 +252,7 @@ public final class BaixaVisao {
             JPanel painel = (JPanel) campo;
             if (ativo && estado.layoutFixo) {
                 painel.setLayout(null);
-                painel.setPreferredSize(ampliar(estado.tamanho));
+                painel.setPreferredSize(ampliar(estado.tamanho, fator));
             } else if (!ativo && estado.layoutFixo) {
                 painel.setLayout(estado.layout);
             }
@@ -237,16 +261,21 @@ public final class BaixaVisao {
                 || campo instanceof JMenuBar || campo instanceof JPopupMenu || campo instanceof JOptionPane
                 || campo instanceof JDesktopPane) {
             for (Component filho : campo.getComponents()) {
-                aplicarComponentes(filho, ativo);
+                aplicarComponentes(filho, ativo, fator);
                 if (estado.layoutFixo && filho instanceof JComponent) {
                     EstadoComponente original = (EstadoComponente) ((JComponent) filho).getClientProperty(chaveEstado);
                     if (original != null) {
                         Rectangle limites = original.limites;
-                        Rectangle ampliados = ativo ? new Rectangle((int) (limites.x * ampliacao),
-                                (int) (limites.y * ampliacao), (int) Math.ceil(limites.width * ampliacao),
-                                (int) Math.ceil(limites.height * ampliacao)) : limites;
-                        if (ativo && filho instanceof JLabel) {
+                        Rectangle ampliados = ativo ? new Rectangle((int) (limites.x * fator),
+                                (int) (limites.y * fator), (int) Math.ceil(limites.width * fator),
+                                (int) Math.ceil(limites.height * fator)) : limites;
+                        if (ativo && (filho instanceof JLabel || filho instanceof JPanel)) {
                             Dimension necessario = filho.getPreferredSize();
+                            ampliados.width = Math.max(ampliados.width, necessario.width);
+                            ampliados.height = Math.max(ampliados.height, necessario.height);
+                        }
+                        if (ativo && filho instanceof JButton) {
+                            Dimension necessario = tamanhoBotao((JButton) filho);
                             ampliados.width = Math.max(ampliados.width, necessario.width);
                             ampliados.height = Math.max(ampliados.height, necessario.height);
                         }
@@ -255,23 +284,13 @@ public final class BaixaVisao {
                 }
             }
             if (ativo && estado.layoutFixo) {
-                Dimension necessario = ampliar(estado.tamanho);
+                organizarBotoes(campo);
+                Dimension necessario = ampliar(estado.tamanho, fator);
                 for (Component filho : campo.getComponents()) {
                     necessario.width = Math.max(necessario.width, filho.getX() + filho.getWidth() + 12);
                     necessario.height = Math.max(necessario.height, filho.getY() + filho.getHeight() + 12);
                 }
                 campo.setPreferredSize(necessario);
-            }
-        }
-        if (ativo && campo instanceof JDesktopPane && campo.getLayout() instanceof BorderLayout) {
-            for (Component filho : campo.getComponents()) {
-                if (filho instanceof JPanel) {
-                    JScrollPane rolagem = new JScrollPane(filho);
-                    rolagem.getVerticalScrollBar().setUnitIncrement(24);
-                    rolagem.getHorizontalScrollBar().setUnitIncrement(24);
-                    campo.add(rolagem, BorderLayout.CENTER);
-                    estado.paineisRolagem.add(rolagem);
-                }
             }
         }
         if (campo instanceof JMenu) aplicarComponentes(((JMenu) campo).getPopupMenu(), ativo);
@@ -282,10 +301,43 @@ public final class BaixaVisao {
         }
     }
 
+    private static Dimension tamanhoBotao(JButton botao) {
+        Insets margens = botao.getInsets();
+        FontMetrics fonte = botao.getFontMetrics(botao.getFont());
+        String rotulo = botao.getText();
+        Icon icone = botao.getIcon();
+        int larguraTexto = rotulo == null || rotulo.isEmpty() ? 0 : fonte.stringWidth(rotulo);
+        int alturaTexto = larguraTexto == 0 ? 0 : fonte.getHeight();
+        int larguraIcone = icone == null ? 0 : icone.getIconWidth();
+        int alturaIcone = icone == null ? 0 : icone.getIconHeight();
+        int espaco = larguraTexto > 0 && larguraIcone > 0 ? botao.getIconTextGap() : 0;
+        return new Dimension(larguraTexto + larguraIcone + espaco + margens.left + margens.right + 8,
+                Math.max(alturaTexto, alturaIcone) + margens.top + margens.bottom + 8);
+    }
+
+    private static void organizarBotoes(JComponent painel) {
+        List<JButton> botoes = new ArrayList<>();
+        for (Component filho : painel.getComponents()) if (filho instanceof JButton) botoes.add((JButton) filho);
+        botoes.sort(java.util.Comparator.comparingInt(Component::getX));
+        for (int i = botoes.size() - 1; i > 0; i--) {
+            JButton direita = botoes.get(i);
+            for (int j = i - 1; j >= 0; j--) {
+                JButton esquerda = botoes.get(j);
+                if (esquerda.getY() < direita.getY() + direita.getHeight()
+                        && direita.getY() < esquerda.getY() + esquerda.getHeight()
+                        && esquerda.getX() + esquerda.getWidth() + 12 > direita.getX()) {
+                    esquerda.setLocation(direita.getX() - esquerda.getWidth() - 12, esquerda.getY());
+                }
+            }
+        }
+    }
+
     private static void aplicarCores(JComponent campo) {
-        boolean botao = campo instanceof AbstractButton || campo instanceof JTableHeader;
+        boolean botao = (campo instanceof AbstractButton && !(campo instanceof JMenuItem))
+                || campo instanceof JTableHeader;
         campo.setBackground(botao ? destaque : fundo);
-        campo.setForeground(botao ? fundo : texto);
+        campo.setForeground(campo instanceof JMenuItem ? new javax.swing.plaf.ColorUIResource(texto)
+                : botao ? fundo : texto);
         if (campo instanceof JTable) {
             ((JTable) campo).setSelectionBackground(destaque);
             ((JTable) campo).setSelectionForeground(fundo);
@@ -298,7 +350,7 @@ public final class BaixaVisao {
             entrada.setDisabledTextColor(new Color(64, 64, 64));
         }
         // Botões transparentes, como a ajuda, são desenhados sobre o painel branco.
-        if (campo instanceof AbstractButton && (!((AbstractButton) campo).isContentAreaFilled()
+        if (campo instanceof AbstractButton && !(campo instanceof JMenuItem) && (!((AbstractButton) campo).isContentAreaFilled()
                 || campo instanceof JCheckBox || campo instanceof JRadioButton)) {
             campo.setForeground(texto);
         }
@@ -310,12 +362,31 @@ public final class BaixaVisao {
         }
     }
 
+    private static void configurarMenu(JMenuItem menu) {
+        UIDefaults tema = new UIDefaults();
+        Object original = menu.getClientProperty("Nimbus.Overrides");
+        if (original instanceof UIDefaults) tema.putAll((UIDefaults) original);
+        for (String prefixo : new String[]{"Menu", "MenuBar:Menu", "MenuItem"}) {
+            tema.put(prefixo + "[Enabled].textForeground", new javax.swing.plaf.ColorUIResource(texto));
+            tema.put(prefixo + "[Disabled].textForeground", new javax.swing.plaf.ColorUIResource(64, 64, 64));
+            for (String estado : new String[]{"Selected", "Enabled+Selected", "MouseOver"}) {
+                tema.put(prefixo + "[" + estado + "].textForeground", new javax.swing.plaf.ColorUIResource(fundo));
+                tema.put(prefixo + "[" + estado + "].backgroundPainter", (Painter<JComponent>)
+                        (grafico, componente, largura, altura) -> {
+                            grafico.setColor(destaque);
+                            grafico.fillRect(0, 0, largura, altura);
+                        });
+            }
+        }
+        menu.putClientProperty("Nimbus.Overrides.InheritDefaults", true);
+        menu.putClientProperty("Nimbus.Overrides", tema);
+    }
+
     private static final class EstadoTela {
         final RootPaneContainer tela;
         Container conteudo;
         Dimension tamanho;
         Dimension preferencia;
-        JScrollPane rolagem;
         boolean ativo;
 
         EstadoTela(RootPaneContainer tela) { this.tela = tela; }
@@ -332,7 +403,7 @@ public final class BaixaVisao {
         final int alturaLinha;
         final String html;
         final List<EstadoColuna> colunas = new ArrayList<>();
-        final List<JScrollPane> paineisRolagem = new ArrayList<>();
+        final Object temaMenu, herdarTemaMenu;
         final PropertyChangeListener preferenciaCores;
         final FocusAdapter controladorDeFoco;
         boolean ativo;
@@ -346,6 +417,8 @@ public final class BaixaVisao {
             preferencia = campo.isPreferredSizeSet() ? campo.getPreferredSize() : null;
             tamanho = campo.getSize();
             limites = campo.getBounds();
+            temaMenu = campo.getClientProperty("Nimbus.Overrides");
+            herdarTemaMenu = campo.getClientProperty("Nimbus.Overrides.InheritDefaults");
             layout = campo.getLayout();
             layoutFixo = campo instanceof JPanel && (layout instanceof GroupLayout
                     || (layout != null && layout.getClass().getName().equals("org.netbeans.lib.awtextra.AbsoluteLayout")))

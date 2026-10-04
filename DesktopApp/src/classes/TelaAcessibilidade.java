@@ -22,7 +22,7 @@ public class TelaAcessibilidade extends JDialog {
         JButton baixaVisao = new JButton("Modo de baixa visão");
         baixaVisao.getAccessibleContext().setAccessibleDescription(
                 "Amplia textos e controles e aumenta o contraste em todas as telas.");
-        JLabel orientacaoBaixaVisao = new JLabel("<html>Textos e controles ampliados, alto contraste<br>e rolagem para acessar todo o formulário.</html>");
+        JLabel orientacaoBaixaVisao = new JLabel("<html>Textos e controles ampliados, alto contraste<br>e layout ajustado ao espaço da tela.</html>");
         JButton daltonismo = new JButton("Modo daltonismo");
         daltonismo.getAccessibleContext().setAccessibleDescription(
                 "Usa uma paleta alternativa de cores, mantendo textos e símbolos das ações.");

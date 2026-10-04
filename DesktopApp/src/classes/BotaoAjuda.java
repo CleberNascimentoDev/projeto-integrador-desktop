@@ -22,6 +22,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.plaf.basic.BasicHTML;
+import javax.swing.text.View;
 
 public class BotaoAjuda extends JButton {
 
@@ -41,6 +43,8 @@ public class BotaoAjuda extends JButton {
         setFocusPainted(false);
         setOpaque(false);
         setPreferredSize(new Dimension(40, 40));
+        setMargin(new java.awt.Insets(0, 0, 0, 0));
+        getAccessibleContext().setAccessibleName("Ajuda");
 
         addActionListener(e -> abrirJanelaAjuda());
         
@@ -57,6 +61,10 @@ public class BotaoAjuda extends JButton {
     }
 
     private void abrirJanelaAjuda() {
+        criarJanelaAjuda().setVisible(true);
+    }
+
+    private JDialog criarJanelaAjuda() {
         Window janelaPai = SwingUtilities.getWindowAncestor(this);
 
         JDialog dialog = new JDialog(janelaPai, tituloJanela);
@@ -92,9 +100,11 @@ public class BotaoAjuda extends JButton {
 
         String textoFormatadoHTML = textoAjuda.replaceAll("\\*\\*(.*?)\\*\\*", "<b>$1</b>");
 
-        String textoFinal = "<html><body style='width: 420px; text-align: justify; font-size: 14pt; font-family: Segoe UI, Arial; color: #333333;'>" 
+        String textoFinal = "<html><body style='text-align: left;'>"
                           + textoFormatadoHTML + "</body></html>";
-        JLabel labelMensagem = new JLabel(textoFinal);
+        JLabel labelMensagem = new TextoAjuda(textoFinal, 600);
+        labelMensagem.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        labelMensagem.setForeground(new Color(51, 51, 51));
 
         JButton btnFechar = new JButton("👍  ENTENDI");
         btnFechar.setFont(new Font("Segoe UI Emoji", Font.BOLD, 18));
@@ -121,7 +131,31 @@ public class BotaoAjuda extends JButton {
         dialog.add(painelConteudo);
         dialog.pack();
         dialog.setLocationRelativeTo(janelaPai);
-        dialog.setVisible(true);
+        Acessibilidade.configurarTela(dialog);
+        return dialog;
+    }
+
+    private static class TextoAjuda extends JLabel {
+        private final int larguraTexto;
+
+        TextoAjuda(String texto, int larguraTexto) {
+            super(texto);
+            this.larguraTexto = larguraTexto;
+        }
+
+        @Override public Dimension getPreferredSize() {
+            View conteudo = (View) getClientProperty(BasicHTML.propertyKey);
+            if (conteudo == null) return super.getPreferredSize();
+            int largura = getWidth() > 0 ? getWidth() : larguraTexto;
+            conteudo.setSize(largura, 0);
+            return new Dimension(largura, (int) Math.ceil(conteudo.getPreferredSpan(View.Y_AXIS)));
+        }
+
+        @Override public void setBounds(int x, int y, int largura, int altura) {
+            super.setBounds(x, y, largura, altura);
+            View conteudo = (View) getClientProperty(BasicHTML.propertyKey);
+            if (conteudo != null && largura > 0) conteudo.setSize(largura, altura);
+        }
     }
 
     private static class IconeExclamacao implements Icon {
