@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
+import classes.TelaAcessibilidade;
 import classes.Usuario;
 import database.LoginDao;
 import java.sql.SQLException;
@@ -51,6 +52,7 @@ public class TelaLogin extends javax.swing.JFrame {
         tfCampoEmail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jpCampoSenha = new javax.swing.JPanel();
         pfCampoSenha = new javax.swing.JPasswordField();
         btOcultarSenha = new javax.swing.JButton();
         btBotaoEntrar = new javax.swing.JButton();
@@ -81,6 +83,11 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel2.setText("Senha");
 
+        jpCampoSenha.setBackground(java.awt.Color.WHITE);
+        jpCampoSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(160, 160, 160)));
+        jpCampoSenha.setLayout(new java.awt.BorderLayout());
+
+        pfCampoSenha.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 4, 0, 4));
         pfCampoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 pfCampoSenhaFocusGained(evt);
@@ -90,6 +97,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         pfCampoSenha.addActionListener(this::pfCampoSenhaActionPerformed);
+        jpCampoSenha.add(pfCampoSenha, java.awt.BorderLayout.CENTER);
 
         btOcultarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png"))); // NOI18N
         btOcultarSenha.setBorderPainted(false);
@@ -99,6 +107,7 @@ public class TelaLogin extends javax.swing.JFrame {
         btOcultarSenha.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btOcultarSenha.setPreferredSize(new java.awt.Dimension(30, 30));
         btOcultarSenha.addActionListener(this::btOcultarSenhaActionPerformed);
+        jpCampoSenha.add(btOcultarSenha, java.awt.BorderLayout.LINE_END);
 
         btBotaoEntrar.setBackground(new java.awt.Color(31, 53, 80));
         btBotaoEntrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -130,14 +139,12 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
                             .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(pfCampoSenha)
+                                .addComponent(jpCampoSenha)
                                 .addGroup(jpCorFundoLayout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addGap(211, 211, 211))
                                 .addComponent(tfCampoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(3, 3, 3))))
+                            .addGap(39, 39, 39))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCorFundoLayout.createSequentialGroup()
                 .addContainerGap()
@@ -162,9 +169,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpCorFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btOcultarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pfCampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpCampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(btBotaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(89, Short.MAX_VALUE))
@@ -398,6 +403,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlLogo;
+    private javax.swing.JPanel jpCampoSenha;
     private javax.swing.JPanel jpCorFundo;
     private javax.swing.JPasswordField pfCampoSenha;
     private javax.swing.JTextField tfCampoEmail;

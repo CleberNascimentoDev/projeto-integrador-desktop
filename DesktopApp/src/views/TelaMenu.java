@@ -4,6 +4,7 @@
  */
 package views;
 
+import classes.TelaAcessibilidade;
 
 import javax.swing.JInternalFrame;
 

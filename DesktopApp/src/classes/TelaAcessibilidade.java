@@ -1,6 +1,5 @@
-package views;
+package classes;
 
-import classes.Acessibilidade;
 import java.awt.*;
 import javax.swing.*;
 
