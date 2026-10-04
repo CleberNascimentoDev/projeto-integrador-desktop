@@ -33,6 +33,13 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         customizarTabela();
         configurarBuscaDinamica();
         carregarTabela("");
+        
+        java.awt.EventQueue.invokeLater(() -> {
+        if (classes.Acessibilidade.isTecladoAtivo()) btCancelar.requestFocusInWindow();
+        acessibilidade();
+
+        });
+        
     }
     
     public TelaAtribuirRecJd(
@@ -45,7 +52,117 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     this.idProcesso = idProcesso;
 
     carregarProcesso();
-}
+    }
+    
+    
+    
+    
+    
+        private void acessibilidade(){
+        javax.swing.InputMap mapa = tbRecrutador.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        Object tabOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("TAB"));
+        Object shiftOriginal = mapa.get(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"));
+        
+        // 1. Permite que a tabela receba o foco ao navegar com o TAB
+        tbRecrutador.setFocusable(true);
+
+        // 2. Altera o comportamento do TAB dentro da tabela para APENAS passar o foco adiante
+        tbRecrutador.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+            .put(javax.swing.KeyStroke.getKeyStroke("TAB"), "proximoCampo");
+
+        tbRecrutador.getActionMap().put("proximoCampo", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                tbRecrutador.transferFocus(); 
+            }
+        });
+
+        // 3. Faz o mesmo para o Shift+TAB voltar para o campo anterior
+        tbRecrutador.getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+            .put(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"), "campoAnterior");
+
+        tbRecrutador.getActionMap().put("campoAnterior", new javax.swing.AbstractAction() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                tbRecrutador.transferFocusBackward(); 
+            }
+        });
+
+        // 4. Controla visual (Borda de Foco) e seleção baseado no ganho/perda de foco
+        javax.swing.border.Border bordaFoco = javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 120, 215), 3);
+        javax.swing.border.Border bordaSpOriginal = spBarra.getBorder();
+
+        java.awt.event.FocusAdapter controladorDeFoco = new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent e) {
+                java.awt.Component fonte = (java.awt.Component) e.getSource();
+
+                // Adiciona a borda de destaque visualmente
+                if (fonte == tbRecrutador) {
+                    spBarra.setBorder(bordaFoco);
+                    if (classes.Acessibilidade.isTecladoAtivo() && tbRecrutador.getRowCount() > 0 && tbRecrutador.getSelectedRow() == -1) {
+                        tbRecrutador.setRowSelectionInterval(0, 0);
+                    }
+                } else if (fonte instanceof javax.swing.JButton) {
+                    javax.swing.JButton btn = (javax.swing.JButton) fonte;
+                    if (btn.getClientProperty("bordaOriginal") == null) {
+                        btn.putClientProperty("bordaOriginal", btn.getBorder());
+                    }
+                    btn.setBorder(bordaFoco);
+                }
+            }
+            
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                java.awt.Component fonte = (java.awt.Component) e.getSource();
+
+                // Restaura a borda original de quem perdeu o foco
+                if (fonte == tbRecrutador) {
+                    spBarra.setBorder(bordaSpOriginal);
+                } else if (fonte instanceof javax.swing.JButton) {
+                    javax.swing.JButton btn = (javax.swing.JButton) fonte;
+                    javax.swing.border.Border original = (javax.swing.border.Border) btn.getClientProperty("bordaOriginal");
+                    if (original != null) {
+                        btn.setBorder(original);
+                    }
+                }
+
+                // Mantém a regra de limpar a marcação azul da tabela ao sair do grupo de ação
+                javax.swing.SwingUtilities.invokeLater(() -> {
+                    java.awt.Component focado = java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
+                    if (focado != tbRecrutador && focado != btAtribuir) {
+                        tbRecrutador.clearSelection();
+                    }
+                });
+            }
+        };
+
+        tbRecrutador.addFocusListener(controladorDeFoco);
+        
+        btCancelar.addFocusListener(controladorDeFoco);
+        
+        preferenciaTeclado = e -> aplicarNavegacao(mapa, tabOriginal, shiftOriginal);
+        classes.Acessibilidade.adicionarListener(preferenciaTeclado);
+        aplicarNavegacao(mapa, tabOriginal, shiftOriginal);
+    }
+    
+    private java.beans.PropertyChangeListener preferenciaTeclado;
+
+    private void aplicarNavegacao(javax.swing.InputMap mapa, Object tabOriginal, Object shiftOriginal) {
+        boolean ativo = classes.Acessibilidade.isTecladoAtivo();
+        mapa.put(javax.swing.KeyStroke.getKeyStroke("TAB"), ativo ? "proximoCampo" : tabOriginal);
+        mapa.put(javax.swing.KeyStroke.getKeyStroke("shift pressed TAB"), ativo ? "campoAnterior" : shiftOriginal);
+        botaoAjuda.setFocusPainted(ativo || classes.Acessibilidade.isBaixaVisaoAtiva());
+    }
+
+    @Override public void dispose() {
+        if (preferenciaTeclado != null) classes.Acessibilidade.removerListener(preferenciaTeclado);
+        super.dispose();
+    }
+    
+    
+    
+    
     
     private void carregarProcesso() {
 
@@ -355,10 +472,10 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel14)
-                        .addGap(456, 456, 456)
-                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(450, 450, 450)
+                        .addComponent(btAtribuir, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btAtribuir, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(spBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
