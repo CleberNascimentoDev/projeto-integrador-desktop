@@ -30,6 +30,10 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
        initComponents();
        classes.Acessibilidade.configurarTela(this);
        customizarTabela();
+        setContentPane(new classes.PainelListagem(btVoltar, jLabel1, botaoAjuda, tfPesquisa, jLabel2,
+                jLabel3, spBarra, tbProcessos, "Consulte e gerencie os processos seletivos.", "Buscar processo...",
+                "processo", "processos", false, btExcluir, btEditar, btCadastrar));
+        pack();
        configurarBuscaDinamica();
        carregarTabela("");
        configurarAtalhos();
@@ -136,6 +140,10 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
             public void focusGained(java.awt.event.FocusEvent e) {
                 java.awt.Component fonte = (java.awt.Component) e.getSource();
 
+                if (fonte == btCadastrar) {
+                    tbProcessos.clearSelection();
+                }
+
                 // Adiciona a borda de destaque visualmente
                 if (fonte == tbProcessos) {
                     spBarra.setBorder(bordaFoco);
@@ -147,7 +155,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
                     if (btn.getClientProperty("bordaOriginal") == null) {
                         btn.putClientProperty("bordaOriginal", btn.getBorder());
                     }
-                    btn.setBorder(bordaFoco);
+                    btn.setBorder(classes.PainelListagem.criarBordaFoco(btn, (javax.swing.border.Border) btn.getClientProperty("bordaOriginal")));
                 }
             }
             
@@ -166,13 +174,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
                     }
                 }
 
-                // Mantém a regra de limpar a marcação azul da tabela ao sair do grupo de ação
-                javax.swing.SwingUtilities.invokeLater(() -> {
-                    java.awt.Component focado = java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-                    if (focado != tbProcessos && focado != btEditar && focado != btExcluir) {
-                        tbProcessos.clearSelection();
-                    }
-                });
+                // A mudança de foco não altera a linha selecionada.
             }
         };
 
@@ -252,42 +254,8 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     
     
      private void customizarTabela() {
-    
-    spBarra.getViewport().setBackground(java.awt.Color.WHITE);
-    spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
-
-    tbProcessos.setBackground(java.awt.Color.WHITE);
-    tbProcessos.setRowHeight(38);
-    tbProcessos.setShowGrid(true);
-    tbProcessos.setShowHorizontalLines(true);
-    tbProcessos.setGridColor(new java.awt.Color(153,153,153));
-    
-    tbProcessos.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
-    
-    javax.swing.table.DefaultTableCellRenderer headerRenderer = new javax.swing.table.DefaultTableCellRenderer() {
-        @Override
-        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) {
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            setBackground(new java.awt.Color(29, 45, 68));
-            setForeground(java.awt.Color.WHITE);
-            
-            setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
-            
-            setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 0));
-            setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-            return this;
-        }
-    };
-    
-    for (int i = 0; i < tbProcessos.getColumnModel().getColumnCount(); i++) {
-        tbProcessos.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        classes.PainelListagem.configurarTabela(tbProcessos, spBarra, false);
     }
-
-    tbProcessos.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
-    
-    
-}
 
   
     
@@ -345,8 +313,6 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Processos Seletivos");
 
-        botaoAjuda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botaoAjuda.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         botaoAjuda.setTextoAjuda("Esta é a tela de gerenciamento de processos seletivos do sistema MAINRH, destinada à consulta e controle de seleções ativas e encerradas. Utilize o campo de busca superior para localizar um processo específico. Na tabela Listas de processos seletivos, você pode visualizar os nomes dos processos cadastrados juntamente com suas respectivas Data de início e Data de fim. Para gerenciar as informações, selecione um item da lista e clique no botão Editar para alterar seus dados, ou clique no botão Cadastrar para abrir o formulário de criação de um novo processo seletivo. Para retornar à tela anterior, utilize o botão Voltar no canto superior esquerdo.");
 
         btVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -529,10 +495,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
-       if (tfPesquisa.getText().equals("Digite aqui...")) {
-            tfPesquisa.setText("");
-            tfPesquisa.setForeground(java.awt.Color.BLACK);
-        }
+        tfPesquisa.setForeground(java.awt.Color.BLACK);
     }//GEN-LAST:event_tfPesquisaFocusGained
 
     private void tfPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPesquisaActionPerformed

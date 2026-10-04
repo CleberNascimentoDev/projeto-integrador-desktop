@@ -44,11 +44,11 @@ public class AjudaTeste {
                 exigir(botao.getHeight() >= fonte.getHeight() + bordas.top + bordas.bottom,
                         "Interrogação não cabe na altura do botão");
                 BufferedImage imagemBotao = imagem(botao);
-                int pontosPretos = 0;
+                int pontosTexto = 0;
                 for (int y = bordas.top; y < botao.getHeight() - bordas.bottom; y++)
                     for (int x = bordas.left; x < botao.getWidth() - bordas.right; x++)
-                        if ((imagemBotao.getRGB(x, y) & 0xffffff) == 0) pontosPretos++;
-                exigir(pontosPretos > 10, "Interrogação não foi desenhada");
+                        if ((imagemBotao.getRGB(x, y) & 0xffffff) == (botao.getForeground().getRGB() & 0xffffff)) pontosTexto++;
+                exigir(pontosTexto > 10, "Interrogação não foi desenhada");
                 JDialog ajuda = (JDialog) criar.invoke(botao);
                 try {
                     atualizar.invoke(null, ajuda.getRootPane());

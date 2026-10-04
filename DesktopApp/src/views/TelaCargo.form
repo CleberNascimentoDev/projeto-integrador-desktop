@@ -157,8 +157,6 @@
                     </Component>
                     <Component class="classes.BotaoAjuda" name="botaoAjuda">
                       <Properties>
-                        <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="horizontalTextPosition" type="int" value="4"/>
                         <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de gerenciamento de cargos do sistema MAINRH, utilizada para visualizar e administrar as posi&#xe7;&#xf5;es cadastradas. Utilize a barra de pesquisa no topo para filtrar cargos pelo nome. Na tabela **Cargos cadastrados**, selecione um item da lista para realizar a&#xe7;&#xf5;es espec&#xed;ficas: clique em **Editar** para alterar as informa&#xe7;&#xf5;es do cargo, em **Excluir** para remov&#xea;-lo do sistema, ou no bot&#xe3;o **Cadastrar** para abrir o formul&#xe1;rio de inclus&#xe3;o de uma nova posi&#xe7;&#xe3;o. Para retornar &#xe0; tela anterior, clique no bot&#xe3;o **Voltar** no canto superior esquerdo."/>
                       </Properties>
                     </Component>

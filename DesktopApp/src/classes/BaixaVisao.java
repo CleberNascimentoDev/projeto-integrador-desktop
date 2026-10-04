@@ -122,6 +122,22 @@ public final class BaixaVisao {
         for (Component filho : painel.getComponents()) {
             if (filho instanceof Container && !(filho instanceof JInternalFrame))
                 organizarComponentes((Container) filho);
+            if (filho instanceof JComponent) {
+                JComponent campo = (JComponent) filho;
+                Object guardado = campo.getClientProperty(chaveEstado);
+                EstadoComponente estado = guardado instanceof EstadoComponente ? (EstadoComponente) guardado : null;
+                if (estado != null && estado.ativo) {
+                    if (Boolean.TRUE.equals(campo.getClientProperty("baixaVisao.alinharAjuda")))
+                        campo.setLocation(painel.getWidth() - campo.getWidth() - 12, campo.getY());
+                    Object referencia = campo.getClientProperty("baixaVisao.alinharDireita");
+                    if (referencia instanceof JComponent) {
+                        JComponent botao = (JComponent) referencia;
+                        Point direita = SwingUtilities.convertPoint(botao, botao.getWidth(), 0, painel);
+                        campo.setSize(Math.max(1, direita.x - campo.getX()), campo.getHeight());
+                        if (campo instanceof JScrollPane) organizarComponentes((JScrollPane) campo);
+                    }
+                }
+            }
             if (filho instanceof JLabel && Boolean.TRUE.equals(
                     ((JLabel) filho).getClientProperty("baixaVisao.logo"))) {
                 EstadoComponente estado = (EstadoComponente) ((JLabel) filho).getClientProperty(chaveEstado);
@@ -147,6 +163,10 @@ public final class BaixaVisao {
             return;
         }
         janela.setSize(Math.min(tamanho.width, limite.width), Math.min(tamanho.height, limite.height));
+        if (janela instanceof JInternalFrame && janela.getParent() != null) {
+            janela.setLocation(Math.max(0, Math.min(janela.getX(), limite.width - janela.getWidth())),
+                    Math.max(0, Math.min(janela.getY(), limite.height - janela.getHeight())));
+        }
         if (janela instanceof Window) ((Window) janela).setLocationRelativeTo(((Window) janela).getOwner());
     }
 
@@ -356,7 +376,8 @@ public final class BaixaVisao {
     private static void aplicarCores(JComponent campo) {
         boolean botao = (campo instanceof AbstractButton && !(campo instanceof JMenuItem))
                 || campo instanceof JTableHeader;
-        campo.setBackground(botao ? destaque : fundo);
+        campo.setBackground(botao ? destaque : Boolean.TRUE.equals(campo.getClientProperty("acessibilidade.subtela"))
+                ? PainelListagem.fundoSubtela : fundo);
         campo.setForeground(campo instanceof JMenuItem ? new javax.swing.plaf.ColorUIResource(texto)
                 : botao ? fundo : texto);
         if (campo instanceof JTable) {

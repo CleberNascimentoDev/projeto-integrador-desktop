@@ -32,6 +32,14 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
     public TelaEditarProcessoJd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        jLabel1.setText("Editar Processo Seletivo");
+        setContentPane(new classes.PainelFormulario(jbCancelar, jLabel1, null,
+                "Atualize o cargo e o período do processo seletivo.", classes.PainelFormulario.campos(
+                classes.PainelFormulario.campo(jLabel2, jtNome),
+                classes.PainelFormulario.campo(jLabel3, jcbCargo),
+                classes.PainelFormulario.campo(jLabel4, jtDataInicio),
+                classes.PainelFormulario.campo(jLabel5, jtDataFim)), jbEditar));
+        pack();
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -43,6 +51,14 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
         this.telaPai = telaPai;
         this.processoParaEditar = processo; 
         initComponents();
+        jLabel1.setText("Editar Processo Seletivo");
+        setContentPane(new classes.PainelFormulario(jbCancelar, jLabel1, null,
+                "Atualize o cargo e o período do processo seletivo.", classes.PainelFormulario.campos(
+                classes.PainelFormulario.campo(jLabel2, jtNome),
+                classes.PainelFormulario.campo(jLabel3, jcbCargo),
+                classes.PainelFormulario.campo(jLabel4, jtDataInicio),
+                classes.PainelFormulario.campo(jLabel5, jtDataFim)), jbEditar));
+        pack();
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);

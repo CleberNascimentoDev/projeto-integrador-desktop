@@ -204,10 +204,6 @@ public class TelaLogin extends javax.swing.JFrame {
         separador.setBackground(new java.awt.Color(145, 175, 204));
         separador.setPreferredSize(new java.awt.Dimension(1, 28));
         jPanel1.add(separador);
-        botaoAjuda1.setPreferredSize(new java.awt.Dimension(36, 34));
-        botaoAjuda1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        botaoAjuda1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-        botaoAjuda1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 27));
         botaoAjuda1.setTextoAjuda("Preencha seu **e-mail** e sua **senha** e clique em **Entrar**. Use **Acessibilidade** para escolher o modo de navegação.");
         jPanel1.add(botaoAjuda1);
         jLabel1.setLabelFor(tfCampoEmail);

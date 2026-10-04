@@ -78,10 +78,31 @@ public class BaixaVisaoTeste {
             Dimension tamanho = ((Component) tela).getSize();
             LayoutManager layout = conteudo.getLayout();
             int rolagens = contarRolagens(conteudo);
+            if (conteudo instanceof PainelFormulario || conteudo instanceof PainelListagem)
+                verificarLimites(conteudo);
+            if (imagens != null) {
+                imagens.mkdirs();
+                Dimension area = conteudo.getSize();
+                BufferedImage imagem = new BufferedImage(Math.max(1, area.width), Math.max(1, area.height), BufferedImage.TYPE_INT_RGB);
+                Graphics2D grafico = imagem.createGraphics();
+                conteudo.printAll(grafico);
+                grafico.dispose();
+                ImageIO.write(imagem, "png", new File(imagens, tela.getClass().getSimpleName() + "-normal.png"));
+            }
             for (int repeticao = 0; repeticao < 3; repeticao++) {
                 Acessibilidade.setBaixaVisaoAtiva(true);
                 atualizar.invoke(null, tela.getRootPane());
                 organizar((Container) tela);
+                if (tela instanceof TelaCargo) {
+                    Field pesquisa = TelaCargo.class.getDeclaredField("tfPesquisa");
+                    pesquisa.setAccessible(true);
+                    JTextField entrada = (JTextField) pesquisa.get(tela);
+                    String original = entrada.getText();
+                    entrada.setText("teste");
+                    exigir("teste".equals(entrada.getText()) && tela.getContentPane() == conteudo,
+                            "Busca de cargos recriou a tela ou apagou o filtro");
+                    entrada.setText(original);
+                }
                 exigir(tela.getContentPane() == conteudo, "Baixa visão adicionou rolagem à janela");
                 exigir(contarRolagens(conteudo) == rolagens, "Baixa visão criou barras adicionais");
                 if (tela instanceof JInternalFrame) {

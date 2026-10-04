@@ -153,6 +153,7 @@ public final class Daltonismo {
     }
 
     static Color adaptarFundo(JComponent campo, Color fundo) {
+        if (Boolean.TRUE.equals(campo.getClientProperty("acessibilidade.subtela"))) return PainelListagem.fundoSubtela;
         if (campo instanceof AbstractButton && ((AbstractButton) campo).isContentAreaFilled()
                 && !(campo instanceof JCheckBox) && !(campo instanceof JRadioButton)) {
             String nome = ((AbstractButton) campo).getText();

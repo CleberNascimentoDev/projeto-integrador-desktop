@@ -32,8 +32,11 @@ public class BotaoAjuda extends JButton {
 
     public BotaoAjuda() {
         super("?"); 
-        setFont(new Font("Segoe UI", Font.BOLD, 32));
-        setForeground(Color.BLACK); 
+        setFont(new Font("Segoe UI", Font.BOLD, 24));
+        setForeground(new Color(31, 53, 80));
+        setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
         
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setToolTipText("Clique para obter ajuda");
@@ -42,7 +45,7 @@ public class BotaoAjuda extends JButton {
         setBorderPainted(false);
         setFocusPainted(false);
         setOpaque(false);
-        setPreferredSize(new Dimension(40, 40));
+        setPreferredSize(new Dimension(42, 42));
         setMargin(new java.awt.Insets(0, 0, 0, 0));
         getAccessibleContext().setAccessibleName("Ajuda");
 
@@ -55,9 +58,32 @@ public class BotaoAjuda extends JButton {
             }
             @Override
             public void mouseExited(MouseEvent e) {
-                setForeground(Color.BLACK);
+                setForeground(new Color(31, 53, 80));
             }
         });
+    }
+
+    /** Centraliza o símbolo e mantém o contorno circular mesmo em áreas retangulares. */
+    @Override protected void paintComponent(Graphics g) {
+        Graphics2D grafico = (Graphics2D) g.create();
+        grafico.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        grafico.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        int diametro = Math.max(1, Math.min(getWidth(), getHeight()) - 4);
+        int x = (getWidth() - diametro) / 2;
+        int y = (getHeight() - diametro) / 2;
+        grafico.setColor(getForeground());
+        grafico.setStroke(new BasicStroke(2));
+        grafico.drawOval(x, y, diametro, diametro);
+        if (hasFocus() && isFocusPainted()) {
+            grafico.setStroke(new BasicStroke(1));
+            grafico.drawOval(x + 3, y + 3, Math.max(1, diametro - 6), Math.max(1, diametro - 6));
+        }
+        grafico.setFont(getFont());
+        FontMetrics fonte = grafico.getFontMetrics();
+        String simbolo = "?";
+        grafico.drawString(simbolo, (getWidth() - fonte.stringWidth(simbolo)) / 2,
+                (getHeight() - fonte.getHeight()) / 2 + fonte.getAscent());
+        grafico.dispose();
     }
 
     private void abrirJanelaAjuda() {

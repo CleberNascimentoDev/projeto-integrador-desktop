@@ -31,6 +31,14 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
         super((java.awt.Frame) null, modal);
         this.telaPai = telaPai;
         initComponents();
+        jLabel1.setText("Cadastrar Processo Seletivo");
+        setContentPane(new classes.PainelFormulario(jbCancelar, jLabel1, null,
+                "Informe o nome, o cargo e o período do processo seletivo.", classes.PainelFormulario.campos(
+                classes.PainelFormulario.campo(jLabel2, jtNome),
+                classes.PainelFormulario.campo(jLabel3, jcbCargo),
+                classes.PainelFormulario.campo(jLabel4, jtDataInicio),
+                classes.PainelFormulario.campo(jLabel5, jtDataFim)), jbCadastar));
+        pack();
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -42,6 +50,14 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
         super((java.awt.Frame) null, modal);
         this.telaPai = telaPai;
         initComponents();
+        jLabel1.setText("Cadastrar Processo Seletivo");
+        setContentPane(new classes.PainelFormulario(jbCancelar, jLabel1, null,
+                "Informe o nome, o cargo e o período do processo seletivo.", classes.PainelFormulario.campos(
+                classes.PainelFormulario.campo(jLabel2, jtNome),
+                classes.PainelFormulario.campo(jLabel3, jcbCargo),
+                classes.PainelFormulario.campo(jLabel4, jtDataInicio),
+                classes.PainelFormulario.campo(jLabel5, jtDataFim)), jbCadastar));
+        pack();
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
