@@ -27,10 +27,13 @@ public class BotaoAcessibilidade extends JButton {
         g.fillRoundRect(1, 3, getWidth() - 2, getHeight() - 4, 12, 12);
         Color base = getModel().isPressed() ? new Color(221, 235, 248)
                 : getModel().isRollover() ? new Color(238, 246, 253) : new Color(248, 251, 255);
-        g.setPaint(Acessibilidade.isBaixaVisaoAtiva() ? Color.WHITE
+        g.setPaint(Acessibilidade.isDaltonismoAtivo() ? getModel().isRollover()
+                ? Acessibilidade.getPaleta().getBadge() : Acessibilidade.getPaleta().getSuperficie()
+                : Acessibilidade.isBaixaVisaoAtiva() ? Color.WHITE
                 : new GradientPaint(0, 2, Color.WHITE, 0, getHeight(), base));
         g.fillRoundRect(2, 2, getWidth() - 5, getHeight() - 6, 11, 11);
-        g.setColor(Acessibilidade.isBaixaVisaoAtiva() ? Color.BLACK
+        g.setColor(Acessibilidade.isDaltonismoAtivo() ? Acessibilidade.getPaleta().getBorda()
+                : Acessibilidade.isBaixaVisaoAtiva() ? Color.BLACK
                 : hasFocus() ? new Color(0, 92, 156) : new Color(163, 188, 212));
         g.setStroke(new BasicStroke(hasFocus() ? 2.5f : 1.5f));
         g.drawRoundRect(2, 2, getWidth() - 5, getHeight() - 6, 11, 11);

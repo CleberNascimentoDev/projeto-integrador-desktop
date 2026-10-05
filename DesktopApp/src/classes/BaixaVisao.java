@@ -397,9 +397,8 @@ public final class BaixaVisao {
             campo.setForeground(texto);
         }
         if (Acessibilidade.isDaltonismoAtivo()) {
-            Color corFundo = Daltonismo.adaptarFundo(campo, campo.getBackground());
             Color corTexto = Daltonismo.adaptarTexto(campo, campo.getForeground(), campo.getBackground());
-            campo.setBackground(corFundo);
+            campo.setBackground(Daltonismo.adaptarFundo(campo, campo.getBackground()));
             campo.setForeground(corTexto);
         }
     }
@@ -546,7 +545,7 @@ public final class BaixaVisao {
             coluna.setHeaderRenderer((t, valor, selecionado, foco, linha, indice) -> {
                 Component cabecalho = original.getTableCellRendererComponent(t, valor, selecionado, foco, linha, indice);
                 cabecalho.setFont(fonte.deriveFont(Math.max(18f, (float) (fonte.getSize2D() * ampliacao))));
-                cabecalho.setBackground(destaque);
+                cabecalho.setBackground(Daltonismo.corSelecao(destaque));
                 cabecalho.setForeground(fundo);
                 return cabecalho;
             });
