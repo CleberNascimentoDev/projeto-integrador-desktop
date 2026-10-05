@@ -24,9 +24,11 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
      */
     public TelaGestaoRec() {
         initComponents();
+        setContentPane(new classes.PainelGestaoRecrutadores(btVoltar, jLabel1, botaoAjuda,
+                tfPesquisa, jLabel2, btExcluir, btAtribuir, jLabel3, spBarra, tbProcesso));
+        pack();
         classes.Acessibilidade.configurarTela(this);
         configurarAtalhos();
-        customizarTabela();
         configurarBuscaDinamica();
         carregarTabela("");
         java.awt.EventQueue.invokeLater(() -> {
@@ -34,6 +36,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         acessibilidade();
 
         });  
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
     }
     
     
@@ -133,7 +136,8 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
                     if (btn.getClientProperty("bordaOriginal") == null) {
                         btn.putClientProperty("bordaOriginal", btn.getBorder());
                     }
-                    btn.setBorder(bordaFoco);
+                    javax.swing.border.Border original = (javax.swing.border.Border) btn.getClientProperty("bordaOriginal");
+                    btn.setBorder(classes.PainelGestaoRecrutadores.criarBordaFoco(btn, original));
                 }
             }
             
@@ -152,13 +156,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
                     }
                 }
 
-                // Mantém a regra de limpar a marcação azul da tabela ao sair do grupo de ação
-                javax.swing.SwingUtilities.invokeLater(() -> {
-                    java.awt.Component focado = java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-                    if (focado != tbProcesso && focado != btAtribuir && focado != btExcluir) {
-                        tbProcesso.clearSelection();
-                    }
-                });
+                // A mudança de foco não altera a linha selecionada.
             }
         };
 
@@ -270,46 +268,6 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     
     
     
-    private void customizarTabela() {
-    // 1. Fundo do ScrollPane e Borda do Container
-    spBarra.getViewport().setBackground(java.awt.Color.WHITE);
-    spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
-
-    // 2. Estilização e FONTE DAS LINHAS da Tabela
-    tbProcesso.setBackground(java.awt.Color.WHITE);
-    tbProcesso.setRowHeight(38);
-    tbProcesso.setShowGrid(true);
-    tbProcesso.setShowHorizontalLines(true);
-    tbProcesso.setGridColor(new java.awt.Color(153, 153, 153));
-    
-    // ---> ALTERE O TAMANHO DA FONTE DOS DADOS AQUI <---
-    tbProcesso.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
-
-    // 3. Renderizador e FONTE DO CABEÇALHO
-    javax.swing.table.DefaultTableCellRenderer headerRenderer = new javax.swing.table.DefaultTableCellRenderer() {
-        @Override
-        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            setBackground(new java.awt.Color(29, 45, 68));
-            setForeground(java.awt.Color.WHITE);
-            
-            // ---> ALTERE O TAMANHO DA FONTE DO CABEÇALHO AQUI <---
-            setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
-            
-            setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 0));
-            setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-            return this;
-        }
-    };
-
-    for (int i = 0; i < tbProcesso.getColumnModel().getColumnCount(); i++) {
-        tbProcesso.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
-    }
-
-    tbProcesso.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
-}
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -357,8 +315,6 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Gestão de Recrutadores");
 
-        botaoAjuda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botaoAjuda.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         botaoAjuda.setTextoAjuda("Esta é a tela de Gestão de Recrutadores do sistema MAINRH, utilizada para acompanhar e vincular responsáveis aos processos seletivos da empresa. Use a barra de pesquisa no topo para filtrar um processo seletivo específico. Na tabela central, consulte a relação entre cada **Processo Seletivo** e o seu respectivo **Recrutador Alocado**. Para vincular ou alterar o responsável por uma seleção, utilize o botão **Atribuir Recrutador**, localizado no canto superior direito. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
 
         btAtribuir.setBackground(new java.awt.Color(31, 53, 80));
@@ -520,10 +476,7 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
 
     private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
 
-        if (tfPesquisa.getText().equals("Digite aqui...")) {
-            tfPesquisa.setText("");
-            tfPesquisa.setForeground(java.awt.Color.BLACK);
-        }
+        tfPesquisa.setForeground(java.awt.Color.BLACK);
 
     }//GEN-LAST:event_tfPesquisaFocusGained
 

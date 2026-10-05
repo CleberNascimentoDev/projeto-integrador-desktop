@@ -193,6 +193,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void configurarAcessibilidade() {
         jlLogo.setIcon(new classes.IconeImagem("/images/Logo.png", 337, 110));
+        jlLogo.putClientProperty("baixaVisao.logo", true);
+        jlLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.removeAll();
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 8));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 7));
@@ -202,10 +204,6 @@ public class TelaLogin extends javax.swing.JFrame {
         separador.setBackground(new java.awt.Color(145, 175, 204));
         separador.setPreferredSize(new java.awt.Dimension(1, 28));
         jPanel1.add(separador);
-        botaoAjuda1.setPreferredSize(new java.awt.Dimension(36, 34));
-        botaoAjuda1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        botaoAjuda1.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-        botaoAjuda1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 27));
         botaoAjuda1.setTextoAjuda("Preencha seu **e-mail** e sua **senha** e clique em **Entrar**. Use **Acessibilidade** para escolher o modo de navegação.");
         jPanel1.add(botaoAjuda1);
         jLabel1.setLabelFor(tfCampoEmail);

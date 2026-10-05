@@ -22,7 +22,7 @@ A navegação por teclado está ativa por padrão. As opções visuais ficam no 
 | Recurso | Comportamento |
 | --- | --- |
 | Navegação por teclado | Use Tab e Shift+Tab para navegar, Espaço para acionar botões e as setas para percorrer tabelas. |
-| Baixa visão | Amplia textos e controles, aumenta o contraste e oferece rolagem nos formulários maiores. |
+| Baixa visão | Amplia textos e controles, aumenta o contraste e ajusta o layout à área da tela, sem acrescentar barras de rolagem à janela. |
 | Daltonismo | Aplica uma paleta alternativa com azul e laranja, preservando textos e símbolos para identificar as ações. |
 
 Baixa visão e daltonismo podem ser ativados ou desativados por botões e utilizados juntos. As preferências visuais valem durante a execução do sistema.
@@ -120,21 +120,23 @@ DesktopApp/
 
 ## Verificações de acessibilidade
 
-Há três verificações executáveis:
+Há quatro verificações executáveis:
 
 - `BaixaVisaoTeste`: ampliação, contraste e restauração das telas.
 - `DaltonismoTeste`: paleta alternativa, contraste, restauração e ativação pelo botão.
 - `AcessibilidadeTeste`: uso combinado dos modos, ativação em ordens diferentes e restauração do estado original.
+- `AjudaTeste`: visibilidade da interrogação e quebra de linhas da ajuda no tema Nimbus, incluindo baixa visão e modos combinados.
 
 Os testes usam consultas simuladas, sem acessar o banco real. Precisam de um ambiente com suporte gráfico ao Swing, embora não abram janelas visíveis.
 
 Depois de gerar o JAR, execute na pasta `DesktopApp`, com o JDK no `PATH`. Os comandos abaixo usam o separador de classpath do Windows:
 
 ```powershell
-javac --release 17 -encoding UTF-8 -cp "dist/DesktopApp.jar;dist/lib/*" -d build/test/classes test/classes/BaixaVisaoTeste.java test/classes/DaltonismoTeste.java test/classes/AcessibilidadeTeste.java
+javac --release 17 -encoding UTF-8 -cp "dist/DesktopApp.jar;dist/lib/*" -d build/test/classes test/classes/BaixaVisaoTeste.java test/classes/DaltonismoTeste.java test/classes/AcessibilidadeTeste.java test/classes/AjudaTeste.java
 java -cp "build/test/classes;dist/DesktopApp.jar;dist/lib/*" classes.BaixaVisaoTeste
 java -cp "build/test/classes;dist/DesktopApp.jar;dist/lib/*" classes.DaltonismoTeste
 java -cp "build/test/classes;dist/DesktopApp.jar;dist/lib/*" classes.AcessibilidadeTeste
+java -cp "build/test/classes;dist/DesktopApp.jar;dist/lib/*" classes.AjudaTeste
 ```
 
 Em Linux ou macOS, substitua `;` por `:` no classpath.

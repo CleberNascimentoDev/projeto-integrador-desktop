@@ -27,6 +27,15 @@ public class TelaEditarJd extends javax.swing.JDialog {
         super(parent, modal);
         this.setUndecorated(false);
         initComponents();
+        setContentPane(new classes.PainelFormulario(btEditarCancelar, jLabel40, botaoAjuda,
+                "Atualize os dados do cargo. Campos com * são obrigatórios.", classes.PainelFormulario.campos(
+                classes.PainelFormulario.campo(jLabel41, tfEditarNomeCargo, jLabel42),
+                classes.PainelFormulario.campo(jLabel43, ffSalario, jLabel44),
+                classes.PainelFormulario.campo(jLabel45, tfEditarNivel, jLabel46),
+                classes.PainelFormulario.campo(jLabel47, tfEditarSetor, jLabel48),
+                classes.PainelFormulario.campo(jLabel49, jScrollPane7, jLabel50),
+                classes.PainelFormulario.campo(jLabel51, jScrollPane8, jLabel52)), btEditarCadastrarCargo));
+        pack();
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);

@@ -30,6 +30,22 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         initComponents();
         classes.Acessibilidade.configurarTela(this);
         customizarTabela();
+        classes.PainelListagem painel = new classes.PainelListagem(btVoltar, jLabel1, botaoAjuda, tfPesquisa, jLabel2,
+                jLabel3, spBarra, tbCargo, "Consulte e gerencie os cargos cadastrados.", "Buscar cargo...",
+                "cargo", "cargos", false, btExcluir, btEditar, btCadastrar);
+        painelDesktopPane.removeAll();
+        // A listagem preenche o desktop; as janelas de detalhes mantêm seus próprios limites.
+        painelDesktopPane.setLayout(new java.awt.BorderLayout() {
+            @Override
+            public void addLayoutComponent(java.awt.Component componente, Object restricoes) {
+                if (!(componente instanceof javax.swing.JInternalFrame)) {
+                    super.addLayoutComponent(componente, restricoes);
+                }
+            }
+        });
+        painelDesktopPane.add(painel, java.awt.BorderLayout.CENTER);
+        setContentPane(painelDesktopPane);
+        pack();
         configurarPesquisa();
         carregarCargos();
         configurarAtalhos();
@@ -39,6 +55,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         acessibilidade();
 
         });
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
     }   
 
     
@@ -125,6 +142,10 @@ public class TelaCargo extends javax.swing.JInternalFrame {
             public void focusGained(java.awt.event.FocusEvent e) {
                 java.awt.Component fonte = (java.awt.Component) e.getSource();
 
+                if (fonte == btCadastrar) {
+                    tbCargo.clearSelection();
+                }
+
                 // Adiciona a borda de destaque visualmente
                 if (fonte == tbCargo) {
                     spBarra.setBorder(bordaFoco);
@@ -136,7 +157,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                     if (btn.getClientProperty("bordaOriginal") == null) {
                         btn.putClientProperty("bordaOriginal", btn.getBorder());
                     }
-                    btn.setBorder(bordaFoco);
+                    btn.setBorder(classes.PainelListagem.criarBordaFoco(btn, (javax.swing.border.Border) btn.getClientProperty("bordaOriginal")));
                 }
             }
             
@@ -155,13 +176,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                     }
                 }
 
-                // Mantém a regra de limpar a marcação azul da tabela ao sair do grupo de ação
-                javax.swing.SwingUtilities.invokeLater(() -> {
-                    java.awt.Component focado = java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-                    if (focado != tbCargo && focado != btEditar && focado != btExcluir) {
-                        tbCargo.clearSelection();
-                    }
-                });
+                // A mudança de foco não altera a linha selecionada.
             }
         };
 
@@ -276,44 +291,8 @@ public class TelaCargo extends javax.swing.JInternalFrame {
      */
     
     private void customizarTabela() {
-    // 1. Fundo do ScrollPane e Borda do Container
-    spBarra.getViewport().setBackground(java.awt.Color.WHITE);
-    spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
-
-    // 2. Estilização e FONTE DAS LINHAS da Tabela
-    tbCargo.setBackground(java.awt.Color.WHITE);
-    tbCargo.setRowHeight(38);
-    tbCargo.setShowGrid(false);
-    tbCargo.setShowHorizontalLines(true);
-    tbCargo.setGridColor(new java.awt.Color(245, 245, 245));
-    
-    // ---> ALTERE O TAMANHO DA FONTE DOS DADOS AQUI <---
-    tbCargo.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
-
-    // 3. Renderizador e FONTE DO CABEÇALHO
-    javax.swing.table.DefaultTableCellRenderer headerRenderer = new javax.swing.table.DefaultTableCellRenderer() {
-        @Override
-        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            setBackground(new java.awt.Color(29, 45, 68));
-            setForeground(java.awt.Color.WHITE);
-            
-            // ---> ALTERE O TAMANHO DA FONTE DO CABEÇALHO AQUI <---
-            setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
-            
-            setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 0));
-            setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-            return this;
-        }
-    };
-
-    for (int i = 0; i < tbCargo.getColumnModel().getColumnCount(); i++) {
-        tbCargo.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        classes.PainelListagem.configurarTabela(tbCargo, spBarra, false);
     }
-
-    tbCargo.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
-}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -367,8 +346,6 @@ public class TelaCargo extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(29, 45, 68));
         jLabel1.setText("Cargos");
 
-        botaoAjuda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botaoAjuda.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         botaoAjuda.setTextoAjuda("Esta é a tela de gerenciamento de cargos do sistema MAINRH, utilizada para visualizar e administrar as posições cadastradas. Utilize a barra de pesquisa no topo para filtrar cargos pelo nome. Na tabela **Cargos cadastrados**, selecione um item da lista para realizar ações específicas: clique em **Editar** para alterar as informações do cargo, em **Excluir** para removê-lo do sistema, ou no botão **Cadastrar** para abrir o formulário de inclusão de uma nova posição. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
 
         btVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -636,10 +613,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
 
 
     private void tfPesquisaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusGained
-        if ("Digite aqui...".equalsIgnoreCase(tfPesquisa.getText().trim())) {
-            tfPesquisa.setText("");
-            tfPesquisa.setForeground(java.awt.Color.BLACK);
-        }
+        tfPesquisa.setForeground(java.awt.Color.BLACK);
     }//GEN-LAST:event_tfPesquisaFocusGained
 
     
@@ -680,7 +654,11 @@ public class TelaCargo extends javax.swing.JInternalFrame {
                 }
 
                 TelaDetalhesCargo telaDetalhe = new TelaDetalhesCargo(cargo);
-                painelDesktopPane.add(telaDetalhe);
+                painelDesktopPane.add(telaDetalhe, javax.swing.JLayeredPane.PALETTE_LAYER);
+                telaDetalhe.setSize(Math.min(telaDetalhe.getWidth(), painelDesktopPane.getWidth()),
+                        Math.min(telaDetalhe.getHeight(), painelDesktopPane.getHeight()));
+                telaDetalhe.setLocation(Math.max(0, (painelDesktopPane.getWidth() - telaDetalhe.getWidth()) / 2),
+                        Math.max(0, (painelDesktopPane.getHeight() - telaDetalhe.getHeight()) / 2));
                 telaDetalhe.setVisible(true);
                 telaDetalhe.setSelected(true);
                 telaDetalhe.toFront();
@@ -702,10 +680,7 @@ public class TelaCargo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void tfPesquisaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfPesquisaFocusLost
-        if (tfPesquisa.getText().trim().isEmpty()) {
-        tfPesquisa.setText("Digite aqui...");
-        tfPesquisa.setForeground(java.awt.Color.GRAY);
-    }
+        tfPesquisa.setForeground(tfPesquisa.getText().isEmpty() ? java.awt.Color.GRAY : java.awt.Color.BLACK);
     }//GEN-LAST:event_tfPesquisaFocusLost
 
 

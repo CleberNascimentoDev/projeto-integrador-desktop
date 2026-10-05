@@ -28,6 +28,20 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         super(parent, modal);
         this.setUndecorated(false);
         initComponents();
+        setContentPane(new classes.PainelFormulario(btVoltar, jLabel1, botaoAjuda,
+                "Preencha os dados abaixo para criar uma conta.", classes.PainelFormulario.campos(
+                classes.PainelFormulario.campo(jLabel3, tfCampoNome),
+                classes.PainelFormulario.campo(jLabel4, tfCampoDataNascimento),
+                classes.PainelFormulario.campo(jLabel5, tfCampoCPF),
+                classes.PainelFormulario.campo(jLabel6, tfCampoEmail),
+                classes.PainelFormulario.campo(jLabel7, classes.PainelFormulario.senha(jpCampoSenha, pfCampoSenha, jbOlhoSenha)),
+                classes.PainelFormulario.campo(jLabel8, classes.PainelFormulario.senha(jpCampoConfirmarSenha, pfCampoConfirmarSenha, jbOlhoConfirmarSenha)),
+                classes.PainelFormulario.campo(jLabel9, jtfCampoTelefone),
+                classes.PainelFormulario.campo(jLabel10, cbCampoFuncao)), jButton1));
+        pack();
+        jlLogo.setIcon(new classes.IconeImagem("/images/Logo.png", 337, 110));
+        jlLogo.putClientProperty("baixaVisao.logo", true);
+        jlLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);

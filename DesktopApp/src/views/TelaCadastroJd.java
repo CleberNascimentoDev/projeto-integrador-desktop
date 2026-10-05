@@ -34,6 +34,15 @@ public class TelaCadastroJd extends javax.swing.JDialog {
         super(parent, modal);
         this.setUndecorated(false);
         initComponents();
+        setContentPane(new classes.PainelFormulario(btCancelar, jLabel40, botaoAjuda,
+                "Preencha os dados do cargo. Campos com * são obrigatórios.", classes.PainelFormulario.campos(
+                classes.PainelFormulario.campo(jLabel41, tfNomeCargo, jLabel42),
+                classes.PainelFormulario.campo(jLabel43, ffSalario, jLabel44),
+                classes.PainelFormulario.campo(jLabel45, tfNivel, jLabel46),
+                classes.PainelFormulario.campo(jLabel47, tfSetor, jLabel48),
+                classes.PainelFormulario.campo(jLabel49, jScrollPane7, jLabel50),
+                classes.PainelFormulario.campo(jLabel51, jScrollPane8, jLabel52)), btCadastrarCargo));
+        pack();
         classes.Acessibilidade.configurarTela(this);
         configurarPlaceholders();
         this.setResizable(false);

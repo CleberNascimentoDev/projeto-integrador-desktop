@@ -31,6 +31,20 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         customizarTabela();
+        classes.PainelListagem painel = new classes.PainelListagem(btCancelar, jLabel9, botaoAjuda,
+                tfPesquisa, new javax.swing.JLabel(), new javax.swing.JLabel("Recrutadores"), spBarra, tbRecrutador,
+                "Escolha um recrutador cadastrado para este processo seletivo.", "Buscar recrutador...",
+                "recrutador", "recrutadores", false, btAtribuir);
+        javax.swing.JPanel informacoes = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 16, 0));
+        informacoes.setOpaque(false);
+        for (javax.swing.JLabel rotulo : new javax.swing.JLabel[]{jLabel11, lbProcesso, jLabel12, lbData}) {
+            rotulo.setFont(classes.PainelListagem.fonte(java.awt.Font.PLAIN, 18));
+            informacoes.add(rotulo);
+        }
+        painel.adicionarInformacoes(informacoes);
+        classes.PainelListagem.configurarSubtela(painel);
+        setContentPane(painel);
+        pack();
         configurarBuscaDinamica();
         carregarTabela("");
         
@@ -108,7 +122,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                     if (btn.getClientProperty("bordaOriginal") == null) {
                         btn.putClientProperty("bordaOriginal", btn.getBorder());
                     }
-                    btn.setBorder(bordaFoco);
+                    btn.setBorder(classes.PainelListagem.criarBordaFoco(btn, (javax.swing.border.Border) btn.getClientProperty("bordaOriginal")));
                 }
             }
             
@@ -127,13 +141,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
                     }
                 }
 
-                // Mantém a regra de limpar a marcação azul da tabela ao sair do grupo de ação
-                javax.swing.SwingUtilities.invokeLater(() -> {
-                    java.awt.Component focado = java.awt.KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner();
-                    if (focado != tbRecrutador && focado != btAtribuir) {
-                        tbRecrutador.clearSelection();
-                    }
-                });
+                // A mudança de foco não altera a linha selecionada.
             }
         };
 
@@ -264,44 +272,8 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     
     
         private void customizarTabela() {
-    // 1. Fundo do ScrollPane e Borda do Container
-    spBarra.getViewport().setBackground(java.awt.Color.WHITE);
-    spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 240), 1));
-
-    // 2. Estilização e FONTE DAS LINHAS da Tabela
-    tbRecrutador.setBackground(java.awt.Color.WHITE);
-    tbRecrutador.setRowHeight(38);
-    tbRecrutador.setShowGrid(true);
-    tbRecrutador.setShowHorizontalLines(true);
-    tbRecrutador.setGridColor(new java.awt.Color(153, 153, 153));
-    
-    // ---> ALTERE O TAMANHO DA FONTE DOS DADOS AQUI <---
-    tbRecrutador.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 14));
-
-    // 3. Renderizador e FONTE DO CABEÇALHO
-    javax.swing.table.DefaultTableCellRenderer headerRenderer = new javax.swing.table.DefaultTableCellRenderer() {
-        @Override
-        public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            setBackground(new java.awt.Color(29, 45, 68));
-            setForeground(java.awt.Color.WHITE);
-            
-            // ---> ALTERE O TAMANHO DA FONTE DO CABEÇALHO AQUI <---
-            setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 18));
-            
-            setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 0));
-            setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-            return this;
-        }
-    };
-
-    for (int i = 0; i < tbRecrutador.getColumnModel().getColumnCount(); i++) {
-        tbRecrutador.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        classes.PainelListagem.configurarTabela(tbRecrutador, spBarra, false);
     }
-
-    tbRecrutador.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 35));
-}
     
     
     

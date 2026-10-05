@@ -12,22 +12,28 @@ public class TelaAcessibilidade extends JDialog {
 
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
-        painel.setBackground(new Color(233, 243, 255));
-        painel.setBorder(BorderFactory.createEmptyBorder(18, 20, 18, 20));
+        painel.setBackground(Color.WHITE);
+        painel.setBorder(BorderFactory.createEmptyBorder(24, 28, 24, 28));
         JLabel titulo = new JLabel("Opções de acessibilidade");
-        titulo.setFont(new Font("Segoe UI", Font.BOLD, 17));
+        titulo.setFont(PainelListagem.fonte(Font.BOLD, 28));
         titulo.setForeground(new Color(17, 48, 82));
         JLabel estado = new JLabel();
         JLabel orientacao = new JLabel("<html>Use Tab e Shift+Tab para navegar.<br>Use Espaço nos botões e as setas nas tabelas.</html>");
         JButton baixaVisao = new JButton("Modo de baixa visão");
         baixaVisao.getAccessibleContext().setAccessibleDescription(
                 "Amplia textos e controles e aumenta o contraste em todas as telas.");
-        JLabel orientacaoBaixaVisao = new JLabel("<html>Textos e controles ampliados, alto contraste<br>e rolagem para acessar todo o formulário.</html>");
+        JLabel orientacaoBaixaVisao = new JLabel("<html>Textos e controles ampliados, alto contraste<br>e layout ajustado ao espaço da tela.</html>");
         JButton daltonismo = new JButton("Modo daltonismo");
         daltonismo.getAccessibleContext().setAccessibleDescription(
                 "Usa uma paleta alternativa de cores, mantendo textos e símbolos das ações.");
         JLabel orientacaoDaltonismo = new JLabel("<html>Ações em azul e laranja, com texto para identificá-las.<br>Campos com * são obrigatórios.</html>");
         JButton fechar = new JButton("Fechar");
+        for (JButton botao : new JButton[]{baixaVisao, daltonismo, fechar})
+            PainelListagem.configurarBotao(botao, botao.getText(), 18);
+        for (JLabel rotulo : new JLabel[]{estado, orientacao, orientacaoBaixaVisao, orientacaoDaltonismo}) {
+            rotulo.setFont(PainelListagem.fonte(Font.PLAIN, 18));
+            rotulo.setForeground(new Color(64, 64, 64));
+        }
         Runnable atualizar = () -> {
             estado.setText("<html>Baixa visão: " + (Acessibilidade.isBaixaVisaoAtiva() ? "ativada" : "desativada")
                     + "<br>Daltonismo: " + (Acessibilidade.isDaltonismoAtivo() ? "ativado" : "desativado") + "</html>");
@@ -48,7 +54,7 @@ public class TelaAcessibilidade extends JDialog {
         for (JComponent componente : new JComponent[]{titulo, estado, orientacao,
                 baixaVisao, orientacaoBaixaVisao, daltonismo, orientacaoDaltonismo, fechar}) {
             componente.setAlignmentX(Component.LEFT_ALIGNMENT);
-            if (componente instanceof JButton) componente.setMaximumSize(new Dimension(Integer.MAX_VALUE, 54));
+            if (componente instanceof JButton) componente.setMaximumSize(new Dimension(Integer.MAX_VALUE, 80));
             painel.add(componente);
             painel.add(Box.createVerticalStrut(12));
         }

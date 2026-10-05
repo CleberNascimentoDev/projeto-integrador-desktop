@@ -19,6 +19,15 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
      */
     public TelaDetalhesCargo() {
         initComponents();
+        setContentPane(new classes.PainelFormulario(btVoltar, jLabel40, botaoAjuda,
+                "Consulte as informações e os requisitos do cargo.", classes.PainelFormulario.campos(
+                classes.PainelFormulario.campo(jLabel41, tfNomeCargo),
+                classes.PainelFormulario.campo(jLabel42, tfSalario),
+                classes.PainelFormulario.campo(jLabel43, tfNivel),
+                classes.PainelFormulario.campo(jLabel44, tfSetor),
+                classes.PainelFormulario.campo(jLabel45, jScrollPane1),
+                classes.PainelFormulario.campo(jLabel46, jScrollPane2))));
+        pack();
         classes.Acessibilidade.configurarTela(this);
     }
 
