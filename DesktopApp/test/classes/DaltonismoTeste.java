@@ -65,7 +65,7 @@ public class DaltonismoTeste {
         guardar(tela.getContentPane(), originais);
         Dimension tamanho = ((Component) tela).getSize();
         for (int repeticao = 0; repeticao < 3; repeticao++) {
-            Acessibilidade.setDaltonismoAtivo(true);
+            Acessibilidade.setModoDaltonismo(ModoDaltonismo.values()[repeticao + 1]);
             atualizar.invoke(null, tela.getRootPane());
             for (Map.Entry<JComponent, Object[]> entrada : originais.entrySet()) {
                 JComponent campo = entrada.getKey();
@@ -74,10 +74,10 @@ public class DaltonismoTeste {
                 if (campo instanceof JButton && ((JButton) campo).isContentAreaFilled()) {
                     Color fundo = (Color) original[1];
                     if (fundo.equals(new Color(192, 1, 1))) {
-                        exigir(campo.getBackground().equals(new Color(255, 210, 128)), "Excluir não recebeu laranja");
+                        exigir(campo.getBackground().equals(Acessibilidade.getPaleta().getExclusao()), "Excluir não recebeu a paleta");
                         exigir(contraste(campo.getForeground(), campo.getBackground()) >= 4.5, "Excluir sem contraste");
                     } else if (fundo.equals(new Color(11, 176, 142))) {
-                        exigir(campo.getBackground().equals(new Color(0, 85, 140)), "Editar não recebeu azul");
+                        exigir(campo.getBackground().equals(Acessibilidade.getPaleta().getPrimaria()), "Editar não recebeu a paleta");
                         exigir(contraste(campo.getForeground(), campo.getBackground()) >= 4.5, "Editar sem contraste");
                     }
                 }
@@ -86,7 +86,7 @@ public class DaltonismoTeste {
                 }
             }
             exigir(((Component) tela).getSize().equals(tamanho), "Modo daltonismo alterou dimensões");
-            if (repeticao == 0 && args.length > 0) {
+            if (args.length > 0) {
                 File diretorio = new File(args[0]);
                 diretorio.mkdirs();
                 Container conteudo = tela.getContentPane();
@@ -95,7 +95,7 @@ public class DaltonismoTeste {
                 Graphics2D g = imagem.createGraphics();
                 conteudo.printAll(g);
                 g.dispose();
-                ImageIO.write(imagem, "png", new File(diretorio, tela.getClass().getSimpleName() + ".png"));
+                ImageIO.write(imagem, "png", new File(diretorio, tela.getClass().getSimpleName() + "-" + Acessibilidade.getModoDaltonismo().name() + ".png"));
             }
             Acessibilidade.setDaltonismoAtivo(false);
             atualizar.invoke(null, tela.getRootPane());
@@ -104,7 +104,11 @@ public class DaltonismoTeste {
                 Object[] original = entrada.getValue();
                 exigir(Objects.equals(campo.getForeground(), original[0])
                         && Objects.equals(campo.getBackground(), original[1])
-                        && Objects.equals(campo.getBorder(), original[3]), "Aparência original não restaurada");
+                        && Objects.equals(campo.getBorder(), original[3]), "Aparência original não restaurada em "
+                                + tela.getClass().getSimpleName() + "/" + campo.getClass().getSimpleName()
+                                + ": frente=" + campo.getForeground() + " / " + original[0]
+                                + ", fundo=" + campo.getBackground() + " / " + original[1]
+                                + ", borda=" + campo.getBorder() + " / " + original[3]);
             }
             exigir(!Acessibilidade.isTecladoAtivo(), "Modo daltonismo alterou navegação por teclado");
         }
@@ -147,25 +151,32 @@ public class DaltonismoTeste {
         Acessibilidade.configurarTela(login);
         TelaAcessibilidade opcoes = new TelaAcessibilidade(login);
         try {
-            JButton botao = null;
-            for (Component campo : opcoes.getContentPane().getComponents()) {
-                if (campo instanceof JButton && ((JButton) campo).getText().equals("Ativar modo daltonismo")) {
-                    botao = (JButton) campo;
-                }
-            }
+            JButton botao = buscarModo(opcoes.getContentPane(), ModoDaltonismo.PROTANOPIA);
             exigir(botao != null, "Botão daltonismo não encontrado");
             botao.doClick();
             exigir(painel.getBackground().equals(new Color(248, 245, 238)), "Fundo do login não mudou");
             exigir(entrar.getBackground().equals(new Color(0, 85, 140)), "Botão Entrar não mudou");
             exigir(contraste(entrar.getForeground(), entrar.getBackground()) >= 4.5, "Entrar sem contraste");
-            exigir(botao.getText().equals("Desativar modo daltonismo"), "Botão não confirmou ativação");
-            botao.doClick();
+            exigir(botao.getIcon() != null, "Botão não confirmou ativação");
+            buscarModo(opcoes.getContentPane(), ModoDaltonismo.PADRAO).doClick();
             exigir(painel.getBackground().equals(corOriginal), "Fundo do login não restaurado");
             exigir(entrar.getBackground().equals(botaoOriginal), "Botão Entrar não restaurado");
         } finally {
             opcoes.dispose();
             login.dispose();
         }
+    }
+
+    private static JButton buscarModo(Container painel, ModoDaltonismo modo) {
+        for (Component componente : painel.getComponents()) {
+            if (componente instanceof JButton && ((JButton) componente).getClientProperty("modoDaltonismo") == modo)
+                return (JButton) componente;
+            if (componente instanceof Container) {
+                JButton encontrado = buscarModo((Container) componente, modo);
+                if (encontrado != null) return encontrado;
+            }
+        }
+        return null;
     }
 
     private static void guardar(Component componente, Map<JComponent, Object[]> originais) {

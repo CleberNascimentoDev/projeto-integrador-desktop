@@ -21,6 +21,9 @@ public class TelaMenu extends javax.swing.JFrame {
      */
     public TelaMenu() {
         initComponents();
+        javax.swing.Icon logoOriginal = jLabel2.getIcon();
+        jLabel2.setIcon(new classes.IconeImagem("/images/Logo.png",
+                logoOriginal.getIconWidth(), logoOriginal.getIconHeight()));
         classes.Acessibilidade.configurarTela(this);
         classes.BotaoAcessibilidade btAcessibilidade = new classes.BotaoAcessibilidade();
         btAcessibilidade.addActionListener(e -> new TelaAcessibilidade(this).setVisible(true));
