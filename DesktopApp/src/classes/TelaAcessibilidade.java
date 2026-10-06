@@ -13,7 +13,7 @@ public class TelaAcessibilidade extends JDialog {
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
         painel.setBackground(Color.WHITE);
-        painel.setBorder(BorderFactory.createEmptyBorder(24, 28, 24, 28));
+        painel.setBorder(BorderFactory.createEmptyBorder(16, 28, 16, 28));
         JLabel titulo = new JLabel("Opções de acessibilidade");
         titulo.setFont(PainelListagem.fonte(Font.BOLD, 28));
         titulo.setForeground(new Color(17, 48, 82));
@@ -22,7 +22,20 @@ public class TelaAcessibilidade extends JDialog {
         JButton baixaVisao = new JButton("Modo de baixa visão");
         baixaVisao.getAccessibleContext().setAccessibleDescription(
                 "Amplia textos e controles e aumenta o contraste em todas as telas.");
-        JLabel orientacaoBaixaVisao = new JLabel("<html>Textos e controles ampliados, alto contraste<br>e layout ajustado ao espaço da tela.</html>");
+        baixaVisao.setToolTipText("Amplia textos e controles e ajusta o layout ao espaço da tela.");
+        JButton altoContraste = new JButton("Ativar alto contraste");
+        altoContraste.putClientProperty("altoContraste", true);
+        altoContraste.getAccessibleContext().setAccessibleDescription(
+                "Fundo escuro, textos claros e foco destacado, sem ampliar os componentes.");
+        altoContraste.setToolTipText("Altera as cores sem ampliar; tem prioridade sobre a paleta de daltonismo.");
+        JPanel recursos = new JPanel(new GridLayout(1, 2, 12, 0)) {
+            @Override public Dimension getMaximumSize() {
+                return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
+            }
+        };
+        recursos.setOpaque(false);
+        recursos.add(baixaVisao);
+        recursos.add(altoContraste);
         JPanel modos = new JPanel(new GridLayout(2, 2, 12, 12)) {
             @Override public Dimension getMaximumSize() {
                 return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
@@ -45,17 +58,20 @@ public class TelaAcessibilidade extends JDialog {
             botoesModo.put(modo, botao);
             modos.add(botao);
         }
-        JLabel orientacaoDaltonismo = new JLabel("<html>Adaptação de cores com textos e símbolos.<br>A marca indica o modo selecionado.<br>Campos com * são obrigatórios.</html>");
+        JLabel orientacaoDaltonismo = new JLabel("A marca indica o modo de daltonismo selecionado.");
         JButton fechar = new JButton("Fechar");
-        for (JButton botao : new JButton[]{baixaVisao, fechar})
+        for (JButton botao : new JButton[]{baixaVisao, altoContraste, fechar})
             PainelListagem.configurarBotao(botao, botao.getText(), 18);
-        for (JLabel rotulo : new JLabel[]{estado, orientacao, orientacaoBaixaVisao, orientacaoDaltonismo}) {
+        for (JLabel rotulo : new JLabel[]{estado, orientacao, orientacaoDaltonismo}) {
             rotulo.setFont(PainelListagem.fonte(Font.PLAIN, 18));
             rotulo.setForeground(new Color(64, 64, 64));
         }
         Runnable atualizar = () -> {
             estado.setText("<html>Baixa visão: " + (Acessibilidade.isBaixaVisaoAtiva() ? "ativada" : "desativada")
-                    + "<br>Cores: " + Acessibilidade.getModoDaltonismo() + "</html>");
+                    + "<br>Alto contraste: " + (Acessibilidade.isAltoContrasteAtivo() ? "ativado" : "desativado")
+                    + "<br>Daltonismo: " + Acessibilidade.getModoDaltonismo()
+                    + (Acessibilidade.isAltoContrasteAtivo() ? " (paleta em espera)" : "") + "</html>");
+            altoContraste.setText(Acessibilidade.isAltoContrasteAtivo() ? "Desativar alto contraste" : "Ativar alto contraste");
             baixaVisao.setText(Acessibilidade.isBaixaVisaoAtiva()
                     ? "Desativar modo de baixa visão" : "Ativar modo de baixa visão");
             botoesModo.forEach((modo, botao) -> {
@@ -69,6 +85,7 @@ public class TelaAcessibilidade extends JDialog {
             Acessibilidade.setBaixaVisaoAtiva(!Acessibilidade.isBaixaVisaoAtiva());
             atualizar.run();
         });
+        altoContraste.addActionListener(e -> Acessibilidade.setAltoContrasteAtivo(!Acessibilidade.isAltoContrasteAtivo()));
         botoesModo.forEach((modo, botao) -> botao.addActionListener(e -> Acessibilidade.setModoDaltonismo(modo)));
         java.beans.PropertyChangeListener preferencia = e -> atualizar.run();
         Acessibilidade.adicionarListener(preferencia);
@@ -77,11 +94,11 @@ public class TelaAcessibilidade extends JDialog {
         });
         fechar.addActionListener(e -> dispose());
         for (JComponent componente : new JComponent[]{titulo, estado, orientacao,
-                baixaVisao, orientacaoBaixaVisao, modos, orientacaoDaltonismo, fechar}) {
+                recursos, modos, orientacaoDaltonismo, fechar}) {
             componente.setAlignmentX(Component.LEFT_ALIGNMENT);
             if (componente instanceof JButton) componente.setMaximumSize(new Dimension(Integer.MAX_VALUE, 80));
             painel.add(componente);
-            painel.add(Box.createVerticalStrut(12));
+            painel.add(Box.createVerticalStrut(6));
         }
         atualizar.run();
         setContentPane(painel);

@@ -19,6 +19,7 @@ public final class IconeImagem implements Icon {
     private final int altura;
     private final boolean logo;
     private final Map<ModoDaltonismo, BufferedImage> imagensAdaptadas = new EnumMap<>(ModoDaltonismo.class);
+    private BufferedImage imagemAltoContraste;
 
     public IconeImagem(String recurso, int largura, int altura) {
         imagem = new ImageIcon(java.util.Objects.requireNonNull(
@@ -29,6 +30,14 @@ public final class IconeImagem implements Icon {
                 || recurso.equals("/images/LogoLogin.png");
     }
 
+    /** Adapta ícones legados sem alterar seus arquivos ou dimensões. */
+    public IconeImagem(ImageIcon original) {
+        imagem = original.getImage();
+        largura = original.getIconWidth();
+        altura = original.getIconHeight();
+        logo = false;
+    }
+
     @Override public int getIconWidth() { return largura; }
     @Override public int getIconHeight() { return altura; }
 
@@ -37,7 +46,10 @@ public final class IconeImagem implements Icon {
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
         g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         Image atual = imagem;
-        if (logo && Acessibilidade.isDaltonismoAtivo()) {
+        if (Acessibilidade.isAltoContrasteAtivo()) {
+            if (imagemAltoContraste == null) imagemAltoContraste = adaptarImagem(PaletaAcessibilidade.altoContraste());
+            atual = imagemAltoContraste;
+        } else if (logo && Acessibilidade.isPaletaAdaptada()) {
             atual = imagensAdaptadas.computeIfAbsent(Acessibilidade.getModoDaltonismo(), this::adaptarLogo);
         }
         g.drawImage(atual, x, y, largura, altura, componente);
@@ -46,18 +58,21 @@ public final class IconeImagem implements Icon {
 
     /** Reatribui as duas cores da marca; preserva geometria, resolução e transparência. */
     private BufferedImage adaptarLogo(ModoDaltonismo modo) {
+        return adaptarImagem(PaletaAcessibilidade.paraModo(modo));
+    }
+    private BufferedImage adaptarImagem(PaletaAcessibilidade paleta) {
         BufferedImage original = new BufferedImage(imagem.getWidth(null), imagem.getHeight(null), BufferedImage.TYPE_INT_ARGB);
         Graphics2D desenho = original.createGraphics();
         desenho.drawImage(imagem, 0, 0, null);
         desenho.dispose();
-        PaletaAcessibilidade paleta = PaletaAcessibilidade.paraModo(modo);
         for (int y = 0; y < original.getHeight(); y++) {
             for (int x = 0; x < original.getWidth(); x++) {
                 int pixel = original.getRGB(x, y);
                 if ((pixel >>> 24) == 0) continue;
                 Color cor = new Color(pixel, true);
                 boolean destaque = cor.getGreen() > cor.getRed() && cor.getGreen() > cor.getBlue();
-                Color adaptada = destaque ? paleta.getLogoDestaque() : paleta.getLogoBase();
+                Color adaptada = logo ? destaque ? paleta.getLogoDestaque() : paleta.getLogoBase()
+                        : cor.getRed() + cor.getGreen() + cor.getBlue() > 650 ? paleta.getSuperficie() : paleta.getTexto();
                 original.setRGB(x, y, (pixel & 0xff000000) | (adaptada.getRGB() & 0x00ffffff));
             }
         }

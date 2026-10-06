@@ -211,7 +211,7 @@ public class BotaoAjuda extends JButton {
             g2.setStroke(new BasicStroke(4f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
             g2.drawPolygon(xPoints, yPoints, 3);
 
-            g2.setColor(Acessibilidade.isDaltonismoAtivo() ? Acessibilidade.getPaleta().getTextoAviso() : corFundo);
+            g2.setColor(Acessibilidade.isPaletaAdaptada() ? Acessibilidade.getPaleta().getTextoAviso() : corFundo);
             g2.setFont(new Font("Segoe UI", Font.BOLD, (int)(tamanho * 0.55)));
             FontMetrics fm = g2.getFontMetrics();
             

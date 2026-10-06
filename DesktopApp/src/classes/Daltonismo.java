@@ -23,13 +23,13 @@ public final class Daltonismo {
 
     public static void marcar(JComponent campo, Papel papel) { campo.putClientProperty("acessibilidade.papel", papel); }
     public static Color cor(Color original, Papel papel) {
-        return Acessibilidade.isDaltonismoAtivo() ? Acessibilidade.getPaleta().getCor(papel) : original;
+        return Acessibilidade.isPaletaAdaptada() ? Acessibilidade.getPaleta().getCor(papel) : original;
     }
     public static Color corBorda(Color original) {
-        return Acessibilidade.isDaltonismoAtivo() ? Acessibilidade.getPaleta().getBorda() : original;
+        return Acessibilidade.isPaletaAdaptada() ? Acessibilidade.getPaleta().getBorda() : original;
     }
     public static Color corSelecao(Color original) {
-        return Acessibilidade.isDaltonismoAtivo() ? Acessibilidade.getPaleta().getSelecao() : original;
+        return Acessibilidade.isPaletaAdaptada() ? Acessibilidade.getPaleta().getSelecao() : original;
     }
 
     public static void configurarTela(RootPaneContainer tela) {
@@ -59,7 +59,7 @@ public final class Daltonismo {
     public static void atualizarPadroesSwing() {
         for (String tipo : new String[]{"error", "warning", "information", "question"}) {
             String chave = "OptionPane." + tipo + "Icon";
-            if (Acessibilidade.isDaltonismoAtivo()) {
+            if (Acessibilidade.isPaletaAdaptada()) {
                 if (!iconesOriginais.containsKey(chave)) iconesOriginais.put(chave, UIManager.get(chave));
                 UIManager.put(chave, new IconeMensagem(tipo, (Icon) iconesOriginais.get(chave)));
             } else if (iconesOriginais.containsKey(chave)) {
@@ -94,8 +94,8 @@ public final class Daltonismo {
         }
     }
     private static void aplicarComponentes(Component componente) {
-        if (Acessibilidade.isDaltonismoAtivo()) guardarComponentes(componente);
-        aplicarComponentes(componente, Acessibilidade.isDaltonismoAtivo());
+        if (Acessibilidade.isPaletaAdaptada()) guardarComponentes(componente);
+        aplicarComponentes(componente, Acessibilidade.isPaletaAdaptada());
     }
     private static void guardarComponentes(Component componente) {
         if (!(componente instanceof JComponent) || componente instanceof JInternalFrame) return;
@@ -105,7 +105,7 @@ public final class Daltonismo {
         if (campo instanceof JTable) guardarComponentes(((JTable) campo).getTableHeader());
         if (campo instanceof JPanel || campo instanceof JDesktopPane || campo instanceof JScrollPane
                 || campo instanceof JViewport || campo instanceof JMenuBar || campo instanceof JPopupMenu
-                || campo instanceof JOptionPane || campo instanceof JTabbedPane)
+                || campo instanceof JOptionPane || campo instanceof JTabbedPane || campo instanceof JComboBox)
             for (Component filho : campo.getComponents()) guardarComponentes(filho);
         if (campo instanceof JMenu) guardarComponentes(((JMenu) campo).getPopupMenu());
     }
@@ -126,7 +126,7 @@ public final class Daltonismo {
         if (campo instanceof JTable) aplicarComponentes(((JTable) campo).getTableHeader(), ativo);
         if (campo instanceof JPanel || campo instanceof JDesktopPane || campo instanceof JScrollPane
                 || campo instanceof JViewport || campo instanceof JMenuBar || campo instanceof JPopupMenu
-                || campo instanceof JOptionPane || campo instanceof JTabbedPane) {
+                || campo instanceof JOptionPane || campo instanceof JTabbedPane || campo instanceof JComboBox) {
             for (Component filho : campo.getComponents()) aplicarComponentes(filho, ativo);
         }
         if (campo instanceof JMenu) aplicarComponentes(((JMenu) campo).getPopupMenu(), ativo);
@@ -169,14 +169,15 @@ public final class Daltonismo {
     static Color adaptarTexto(JComponent campo, Color frente, Color fundo) {
         PaletaAcessibilidade paleta = Acessibilidade.getPaleta();
         if (!campo.isEnabled()) return paleta.getTextoDesabilitado();
-        if (campo instanceof JTableHeader) return paleta.getTextoSelecao();
+        if (campo instanceof JTableHeader) return paleta.getTexto(Papel.PRIMARIO);
         if (campo instanceof JMenuItem) return paleta.getTexto();
         if (campo instanceof AbstractButton && ((AbstractButton) campo).isContentAreaFilled()
                 && !(campo instanceof JCheckBox) && !(campo instanceof JRadioButton)) return paleta.getTexto(papel(campo, fundo));
-        if (campo.getClientProperty("acessibilidade.papel") == Papel.AVISO) return paleta.getTextoAviso();
+        if (campo.getClientProperty("acessibilidade.papel") == Papel.AVISO)
+            return Acessibilidade.isAltoContrasteAtivo() ? paleta.getAviso() : paleta.getTextoAviso();
         if (campo instanceof JLabel && "*".equals(((JLabel) campo).getText())) return paleta.getErro();
         if (vermelho(frente)) return paleta.getErro();
-        if (amarelo(frente)) return paleta.getTextoAviso();
+        if (amarelo(frente)) return Acessibilidade.isAltoContrasteAtivo() ? paleta.getAviso() : paleta.getTextoAviso();
         return verde(frente) ? paleta.getSucesso() : paleta.getTexto();
     }
     private static Border adaptarBorda(Border borda) {
@@ -197,14 +198,18 @@ public final class Daltonismo {
         UIDefaults tema = new UIDefaults();
         if (original instanceof UIDefaults) tema.putAll((UIDefaults) original);
         String nome = campo.getClass().getSimpleName();
-        String[] prefixos = campo instanceof JMenuItem ? new String[]{"Menu", "MenuBar:Menu", "MenuItem"}
+        boolean setaCombo = "ComboBox.arrowButton".equals(campo.getName());
+        String[] prefixos = setaCombo ? new String[]{"ComboBox:\"ComboBox.arrowButton\""}
+                : campo instanceof JMenuItem ? new String[]{"Menu", "MenuBar:Menu", "MenuItem"}
                 : campo instanceof AbstractButton ? new String[]{"Button", "ToggleButton", "CheckBox", "RadioButton"}
                 : new String[]{nome.startsWith("J") ? nome.substring(1) : nome};
         for (String prefixo : prefixos) {
             tema.put(prefixo + "[Enabled].textForeground", new ColorUIResource(campo.getForeground()));
             tema.put(prefixo + "[Disabled].textForeground", new ColorUIResource(paleta.getTextoDesabilitado()));
             if (campo instanceof AbstractButton && !(campo instanceof JCheckBox) && !(campo instanceof JRadioButton)) {
-                for (String estado : new String[]{"Enabled", "Focused", "MouseOver", "Focused+MouseOver", "Pressed", "Focused+Pressed", "Disabled", "Selected", "Enabled+Selected"}) {
+                for (String estado : new String[]{"Enabled", "Focused", "MouseOver", "Focused+MouseOver", "Pressed", "Focused+Pressed", "Disabled", "Selected", "Enabled+Selected",
+                        "Default", "Default+Focused", "Default+MouseOver", "Default+Focused+MouseOver", "Default+Pressed", "Default+Focused+Pressed"}) {
+                    if (estado.startsWith("Default") && !Acessibilidade.isAltoContrasteAtivo()) continue;
                     boolean destaque = campo instanceof JMenuItem && !estado.equals("Enabled") && !estado.equals("Disabled");
                     Color fundo = estado.equals("Disabled") ? paleta.getDesabilitado()
                             : destaque ? paleta.getSelecao() : estado.contains("MouseOver") || estado.contains("Pressed")
@@ -215,8 +220,43 @@ public final class Daltonismo {
                     tema.put(prefixo + "[" + estado + "].backgroundPainter", (Painter<JComponent>) (g, c, w, h) -> {
                         g.setColor(fundo);
                         if (c instanceof JMenuItem) g.fillRect(0, 0, w, h); else g.fillRoundRect(0, 0, w, h, 8, 8);
+                        if (Acessibilidade.isAltoContrasteAtivo() && !(c instanceof JMenuItem)) {
+                            g.setColor(c.hasFocus() ? paleta.getSelecao() : paleta.getBorda());
+                            g.drawRoundRect(1, 1, w - 3, h - 3, 8, 8);
+                        }
                     });
                 }
+            }
+        }
+        if (Acessibilidade.isAltoContrasteAtivo()) {
+            if (campo instanceof JComboBox || setaCombo) {
+                for (String estado : new String[]{"Enabled", "Disabled", "MouseOver", "Pressed", "Selected"}) {
+                    Color cor = estado.equals("Disabled") ? paleta.getTextoDesabilitado() : paleta.getTexto();
+                    tema.put("ComboBox:\"ComboBox.arrowButton\"[" + estado + "].foregroundPainter",
+                            (Painter<JComponent>) (g, c, w, h) -> {
+                                g.setColor(cor);
+                                int x = w / 2, y = h / 2;
+                                // Nimbus gira uma seta voltada à esquerda para a direção do controle.
+                                g.fillPolygon(new int[]{x + 2, x + 2, x - 3}, new int[]{y - 5, y + 5, y}, 3);
+                            });
+                }
+            }
+            if (campo instanceof JTextComponent || campo instanceof JComboBox || campo instanceof JTabbedPane) {
+                for (String prefixo : prefixos) for (String estado : new String[]{"Enabled", "Focused", "Disabled", "Selected", "Enabled+Selected"}) {
+                    Color fundo = estado.equals("Disabled") ? paleta.getDesabilitado() : campo.getBackground();
+                    tema.put(prefixo + "[" + estado + "].backgroundPainter", (Painter<JComponent>) (g, c, w, h) -> {
+                        g.setColor(fundo); g.fillRect(0, 0, w, h);
+                    });
+                    tema.put(prefixo + "[" + estado + "].borderPainter", (Painter<JComponent>) (g, c, w, h) -> {
+                        g.setColor(c.hasFocus() ? paleta.getSelecao() : paleta.getBorda());
+                        g.drawRect(1, 1, w - 3, h - 3);
+                    });
+                }
+            }
+            for (String chave : new String[]{"text", "textForeground", "nimbusLightBackground", "nimbusSelectionBackground", "nimbusSelectedText"}) {
+                tema.put(chave, new ColorUIResource(chave.equals("nimbusLightBackground") ? paleta.getSuperficie()
+                        : chave.equals("nimbusSelectionBackground") ? paleta.getSelecao()
+                        : chave.equals("nimbusSelectedText") ? paleta.getTextoSelecao() : paleta.getTexto()));
             }
         }
         campo.putClientProperty("Nimbus.Overrides", tema);
@@ -227,8 +267,9 @@ public final class Daltonismo {
         Color frente, fundo;
         Border borda;
         final Color selecao, textoSelecao, desabilitado, cursor;
+        final Color linhasTabela;
         final Object tema, herdarTema;
-        final Icon icone;
+        Icon icone;
         final ListCellRenderer<?> renderizadorCombo;
         final Map<TableColumn, TableCellRenderer> cabecalhos = new IdentityHashMap<>();
         boolean ajustandoCores;
@@ -237,7 +278,8 @@ public final class Daltonismo {
         EstadoComponente(JComponent campo) {
             frente = campo.getForeground(); fundo = campo.getBackground(); borda = campo.getBorder();
             tema = campo.getClientProperty("Nimbus.Overrides");
-            icone = campo instanceof JLabel ? ((JLabel) campo).getIcon() : null;
+            icone = campo instanceof JLabel ? ((JLabel) campo).getIcon()
+                    : campo instanceof AbstractButton ? ((AbstractButton) campo).getIcon() : null;
             herdarTema = campo.getClientProperty("Nimbus.Overrides.InheritDefaults");
             JTextComponent texto = campo instanceof JTextComponent ? (JTextComponent) campo : null;
             selecao = texto != null ? texto.getSelectionColor() : campo instanceof JTable ? ((JTable) campo).getSelectionBackground()
@@ -246,12 +288,14 @@ public final class Daltonismo {
                     : campo instanceof JList ? ((JList<?>) campo).getSelectionForeground() : null;
             desabilitado = texto != null ? texto.getDisabledTextColor() : null;
             cursor = texto != null ? texto.getCaretColor() : null;
+            linhasTabela = campo instanceof JTable ? ((JTable) campo).getGridColor() : null;
             renderizadorCombo = campo instanceof JComboBox ? ((JComboBox<?>) campo).getRenderer() : null;
             preferenciaCores = e -> {
                 if (ajustandoCores) return;
                 if ("foreground".equals(e.getPropertyName())) frente = (Color) e.getNewValue();
                 else if ("background".equals(e.getPropertyName())) fundo = (Color) e.getNewValue();
                 else if ("border".equals(e.getPropertyName())) borda = (Border) e.getNewValue();
+                else if ("icon".equals(e.getPropertyName())) icone = (Icon) e.getNewValue();
                 else if ("model".equals(e.getPropertyName()) && campo instanceof JTable) {
                     SwingUtilities.invokeLater(() -> { if (campo.getClientProperty(chaveEstado) == this) aplicar(campo); });
                     return;
@@ -269,6 +313,8 @@ public final class Daltonismo {
                 campo.setForeground(new ColorUIResource(adaptarTexto(campo, frente, fundo)));
                 campo.setBorder(adaptarBorda(borda));
                 configurarNimbus(campo, tema);
+                if (campo instanceof AbstractButton && icone instanceof ImageIcon && Acessibilidade.isAltoContrasteAtivo())
+                    ((AbstractButton) campo).setIcon(new IconeImagem((ImageIcon) icone));
                 if (campo instanceof JLabel && icone != null) {
                     JOptionPane mensagem = (JOptionPane) SwingUtilities.getAncestorOfClass(JOptionPane.class, campo);
                     if (mensagem != null && mensagem.getIcon() == null) {
@@ -289,6 +335,7 @@ public final class Daltonismo {
                 if (campo instanceof JTable) {
                     JTable tabela = (JTable) campo;
                     tabela.setSelectionBackground(p.getSelecao()); tabela.setSelectionForeground(p.getTextoSelecao());
+                    if (Acessibilidade.isAltoContrasteAtivo()) tabela.setGridColor(p.getBorda());
                     for (int i = 0; i < tabela.getColumnCount(); i++) {
                         TableColumn coluna = tabela.getColumnModel().getColumn(i);
                         if (cabecalhos.containsKey(coluna)) continue;
@@ -298,7 +345,7 @@ public final class Daltonismo {
                         coluna.setHeaderRenderer((t, v, s, f, l, c) -> {
                             Component celula = delegado.getTableCellRendererComponent(t, v, s, f, l, c);
                             celula.setBackground(Acessibilidade.getPaleta().getPrimaria());
-                            celula.setForeground(Acessibilidade.getPaleta().getTextoSelecao());
+                            celula.setForeground(Acessibilidade.getPaleta().getTexto(Papel.PRIMARIO));
                             return celula;
                         });
                     }
@@ -325,6 +372,7 @@ public final class Daltonismo {
             campo.putClientProperty("Nimbus.Overrides.InheritDefaults", herdarTema);
             campo.setForeground(frente); campo.setBackground(fundo); campo.setBorder(borda);
             if (campo instanceof JLabel) ((JLabel) campo).setIcon(icone);
+            if (campo instanceof AbstractButton) ((AbstractButton) campo).setIcon(icone);
             if (campo instanceof JTextComponent) {
                 JTextComponent texto = (JTextComponent) campo;
                 texto.setSelectionColor(selecao); texto.setSelectedTextColor(textoSelecao);
@@ -333,6 +381,7 @@ public final class Daltonismo {
             if (campo instanceof JTable) {
                 JTable tabela = (JTable) campo;
                 tabela.setSelectionBackground(selecao); tabela.setSelectionForeground(textoSelecao);
+                tabela.setGridColor(linhasTabela);
                 cabecalhos.forEach(TableColumn::setHeaderRenderer);
             }
             if (campo instanceof JList) {
@@ -349,7 +398,7 @@ public final class Daltonismo {
         public int getIconWidth() { return 32; }
         public int getIconHeight() { return 32; }
         public void paintIcon(Component campo, Graphics g, int x, int y) {
-            if (!Acessibilidade.isDaltonismoAtivo() && original != null) { original.paintIcon(campo, g, x, y); return; }
+            if (!Acessibilidade.isPaletaAdaptada() && original != null) { original.paintIcon(campo, g, x, y); return; }
             PaletaAcessibilidade p = Acessibilidade.getPaleta();
             Graphics2D desenho = (Graphics2D) g.create();
             desenho.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -358,7 +407,7 @@ public final class Daltonismo {
             if (aviso) desenho.fillPolygon(new int[]{x + 16, x + 1, x + 31}, new int[]{y + 1, y + 30, y + 30}, 3);
             else if (tipo.equals("error")) desenho.fillRoundRect(x + 1, y + 1, 30, 30, 4, 4);
             else desenho.fillOval(x + 1, y + 1, 30, 30);
-            desenho.setColor(aviso ? p.getTextoAviso() : Color.WHITE);
+            desenho.setColor(p.getTexto(aviso ? Papel.AVISO : tipo.equals("error") ? Papel.ERRO : Papel.INFORMACAO));
             desenho.setFont(new Font("Segoe UI", Font.BOLD, 22));
             String simbolo = aviso ? "!" : tipo.equals("error") ? "×" : tipo.equals("question") ? "?" : "i";
             desenho.drawString(simbolo, x + (32 - desenho.getFontMetrics().stringWidth(simbolo)) / 2, y + 24);

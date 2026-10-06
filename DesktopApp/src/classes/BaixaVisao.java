@@ -396,7 +396,7 @@ public final class BaixaVisao {
                 || campo instanceof JCheckBox || campo instanceof JRadioButton)) {
             campo.setForeground(texto);
         }
-        if (Acessibilidade.isDaltonismoAtivo()) {
+        if (Acessibilidade.isPaletaAdaptada()) {
             Color corTexto = Daltonismo.adaptarTexto(campo, campo.getForeground(), campo.getBackground());
             campo.setBackground(Daltonismo.adaptarFundo(campo, campo.getBackground()));
             campo.setForeground(corTexto);
@@ -545,8 +545,8 @@ public final class BaixaVisao {
             coluna.setHeaderRenderer((t, valor, selecionado, foco, linha, indice) -> {
                 Component cabecalho = original.getTableCellRendererComponent(t, valor, selecionado, foco, linha, indice);
                 cabecalho.setFont(fonte.deriveFont(Math.max(18f, (float) (fonte.getSize2D() * ampliacao))));
-                cabecalho.setBackground(Daltonismo.corSelecao(destaque));
-                cabecalho.setForeground(fundo);
+                cabecalho.setBackground(Daltonismo.cor(destaque, PaletaAcessibilidade.Papel.PRIMARIO));
+                cabecalho.setForeground(Acessibilidade.isPaletaAdaptada() ? Acessibilidade.getPaleta().getTexto(PaletaAcessibilidade.Papel.PRIMARIO) : fundo);
                 return cabecalho;
             });
         }

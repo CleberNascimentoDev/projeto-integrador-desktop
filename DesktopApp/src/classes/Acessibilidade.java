@@ -8,6 +8,7 @@ public final class Acessibilidade {
     private static boolean tecladoAtivo = true;
     private static boolean baixaVisaoAtiva = false;
     private static final java.util.prefs.Preferences preferencias = abrirPreferencias();
+    private static boolean altoContrasteAtivo = carregarAltoContraste();
     private static ModoDaltonismo modoDaltonismo = carregarModoDaltonismo();
     private static final PropertyChangeSupport eventos = new PropertyChangeSupport(Acessibilidade.class);
 
@@ -21,7 +22,38 @@ public final class Acessibilidade {
 
     public static ModoDaltonismo getModoDaltonismo() { return modoDaltonismo; }
 
-    public static PaletaAcessibilidade getPaleta() { return PaletaAcessibilidade.paraModo(modoDaltonismo); }
+    public static boolean isAltoContrasteAtivo() { return altoContrasteAtivo; }
+    public static boolean isPaletaAdaptada() { return altoContrasteAtivo || isDaltonismoAtivo(); }
+    public static PaletaAcessibilidade getPaleta() {
+        return altoContrasteAtivo ? PaletaAcessibilidade.altoContraste() : PaletaAcessibilidade.paraModo(modoDaltonismo);
+    }
+    private static boolean carregarAltoContraste() {
+        try { return preferencias != null && preferencias.getBoolean("altoContrasteAtivo", false); }
+        catch (SecurityException e) { return false; }
+    }
+    public static void setAltoContrasteAtivo(boolean ativo) {
+        if (!javax.swing.SwingUtilities.isEventDispatchThread()) {
+            javax.swing.SwingUtilities.invokeLater(() -> setAltoContrasteAtivo(ativo));
+            return;
+        }
+        boolean anterior = altoContrasteAtivo;
+        Daltonismo.restaurarTelas();
+        BaixaVisao.restaurarTelas();
+        altoContrasteAtivo = ativo;
+        Daltonismo.atualizarPadroesSwing();
+        BaixaVisao.atualizarTelas();
+        Daltonismo.atualizarTelas();
+        try {
+            if (preferencias != null) {
+                preferencias.putBoolean("altoContrasteAtivo", ativo);
+                preferencias.flush();
+            }
+        } catch (java.util.prefs.BackingStoreException | SecurityException e) {
+            java.util.logging.Logger.getLogger(Acessibilidade.class.getName()).log(
+                    java.util.logging.Level.WARNING, "Não foi possível salvar o alto contraste", e);
+        }
+        eventos.firePropertyChange("altoContrasteAtivo", anterior, ativo);
+    }
 
     private static java.util.prefs.Preferences abrirPreferencias() {
         try {
