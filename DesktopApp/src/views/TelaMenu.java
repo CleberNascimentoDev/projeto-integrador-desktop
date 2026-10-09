@@ -42,6 +42,7 @@ public class TelaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         painelPrincipal = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -56,6 +57,11 @@ public class TelaMenu extends javax.swing.JFrame {
         menuSair = new javax.swing.JMenuItem();
         menu2 = new javax.swing.JMenu();
         menuCadastro = new javax.swing.JMenuItem();
+        menu3 = new javax.swing.JMenu();
+        menuSobre = new javax.swing.JMenuItem();
+        menuAtalho = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -72,11 +78,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(233, 243, 255));
 
-        botaoAjuda.setText("?");
-        botaoAjuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         botaoAjuda.setTextoAjuda("Esta é a tela de menu principal do sistema MAINRH, a partir da qual você pode navegar pelas funcionalidades da aplicação utilizando as abas superiores ou atalhos do teclado. No menu **Gerenciamento**, você encontra as opções para **Gerenciar Cargos** (atalho F2), **Abrir Processo Seletivo** (atalho F3), **Vincular Recrutadores** (atalho F4) e **Sair do Sistema** (atalho ESC). No menu **Cadastro**, é possível acessar a opção **Cadastrar Usuário** (atalho F6) para registrar novos acessos no sistema.");
-        botaoAjuda.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
-        botaoAjuda.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,6 +152,28 @@ public class TelaMenu extends javax.swing.JFrame {
         menu2.add(menuCadastro);
 
         menuBar.add(menu2);
+
+        menu3.setText("Saiba Mais");
+        menu3.setToolTipText("Menu para cadastro");
+        menu3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        menuSobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
+        menuSobre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuSobre.setText("Sobre Nós");
+        menuSobre.setToolTipText("Cadastre administrador ou recrutador por aqui");
+        menuSobre.setMargin(new java.awt.Insets(6, 9, 6, 9));
+        menuSobre.addActionListener(this::menuSobreActionPerformed);
+        menu3.add(menuSobre);
+
+        menuAtalho.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
+        menuAtalho.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuAtalho.setText("Mapa de Teclas de Atalho");
+        menuAtalho.setToolTipText("Cadastre administrador ou recrutador por aqui");
+        menuAtalho.setMargin(new java.awt.Insets(6, 9, 6, 9));
+        menuAtalho.addActionListener(this::menuAtalhoActionPerformed);
+        menu3.add(menuAtalho);
+
+        menuBar.add(menu3);
 
         setJMenuBar(menuBar);
 
@@ -239,6 +263,16 @@ public class TelaMenu extends javax.swing.JFrame {
         abrirJanelaInterna(new TelaProcessoSeletivo());
     }//GEN-LAST:event_menuProcessoSeletivoActionPerformed
 
+    private void menuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSobreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuSobreActionPerformed
+
+    private void menuAtalhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAtalhoActionPerformed
+        TelaMapaAtalhoJd mapa = new TelaMapaAtalhoJd (null, true);
+        mapa.setVisible(true);
+        
+    }//GEN-LAST:event_menuAtalhoActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -268,17 +302,21 @@ public class TelaMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private classes.BotaoAjuda botaoAjuda;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenu menu1;
     private javax.swing.JMenu menu2;
+    private javax.swing.JMenu menu3;
+    private javax.swing.JMenuItem menuAtalho;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuCadastro;
     private javax.swing.JMenuItem menuCargo;
     private javax.swing.JMenuItem menuProcessoSeletivo;
     private javax.swing.JMenuItem menuRecrutador;
     private javax.swing.JMenuItem menuSair;
+    private javax.swing.JMenuItem menuSobre;
     private javax.swing.JDesktopPane painelPrincipal;
     // End of variables declaration//GEN-END:variables
 }

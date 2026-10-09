@@ -2,6 +2,11 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menu1">
@@ -121,6 +126,53 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="menu3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Saiba Mais"/>
+            <Property name="toolTipText" type="java.lang.String" value="Menu para cadastro"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuSobre">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="F7"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Sobre N&#xf3;s"/>
+                <Property name="toolTipText" type="java.lang.String" value="Cadastre administrador ou recrutador por aqui"/>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[6, 9, 6, 9]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuSobreActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuAtalho">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="F8"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Mapa de Teclas de Atalho"/>
+                <Property name="toolTipText" type="java.lang.String" value="Cadastre administrador ou recrutador por aqui"/>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[6, 9, 6, 9]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAtalhoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
@@ -227,11 +279,7 @@
               <SubComponents>
                 <Component class="classes.BotaoAjuda" name="botaoAjuda">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="?"/>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="textoAjuda" type="java.lang.String" value="Esta &#xe9; a tela de menu principal do sistema MAINRH, a partir da qual voc&#xea; pode navegar pelas funcionalidades da aplica&#xe7;&#xe3;o utilizando as abas superiores ou atalhos do teclado. No menu **Gerenciamento**, voc&#xea; encontra as op&#xe7;&#xf5;es para **Gerenciar Cargos** (atalho F2), **Abrir Processo Seletivo** (atalho F3), **Vincular Recrutadores** (atalho F4) e **Sair do Sistema** (atalho ESC). No menu **Cadastro**, &#xe9; poss&#xed;vel acessar a op&#xe7;&#xe3;o **Cadastrar Usu&#xe1;rio** (atalho F6) para registrar novos acessos no sistema."/>
-                    <Property name="verticalAlignment" type="int" value="0"/>
-                    <Property name="verticalTextPosition" type="int" value="0"/>
                   </Properties>
                 </Component>
               </SubComponents>

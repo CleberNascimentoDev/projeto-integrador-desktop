@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <EmptySpace min="0" pref="414" max="32767" attributes="0"/>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jPanel1" min="-2" pref="414" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <EmptySpace min="0" pref="705" max="32767" attributes="0"/>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="409" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                  <Component id="btEntendi" min="-2" pref="176" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="589" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btEntendi" min="-2" pref="45" max="-2" attributes="0"/>
+                  <EmptySpace pref="47" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="17" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;body style=&quot;font-family: sans-serif; font-size: 12px; color: #333; margin: 0; padding: 10px;&quot;&gt;   &lt;h2 style=&quot;font-size: 18px; margin-top: 0; border-bottom: 1px solid #ccc; padding-bottom: 5px;&quot;&gt;&#x2328;&#xfe0f; Guia de Atalhos do Sistema&lt;/h2&gt;    &lt;b&gt;\ud83e\udded Navega&#xe7;&#xe3;o Geral e Autentica&#xe7;&#xe3;o&lt;/b&gt;&lt;br&gt;   &amp;bull; &lt;b&gt;Tab:&lt;/b&gt; Move o foco entre os campos&lt;br&gt;   &amp;bull; &lt;b&gt;Enter / Espa&#xe7;o:&lt;/b&gt; Confirma a&#xe7;&#xf5;es e realiza o login&lt;br&gt;   &amp;bull; &lt;b&gt;Setas:&lt;/b&gt; Navega em menus e seleciona itens em tabelas&lt;br&gt;&lt;br&gt;    &lt;b&gt;\ud83d\udcc2 Menu Principal&lt;/b&gt;&lt;br&gt;   &amp;bull; &lt;b&gt;F10:&lt;/b&gt; Abre e fecha o menu&lt;br&gt;   &amp;bull; &lt;b&gt;F2:&lt;/b&gt; Cargos&lt;br&gt;   &amp;bull; &lt;b&gt;F3:&lt;/b&gt; Processos&lt;br&gt;   &amp;bull; &lt;b&gt;F4:&lt;/b&gt; Recrutadores&lt;br&gt;   &amp;bull; &lt;b&gt;F6:&lt;/b&gt; Cadastro de Usu&#xe1;rios&lt;br&gt;   &amp;bull; &lt;b&gt;Esc:&lt;/b&gt; Sai do sistema&lt;br&gt;&lt;br&gt;    &lt;b&gt;\ud83d\udccb Gerenciamento (Tabelas)&lt;/b&gt;&lt;br&gt;   &amp;bull; &lt;b&gt;Ctrl + N:&lt;/b&gt; Novo registro&lt;br&gt;   &amp;bull; &lt;b&gt;Ctrl + E:&lt;/b&gt; Editar registro selecionado&lt;br&gt;   &amp;bull; &lt;b&gt;Ctrl + D:&lt;/b&gt; Excluir registro selecionado&lt;br&gt;   &amp;bull; &lt;b&gt;Espa&#xe7;o:&lt;/b&gt; Abrir registro ou confirmar atribui&#xe7;&#xe3;o&lt;br&gt;&lt;br&gt;    &lt;b&gt;\ud83d\udcdd Formul&#xe1;rios de Cadastro / Edi&#xe7;&#xe3;o&lt;/b&gt;&lt;br&gt;   &amp;bull; &lt;b&gt;Ctrl + Tab:&lt;/b&gt; Alterna entre campos de preenchimento&lt;br&gt;   &amp;bull; &lt;b&gt;Espa&#xe7;o / Enter:&lt;/b&gt; Salva e confirma o cadastro &lt;/body&gt; &lt;/html&gt;" containsInvalidXMLChars="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btEntendi">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="50" green="35" red="1f" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Entendi"/>
+            <Property name="toolTipText" type="java.lang.String" value="Entrar no MainRH"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEntendiActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
