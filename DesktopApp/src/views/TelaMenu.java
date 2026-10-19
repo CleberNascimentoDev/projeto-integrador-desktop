@@ -21,14 +21,7 @@ public class TelaMenu extends javax.swing.JFrame {
      */
     public TelaMenu() {
         initComponents();
-        javax.swing.Icon logoOriginal = jLabel2.getIcon();
-        jLabel2.setIcon(new classes.IconeImagem("/images/Logo.png",
-                logoOriginal.getIconWidth(), logoOriginal.getIconHeight()));
         classes.Acessibilidade.configurarTela(this);
-        classes.BotaoAcessibilidade btAcessibilidade = new classes.BotaoAcessibilidade();
-        btAcessibilidade.addActionListener(e -> new TelaAcessibilidade(this).setVisible(true));
-        menuBar.add(javax.swing.Box.createHorizontalGlue());
-        menuBar.add(btAcessibilidade);
         // Maximiza a janela para ocupar a tela toda ao iniciar
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         
@@ -41,14 +34,8 @@ public class TelaMenu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         jMenuItem1 = new javax.swing.JMenuItem();
-        painelPrincipal = new javax.swing.JDesktopPane();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        botaoAjuda = new classes.BotaoAjuda();
-        menuBar = new javax.swing.JMenuBar();
+        menuBar = new classes.BarraMenu();
         menu1 = new javax.swing.JMenu();
         menuCargo = new javax.swing.JMenuItem();
         menuProcessoSeletivo = new javax.swing.JMenuItem();
@@ -60,136 +47,96 @@ public class TelaMenu extends javax.swing.JFrame {
         menu3 = new javax.swing.JMenu();
         menuSobre = new javax.swing.JMenuItem();
         menuAtalho = new javax.swing.JMenuItem();
-
-        jMenuItem1.setText("jMenuItem1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        painelPrincipal = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new classes.RotuloImagem();
+        jPanel2 = new javax.swing.JPanel();
+        botaoAjuda = new classes.BotaoAjuda();
+        setDefaultCloseOperation(3);
         setUndecorated(true);
-
-        painelPrincipal.setLayout(new java.awt.BorderLayout());
-
-        jPanel1.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo.png"))); // NOI18N
-        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 70, 0));
-        jPanel1.add(jLabel2, java.awt.BorderLayout.CENTER);
-
-        jPanel2.setBackground(new java.awt.Color(233, 243, 255));
-
-        botaoAjuda.setTextoAjuda("Esta é a tela de menu principal do sistema MAINRH, a partir da qual você pode navegar pelas funcionalidades da aplicação utilizando as abas superiores ou atalhos do teclado. No menu **Gerenciamento**, você encontra as opções para **Gerenciar Cargos** (atalho F2), **Abrir Processo Seletivo** (atalho F3), **Vincular Recrutadores** (atalho F4) e **Sair do Sistema** (atalho ESC). No menu **Cadastro**, é possível acessar a opção **Cadastrar Usuário** (atalho F6) para registrar novos acessos no sistema.");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 584, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2, java.awt.BorderLayout.LINE_END);
-
-        painelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
-
+        jMenuItem1.setText("jMenuItem1");
         menu1.setText("Gerenciamento");
         menu1.setToolTipText("Este é o menu!");
-        menu1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        menu1.setFont(new java.awt.Font("Arial",0,14));
         menu1.setMargin(new java.awt.Insets(6, 9, 6, 9));
-
-        menuCargo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        menuCargo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuCargo.setAccelerator(javax.swing.KeyStroke.getKeyStroke("F2"));
+        menuCargo.setFont(new java.awt.Font("Segoe UI",0,14));
         menuCargo.setText("Gerenciar Cargos");
         menuCargo.setToolTipText("Aqui você pode criar, editar, listar e excluir cargos!");
         menuCargo.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuCargo.addActionListener(this::menuCargoActionPerformed);
         menu1.add(menuCargo);
-
-        menuProcessoSeletivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
-        menuProcessoSeletivo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuProcessoSeletivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke("F3"));
+        menuProcessoSeletivo.setFont(new java.awt.Font("Segoe UI",0,14));
         menuProcessoSeletivo.setText("Abrir Processo Seletivo");
         menuProcessoSeletivo.setToolTipText("Aqui você pode criar, editar, listar e excluir processos seletivos!");
         menuProcessoSeletivo.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuProcessoSeletivo.addActionListener(this::menuProcessoSeletivoActionPerformed);
         menu1.add(menuProcessoSeletivo);
-
-        menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
-        menuRecrutador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuRecrutador.setAccelerator(javax.swing.KeyStroke.getKeyStroke("F4"));
+        menuRecrutador.setFont(new java.awt.Font("Segoe UI",0,14));
         menuRecrutador.setText("Vincular Recrutadores");
         menuRecrutador.setToolTipText("Aqui você pode vincular recrutadores a um processo seletivo!");
         menuRecrutador.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuRecrutador.addActionListener(this::menuRecrutadorActionPerformed);
         menu1.add(menuRecrutador);
         menu1.add(jSeparator1);
-
-        menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        menuSair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke("ESCAPE"));
+        menuSair.setFont(new java.awt.Font("Segoe UI",0,14));
         menuSair.setText("Sair do Sistema");
         menuSair.setToolTipText("Aqui você sai do sistema, fechando tudo!");
         menuSair.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuSair.addActionListener(this::menuSairActionPerformed);
         menu1.add(menuSair);
-
         menuBar.add(menu1);
-
         menu2.setText("Cadastro");
         menu2.setToolTipText("Menu para cadastro");
-        menu2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
-        menuCadastro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menu2.setFont(new java.awt.Font("Arial",0,14));
+        menuCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke("F6"));
+        menuCadastro.setFont(new java.awt.Font("Segoe UI",0,14));
         menuCadastro.setText("Cadastrar Usuário");
         menuCadastro.setToolTipText("Cadastre administrador ou recrutador por aqui");
         menuCadastro.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuCadastro.addActionListener(this::menuCadastroActionPerformed);
         menu2.add(menuCadastro);
-
         menuBar.add(menu2);
-
         menu3.setText("Saiba Mais");
         menu3.setToolTipText("Menu para cadastro");
-        menu3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        menuSobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
-        menuSobre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menu3.setFont(new java.awt.Font("Arial",0,14));
+        menuSobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke("F7"));
+        menuSobre.setFont(new java.awt.Font("Segoe UI",0,14));
         menuSobre.setText("Sobre Nós");
         menuSobre.setToolTipText("Cadastre administrador ou recrutador por aqui");
         menuSobre.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuSobre.addActionListener(this::menuSobreActionPerformed);
         menu3.add(menuSobre);
-
-        menuAtalho.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
-        menuAtalho.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menuAtalho.setAccelerator(javax.swing.KeyStroke.getKeyStroke("F8"));
+        menuAtalho.setFont(new java.awt.Font("Segoe UI",0,14));
         menuAtalho.setText("Mapa de Teclas de Atalho");
         menuAtalho.setToolTipText("Cadastre administrador ou recrutador por aqui");
         menuAtalho.setMargin(new java.awt.Insets(6, 9, 6, 9));
         menuAtalho.addActionListener(this::menuAtalhoActionPerformed);
         menu3.add(menuAtalho);
-
         menuBar.add(menu3);
-
+        getContentPane().setLayout(new java.awt.BorderLayout(0,0));
+        painelPrincipal.setLayout(new java.awt.BorderLayout(0,0));
+        jPanel1.setBackground(new java.awt.Color(233,243,255));
+        jPanel1.setLayout(new java.awt.BorderLayout(0,0));
+        jLabel2.setHorizontalAlignment(0);
+        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,70,0));
+        jLabel2.setLarguraImagem(1000);
+        jLabel2.setAlturaImagem(327);
+        jLabel2.setAmpliarBaixaVisao(false);
+        jPanel1.add(jLabel2,java.awt.BorderLayout.CENTER);
+        jPanel2.setBackground(new java.awt.Color(233,243,255));
+        jPanel2.setLayout(new java.awt.BorderLayout(0,0));
+        botaoAjuda.setTextoAjuda("Esta é a tela de menu principal do sistema MAINRH, a partir da qual você pode navegar pelas funcionalidades da aplicação utilizando as abas superiores ou atalhos do teclado. No menu **Gerenciamento**, você encontra as opções para **Gerenciar Cargos** (atalho F2), **Abrir Processo Seletivo** (atalho F3), **Vincular Recrutadores** (atalho F4) e **Sair do Sistema** (atalho ESC). No menu **Cadastro**, é possível acessar a opção **Cadastrar Usuário** (atalho F6) para registrar novos acessos no sistema.");
+        jPanel2.add(botaoAjuda,java.awt.BorderLayout.NORTH);
+        jPanel1.add(jPanel2,java.awt.BorderLayout.LINE_END);
+        painelPrincipal.add(jPanel1,java.awt.BorderLayout.CENTER);
+        getContentPane().add(painelPrincipal,java.awt.BorderLayout.CENTER);
         setJMenuBar(menuBar);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal)
-        );
-
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCargoActionPerformed
@@ -301,7 +248,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private classes.BotaoAjuda botaoAjuda;
-    private javax.swing.JLabel jLabel2;
+    private classes.RotuloImagem jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -310,7 +257,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenu menu2;
     private javax.swing.JMenu menu3;
     private javax.swing.JMenuItem menuAtalho;
-    private javax.swing.JMenuBar menuBar;
+    private classes.BarraMenu menuBar;
     private javax.swing.JMenuItem menuCadastro;
     private javax.swing.JMenuItem menuCargo;
     private javax.swing.JMenuItem menuProcessoSeletivo;
@@ -318,5 +265,5 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JMenuItem menuSobre;
     private javax.swing.JDesktopPane painelPrincipal;
-    // End of variables declaration//GEN-END:variables
+    //GEN-END:variables
 }

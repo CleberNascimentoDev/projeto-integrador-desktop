@@ -31,14 +31,6 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
         super((java.awt.Frame) null, modal);
         this.telaPai = telaPai;
         initComponents();
-        jLabel1.setText("Cadastrar Processo Seletivo");
-        setContentPane(new classes.PainelFormulario(jbCancelar, jLabel1, null,
-                "Informe o nome, o cargo e o período do processo seletivo.", classes.PainelFormulario.campos(
-                classes.PainelFormulario.campo(jLabel2, jtNome),
-                classes.PainelFormulario.campo(jLabel3, jcbCargo),
-                classes.PainelFormulario.campo(jLabel4, jtDataInicio),
-                classes.PainelFormulario.campo(jLabel5, jtDataFim)), jbCadastar));
-        pack();
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -50,14 +42,6 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
         super((java.awt.Frame) null, modal);
         this.telaPai = telaPai;
         initComponents();
-        jLabel1.setText("Cadastrar Processo Seletivo");
-        setContentPane(new classes.PainelFormulario(jbCancelar, jLabel1, null,
-                "Informe o nome, o cargo e o período do processo seletivo.", classes.PainelFormulario.campos(
-                classes.PainelFormulario.campo(jLabel2, jtNome),
-                classes.PainelFormulario.campo(jLabel3, jcbCargo),
-                classes.PainelFormulario.campo(jLabel4, jtDataInicio),
-                classes.PainelFormulario.campo(jLabel5, jtDataFim)), jbCadastar));
-        pack();
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -91,123 +75,135 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        painelFormulario = new classes.PainelFormulario();
+        jbCancelar = new classes.BotaoPadrao();
+        painelCabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jtNome = new javax.swing.JTextField();
+        lbDescricao = new javax.swing.JLabel();
+        painelCampos = new classes.PainelArredondado();
+        gradeCampos = new classes.PainelCampos();
+        painelCampo1 = new javax.swing.JPanel();
+        painelRotulo1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jtNome = new javax.swing.JTextField();
+        painelCampo2 = new javax.swing.JPanel();
+        painelRotulo2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jbCadastar = new javax.swing.JButton();
-        jbCancelar = new javax.swing.JButton();
         jcbCargo = new javax.swing.JComboBox<>();
+        painelCampo3 = new javax.swing.JPanel();
+        painelRotulo3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jtDataInicio = new javax.swing.JFormattedTextField();
+        painelCampo4 = new javax.swing.JPanel();
+        painelRotulo4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jtDataFim = new javax.swing.JFormattedTextField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
-
-        jPanel1.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        jPanel2.setOpaque(false);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 23)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel1.setText("Cadastrar Processos Seletivo");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 340, 30));
-
-        jtNome.setForeground(new java.awt.Color(153, 153, 153));
-        jtNome.setText("Digite o nome do processo...");
-        jtNome.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jtNomeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jtNomeFocusLost(evt);
-            }
-        });
-        jPanel2.add(jtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 620, 30));
-
-        jLabel2.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel2.setText("Nome");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel3.setText("Cargo");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel4.setText("Data Início");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel5.setText("Data Fim");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
-
-        jbCadastar.setBackground(new java.awt.Color(31, 53, 80));
-        jbCadastar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jbCadastar.setForeground(new java.awt.Color(255, 255, 255));
-        jbCadastar.setText("Cadastrar");
-        jbCadastar.addActionListener(this::jbCadastarActionPerformed);
-        jPanel2.add(jbCadastar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 110, 40));
-
-        jbCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jbCancelar.setForeground(new java.awt.Color(31, 53, 80));
-        jbCancelar.setText("Cancelar");
+        painelAcoes = new classes.PainelFerramentas();
+        jbCadastar = new classes.BotaoPadrao();
+        setDefaultCloseOperation(2);
+        getContentPane().setLayout(new java.awt.BorderLayout(0,0));
+        painelFormulario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(31,53,80),2,false),javax.swing.BorderFactory.createEmptyBorder(24,40,40,40)));
+        painelFormulario.setPreferredSize(new java.awt.Dimension(1040, 700));
+        painelFormulario.setLayout(new java.awt.GridBagLayout());
+        jbCancelar.setFont(new java.awt.Font("Segoe UI",1,17));
+        jbCancelar.setText("‹  Voltar");
+        jbCancelar.setPreferredSize(new java.awt.Dimension(130, 48));
         jbCancelar.addActionListener(this::jbCancelarActionPerformed);
-        jPanel2.add(jbCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, 40));
-
-        jcbCargo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jcbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um cargo..." }));
+        painelFormulario.add(jbCancelar,new java.awt.GridBagConstraints(0,0,1,1,0,0.0,18,0,new java.awt.Insets(0,0,20,0),0,0));
+        painelCabecalho.setOpaque(false);
+        painelCabecalho.setLayout(new java.awt.BorderLayout(16,0));
+        jLabel1.setBackground(new java.awt.Color(29,45,68));
+        jLabel1.setText("Cadastrar Processo Seletivo");
+        jLabel1.setFont(new java.awt.Font("Segoe UI",1,32));
+        jLabel1.setForeground(new java.awt.Color(0,0,0));
+        painelCabecalho.add(jLabel1,java.awt.BorderLayout.CENTER);
+        painelFormulario.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
+        lbDescricao.setText("Informe o nome, o cargo e o período do processo seletivo.");
+        lbDescricao.setFont(new java.awt.Font("Segoe UI",0,18));
+        lbDescricao.setForeground(new java.awt.Color(64,64,64));
+        painelFormulario.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,24,0),0,0));
+        painelCampos.setLayout(new java.awt.BorderLayout(0,0));
+        gradeCampos.setLayout(new java.awt.GridBagLayout());
+        painelCampo1.setOpaque(false);
+        painelCampo1.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo1.setOpaque(false);
+        painelRotulo1.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel2.setBackground(new java.awt.Color(29,45,68));
+        jLabel2.setText("Nome");
+        jLabel2.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel2.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo1.add(jLabel2);
+        painelCampo1.add(painelRotulo1,java.awt.BorderLayout.NORTH);
+        jtNome.setForeground(new java.awt.Color(153,153,153));
+        jtNome.setText("Digite o nome do processo...");
+        jtNome.setFont(new java.awt.Font("Segoe UI",0,18));
+        jtNome.setBackground(new java.awt.Color(255,255,255));
+        jtNome.setPreferredSize(new java.awt.Dimension(320, 52));
+        jtNome.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
+        jtNome.addFocusListener(new java.awt.event.FocusAdapter() { @Override public void focusGained(java.awt.event.FocusEvent evt) { jtNomeFocusGained(evt); } });
+        jtNome.addFocusListener(new java.awt.event.FocusAdapter() { @Override public void focusLost(java.awt.event.FocusEvent evt) { jtNomeFocusLost(evt); } });
+        painelCampo1.add(jtNome,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo1,new java.awt.GridBagConstraints(0,0,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,20,14),0,0));
+        painelCampo2.setOpaque(false);
+        painelCampo2.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo2.setOpaque(false);
+        painelRotulo2.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel3.setText("Cargo");
+        jLabel3.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel3.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo2.add(jLabel3);
+        painelCampo2.add(painelRotulo2,java.awt.BorderLayout.NORTH);
+        jcbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Selecione um cargo..."}));
         jcbCargo.setToolTipText("");
+        jcbCargo.setFont(new java.awt.Font("Segoe UI",0,18));
+        jcbCargo.setBackground(new java.awt.Color(255,255,255));
+        jcbCargo.setPreferredSize(new java.awt.Dimension(320, 52));
         jcbCargo.addActionListener(this::jcbCargoActionPerformed);
-        jPanel2.add(jcbCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 152, 620, 30));
-
-        try {
-            jtDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jtDataInicio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jtDataInicioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jtDataInicioFocusLost(evt);
-            }
-        });
-        jPanel2.add(jtDataInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 290, 30));
-
-        try {
-            jtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jPanel2.add(jtDataFim, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 290, 30));
-
-        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-        );
-
+        painelCampo2.add(jcbCargo,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo2,new java.awt.GridBagConstraints(1,0,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,20,0),0,0));
+        painelCampo3.setOpaque(false);
+        painelCampo3.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo3.setOpaque(false);
+        painelRotulo3.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel4.setText("Data Início");
+        jLabel4.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel4.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo3.add(jLabel4);
+        painelCampo3.add(painelRotulo3,java.awt.BorderLayout.NORTH);
+        try { jtDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####"))); } catch (java.text.ParseException ex) { ex.printStackTrace(); }
+        jtDataInicio.setFont(new java.awt.Font("Segoe UI",0,18));
+        jtDataInicio.setBackground(new java.awt.Color(255,255,255));
+        jtDataInicio.setPreferredSize(new java.awt.Dimension(320, 52));
+        jtDataInicio.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
+        jtDataInicio.addFocusListener(new java.awt.event.FocusAdapter() { @Override public void focusGained(java.awt.event.FocusEvent evt) { jtDataInicioFocusGained(evt); } });
+        jtDataInicio.addFocusListener(new java.awt.event.FocusAdapter() { @Override public void focusLost(java.awt.event.FocusEvent evt) { jtDataInicioFocusLost(evt); } });
+        painelCampo3.add(jtDataInicio,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo3,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,0,14),0,0));
+        painelCampo4.setOpaque(false);
+        painelCampo4.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo4.setOpaque(false);
+        painelRotulo4.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel5.setText("Data Fim");
+        jLabel5.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel5.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo4.add(jLabel5);
+        painelCampo4.add(painelRotulo4,java.awt.BorderLayout.NORTH);
+        try { jtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####"))); } catch (java.text.ParseException ex) { ex.printStackTrace(); }
+        jtDataFim.setFont(new java.awt.Font("Segoe UI",0,18));
+        jtDataFim.setBackground(new java.awt.Color(255,255,255));
+        jtDataFim.setPreferredSize(new java.awt.Dimension(320, 52));
+        jtDataFim.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
+        painelCampo4.add(jtDataFim,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo4,new java.awt.GridBagConstraints(1,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,0,0),0,0));
+        painelCampos.add(gradeCampos,java.awt.BorderLayout.NORTH);
+        painelFormulario.add(painelCampos,new java.awt.GridBagConstraints(0,3,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
+        painelAcoes.setLayout(new java.awt.FlowLayout(2,16,0));
+        jbCadastar.setText("Cadastrar");
+        jbCadastar.setFont(new java.awt.Font("Segoe UI",1,18));
+        jbCadastar.addActionListener(this::jbCadastarActionPerformed);
+        painelAcoes.add(jbCadastar);
+        painelFormulario.add(painelAcoes,new java.awt.GridBagConstraints(0,4,1,1,1.0,0.0,18,2,new java.awt.Insets(20,0,0,0),0,0));
+        getContentPane().add(painelFormulario,java.awt.BorderLayout.CENTER);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -360,18 +356,30 @@ public class TelaCadastrarProcessoJd extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private classes.PainelCampos gradeCampos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton jbCadastar;
-    private javax.swing.JButton jbCancelar;
+    private classes.BotaoPadrao jbCadastar;
+    private classes.BotaoPadrao jbCancelar;
     private javax.swing.JComboBox<String> jcbCargo;
     private javax.swing.JFormattedTextField jtDataFim;
     private javax.swing.JFormattedTextField jtDataInicio;
     private javax.swing.JTextField jtNome;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JLabel lbDescricao;
+    private classes.PainelFerramentas painelAcoes;
+    private javax.swing.JPanel painelCabecalho;
+    private javax.swing.JPanel painelCampo1;
+    private javax.swing.JPanel painelCampo2;
+    private javax.swing.JPanel painelCampo3;
+    private javax.swing.JPanel painelCampo4;
+    private classes.PainelArredondado painelCampos;
+    private classes.PainelFormulario painelFormulario;
+    private javax.swing.JPanel painelRotulo1;
+    private javax.swing.JPanel painelRotulo2;
+    private javax.swing.JPanel painelRotulo3;
+    private javax.swing.JPanel painelRotulo4;
+    //GEN-END:variables
 }

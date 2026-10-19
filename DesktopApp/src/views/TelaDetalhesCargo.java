@@ -19,15 +19,6 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
      */
     public TelaDetalhesCargo() {
         initComponents();
-        setContentPane(new classes.PainelFormulario(btVoltar, jLabel40, botaoAjuda,
-                "Consulte as informações e os requisitos do cargo.", classes.PainelFormulario.campos(
-                classes.PainelFormulario.campo(jLabel41, tfNomeCargo),
-                classes.PainelFormulario.campo(jLabel42, tfSalario),
-                classes.PainelFormulario.campo(jLabel43, tfNivel),
-                classes.PainelFormulario.campo(jLabel44, tfSetor),
-                classes.PainelFormulario.campo(jLabel45, jScrollPane1),
-                classes.PainelFormulario.campo(jLabel46, jScrollPane2))));
-        pack();
         classes.Acessibilidade.configurarTela(this);
     }
 
@@ -62,376 +53,188 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        painelFormulario = new classes.PainelFormulario();
+        btVoltar = new classes.BotaoPadrao();
+        painelCabecalho = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        botaoAjuda = new classes.BotaoAjuda();
+        lbDescricao = new javax.swing.JLabel();
+        painelCampos = new classes.PainelArredondado();
+        gradeCampos = new classes.PainelCampos();
         jPanel2 = new javax.swing.JPanel();
+        painelRotulo1 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
         tfNomeCargo = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
+        painelRotulo2 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         tfSalario = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
+        painelRotulo3 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         tfNivel = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
+        painelRotulo4 = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
         tfSetor = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
+        painelRotulo5 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taRequisitos = new javax.swing.JTextArea();
         jPanel9 = new javax.swing.JPanel();
+        painelRotulo6 = new javax.swing.JPanel();
         jLabel46 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         taAtividades = new javax.swing.JTextArea();
-        botaoAjuda = new classes.BotaoAjuda();
-        btVoltar = new javax.swing.JButton();
-
-        jPanel3.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel3.setLayout(new java.awt.GridBagLayout());
-
-        jPanel4.setBackground(new java.awt.Color(233, 243, 255));
-
-        jLabel40.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(29, 45, 68));
+        getContentPane().setLayout(new java.awt.BorderLayout(0,0));
+        painelFormulario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(31,53,80),2,false),javax.swing.BorderFactory.createEmptyBorder(24,40,40,40)));
+        painelFormulario.setPreferredSize(new java.awt.Dimension(1040, 719));
+        painelFormulario.setLayout(new java.awt.GridBagLayout());
+        btVoltar.setFont(new java.awt.Font("Segoe UI",1,17));
+        btVoltar.setText("‹  Voltar");
+        btVoltar.setPreferredSize(new java.awt.Dimension(130, 48));
+        btVoltar.addActionListener(this::btVoltarActionPerformed);
+        painelFormulario.add(btVoltar,new java.awt.GridBagConstraints(0,0,1,1,0,0.0,18,0,new java.awt.Insets(0,0,20,0),0,0));
+        painelCabecalho.setOpaque(false);
+        painelCabecalho.setLayout(new java.awt.BorderLayout(16,0));
         jLabel40.setText("Detalhes do Cargo");
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentMoved(java.awt.event.ComponentEvent evt) {
-                jPanel2ComponentMoved(evt);
-            }
-        });
-
-        jLabel41.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel40.setFont(new java.awt.Font("Segoe UI",1,32));
+        jLabel40.setForeground(new java.awt.Color(0,0,0));
+        painelCabecalho.add(jLabel40,java.awt.BorderLayout.CENTER);
+        botaoAjuda.setTextoAjuda("Esta é a tela de detalhes do cargo do sistema MAINRH, destinada exclusivamente à visualização das informações de uma posição selecionada. Nela, você pode consultar todos os dados cadastrados da vaga, incluindo **Nome do cargo**, **Salário base**, **Nível**, **Setor**, **Requisitos** e **Atividades** desempenhadas. Para sair da visualização e retornar à lista de gerenciamento de cargos, clique no botão **Voltar** no canto superior esquerdo da tela.");
+        botaoAjuda.setPreferredSize(new java.awt.Dimension(42, 42));
+        botaoAjuda.addActionListener(this::botaoAjudaActionPerformed);
+        painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
+        painelFormulario.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
+        lbDescricao.setText("Consulte as informações e os requisitos do cargo.");
+        lbDescricao.setFont(new java.awt.Font("Segoe UI",0,18));
+        lbDescricao.setForeground(new java.awt.Color(64,64,64));
+        painelFormulario.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,24,0),0,0));
+        painelCampos.setLayout(new java.awt.BorderLayout(0,0));
+        gradeCampos.setLayout(new java.awt.GridBagLayout());
+        jPanel2.setOpaque(false);
+        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() { @Override public void componentMoved(java.awt.event.ComponentEvent evt) { jPanel2ComponentMoved(evt); } });
+        jPanel2.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo1.setOpaque(false);
+        painelRotulo1.setLayout(new java.awt.FlowLayout(0,0,0));
         jLabel41.setText("Nome do cargo");
-
+        jLabel41.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel41.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo1.add(jLabel41);
+        jPanel2.add(painelRotulo1,java.awt.BorderLayout.NORTH);
         tfNomeCargo.setEditable(false);
-        tfNomeCargo.setBackground(new java.awt.Color(255, 255, 255));
-        tfNomeCargo.setBorder(null);
+        tfNomeCargo.setFont(new java.awt.Font("Segoe UI",0,18));
+        tfNomeCargo.setBackground(new java.awt.Color(255,255,255));
+        tfNomeCargo.setPreferredSize(new java.awt.Dimension(320, 52));
+        tfNomeCargo.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
         tfNomeCargo.addActionListener(this::tfNomeCargoActionPerformed);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel41)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tfNomeCargo))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel41)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfNomeCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        jPanel5.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentMoved(java.awt.event.ComponentEvent evt) {
-                jPanel5ComponentMoved(evt);
-            }
-        });
-
-        jLabel42.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jPanel2.add(tfNomeCargo,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(jPanel2,new java.awt.GridBagConstraints(0,0,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,20,14),0,0));
+        jPanel5.setOpaque(false);
+        jPanel5.addComponentListener(new java.awt.event.ComponentAdapter() { @Override public void componentMoved(java.awt.event.ComponentEvent evt) { jPanel5ComponentMoved(evt); } });
+        jPanel5.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo2.setOpaque(false);
+        painelRotulo2.setLayout(new java.awt.FlowLayout(0,0,0));
         jLabel42.setText("Salário base");
-
+        jLabel42.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel42.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo2.add(jLabel42);
+        jPanel5.add(painelRotulo2,java.awt.BorderLayout.NORTH);
         tfSalario.setEditable(false);
-        tfSalario.setBackground(new java.awt.Color(255, 255, 255));
-        tfSalario.setBorder(null);
+        tfSalario.setFont(new java.awt.Font("Segoe UI",0,18));
+        tfSalario.setBackground(new java.awt.Color(255,255,255));
+        tfSalario.setPreferredSize(new java.awt.Dimension(320, 52));
+        tfSalario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
         tfSalario.addActionListener(this::tfSalarioActionPerformed);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel42)
-                        .addGap(0, 409, Short.MAX_VALUE))
-                    .addComponent(tfSalario))
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel42)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
-        );
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        jPanel6.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentMoved(java.awt.event.ComponentEvent evt) {
-                jPanel6ComponentMoved(evt);
-            }
-        });
-
-        jLabel43.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jPanel5.add(tfSalario,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(jPanel5,new java.awt.GridBagConstraints(1,0,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,20,0),0,0));
+        jPanel6.setOpaque(false);
+        jPanel6.addComponentListener(new java.awt.event.ComponentAdapter() { @Override public void componentMoved(java.awt.event.ComponentEvent evt) { jPanel6ComponentMoved(evt); } });
+        jPanel6.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo3.setOpaque(false);
+        painelRotulo3.setLayout(new java.awt.FlowLayout(0,0,0));
         jLabel43.setText("Nível");
-
+        jLabel43.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel43.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo3.add(jLabel43);
+        jPanel6.add(painelRotulo3,java.awt.BorderLayout.NORTH);
         tfNivel.setEditable(false);
-        tfNivel.setBackground(new java.awt.Color(255, 255, 255));
-        tfNivel.setBorder(null);
+        tfNivel.setFont(new java.awt.Font("Segoe UI",0,18));
+        tfNivel.setBackground(new java.awt.Color(255,255,255));
+        tfNivel.setPreferredSize(new java.awt.Dimension(320, 52));
+        tfNivel.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
         tfNivel.addActionListener(this::tfNivelActionPerformed);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel43)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tfNivel, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel43)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfNivel)
-                .addGap(10, 10, 10))
-        );
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        jPanel7.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentMoved(java.awt.event.ComponentEvent evt) {
-                jPanel7ComponentMoved(evt);
-            }
-        });
-
-        jLabel44.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jPanel6.add(tfNivel,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(jPanel6,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,20,14),0,0));
+        jPanel7.setOpaque(false);
+        jPanel7.addComponentListener(new java.awt.event.ComponentAdapter() { @Override public void componentMoved(java.awt.event.ComponentEvent evt) { jPanel7ComponentMoved(evt); } });
+        jPanel7.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo4.setOpaque(false);
+        painelRotulo4.setLayout(new java.awt.FlowLayout(0,0,0));
         jLabel44.setText("Setor");
-
+        jLabel44.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel44.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo4.add(jLabel44);
+        jPanel7.add(painelRotulo4,java.awt.BorderLayout.NORTH);
         tfSetor.setEditable(false);
-        tfSetor.setBackground(new java.awt.Color(255, 255, 255));
-        tfSetor.setBorder(null);
+        tfSetor.setFont(new java.awt.Font("Segoe UI",0,18));
+        tfSetor.setBackground(new java.awt.Color(255,255,255));
+        tfSetor.setPreferredSize(new java.awt.Dimension(320, 52));
+        tfSetor.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
         tfSetor.addActionListener(this::tfSetorActionPerformed);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel44)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tfSetor))
-                .addContainerGap())
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel44)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfSetor, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        jPanel8.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentMoved(java.awt.event.ComponentEvent evt) {
-                jPanel8ComponentMoved(evt);
-            }
-        });
-
-        jLabel45.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jPanel7.add(tfSetor,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(jPanel7,new java.awt.GridBagConstraints(1,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,20,0),0,0));
+        jPanel8.setOpaque(false);
+        jPanel8.addComponentListener(new java.awt.event.ComponentAdapter() { @Override public void componentMoved(java.awt.event.ComponentEvent evt) { jPanel8ComponentMoved(evt); } });
+        jPanel8.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo5.setOpaque(false);
+        painelRotulo5.setLayout(new java.awt.FlowLayout(0,0,0));
         jLabel45.setText("Requisitos");
-
+        jLabel45.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel45.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo5.add(jLabel45);
+        jPanel8.add(painelRotulo5,java.awt.BorderLayout.NORTH);
+        jScrollPane1.setFont(new java.awt.Font("Segoe UI",0,18));
+        jScrollPane1.setBackground(new java.awt.Color(255,255,255));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(320, 110));
         taRequisitos.setEditable(false);
-        taRequisitos.setBackground(new java.awt.Color(255, 255, 255));
         taRequisitos.setColumns(20);
         taRequisitos.setRows(5);
         taRequisitos.setBorder(null);
+        taRequisitos.setFont(new java.awt.Font("Segoe UI",0,18));
+        taRequisitos.setBackground(new java.awt.Color(255,255,255));
+        taRequisitos.setMargin(new java.awt.Insets(12, 14, 12, 14));
         jScrollPane1.setViewportView(taRequisitos);
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel45)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel45)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-        jPanel9.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentMoved(java.awt.event.ComponentEvent evt) {
-                jPanel9ComponentMoved(evt);
-            }
-        });
-
-        jLabel46.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jPanel8.add(jScrollPane1,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(jPanel8,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,0,14),0,0));
+        jPanel9.setOpaque(false);
+        jPanel9.addComponentListener(new java.awt.event.ComponentAdapter() { @Override public void componentMoved(java.awt.event.ComponentEvent evt) { jPanel9ComponentMoved(evt); } });
+        jPanel9.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo6.setOpaque(false);
+        painelRotulo6.setLayout(new java.awt.FlowLayout(0,0,0));
         jLabel46.setText("Atividades");
-
+        jLabel46.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel46.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo6.add(jLabel46);
+        jPanel9.add(painelRotulo6,java.awt.BorderLayout.NORTH);
+        jScrollPane2.setFont(new java.awt.Font("Segoe UI",0,18));
+        jScrollPane2.setBackground(new java.awt.Color(255,255,255));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(320, 110));
         taAtividades.setEditable(false);
-        taAtividades.setBackground(new java.awt.Color(255, 255, 255));
         taAtividades.setColumns(20);
         taAtividades.setRows(5);
         taAtividades.setBorder(null);
+        taAtividades.setFont(new java.awt.Font("Segoe UI",0,18));
+        taAtividades.setBackground(new java.awt.Color(255,255,255));
+        taAtividades.setMargin(new java.awt.Insets(12, 14, 12, 14));
         jScrollPane2.setViewportView(taAtividades);
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel46)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel46)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        botaoAjuda.setTextoAjuda("Esta é a tela de detalhes do cargo do sistema MAINRH, destinada exclusivamente à visualização das informações de uma posição selecionada. Nela, você pode consultar todos os dados cadastrados da vaga, incluindo **Nome do cargo**, **Salário base**, **Nível**, **Setor**, **Requisitos** e **Atividades** desempenhadas. Para sair da visualização e retornar à lista de gerenciamento de cargos, clique no botão **Voltar** no canto superior esquerdo da tela.");
-        botaoAjuda.addActionListener(this::botaoAjudaActionPerformed);
-
-        btVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btVoltar.setForeground(new java.awt.Color(31, 53, 80));
-        btVoltar.setText("◄ Voltar");
-        btVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
-        btVoltar.addActionListener(this::btVoltarActionPerformed);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel40)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel40)
-                    .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel3.add(jPanel4, gridBagConstraints);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
-        );
-
+        jPanel9.add(jScrollPane2,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(jPanel9,new java.awt.GridBagConstraints(1,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,0,0),0,0));
+        painelCampos.add(gradeCampos,java.awt.BorderLayout.NORTH);
+        painelFormulario.add(painelCampos,new java.awt.GridBagConstraints(0,3,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
+        getContentPane().add(painelFormulario,java.awt.BorderLayout.CENTER);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -486,7 +289,8 @@ this.dispose();         // TODO add your handling code here:
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private classes.BotaoAjuda botaoAjuda;
-    private javax.swing.JButton btVoltar;
+    private classes.BotaoPadrao btVoltar;
+    private classes.PainelCampos gradeCampos;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -494,10 +298,7 @@ this.dispose();         // TODO add your handling code here:
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -505,11 +306,21 @@ this.dispose();         // TODO add your handling code here:
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbDescricao;
+    private javax.swing.JPanel painelCabecalho;
+    private classes.PainelArredondado painelCampos;
+    private classes.PainelFormulario painelFormulario;
+    private javax.swing.JPanel painelRotulo1;
+    private javax.swing.JPanel painelRotulo2;
+    private javax.swing.JPanel painelRotulo3;
+    private javax.swing.JPanel painelRotulo4;
+    private javax.swing.JPanel painelRotulo5;
+    private javax.swing.JPanel painelRotulo6;
     private javax.swing.JTextArea taAtividades;
     private javax.swing.JTextArea taRequisitos;
     private javax.swing.JTextField tfNivel;
     private javax.swing.JTextField tfNomeCargo;
     private javax.swing.JTextField tfSalario;
     private javax.swing.JTextField tfSetor;
-    // End of variables declaration//GEN-END:variables
+    //GEN-END:variables
 }

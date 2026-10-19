@@ -30,10 +30,6 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
        initComponents();
        classes.Acessibilidade.configurarTela(this);
        customizarTabela();
-        setContentPane(new classes.PainelListagem(btVoltar, jLabel1, botaoAjuda, tfPesquisa, jLabel2,
-                jLabel3, spBarra, tbProcessos, "Consulte e gerencie os processos seletivos.", "Buscar processo...",
-                "processo", "processos", false, btExcluir, btEditar, btCadastrar));
-        pack();
        configurarBuscaDinamica();
        carregarTabela("");
        configurarAtalhos();
@@ -268,229 +264,93 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        painelDesktopPane = new javax.swing.JDesktopPane();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        tfPesquisa = new javax.swing.JTextField();
-        tfPesquisa.setText("Digite aqui...");
-        tfPesquisa.setForeground(java.awt.Color.GRAY);
+        painelListagem = new classes.PainelListagem();
+        btVoltar = new classes.BotaoPadrao();
+        painelCabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botaoAjuda = new classes.BotaoAjuda();
-        btVoltar = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        lbDescricao = new javax.swing.JLabel();
+        painelFerramentas = new classes.PainelFerramentas();
+        painelBusca = new classes.PainelBusca();
+        lbLupa = new classes.RotuloLupa();
+        tfPesquisa = new classes.CampoPesquisa();
+        btExcluir = new classes.BotaoPadrao();
+        btEditar = new classes.BotaoPadrao();
+        btCadastrar = new classes.BotaoPadrao();
+        painelTabela = new classes.PainelArredondado();
+        painelTituloTabela = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        lbQuantidade = new classes.ContadorRegistros();
         spBarra = new javax.swing.JScrollPane();
-        tbProcessos = new javax.swing.JTable();
-        btEditar = new javax.swing.JButton();
-        btExcluir = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        btCadastrar = new javax.swing.JButton();
-
-        painelDesktopPane.setLayout(new java.awt.BorderLayout());
-
-        jPanel3.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jPanel5.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel5.setLayout(new java.awt.BorderLayout());
-
-        jPanel2.setBackground(new java.awt.Color(233, 243, 255));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
-
-        tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfPesquisaFocusGained(evt);
-            }
-        });
-        tfPesquisa.addActionListener(this::tfPesquisaActionPerformed);
-
-        jLabel1.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 35)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel1.setText("Processos Seletivos");
-
-        botaoAjuda.setTextoAjuda("Esta é a tela de gerenciamento de processos seletivos do sistema MAINRH, destinada à consulta e controle de seleções ativas e encerradas. Utilize o campo de busca superior para localizar um processo específico. Na tabela Listas de processos seletivos, você pode visualizar os nomes dos processos cadastrados juntamente com suas respectivas Data de início e Data de fim. Para gerenciar as informações, selecione um item da lista e clique no botão Editar para alterar seus dados, ou clique no botão Cadastrar para abrir o formulário de criação de um novo processo seletivo. Para retornar à tela anterior, utilize o botão Voltar no canto superior esquerdo.");
-
-        btVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btVoltar.setForeground(new java.awt.Color(31, 53, 80));
-        btVoltar.setText("◄ Voltar");
-        btVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        tbProcessos = new classes.TabelaPadrao();
+        getContentPane().setLayout(new java.awt.BorderLayout(0,0));
+        painelListagem.setBorder(javax.swing.BorderFactory.createEmptyBorder(28,40,40,40));
+        painelListagem.setLayout(new java.awt.GridBagLayout());
+        btVoltar.setFont(new java.awt.Font("Segoe UI",1,17));
+        btVoltar.setText("‹  Voltar");
+        btVoltar.setPreferredSize(new java.awt.Dimension(130, 48));
         btVoltar.addActionListener(this::btVoltarActionPerformed);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(440, 440, 440)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 464, Short.MAX_VALUE)
-                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel2))
-                    .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel5.add(jPanel2, java.awt.BorderLayout.CENTER);
-
-        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_START);
-
-        jPanel4.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 32, 20, 32));
-        jPanel4.setLayout(new java.awt.BorderLayout());
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 1, 32));
-
-        jLabel3.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel3.setText("Listas de processos seletivos ");
-
-        spBarra.setBackground(new java.awt.Color(255, 255, 255));
-        spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        spBarra.setForeground(new java.awt.Color(255, 255, 255));
-
-        tbProcessos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tbProcessos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Processos", "Data de início", "Data de fim"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tbProcessos.setToolTipText("Aqui aparecem os cargos já cadastrados em sistema");
-        tbProcessos.setShowGrid(true);
-        tbProcessos.getTableHeader().setReorderingAllowed(false);
-        spBarra.setViewportView(tbProcessos);
-        if (tbProcessos.getColumnModel().getColumnCount() > 0) {
-            tbProcessos.getColumnModel().getColumn(0).setResizable(false);
-            tbProcessos.getColumnModel().getColumn(1).setResizable(false);
-            tbProcessos.getColumnModel().getColumn(2).setResizable(false);
-        }
-        tbProcessos.getAccessibleContext().setAccessibleName("");
-        tbProcessos.getAccessibleContext().setAccessibleDescription("Aqui aparecem os processos já cadastrados em sistema");
-
-        btEditar.setBackground(new java.awt.Color(11, 176, 142));
-        btEditar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btEditar.setForeground(new java.awt.Color(255, 255, 255));
+        painelListagem.add(btVoltar,new java.awt.GridBagConstraints(0,0,1,1,0,0.0,18,0,new java.awt.Insets(0,0,24,0),0,0));
+        painelCabecalho.setOpaque(false);
+        painelCabecalho.setLayout(new java.awt.BorderLayout(16,0));
+        jLabel1.setBackground(new java.awt.Color(29,45,68));
+        jLabel1.setText("Processos Seletivos");
+        jLabel1.setFont(new java.awt.Font("Segoe UI",1,36));
+        jLabel1.setForeground(new java.awt.Color(0,0,0));
+        painelCabecalho.add(jLabel1,java.awt.BorderLayout.CENTER);
+        botaoAjuda.setTextoAjuda("Esta é a tela de gerenciamento de processos seletivos do sistema MAINRH, destinada à consulta e controle de seleções ativas e encerradas. Utilize o campo de busca superior para localizar um processo específico. Na tabela Listas de processos seletivos, você pode visualizar os nomes dos processos cadastrados juntamente com suas respectivas Data de início e Data de fim. Para gerenciar as informações, selecione um item da lista e clique no botão Editar para alterar seus dados, ou clique no botão Cadastrar para abrir o formulário de criação de um novo processo seletivo. Para retornar à tela anterior, utilize o botão Voltar no canto superior esquerdo.");
+        botaoAjuda.setPreferredSize(new java.awt.Dimension(42, 42));
+        painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
+        painelListagem.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
+        lbDescricao.setText("Consulte e gerencie os processos seletivos.");
+        lbDescricao.setFont(new java.awt.Font("Segoe UI",0,19));
+        lbDescricao.setForeground(new java.awt.Color(64,64,64));
+        painelListagem.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,28,0),0,0));
+        painelFerramentas.setLayout(new java.awt.FlowLayout(0,16,0));
+        painelBusca.setLayout(new java.awt.BorderLayout(16,0));
+        painelBusca.add(lbLupa,java.awt.BorderLayout.WEST);
+        tfPesquisa.setPlaceholder("Buscar processo...");
+        tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() { @Override public void focusGained(java.awt.event.FocusEvent evt) { tfPesquisaFocusGained(evt); } });
+        tfPesquisa.addActionListener(this::tfPesquisaActionPerformed);
+        painelBusca.add(tfPesquisa,java.awt.BorderLayout.CENTER);
+        painelFerramentas.add(painelBusca);
+        btExcluir.setToolTipText("Selecione um cargo da tabela e clique aqui caso deseje excluir o cargo");
+        btExcluir.setFont(new java.awt.Font("Segoe UI",0,18));
+        btExcluir.setText("Excluir");
+        btExcluir.addActionListener(this::btExcluirActionPerformed);
+        painelFerramentas.add(btExcluir);
+        btEditar.setFont(new java.awt.Font("Segoe UI",1,18));
         btEditar.setText("Editar");
         btEditar.addActionListener(this::btEditarActionPerformed);
-
-        btExcluir.setBackground(new java.awt.Color(192, 1, 1));
-        btExcluir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btExcluir.setForeground(new java.awt.Color(255, 255, 255));
-        btExcluir.setText("Excluir");
-        btExcluir.setToolTipText("Selecione um cargo da tabela e clique aqui caso deseje excluir o cargo");
-        btExcluir.addActionListener(this::btExcluirActionPerformed);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spBarra)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(715, Short.MAX_VALUE)
-                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spBarra, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jPanel4.add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        jPanel3.add(jPanel4, java.awt.BorderLayout.CENTER);
-
-        jPanel6.setBackground(new java.awt.Color(233, 243, 255));
-
-        btCadastrar.setBackground(new java.awt.Color(31, 53, 80));
-        btCadastrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btCadastrar.setForeground(new java.awt.Color(255, 255, 255));
-        btCadastrar.setText("Cadastrar");
+        painelFerramentas.add(btEditar);
         btCadastrar.setToolTipText("Clique aqui para cadastrar um novo cargo");
+        btCadastrar.setFont(new java.awt.Font("Segoe UI",1,18));
+        btCadastrar.setText("Cadastrar");
         btCadastrar.addActionListener(this::btCadastrarActionPerformed);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(833, Short.MAX_VALUE)
-                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(jPanel6, java.awt.BorderLayout.PAGE_END);
-
-        painelDesktopPane.add(jPanel3, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(painelDesktopPane, java.awt.BorderLayout.CENTER);
-
+        painelFerramentas.add(btCadastrar);
+        painelListagem.add(painelFerramentas,new java.awt.GridBagConstraints(0,3,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,30,0),0,0));
+        painelTabela.setMinimumSize(new java.awt.Dimension(0, 0));
+        painelTabela.setLayout(new java.awt.BorderLayout(0,18));
+        painelTituloTabela.setOpaque(false);
+        painelTituloTabela.setLayout(new java.awt.BorderLayout(16,0));
+        jLabel3.setBackground(new java.awt.Color(29,45,68));
+        jLabel3.setText("Listas de processos seletivos ");
+        jLabel3.setFont(new java.awt.Font("Segoe UI",1,30));
+        jLabel3.setForeground(new java.awt.Color(0,0,0));
+        painelTituloTabela.add(jLabel3,java.awt.BorderLayout.WEST);
+        lbQuantidade.setSingular("processo");
+        lbQuantidade.setPlural("processos");
+        painelTituloTabela.add(lbQuantidade,java.awt.BorderLayout.EAST);
+        painelTabela.add(painelTituloTabela,java.awt.BorderLayout.NORTH);
+        spBarra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230,235,240),1,true));
+        tbProcessos.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{},new String[]{"Processos","Data de início","Data de fim"}) { @Override public boolean isCellEditable(int row,int column) { return false; } });
+        tbProcessos.setToolTipText("Aqui aparecem os cargos já cadastrados em sistema");
+        tbProcessos.setShowGrid(true);
+        spBarra.setViewportView(tbProcessos);
+        painelTabela.add(spBarra,java.awt.BorderLayout.CENTER);
+        painelListagem.add(painelTabela,new java.awt.GridBagConstraints(0,4,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
+        getContentPane().add(painelListagem,java.awt.BorderLayout.CENTER);
+        lbQuantidade.setTabela(tbProcessos);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -598,22 +458,23 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private classes.BotaoAjuda botaoAjuda;
-    private javax.swing.JButton btCadastrar;
-    private javax.swing.JButton btEditar;
-    private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btVoltar;
+    private classes.BotaoPadrao btCadastrar;
+    private classes.BotaoPadrao btEditar;
+    private classes.BotaoPadrao btExcluir;
+    private classes.BotaoPadrao btVoltar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JDesktopPane painelDesktopPane;
+    private javax.swing.JLabel lbDescricao;
+    private classes.RotuloLupa lbLupa;
+    private classes.ContadorRegistros lbQuantidade;
+    private classes.PainelBusca painelBusca;
+    private javax.swing.JPanel painelCabecalho;
+    private classes.PainelFerramentas painelFerramentas;
+    private classes.PainelListagem painelListagem;
+    private classes.PainelArredondado painelTabela;
+    private javax.swing.JPanel painelTituloTabela;
     private javax.swing.JScrollPane spBarra;
-    private javax.swing.JTable tbProcessos;
-    private javax.swing.JTextField tfPesquisa;
-    // End of variables declaration//GEN-END:variables
+    private classes.TabelaPadrao tbProcessos;
+    private classes.CampoPesquisa tfPesquisa;
+    //GEN-END:variables
 }

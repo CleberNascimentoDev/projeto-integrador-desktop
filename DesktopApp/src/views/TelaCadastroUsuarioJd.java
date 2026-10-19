@@ -28,20 +28,6 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         super(parent, modal);
         this.setUndecorated(false);
         initComponents();
-        setContentPane(new classes.PainelFormulario(btVoltar, jLabel1, botaoAjuda,
-                "Preencha os dados abaixo para criar uma conta.", classes.PainelFormulario.campos(
-                classes.PainelFormulario.campo(jLabel3, tfCampoNome),
-                classes.PainelFormulario.campo(jLabel4, tfCampoDataNascimento),
-                classes.PainelFormulario.campo(jLabel5, tfCampoCPF),
-                classes.PainelFormulario.campo(jLabel6, tfCampoEmail),
-                classes.PainelFormulario.campo(jLabel7, classes.PainelFormulario.senha(jpCampoSenha, pfCampoSenha, jbOlhoSenha)),
-                classes.PainelFormulario.campo(jLabel8, classes.PainelFormulario.senha(jpCampoConfirmarSenha, pfCampoConfirmarSenha, jbOlhoConfirmarSenha)),
-                classes.PainelFormulario.campo(jLabel9, jtfCampoTelefone),
-                classes.PainelFormulario.campo(jLabel10, cbCampoFuncao)), jButton1));
-        pack();
-        jlLogo.setIcon(new classes.IconeImagem("/images/Logo.png", 337, 110));
-        jlLogo.putClientProperty("baixaVisao.logo", true);
-        jlLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         classes.Acessibilidade.configurarTela(this);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -128,216 +114,245 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jpComponentes = new javax.swing.JPanel();
-        tfCampoNome = new javax.swing.JTextField();
-        tfCampoEmail = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        cbCampoFuncao = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        painelFormulario = new classes.PainelFormulario();
+        btVoltar = new classes.BotaoPadrao();
+        painelCabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jlLogo = new javax.swing.JLabel();
-        jpCampoSenha = new javax.swing.JPanel();
-        jbOlhoSenha = new javax.swing.JButton();
-        pfCampoSenha = new javax.swing.JPasswordField();
-        jpCampoConfirmarSenha = new javax.swing.JPanel();
-        jbOlhoConfirmarSenha = new javax.swing.JButton();
-        pfCampoConfirmarSenha = new javax.swing.JPasswordField();
-        btVoltar = new javax.swing.JButton();
         botaoAjuda = new classes.BotaoAjuda();
-        tfCampoCPF = new javax.swing.JFormattedTextField();
-        jtfCampoTelefone = new javax.swing.JFormattedTextField();
+        lbDescricao = new javax.swing.JLabel();
+        painelCampos = new classes.PainelArredondado();
+        gradeCampos = new classes.PainelCampos();
+        painelCampo1 = new javax.swing.JPanel();
+        painelRotulo1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        tfCampoNome = new javax.swing.JTextField();
+        painelCampo2 = new javax.swing.JPanel();
+        painelRotulo2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         tfCampoDataNascimento = new javax.swing.JFormattedTextField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
-
-        jPanel1.setBackground(new java.awt.Color(233, 243, 255));
-
-        jpComponentes.setBackground(new java.awt.Color(233, 243, 255));
-        jpComponentes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpComponentes.setMaximumSize(new java.awt.Dimension(620, 660));
-        jpComponentes.setMinimumSize(new java.awt.Dimension(620, 660));
-        jpComponentes.setOpaque(false);
-        jpComponentes.setPreferredSize(new java.awt.Dimension(620, 660));
-        jpComponentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tfCampoNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tfCampoNome.setForeground(new java.awt.Color(153, 153, 153));
-        tfCampoNome.setText("Digite o nome");
-        tfCampoNome.addActionListener(this::tfCampoNomeActionPerformed);
-        jpComponentes.add(tfCampoNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 280, 44));
-
-        tfCampoEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tfCampoEmail.setForeground(new java.awt.Color(153, 153, 153));
-        tfCampoEmail.setText("Digite o e-mail");
-        jpComponentes.add(tfCampoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, 280, 44));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel3.setText("Nome");
-        jpComponentes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel4.setText("Data de Nascimento");
-        jpComponentes.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel5.setText("CPF");
-        jpComponentes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel6.setText("E-mail");
-        jpComponentes.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel7.setText("Senha");
-        jpComponentes.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel8.setText("Confirmar Senha");
-        jpComponentes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 400, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel9.setText("Telefone");
-        jpComponentes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel10.setText("Função");
-        jpComponentes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(31, 53, 80));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-        jpComponentes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 580, 40));
-
-        cbCampoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione uma função", "Administrador (a)", "Recrutador (a)" }));
-        cbCampoFuncao.addActionListener(this::cbCampoFuncaoActionPerformed);
-        jpComponentes.add(cbCampoFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 280, 44));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(101, 101, 101));
-        jLabel2.setText("Preencha os dados abaixo para criar uma conta");
-        jpComponentes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        painelCampo3 = new javax.swing.JPanel();
+        painelRotulo3 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        tfCampoCPF = new javax.swing.JFormattedTextField();
+        painelCampo4 = new javax.swing.JPanel();
+        painelRotulo4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        tfCampoEmail = new javax.swing.JTextField();
+        painelCampo5 = new javax.swing.JPanel();
+        painelRotulo5 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jpCampoSenha = new classes.PainelArredondado();
+        pfCampoSenha = new javax.swing.JPasswordField();
+        jbOlhoSenha = new javax.swing.JButton();
+        painelCampo6 = new javax.swing.JPanel();
+        painelRotulo6 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jpCampoConfirmarSenha = new classes.PainelArredondado();
+        pfCampoConfirmarSenha = new javax.swing.JPasswordField();
+        jbOlhoConfirmarSenha = new javax.swing.JButton();
+        painelCampo7 = new javax.swing.JPanel();
+        painelRotulo7 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jtfCampoTelefone = new javax.swing.JFormattedTextField();
+        painelCampo8 = new javax.swing.JPanel();
+        painelRotulo8 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        cbCampoFuncao = new javax.swing.JComboBox<>();
+        painelAcoes = new classes.PainelFerramentas();
+        jButton1 = new classes.BotaoPadrao();
+        setDefaultCloseOperation(2);
+        getContentPane().setLayout(new java.awt.BorderLayout(0,0));
+        painelFormulario.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(31,53,80),2,false),javax.swing.BorderFactory.createEmptyBorder(24,40,40,40)));
+        painelFormulario.setPreferredSize(new java.awt.Dimension(1040, 768));
+        painelFormulario.setLayout(new java.awt.GridBagLayout());
+        btVoltar.setFont(new java.awt.Font("Segoe UI",1,17));
+        btVoltar.setText("‹  Voltar");
+        btVoltar.setPreferredSize(new java.awt.Dimension(130, 48));
+        btVoltar.addActionListener(this::btVoltarActionPerformed);
+        painelFormulario.add(btVoltar,new java.awt.GridBagConstraints(0,0,1,1,0,0.0,18,0,new java.awt.Insets(0,0,20,0),0,0));
+        painelCabecalho.setOpaque(false);
+        painelCabecalho.setLayout(new java.awt.BorderLayout(16,0));
         jLabel1.setText("Criar Conta");
-        jpComponentes.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
-
-        jlLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogoMenor.png"))); // NOI18N
-        jpComponentes.add(jlLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
-
-        jpCampoSenha.setOpaque(false);
-        jpCampoSenha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jbOlhoSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI",1,32));
+        jLabel1.setForeground(new java.awt.Color(0,0,0));
+        painelCabecalho.add(jLabel1,java.awt.BorderLayout.CENTER);
+        botaoAjuda.setTextoAjuda("Esta é a tela de criação de conta do sistema MAINRH, destinada ao cadastro de novos usuários administradores e recrutadores na plataforma. Para registrar o perfil, preencha os campos com o **Nome**, **Data de Nascimento** (formato dd/mm/aaaa), **CPF**, **E-mail**, **Telefone** e selecione o tipo de conta desejado na lista **Função** (Administrador ou Recrutador). Em seguida, defina a **Senha** e repita-a no campo **Confirmar Senha** para validação, podendo utilizar os ícones de olho para visualizar o texto digitado. Após preencher todos os dados, clique no botão **Cadastrar** para concluir o registro ou no botão **Voltar**, localizado no canto superior esquerdo, para retornar à tela anterior.");
+        botaoAjuda.setPreferredSize(new java.awt.Dimension(42, 42));
+        painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
+        painelFormulario.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
+        lbDescricao.setText("Preencha os dados abaixo para criar uma conta.");
+        lbDescricao.setFont(new java.awt.Font("Segoe UI",0,18));
+        lbDescricao.setForeground(new java.awt.Color(64,64,64));
+        painelFormulario.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,24,0),0,0));
+        painelCampos.setLayout(new java.awt.BorderLayout(0,0));
+        gradeCampos.setLayout(new java.awt.GridBagLayout());
+        painelCampo1.setOpaque(false);
+        painelCampo1.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo1.setOpaque(false);
+        painelRotulo1.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel3.setText("Nome");
+        jLabel3.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel3.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo1.add(jLabel3);
+        painelCampo1.add(painelRotulo1,java.awt.BorderLayout.NORTH);
+        tfCampoNome.setForeground(new java.awt.Color(153,153,153));
+        tfCampoNome.setText("Digite o nome");
+        tfCampoNome.setFont(new java.awt.Font("Segoe UI",0,18));
+        tfCampoNome.setBackground(new java.awt.Color(255,255,255));
+        tfCampoNome.setPreferredSize(new java.awt.Dimension(320, 52));
+        tfCampoNome.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
+        tfCampoNome.addActionListener(this::tfCampoNomeActionPerformed);
+        painelCampo1.add(tfCampoNome,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo1,new java.awt.GridBagConstraints(0,0,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,20,14),0,0));
+        painelCampo2.setOpaque(false);
+        painelCampo2.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo2.setOpaque(false);
+        painelRotulo2.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel4.setText("Data de Nascimento");
+        jLabel4.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel4.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo2.add(jLabel4);
+        painelCampo2.add(painelRotulo2,java.awt.BorderLayout.NORTH);
+        try { tfCampoDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####"))); } catch (java.text.ParseException ex) { ex.printStackTrace(); }
+        tfCampoDataNascimento.setFont(new java.awt.Font("Segoe UI",0,18));
+        tfCampoDataNascimento.setBackground(new java.awt.Color(255,255,255));
+        tfCampoDataNascimento.setPreferredSize(new java.awt.Dimension(320, 52));
+        tfCampoDataNascimento.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
+        painelCampo2.add(tfCampoDataNascimento,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo2,new java.awt.GridBagConstraints(1,0,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,20,0),0,0));
+        painelCampo3.setOpaque(false);
+        painelCampo3.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo3.setOpaque(false);
+        painelRotulo3.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel5.setText("CPF");
+        jLabel5.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel5.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo3.add(jLabel5);
+        painelCampo3.add(painelRotulo3,java.awt.BorderLayout.NORTH);
+        try { tfCampoCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-## "))); } catch (java.text.ParseException ex) { ex.printStackTrace(); }
+        tfCampoCPF.setName("");
+        tfCampoCPF.setFont(new java.awt.Font("Segoe UI",0,18));
+        tfCampoCPF.setBackground(new java.awt.Color(255,255,255));
+        tfCampoCPF.setPreferredSize(new java.awt.Dimension(320, 52));
+        tfCampoCPF.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
+        painelCampo3.add(tfCampoCPF,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo3,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,20,14),0,0));
+        painelCampo4.setOpaque(false);
+        painelCampo4.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo4.setOpaque(false);
+        painelRotulo4.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel6.setText("E-mail");
+        jLabel6.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel6.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo4.add(jLabel6);
+        painelCampo4.add(painelRotulo4,java.awt.BorderLayout.NORTH);
+        tfCampoEmail.setForeground(new java.awt.Color(153,153,153));
+        tfCampoEmail.setText("Digite o e-mail");
+        tfCampoEmail.setFont(new java.awt.Font("Segoe UI",0,18));
+        tfCampoEmail.setBackground(new java.awt.Color(255,255,255));
+        tfCampoEmail.setPreferredSize(new java.awt.Dimension(320, 52));
+        tfCampoEmail.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
+        painelCampo4.add(tfCampoEmail,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo4,new java.awt.GridBagConstraints(1,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,20,0),0,0));
+        painelCampo5.setOpaque(false);
+        painelCampo5.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo5.setOpaque(false);
+        painelRotulo5.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel7.setText("Senha");
+        jLabel7.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel7.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo5.add(jLabel7);
+        painelCampo5.add(painelRotulo5,java.awt.BorderLayout.NORTH);
+        jpCampoSenha.setMargemInterna(new java.awt.Insets(0, 12, 0, 12));
+        jpCampoSenha.setCorBorda(new java.awt.Color(153,153,153));
+        jpCampoSenha.setPreferredSize(new java.awt.Dimension(320, 52));
+        jpCampoSenha.setLayout(new java.awt.BorderLayout(0,0));
+        pfCampoSenha.setForeground(new java.awt.Color(153,153,153));
+        pfCampoSenha.setText("Digite a senha");
+        pfCampoSenha.setFont(new java.awt.Font("Segoe UI",0,18));
+        pfCampoSenha.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        jpCampoSenha.add(pfCampoSenha,java.awt.BorderLayout.CENTER);
+        jbOlhoSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png")));
         jbOlhoSenha.setBorderPainted(false);
         jbOlhoSenha.setContentAreaFilled(false);
         jbOlhoSenha.setFocusPainted(false);
         jbOlhoSenha.setFocusable(false);
+        jbOlhoSenha.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbOlhoSenha.setBorder(javax.swing.BorderFactory.createEmptyBorder(2,2,2,2));
         jbOlhoSenha.addActionListener(this::jbOlhoSenhaActionPerformed);
-        jpCampoSenha.add(jbOlhoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
-
-        pfCampoSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        pfCampoSenha.setForeground(new java.awt.Color(153, 153, 153));
-        pfCampoSenha.setText("Digite a senha");
-        jpCampoSenha.add(pfCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 44));
-
-        jpComponentes.add(jpCampoSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 280, 44));
-
-        jpCampoConfirmarSenha.setOpaque(false);
-        jpCampoConfirmarSenha.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jbOlhoConfirmarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png"))); // NOI18N
+        jpCampoSenha.add(jbOlhoSenha,java.awt.BorderLayout.EAST);
+        painelCampo5.add(jpCampoSenha,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo5,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,20,14),0,0));
+        painelCampo6.setOpaque(false);
+        painelCampo6.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo6.setOpaque(false);
+        painelRotulo6.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel8.setText("Confirmar Senha");
+        jLabel8.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel8.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo6.add(jLabel8);
+        painelCampo6.add(painelRotulo6,java.awt.BorderLayout.NORTH);
+        jpCampoConfirmarSenha.setMargemInterna(new java.awt.Insets(0, 12, 0, 12));
+        jpCampoConfirmarSenha.setCorBorda(new java.awt.Color(153,153,153));
+        jpCampoConfirmarSenha.setPreferredSize(new java.awt.Dimension(320, 52));
+        jpCampoConfirmarSenha.setLayout(new java.awt.BorderLayout(0,0));
+        pfCampoConfirmarSenha.setForeground(new java.awt.Color(153,153,153));
+        pfCampoConfirmarSenha.setText("Confirme a senha");
+        pfCampoConfirmarSenha.setFont(new java.awt.Font("Segoe UI",0,18));
+        pfCampoConfirmarSenha.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        jpCampoConfirmarSenha.add(pfCampoConfirmarSenha,java.awt.BorderLayout.CENTER);
+        jbOlhoConfirmarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/olhoAberto.png")));
         jbOlhoConfirmarSenha.setBorderPainted(false);
         jbOlhoConfirmarSenha.setContentAreaFilled(false);
         jbOlhoConfirmarSenha.setFocusPainted(false);
         jbOlhoConfirmarSenha.setFocusable(false);
+        jbOlhoConfirmarSenha.setPreferredSize(new java.awt.Dimension(36, 36));
+        jbOlhoConfirmarSenha.setBorder(javax.swing.BorderFactory.createEmptyBorder(2,2,2,2));
         jbOlhoConfirmarSenha.addActionListener(this::jbOlhoConfirmarSenhaActionPerformed);
-        jpCampoConfirmarSenha.add(jbOlhoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 6, 32, 32));
-
-        pfCampoConfirmarSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        pfCampoConfirmarSenha.setForeground(new java.awt.Color(153, 153, 153));
-        pfCampoConfirmarSenha.setText("Confirme a senha");
-        jpCampoConfirmarSenha.add(pfCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 44));
-
-        jpComponentes.add(jpCampoConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 280, 44));
-
-        btVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btVoltar.setForeground(new java.awt.Color(31, 53, 80));
-        btVoltar.setText("◄ Voltar");
-        btVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
-        btVoltar.addActionListener(this::btVoltarActionPerformed);
-        jpComponentes.add(btVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 38));
-
-        botaoAjuda.setTextoAjuda("Esta é a tela de criação de conta do sistema MAINRH, destinada ao cadastro de novos usuários administradores e recrutadores na plataforma. Para registrar o perfil, preencha os campos com o **Nome**, **Data de Nascimento** (formato dd/mm/aaaa), **CPF**, **E-mail**, **Telefone** e selecione o tipo de conta desejado na lista **Função** (Administrador ou Recrutador). Em seguida, defina a **Senha** e repita-a no campo **Confirmar Senha** para validação, podendo utilizar os ícones de olho para visualizar o texto digitado. Após preencher todos os dados, clique no botão **Cadastrar** para concluir o registro ou no botão **Voltar**, localizado no canto superior esquerdo, para retornar à tela anterior.");
-        jpComponentes.add(botaoAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 70, 50));
-
-        try {
-            tfCampoCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-## ")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        tfCampoCPF.setMinimumSize(new java.awt.Dimension(64, 26));
-        tfCampoCPF.setName(""); // NOI18N
-        tfCampoCPF.setPreferredSize(new java.awt.Dimension(105, 26));
-        jpComponentes.add(tfCampoCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 44));
-
-        try {
-            jtfCampoTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jpComponentes.add(jtfCampoTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 280, 44));
-
-        try {
-            tfCampoDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jpComponentes.add(tfCampoDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 280, 44));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jpComponentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jpComponentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
+        jpCampoConfirmarSenha.add(jbOlhoConfirmarSenha,java.awt.BorderLayout.EAST);
+        painelCampo6.add(jpCampoConfirmarSenha,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo6,new java.awt.GridBagConstraints(1,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,20,0),0,0));
+        painelCampo7.setOpaque(false);
+        painelCampo7.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo7.setOpaque(false);
+        painelRotulo7.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel9.setText("Telefone");
+        jLabel9.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel9.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo7.add(jLabel9);
+        painelCampo7.add(painelRotulo7,java.awt.BorderLayout.NORTH);
+        try { jtfCampoTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####"))); } catch (java.text.ParseException ex) { ex.printStackTrace(); }
+        jtfCampoTelefone.setFont(new java.awt.Font("Segoe UI",0,18));
+        jtfCampoTelefone.setBackground(new java.awt.Color(255,255,255));
+        jtfCampoTelefone.setPreferredSize(new java.awt.Dimension(320, 52));
+        jtfCampoTelefone.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
+        painelCampo7.add(jtfCampoTelefone,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo7,new java.awt.GridBagConstraints(0,3,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,0,14),0,0));
+        painelCampo8.setOpaque(false);
+        painelCampo8.setLayout(new java.awt.BorderLayout(0,10));
+        painelRotulo8.setOpaque(false);
+        painelRotulo8.setLayout(new java.awt.FlowLayout(0,0,0));
+        jLabel10.setText("Função");
+        jLabel10.setFont(new java.awt.Font("Segoe UI",1,18));
+        jLabel10.setForeground(new java.awt.Color(0,0,0));
+        painelRotulo8.add(jLabel10);
+        painelCampo8.add(painelRotulo8,java.awt.BorderLayout.NORTH);
+        cbCampoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Selecione uma função","Administrador (a)","Recrutador (a)"}));
+        cbCampoFuncao.setFont(new java.awt.Font("Segoe UI",0,18));
+        cbCampoFuncao.setBackground(new java.awt.Color(255,255,255));
+        cbCampoFuncao.setPreferredSize(new java.awt.Dimension(320, 52));
+        cbCampoFuncao.addActionListener(this::cbCampoFuncaoActionPerformed);
+        painelCampo8.add(cbCampoFuncao,java.awt.BorderLayout.CENTER);
+        gradeCampos.add(painelCampo8,new java.awt.GridBagConstraints(1,3,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,0,0),0,0));
+        painelCampos.add(gradeCampos,java.awt.BorderLayout.NORTH);
+        painelFormulario.add(painelCampos,new java.awt.GridBagConstraints(0,3,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
+        painelAcoes.setLayout(new java.awt.FlowLayout(2,16,0));
+        jButton1.setText("Cadastrar");
+        jButton1.setFont(new java.awt.Font("Segoe UI",1,18));
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+        painelAcoes.add(jButton1);
+        painelFormulario.add(painelAcoes,new java.awt.GridBagConstraints(0,4,1,1,1.0,0.0,18,2,new java.awt.Insets(20,0,0,0),0,0));
+        getContentPane().add(painelFormulario,java.awt.BorderLayout.CENTER);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -544,12 +559,12 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private classes.BotaoAjuda botaoAjuda;
-    private javax.swing.JButton btVoltar;
+    private classes.BotaoPadrao btVoltar;
     private javax.swing.JComboBox<String> cbCampoFuncao;
-    private javax.swing.JButton jButton1;
+    private classes.PainelCampos gradeCampos;
+    private classes.BotaoPadrao jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -557,19 +572,37 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbOlhoConfirmarSenha;
     private javax.swing.JButton jbOlhoSenha;
-    private javax.swing.JLabel jlLogo;
-    private javax.swing.JPanel jpCampoConfirmarSenha;
-    private javax.swing.JPanel jpCampoSenha;
-    private javax.swing.JPanel jpComponentes;
+    private classes.PainelArredondado jpCampoConfirmarSenha;
+    private classes.PainelArredondado jpCampoSenha;
     private javax.swing.JFormattedTextField jtfCampoTelefone;
+    private javax.swing.JLabel lbDescricao;
+    private classes.PainelFerramentas painelAcoes;
+    private javax.swing.JPanel painelCabecalho;
+    private javax.swing.JPanel painelCampo1;
+    private javax.swing.JPanel painelCampo2;
+    private javax.swing.JPanel painelCampo3;
+    private javax.swing.JPanel painelCampo4;
+    private javax.swing.JPanel painelCampo5;
+    private javax.swing.JPanel painelCampo6;
+    private javax.swing.JPanel painelCampo7;
+    private javax.swing.JPanel painelCampo8;
+    private classes.PainelArredondado painelCampos;
+    private classes.PainelFormulario painelFormulario;
+    private javax.swing.JPanel painelRotulo1;
+    private javax.swing.JPanel painelRotulo2;
+    private javax.swing.JPanel painelRotulo3;
+    private javax.swing.JPanel painelRotulo4;
+    private javax.swing.JPanel painelRotulo5;
+    private javax.swing.JPanel painelRotulo6;
+    private javax.swing.JPanel painelRotulo7;
+    private javax.swing.JPanel painelRotulo8;
     private javax.swing.JPasswordField pfCampoConfirmarSenha;
     private javax.swing.JPasswordField pfCampoSenha;
     private javax.swing.JFormattedTextField tfCampoCPF;
     private javax.swing.JFormattedTextField tfCampoDataNascimento;
     private javax.swing.JTextField tfCampoEmail;
     private javax.swing.JTextField tfCampoNome;
-    // End of variables declaration//GEN-END:variables
+    //GEN-END:variables
 }

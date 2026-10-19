@@ -24,9 +24,6 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
      */
     public TelaGestaoRec() {
         initComponents();
-        setContentPane(new classes.PainelGestaoRecrutadores(btVoltar, jLabel1, botaoAjuda,
-                tfPesquisa, jLabel2, btExcluir, btAtribuir, jLabel3, spBarra, tbProcesso));
-        pack();
         classes.Acessibilidade.configurarTela(this);
         configurarAtalhos();
         configurarBuscaDinamica();
@@ -272,205 +269,91 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        painelDesktopPane = new javax.swing.JDesktopPane();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        tfPesquisa = new javax.swing.JTextField();
-        tfPesquisa.setText("Digite aqui...");
-        tfPesquisa.setForeground(java.awt.Color.GRAY);
+        painelListagem = new classes.PainelListagem();
+        btVoltar = new classes.BotaoPadrao();
+        painelCabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botaoAjuda = new classes.BotaoAjuda();
-        btAtribuir = new javax.swing.JButton();
-        btVoltar = new javax.swing.JButton();
-        btExcluir = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        lbDescricao = new javax.swing.JLabel();
+        painelFerramentas = new classes.PainelFerramentas();
+        painelBusca = new classes.PainelBusca();
+        lbLupa = new classes.RotuloLupa();
+        tfPesquisa = new classes.CampoPesquisa();
+        btExcluir = new classes.BotaoPadrao();
+        btAtribuir = new classes.BotaoPadrao();
+        painelTabela = new classes.PainelArredondado();
+        painelTituloTabela = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        lbQuantidade = new classes.ContadorRegistros();
         spBarra = new javax.swing.JScrollPane();
-        tbProcesso = new javax.swing.JTable();
-
-        painelDesktopPane.setLayout(new java.awt.BorderLayout());
-
-        jPanel3.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jPanel5.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel5.setLayout(new java.awt.BorderLayout());
-
-        jPanel2.setBackground(new java.awt.Color(233, 243, 255));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
-
-        tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tfPesquisaFocusGained(evt);
-            }
-        });
-        tfPesquisa.addActionListener(this::tfPesquisaActionPerformed);
-
-        jLabel1.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 35)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel1.setText("Gestão de Recrutadores");
-
-        botaoAjuda.setTextoAjuda("Esta é a tela de Gestão de Recrutadores do sistema MAINRH, utilizada para acompanhar e vincular responsáveis aos processos seletivos da empresa. Use a barra de pesquisa no topo para filtrar um processo seletivo específico. Na tabela central, consulte a relação entre cada **Processo Seletivo** e o seu respectivo **Recrutador Alocado**. Para vincular ou alterar o responsável por uma seleção, utilize o botão **Atribuir Recrutador**, localizado no canto superior direito. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
-
-        btAtribuir.setBackground(new java.awt.Color(31, 53, 80));
-        btAtribuir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btAtribuir.setForeground(new java.awt.Color(255, 255, 255));
-        btAtribuir.setText("Atribuir Recrutador");
-        btAtribuir.setToolTipText("Clique aqui para atribuir um novo recrutador a um processo seletivo");
-        btAtribuir.addActionListener(this::btAtribuirActionPerformed);
-
-        btVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btVoltar.setForeground(new java.awt.Color(31, 53, 80));
-        btVoltar.setText("◄ Voltar");
-        btVoltar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
+        tbProcesso = new classes.TabelaPadrao();
+        getContentPane().setLayout(new java.awt.BorderLayout(0,0));
+        painelListagem.setBorder(javax.swing.BorderFactory.createEmptyBorder(28,40,40,40));
+        painelListagem.setLayout(new java.awt.GridBagLayout());
+        btVoltar.setFont(new java.awt.Font("Segoe UI",1,17));
+        btVoltar.setText("‹  Voltar");
+        btVoltar.setPreferredSize(new java.awt.Dimension(130, 48));
         btVoltar.addActionListener(this::btVoltarActionPerformed);
-
-        btExcluir.setBackground(new java.awt.Color(192, 1, 1));
-        btExcluir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btExcluir.setForeground(new java.awt.Color(255, 255, 255));
-        btExcluir.setText("Excluir");
+        painelListagem.add(btVoltar,new java.awt.GridBagConstraints(0,0,1,1,0,0.0,18,0,new java.awt.Insets(0,0,24,0),0,0));
+        painelCabecalho.setOpaque(false);
+        painelCabecalho.setLayout(new java.awt.BorderLayout(16,0));
+        jLabel1.setBackground(new java.awt.Color(29,45,68));
+        jLabel1.setText("Gestão de Recrutadores");
+        jLabel1.setFont(new java.awt.Font("Segoe UI",1,36));
+        jLabel1.setForeground(new java.awt.Color(0,0,0));
+        painelCabecalho.add(jLabel1,java.awt.BorderLayout.CENTER);
+        botaoAjuda.setTextoAjuda("Esta é a tela de Gestão de Recrutadores do sistema MAINRH, utilizada para acompanhar e vincular responsáveis aos processos seletivos da empresa. Use a barra de pesquisa no topo para filtrar um processo seletivo específico. Na tabela central, consulte a relação entre cada **Processo Seletivo** e o seu respectivo **Recrutador Alocado**. Para vincular ou alterar o responsável por uma seleção, utilize o botão **Atribuir Recrutador**, localizado no canto superior direito. Para retornar à tela anterior, clique no botão **Voltar** no canto superior esquerdo.");
+        botaoAjuda.setPreferredSize(new java.awt.Dimension(42, 42));
+        painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
+        painelListagem.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
+        lbDescricao.setText("Gerencie responsáveis pelos processos seletivos.");
+        lbDescricao.setFont(new java.awt.Font("Segoe UI",0,19));
+        lbDescricao.setForeground(new java.awt.Color(64,64,64));
+        painelListagem.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,28,0),0,0));
+        painelFerramentas.setLayout(new java.awt.FlowLayout(0,16,0));
+        painelBusca.setLayout(new java.awt.BorderLayout(16,0));
+        painelBusca.add(lbLupa,java.awt.BorderLayout.WEST);
+        tfPesquisa.setPlaceholder("Buscar processo ou recrutador...");
+        tfPesquisa.addFocusListener(new java.awt.event.FocusAdapter() { @Override public void focusGained(java.awt.event.FocusEvent evt) { tfPesquisaFocusGained(evt); } });
+        tfPesquisa.addActionListener(this::tfPesquisaActionPerformed);
+        painelBusca.add(tfPesquisa,java.awt.BorderLayout.CENTER);
+        painelFerramentas.add(painelBusca);
         btExcluir.setToolTipText("Selecione um cargo da tabela e clique aqui caso deseje excluir o cargo");
+        btExcluir.setFont(new java.awt.Font("Segoe UI",0,18));
+        btExcluir.setText("Excluir");
         btExcluir.addActionListener(this::btExcluirActionPerformed);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(688, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(440, 440, 440)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btAtribuir)
-                        .addGap(59, 59, 59))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btAtribuir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        jPanel5.add(jPanel2, java.awt.BorderLayout.CENTER);
-
-        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_START);
-
-        jPanel4.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 32, 20, 32));
-        jPanel4.setLayout(new java.awt.BorderLayout());
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 1, 32));
-
-        jLabel3.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(29, 45, 68));
+        painelFerramentas.add(btExcluir);
+        btAtribuir.setToolTipText("Clique aqui para atribuir um novo recrutador a um processo seletivo");
+        btAtribuir.setFont(new java.awt.Font("Segoe UI",1,18));
+        btAtribuir.setText("+  Atribuir Recrutador");
+        btAtribuir.setPreferredSize(new java.awt.Dimension(235, 56));
+        btAtribuir.addActionListener(this::btAtribuirActionPerformed);
+        painelFerramentas.add(btAtribuir);
+        painelListagem.add(painelFerramentas,new java.awt.GridBagConstraints(0,3,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,30,0),0,0));
+        painelTabela.setMinimumSize(new java.awt.Dimension(0, 0));
+        painelTabela.setLayout(new java.awt.BorderLayout(0,18));
+        painelTituloTabela.setOpaque(false);
+        painelTituloTabela.setLayout(new java.awt.BorderLayout(16,0));
+        jLabel3.setBackground(new java.awt.Color(29,45,68));
         jLabel3.setText("Processos Seletivos");
-
-        spBarra.setBackground(new java.awt.Color(255, 255, 255));
-        spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        spBarra.setForeground(new java.awt.Color(255, 255, 255));
-
-        tbProcesso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        tbProcesso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tbProcesso.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Processo Seletivo", "Recrutador Alocado"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jLabel3.setFont(new java.awt.Font("Segoe UI",1,30));
+        jLabel3.setForeground(new java.awt.Color(0,0,0));
+        painelTituloTabela.add(jLabel3,java.awt.BorderLayout.WEST);
+        lbQuantidade.setSingular("processo");
+        lbQuantidade.setPlural("processos");
+        painelTituloTabela.add(lbQuantidade,java.awt.BorderLayout.EAST);
+        painelTabela.add(painelTituloTabela,java.awt.BorderLayout.NORTH);
+        spBarra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230,235,240),1,true));
+        tbProcesso.setBorder(new javax.swing.border.LineBorder(java.awt.Color.BLACK,1,true));
+        tbProcesso.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{},new String[]{"Processo Seletivo","Recrutador Alocado"}) { @Override public boolean isCellEditable(int row,int column) { return false; } });
         tbProcesso.setToolTipText("Aqui aparecem os processos seletivos já cadastrados em sistema, além dos recrutadores atribuidos");
-        tbProcesso.getTableHeader().setReorderingAllowed(false);
-        tbProcesso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbProcessoMouseClicked(evt);
-            }
-        });
+        tbProcesso.setRecrutadores(true);
+        tbProcesso.addMouseListener(new java.awt.event.MouseAdapter() { @Override public void mouseClicked(java.awt.event.MouseEvent evt) { tbProcessoMouseClicked(evt); } });
         spBarra.setViewportView(tbProcesso);
-        if (tbProcesso.getColumnModel().getColumnCount() > 0) {
-            tbProcesso.getColumnModel().getColumn(0).setResizable(false);
-            tbProcesso.getColumnModel().getColumn(1).setResizable(false);
-        }
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(spBarra, javax.swing.GroupLayout.DEFAULT_SIZE, 975, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(spBarra, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel4.add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        jPanel3.add(jPanel4, java.awt.BorderLayout.CENTER);
-
-        painelDesktopPane.add(jPanel3, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(painelDesktopPane, java.awt.BorderLayout.CENTER);
-
+        painelTabela.add(spBarra,java.awt.BorderLayout.CENTER);
+        painelListagem.add(painelTabela,new java.awt.GridBagConstraints(0,4,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
+        getContentPane().add(painelListagem,java.awt.BorderLayout.CENTER);
+        lbQuantidade.setTabela(tbProcesso);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -622,20 +505,22 @@ public class TelaGestaoRec extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private classes.BotaoAjuda botaoAjuda;
-    private javax.swing.JButton btAtribuir;
-    private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btVoltar;
+    private classes.BotaoPadrao btAtribuir;
+    private classes.BotaoPadrao btExcluir;
+    private classes.BotaoPadrao btVoltar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JDesktopPane painelDesktopPane;
+    private javax.swing.JLabel lbDescricao;
+    private classes.RotuloLupa lbLupa;
+    private classes.ContadorRegistros lbQuantidade;
+    private classes.PainelBusca painelBusca;
+    private javax.swing.JPanel painelCabecalho;
+    private classes.PainelFerramentas painelFerramentas;
+    private classes.PainelListagem painelListagem;
+    private classes.PainelArredondado painelTabela;
+    private javax.swing.JPanel painelTituloTabela;
     private javax.swing.JScrollPane spBarra;
-    private javax.swing.JTable tbProcesso;
-    private javax.swing.JTextField tfPesquisa;
-    // End of variables declaration//GEN-END:variables
+    private classes.TabelaPadrao tbProcesso;
+    private classes.CampoPesquisa tfPesquisa;
+    //GEN-END:variables
 }

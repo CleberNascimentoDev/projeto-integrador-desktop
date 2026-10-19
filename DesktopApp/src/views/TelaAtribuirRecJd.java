@@ -31,20 +31,6 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         customizarTabela();
-        classes.PainelListagem painel = new classes.PainelListagem(btCancelar, jLabel9, botaoAjuda,
-                tfPesquisa, new javax.swing.JLabel(), new javax.swing.JLabel("Recrutadores"), spBarra, tbRecrutador,
-                "Escolha um recrutador cadastrado para este processo seletivo.", "Buscar recrutador...",
-                "recrutador", "recrutadores", false, btAtribuir);
-        javax.swing.JPanel informacoes = new javax.swing.JPanel(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 16, 0));
-        informacoes.setOpaque(false);
-        for (javax.swing.JLabel rotulo : new javax.swing.JLabel[]{jLabel11, lbProcesso, jLabel12, lbData}) {
-            rotulo.setFont(classes.PainelListagem.fonte(java.awt.Font.PLAIN, 18));
-            informacoes.add(rotulo);
-        }
-        painel.adicionarInformacoes(informacoes);
-        classes.PainelListagem.configurarSubtela(painel);
-        setContentPane(painel);
-        pack();
         configurarBuscaDinamica();
         carregarTabela("");
         
@@ -290,233 +276,105 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        components2 = new javax.swing.JPanel();
+        painelListagem = new classes.PainelListagem();
+        btCancelar = new classes.BotaoPadrao();
+        painelCabecalho = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        botaoAjuda = new classes.BotaoAjuda();
+        lbDescricao = new javax.swing.JLabel();
+        painelInformacoes = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         lbProcesso = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         lbData = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        tfPesquisa = new javax.swing.JTextField();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
+        painelFerramentas = new classes.PainelFerramentas();
+        painelBusca = new classes.PainelBusca();
+        lbLupa = new classes.RotuloLupa();
+        tfPesquisa = new classes.CampoPesquisa();
+        btAtribuir = new classes.BotaoPadrao();
+        painelTabela = new classes.PainelArredondado();
+        painelTituloTabela = new javax.swing.JPanel();
+        lbTituloTabela = new javax.swing.JLabel();
+        lbQuantidade = new classes.ContadorRegistros();
         spBarra = new javax.swing.JScrollPane();
-        tbRecrutador = new javax.swing.JTable();
-        btAtribuir = new javax.swing.JButton();
-        btCancelar = new javax.swing.JButton();
-        botaoAjuda = new classes.BotaoAjuda();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
-
-        components2.setBackground(new java.awt.Color(255, 255, 255));
-        components2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        components2.setPreferredSize(new java.awt.Dimension(833, 763));
-
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel9.setText("Selecionar Recrutador");
-
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("Escolha um recrutador cadastrado para este processo seletivo");
-
-        jPanel4.setBackground(new java.awt.Color(233, 243, 255));
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(201, 187, 251), 1, true));
-
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel11.setText("Processo:");
-
-        lbProcesso.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbProcesso.setText("Desenvolvedor Java");
-
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(29, 45, 68));
-        jLabel12.setText("Data:");
-
-        lbData.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lbData.setText("10/10/2010");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbProcesso))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbData)))
-                .addContainerGap(565, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(lbProcesso))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(lbData))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 14, -1, -1));
-        jPanel5.add(tfPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 420, 33));
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 1, 32));
-
-        jLabel14.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel14.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(29, 45, 68));
-
-        spBarra.setBackground(new java.awt.Color(255, 255, 255));
-        spBarra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        spBarra.setForeground(new java.awt.Color(255, 255, 255));
-
-        tbRecrutador.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        tbRecrutador.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tbRecrutador.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nome", "E-mail"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tbRecrutador.setToolTipText("Aqui aparecem os processos seletivos já cadastrados em sistema, além dos recrutadores atribuidos");
-        tbRecrutador.getTableHeader().setReorderingAllowed(false);
-        tbRecrutador.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbRecrutadorMouseClicked(evt);
-            }
-        });
-        spBarra.setViewportView(tbRecrutador);
-
-        btAtribuir.setBackground(new java.awt.Color(31, 53, 80));
-        btAtribuir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btAtribuir.setForeground(new java.awt.Color(255, 255, 255));
-        btAtribuir.setText("Atribuir");
-        btAtribuir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
-        btAtribuir.setMargin(new java.awt.Insets(10, 20, 10, 20));
-        btAtribuir.addActionListener(this::btAtribuirActionPerformed);
-
-        btCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btCancelar.setForeground(new java.awt.Color(29, 45, 68));
-        btCancelar.setText("Cancelar");
-        btCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 53, 80), 1, true));
-        btCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btCancelarMouseClicked(evt);
-            }
-        });
+        tbRecrutador = new classes.TabelaPadrao();
+        setDefaultCloseOperation(2);
+        getContentPane().setLayout(new java.awt.BorderLayout(0,0));
+        painelListagem.setSubtela(true);
+        painelListagem.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(31,53,80),2,false),javax.swing.BorderFactory.createEmptyBorder(28,40,40,40)));
+        painelListagem.setLayout(new java.awt.GridBagLayout());
+        btCancelar.setFont(new java.awt.Font("Segoe UI",1,17));
+        btCancelar.setText("‹  Voltar");
+        btCancelar.setPreferredSize(new java.awt.Dimension(130, 48));
+        btCancelar.addMouseListener(new java.awt.event.MouseAdapter() { @Override public void mouseClicked(java.awt.event.MouseEvent evt) { btCancelarMouseClicked(evt); } });
         btCancelar.addActionListener(this::btCancelarActionPerformed);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(450, 450, 450)
-                        .addComponent(btAtribuir, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(spBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(spBarra, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel14)
-                        .addContainerGap(28, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btAtribuir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
-        );
-
+        painelListagem.add(btCancelar,new java.awt.GridBagConstraints(0,0,1,1,0,0.0,18,0,new java.awt.Insets(0,0,24,0),0,0));
+        painelCabecalho.setOpaque(false);
+        painelCabecalho.setLayout(new java.awt.BorderLayout(16,0));
+        jLabel9.setText("Atribuir Recrutador");
+        jLabel9.setFont(new java.awt.Font("Segoe UI",1,36));
+        jLabel9.setForeground(new java.awt.Color(0,0,0));
+        painelCabecalho.add(jLabel9,java.awt.BorderLayout.CENTER);
         botaoAjuda.setTextoAjuda("Esta é a tela de Selecionar Recrutador do sistema MAINRH, dedicada à vinculação de um responsável a um processo seletivo específico. No topo, confirme as informações do **Processo** e da **Data** correspondentes. Utilize a barra de busca para pesquisar um recrutador cadastrado pelo nome ou e-mail. Na tabela inferior, selecione o profissional desejado da lista contendo **Nome** e **E-mail** e clique no botão **Atribuir** para concluir a vinculação, ou no botão **Cancelar** para fechar a janela sem salvar.");
-
-        javax.swing.GroupLayout components2Layout = new javax.swing.GroupLayout(components2);
-        components2.setLayout(components2Layout);
-        components2Layout.setHorizontalGroup(
-            components2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(components2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(components2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(components2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        components2Layout.setVerticalGroup(
-            components2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(components2Layout.createSequentialGroup()
-                .addGroup(components2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(components2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9))
-                    .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(components2, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(components2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
+        botaoAjuda.setPreferredSize(new java.awt.Dimension(42, 42));
+        painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
+        painelListagem.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
+        lbDescricao.setText("Escolha um recrutador cadastrado para este processo seletivo.");
+        lbDescricao.setFont(new java.awt.Font("Segoe UI",0,19));
+        lbDescricao.setForeground(new java.awt.Color(64,64,64));
+        painelListagem.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,28,0),0,0));
+        painelInformacoes.setOpaque(false);
+        painelInformacoes.setLayout(new java.awt.FlowLayout(0,16,0));
+        jLabel11.setForeground(new java.awt.Color(29,45,68));
+        jLabel11.setText("Processo:");
+        jLabel11.setFont(new java.awt.Font("Segoe UI",0,18));
+        painelInformacoes.add(jLabel11);
+        lbProcesso.setText("Desenvolvedor Java");
+        lbProcesso.setFont(new java.awt.Font("Segoe UI",0,18));
+        painelInformacoes.add(lbProcesso);
+        jLabel12.setForeground(new java.awt.Color(29,45,68));
+        jLabel12.setText("Data:");
+        jLabel12.setFont(new java.awt.Font("Segoe UI",0,18));
+        painelInformacoes.add(jLabel12);
+        lbData.setText("10/10/2010");
+        lbData.setFont(new java.awt.Font("Segoe UI",0,18));
+        painelInformacoes.add(lbData);
+        painelListagem.add(painelInformacoes,new java.awt.GridBagConstraints(0,3,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,20,0),0,0));
+        painelFerramentas.setLayout(new java.awt.FlowLayout(0,16,0));
+        painelBusca.setLayout(new java.awt.BorderLayout(16,0));
+        painelBusca.add(lbLupa,java.awt.BorderLayout.WEST);
+        tfPesquisa.setPlaceholder("Buscar recrutador...");
+        painelBusca.add(tfPesquisa,java.awt.BorderLayout.CENTER);
+        painelFerramentas.add(painelBusca);
+        btAtribuir.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btAtribuir.setFont(new java.awt.Font("Segoe UI",1,18));
+        btAtribuir.setText("Atribuir");
+        btAtribuir.setPreferredSize(new java.awt.Dimension(235, 56));
+        btAtribuir.addActionListener(this::btAtribuirActionPerformed);
+        painelFerramentas.add(btAtribuir);
+        painelListagem.add(painelFerramentas,new java.awt.GridBagConstraints(0,4,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,30,0),0,0));
+        painelTabela.setMinimumSize(new java.awt.Dimension(0, 0));
+        painelTabela.setLayout(new java.awt.BorderLayout(0,18));
+        painelTituloTabela.setOpaque(false);
+        painelTituloTabela.setLayout(new java.awt.BorderLayout(16,0));
+        lbTituloTabela.setText("Recrutadores");
+        lbTituloTabela.setFont(new java.awt.Font("Segoe UI",1,30));
+        lbTituloTabela.setForeground(new java.awt.Color(0,0,0));
+        painelTituloTabela.add(lbTituloTabela,java.awt.BorderLayout.WEST);
+        lbQuantidade.setSingular("recrutador");
+        lbQuantidade.setPlural("recrutadores");
+        painelTituloTabela.add(lbQuantidade,java.awt.BorderLayout.EAST);
+        painelTabela.add(painelTituloTabela,java.awt.BorderLayout.NORTH);
+        spBarra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230,235,240),1,true));
+        tbRecrutador.setBorder(new javax.swing.border.LineBorder(java.awt.Color.BLACK,1,true));
+        tbRecrutador.setModel(new javax.swing.table.DefaultTableModel(new Object[][]{},new String[]{"Nome","E-mail"}) { @Override public boolean isCellEditable(int row,int column) { return false; } });
+        tbRecrutador.setToolTipText("Aqui aparecem os processos seletivos já cadastrados em sistema, além dos recrutadores atribuidos");
+        tbRecrutador.addMouseListener(new java.awt.event.MouseAdapter() { @Override public void mouseClicked(java.awt.event.MouseEvent evt) { tbRecrutadorMouseClicked(evt); } });
+        spBarra.setViewportView(tbRecrutador);
+        painelTabela.add(spBarra,java.awt.BorderLayout.CENTER);
+        painelListagem.add(painelTabela,new java.awt.GridBagConstraints(0,5,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
+        getContentPane().add(painelListagem,java.awt.BorderLayout.CENTER);
+        lbQuantidade.setTabela(tbRecrutador);
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -652,22 +510,26 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private classes.BotaoAjuda botaoAjuda;
-    private javax.swing.JButton btAtribuir;
-    private javax.swing.JButton btCancelar;
-    private javax.swing.JPanel components2;
-    private javax.swing.JLabel jLabel10;
+    private classes.BotaoPadrao btAtribuir;
+    private classes.BotaoPadrao btCancelar;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lbData;
+    private javax.swing.JLabel lbDescricao;
+    private classes.RotuloLupa lbLupa;
     private javax.swing.JLabel lbProcesso;
+    private classes.ContadorRegistros lbQuantidade;
+    private javax.swing.JLabel lbTituloTabela;
+    private classes.PainelBusca painelBusca;
+    private javax.swing.JPanel painelCabecalho;
+    private classes.PainelFerramentas painelFerramentas;
+    private javax.swing.JPanel painelInformacoes;
+    private classes.PainelListagem painelListagem;
+    private classes.PainelArredondado painelTabela;
+    private javax.swing.JPanel painelTituloTabela;
     private javax.swing.JScrollPane spBarra;
-    private javax.swing.JTable tbRecrutador;
-    private javax.swing.JTextField tfPesquisa;
-    // End of variables declaration//GEN-END:variables
+    private classes.TabelaPadrao tbRecrutador;
+    private classes.CampoPesquisa tfPesquisa;
+    //GEN-END:variables
 }

@@ -26,6 +26,20 @@ public class PainelListagem extends JPanel {
     private final JPanel processos;
     private JComponent informacoes;
 
+    /** Construtor JavaBean: a hierarquia e o layout ficam no formulário do NetBeans. */
+    public PainelListagem() {
+        btVoltar = null; botaoAjuda = null; titulo = null; subtitulo = null;
+        ferramentas = null; processos = null;
+        setBackground(fundoTela);
+        setLayout(new GridBagLayout());
+        setPreferredSize(new Dimension(1280, 740));
+    }
+    public boolean isSubtela() { return Boolean.TRUE.equals(getClientProperty("acessibilidade.subtela")); }
+    public void setSubtela(boolean valor) {
+        putClientProperty("acessibilidade.subtela",valor);
+        setBackground(valor ? fundoSubtela : fundoTela);
+    }
+
     /** Diferencia as janelas de apoio sem alterar o fundo das listagens principais. */
     public static void configurarSubtela(JComponent painel) {
         painel.putClientProperty("acessibilidade.subtela", true);
@@ -172,9 +186,11 @@ public class PainelListagem extends JPanel {
 
     public static void configurarTabela(JTable tabela, JScrollPane rolagem, boolean recrutadores) {
         boolean ampliado = Acessibilidade.isBaixaVisaoAtiva() && tabela.getClientProperty("baixaVisao.estado") != null;
-        rolagem.putClientProperty("baixaVisao.alinharDireita", null);
-        rolagem.setBorder(new BordaArredondada(linha, 6, 0, 0));
-        rolagem.getViewport().setBackground(Color.WHITE);
+        if (rolagem != null) {
+            rolagem.putClientProperty("baixaVisao.alinharDireita", null);
+            rolagem.setBorder(new BordaArredondada(linha, 6, 0, 0));
+            rolagem.getViewport().setBackground(Color.WHITE);
+        }
         tabela.setBorder(null);
         tabela.setBackground(Color.WHITE);
         tabela.setForeground(Color.BLACK);
@@ -200,6 +216,7 @@ public class PainelListagem extends JPanel {
                 return this;
             }
         };
+        tabela.getTableHeader().setDefaultRenderer(cabecalho);
         for (int i = 0; i < tabela.getColumnCount(); i++) {
             tabela.getColumnModel().getColumn(i).setHeaderRenderer(cabecalho);
             tabela.getColumnModel().getColumn(i).setPreferredWidth(600);
@@ -313,7 +330,7 @@ public class PainelListagem extends JPanel {
         }
     }
 
-    private static final class BordaArredondada extends AbstractBorder {
+    static final class BordaArredondada extends AbstractBorder {
         private final Color cor;
         private final int raio, vertical, horizontal;
         BordaArredondada(Color cor, int raio, int vertical, int horizontal) {
@@ -335,7 +352,7 @@ public class PainelListagem extends JPanel {
         }
     }
 
-    private static final class CampoBusca extends BasicTextFieldUI {
+    static final class CampoBusca extends BasicTextFieldUI {
         private final String placeholder;
         CampoBusca(String placeholder) { this.placeholder = placeholder; }
         @Override protected void paintSafely(Graphics g) {
@@ -355,7 +372,7 @@ public class PainelListagem extends JPanel {
         }
     }
 
-    private static final class Lupa implements Icon {
+    static final class Lupa implements Icon {
         @Override public int getIconWidth() { return 24; }
         @Override public int getIconHeight() { return 24; }
         @Override public void paintIcon(Component campo, Graphics g, int x, int y) {
