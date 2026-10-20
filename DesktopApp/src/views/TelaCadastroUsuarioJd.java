@@ -361,52 +361,57 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String nome = tfCampoNome.getText().trim().toUpperCase();
-         String email = tfCampoEmail.getText().trim();
+    String nome = tfCampoNome.getText().trim().toUpperCase();
+    String email = tfCampoEmail.getText().trim();
+    String regex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
 
-          String cpf = tfCampoCPF.getText()
-            .replace(".", "")
-            .replace("-", "")
-            .trim();
+    String cpf = tfCampoCPF.getText()
+        .replace(".", "")
+        .replace("-", "")
+        .trim();
 
-          String telefone = jtfCampoTelefone.getText()
-            .replaceAll("\\D", "");
+    String telefone = jtfCampoTelefone.getText()
+        .replaceAll("\\D", "");
 
     String senha = String.valueOf(pfCampoSenha.getPassword());
     String confirmarSenha = String.valueOf(pfCampoConfirmarSenha.getPassword());
 
     String funcao;
 
+    // 1. Validação da Função
     if (cbCampoFuncao.getSelectedIndex() == 1) {
         funcao = "ADM";
     } else if (cbCampoFuncao.getSelectedIndex() == 2) {
         funcao = "RECRUTADOR";
     } else {
-        JOptionPane.showMessageDialog(
-                this,
-                "Selecione uma função."
-        );
+        JOptionPane.showMessageDialog(this, "Selecione uma função.");
         return;
     }
+    
+    // 2. Validação do E-mail (Chaves Corrigidas Aqui)
+    if (email.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, digite um e-mail.");
+        tfCampoEmail.requestFocus();
+        return;
+    } else if (!email.matches(regex)) {
+        JOptionPane.showMessageDialog(this, "E-mail inválido! Verifique o formato.");
+        tfCampoEmail.requestFocus();
+        return;
+    }
+    // Removido o "E-mail válido!" para não interromper o fluxo com um alerta extra
 
+    // 3. Validação das Senhas
     if (!senha.equals(confirmarSenha)) {
-        JOptionPane.showMessageDialog(
-                this,
-                "As senhas não coincidem."
-        );
+        JOptionPane.showMessageDialog(this, "As senhas não coincidem.");
         return;
     }
-
+    
+    // 4. Fluxo de Cadastro
     try {
-
-        DateTimeFormatter formato =
-                DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        LocalDate dataNascimento =
-                LocalDate.parse(tfCampoDataNascimento.getText(), formato);
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataNascimento = LocalDate.parse(tfCampoDataNascimento.getText(), formato);
 
         Usuario usuario = new Usuario();
-
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setCpf(cpf);
@@ -415,43 +420,29 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         usuario.setDataNascimento(dataNascimento);
 
         CadastroDao dao = new CadastroDao();
-
         boolean cadastrou = dao.cadastrar(usuario, senha);
 
         if (cadastrou) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Usuário cadastrado com sucesso!"
-            );
-
+            JOptionPane.showMessageDialog(this, "Usuário cadastrado com sucesso!");
             this.dispose();
-
         } else {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Não foi possível cadastrar o usuário."
-            );
+            JOptionPane.showMessageDialog(this, "Não foi possível cadastrar o usuário.");
         }
         
-        } catch (SQLException e) {
-
-    JOptionPane.showMessageDialog(
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(
             this,
             "Não foi possível realizar o cadastro. Verifique os dados informados e tente novamente.",
             "Erro ao cadastrar",
             JOptionPane.ERROR_MESSAGE
-    );
-
-   } catch (java.time.format.DateTimeParseException e) {
-
-    JOptionPane.showMessageDialog(
+        );
+    } catch (java.time.format.DateTimeParseException e) {
+        JOptionPane.showMessageDialog(
             this,
             "Informe uma data de nascimento válida no formato dd/mm/aaaa.",
             "Data inválida",
             JOptionPane.WARNING_MESSAGE
-    );
+        );
     }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -604,5 +595,5 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField tfCampoDataNascimento;
     private javax.swing.JTextField tfCampoEmail;
     private javax.swing.JTextField tfCampoNome;
-    //GEN-END:variables
+//GEN-END:variables
 }
