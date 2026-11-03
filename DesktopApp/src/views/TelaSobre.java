@@ -6,7 +6,7 @@ package views;
 
 /**
  *
- * @author GabrielaCarvalhodeSo
+ * @author gabri
  */
 public class TelaSobre extends javax.swing.JDialog {
     
@@ -29,21 +29,71 @@ public class TelaSobre extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel5 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        btEntendi4 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        jLabel5.setText("<html>\n<body style=\"font-family: sans-serif; font-size: 12px; color: #333; margin: 0; padding: 10px;\">\n\n<h2 style=\"font-size: 18px; margin-top: 0; border-bottom: 1px solid #ccc; padding-bottom: 5px;\">\n        Sobre o MAINRH\n    </h2>\n\n <p>\n        O <b>MAINRH</b> é um sistema desktop desenvolvido com o objetivo de apoiar\n        o gerenciamento de cargos, processos seletivos e recrutadores em um ambiente\n        educacional. A aplicação simula atividades e rotinas da área de Recursos Humanos,\n        permitindo a compreensão e a prática de processos administrativos e organizacionais\n        por meio de uma ferramenta informatizada.\n</p>\n\n<br>\n\n    <p>\n        O projeto surgiu como parte do <b>Projeto Integrador</b> do curso Técnico em\n        Desenvolvimento de Sistemas, a partir da proposta de transformar os conhecimentos\n        adquiridos durante a formação em uma solução prática. A escolha da temática de\n        Recursos Humanos foi motivada pela importância desse setor na organização das\n        empresas, especialmente nas atividades de seleção, gestão de cargos e organização\n        de equipes. Dessa forma, o MAINRH busca proporcionar uma experiência educacional\n        que aproxime os estudantes de situações do cotidiano profissional, integrando\n        tecnologia e gestão de pessoas.\n    </p>\n\n<br>\n\n<p>\n        O desenvolvimento foi realizado pela turma <b>2025.26.81</b>, em um trabalho\n        colaborativo que envolveu pesquisa, planejamento, programação e resolução de\n        desafios técnicos. A construção do sistema permitiu aplicar conhecimentos de\n        desenvolvimento de software, banco de dados, interfaces gráficas e acessibilidade,\n        valorizando a troca de experiências e o aprendizado coletivo.\n</p>\n\n<br>\n\n<b>Equipe de Desenvolvimento</b>\n    <p>\n        Gabriela Carvalho, Caíque Lemos, Cleber Nascimento, Raphael Issa,\n        Rafael Castor, Leonardo Araujo, Israel e Eliaquim Lima.\n    </p>\n\n    <br>\n\n    <b>Docentes Orientadores</b>\n    <p>\n        André Nascimento, André Dias, Leandro Campos e Ridis Pereira.\n    </p>\n\n    <br>\n\n    <b>Tecnologias Utilizadas</b>\n    <p>\n        Java 17, Java Swing, MySQL, Apache NetBeans e Apache Ant.\n    </p>\n\n</body>\n</html>\n");
+
+        btEntendi4.setBackground(new java.awt.Color(31, 53, 80));
+        btEntendi4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btEntendi4.setForeground(new java.awt.Color(255, 255, 255));
+        btEntendi4.setText("Voltar");
+        btEntendi4.setToolTipText("Entrar no MainRH");
+        btEntendi4.addActionListener(this::btEntendi4ActionPerformed);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(btEntendi4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btEntendi4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 566, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 2, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 807, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btEntendi4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntendi4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btEntendi4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,5 +133,20 @@ public class TelaSobre extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btEntendi;
+    private javax.swing.JButton btEntendi1;
+    private javax.swing.JButton btEntendi2;
+    private javax.swing.JButton btEntendi3;
+    private javax.swing.JButton btEntendi4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }
