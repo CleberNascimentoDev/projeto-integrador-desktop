@@ -11,13 +11,34 @@ package views;
 public class TelaSobre extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaSobre.class.getName());
+    
+    private int xMouse, yMouse;
 
     /**
      * Creates new form TelaSobre
      */
     public TelaSobre(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setUndecorated(true);
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(TelaSobre.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
+        
+        this.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                xMouse = evt.getX();
+                yMouse = evt.getY();
+            }
+        });
+
+        this.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                int x = evt.getXOnScreen();
+                int y = evt.getYOnScreen();
+                setLocation(x - xMouse, y - yMouse);
+            }
+        });
     }
 
     /**
@@ -38,7 +59,7 @@ public class TelaSobre extends javax.swing.JDialog {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
-        jLabel5.setText("<html>\n<body style=\"font-family: sans-serif; font-size: 12px; color: #333; margin: 0; padding: 10px;\">\n\n<h2 style=\"font-size: 18px; margin-top: 0; border-bottom: 1px solid #ccc; padding-bottom: 5px;\">\n        Sobre o MAINRH\n    </h2>\n\n <p>\n        O <b>MAINRH</b> é um sistema desktop desenvolvido com o objetivo de apoiar\n        o gerenciamento de cargos, processos seletivos e recrutadores em um ambiente\n        educacional. A aplicação simula atividades e rotinas da área de Recursos Humanos,\n        permitindo a compreensão e a prática de processos administrativos e organizacionais\n        por meio de uma ferramenta informatizada.\n</p>\n\n<br>\n\n    <p>\n        O projeto surgiu como parte do <b>Projeto Integrador</b> do curso Técnico em\n        Desenvolvimento de Sistemas, a partir da proposta de transformar os conhecimentos\n        adquiridos durante a formação em uma solução prática. A escolha da temática de\n        Recursos Humanos foi motivada pela importância desse setor na organização das\n        empresas, especialmente nas atividades de seleção, gestão de cargos e organização\n        de equipes. Dessa forma, o MAINRH busca proporcionar uma experiência educacional\n        que aproxime os estudantes de situações do cotidiano profissional, integrando\n        tecnologia e gestão de pessoas.\n    </p>\n\n<br>\n\n<p>\n        O desenvolvimento foi realizado pela turma <b>2025.26.81</b>, em um trabalho\n        colaborativo que envolveu pesquisa, planejamento, programação e resolução de\n        desafios técnicos. A construção do sistema permitiu aplicar conhecimentos de\n        desenvolvimento de software, banco de dados, interfaces gráficas e acessibilidade,\n        valorizando a troca de experiências e o aprendizado coletivo.\n</p>\n\n<br>\n\n<b>Equipe de Desenvolvimento</b>\n    <p>\n        Gabriela Carvalho, Caíque Lemos, Cleber Nascimento, Raphael Issa,\n        Rafael Castor, Leonardo Araujo, Israel e Eliaquim Lima.\n    </p>\n\n    <br>\n\n    <b>Docentes Orientadores</b>\n    <p>\n        André Nascimento, André Dias, Leandro Campos e Ridis Pereira.\n    </p>\n\n    <br>\n\n    <b>Tecnologias Utilizadas</b>\n    <p>\n        Java 17, Java Swing, MySQL, Apache NetBeans e Apache Ant.\n    </p>\n\n</body>\n</html>\n");
+        jLabel5.setText("<html>\n<body style=\"font-family: sans-serif; font-size: 12px; color: #333; margin: 0; padding: 10px;\">\n\n<h2 style=\"font-size: 18px; margin-top: 0; border-bottom: 1px solid #ccc; padding-bottom: 5px;\">\n        Sobre o MAINRH\n    </h2>\n\n <p>\n        O <b>MAINRH</b> é um sistema desktop desenvolvido com o objetivo de apoiar\n        o gerenciamento de cargos, processos seletivos e recrutadores em um ambiente\n        educacional. A aplicação simula atividades e rotinas da área de Recursos Humanos,\n        permitindo a compreensão e a prática de processos administrativos e organizacionais\n        por meio de uma ferramenta informatizada.\n</p>\n\n<br>\n\n    <p>\n        O projeto surgiu como parte do <b>Projeto Integrador</b> do curso Técnico em\n        Desenvolvimento de Sistemas, a partir da proposta de transformar os conhecimentos\n        adquiridos durante a formação em uma solução prática. A escolha da temática de\n        Recursos Humanos foi motivada pela importância desse setor na organização das\n        empresas, especialmente nas atividades de seleção, gestão de cargos e organização\n        de equipes. Dessa forma, o MAINRH busca proporcionar uma experiência educacional\n        que aproxime os estudantes de situações do cotidiano profissional, integrando\n        tecnologia e gestão de pessoas.\n    </p>\n\n<br>\n\n<p>\n        O desenvolvimento foi realizado pela turma <b>2025.26.81</b>, em um trabalho\n        colaborativo que envolveu pesquisa, planejamento, programação e resolução de\n        desafios técnicos. A construção do sistema permitiu aplicar conhecimentos de\n        desenvolvimento de software, banco de dados, interfaces gráficas e acessibilidade,\n        valorizando a troca de experiências e o aprendizado coletivo.\n</p>\n\n<br>\n\n<b>Equipe de Desenvolvimento</b>\n    <p>\n        Gabriela Carvalho, Caíque Lemos, Cleber Nascimento, Raphael Issa,\n        Rafael Castor, Leonardo Araujo, Israel Ribeiro e Eliaquim Lima.\n    </p>\n\n    <br>\n\n    <b>Docentes Orientadores</b>\n    <p>\n        André Nascimento, André Dias, Leandro Campos e Ridis Pereira.\n    </p>\n\n    <br>\n\n    <b>Tecnologias Utilizadas</b>\n    <p>\n        Java 17, Java Swing, MySQL, Apache NetBeans e Apache Ant.\n    </p>\n\n</body>\n</html>\n");
 
         btEntendi4.setBackground(new java.awt.Color(31, 53, 80));
         btEntendi4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -55,7 +76,7 @@ public class TelaSobre extends javax.swing.JDialog {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(185, 185, 185)
+                .addGap(178, 178, 178)
                 .addComponent(btEntendi4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -64,9 +85,9 @@ public class TelaSobre extends javax.swing.JDialog {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btEntendi4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,20 +154,8 @@ public class TelaSobre extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btEntendi;
-    private javax.swing.JButton btEntendi1;
-    private javax.swing.JButton btEntendi2;
-    private javax.swing.JButton btEntendi3;
     private javax.swing.JButton btEntendi4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }
