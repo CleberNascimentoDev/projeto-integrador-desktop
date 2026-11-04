@@ -211,7 +211,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuProcessoSeletivoActionPerformed
 
     private void menuSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSobreActionPerformed
-        // TODO add your handling code here:
+        new TelaSobre(this, true).setVisible(true);
     }//GEN-LAST:event_menuSobreActionPerformed
 
     private void menuAtalhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAtalhoActionPerformed

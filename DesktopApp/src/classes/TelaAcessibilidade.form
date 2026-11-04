@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2" />
@@ -39,7 +38,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Opções de acessibilidade" />
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="28" style="1" />
+              <Font name="Segoe UI" size="24" style="1" />
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color red="11" green="30" blue="52" type="rgb" />
@@ -47,15 +46,15 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="12" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
+              <GridBagConstraints gridX="0" gridY="0" gridWidth="2" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="8" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="estado">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Baixa visão: desativada&lt;br&gt;Cores: Padrão&lt;/html&gt;" />
+            <Property name="text" type="java.lang.String" value="Baixa visão: não selecionada | Cores: Padrão" />
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0" />
+              <Font name="Segoe UI" size="14" style="0" />
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color red="40" green="40" blue="40" type="rgb" />
@@ -63,15 +62,15 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="12" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
+              <GridBagConstraints gridX="0" gridY="1" gridWidth="2" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="8" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="orientacao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Use Tab e Shift+Tab para navegar.&lt;br&gt;Use Espaço nos botões e as setas nas tabelas.&lt;/html&gt;" />
+            <Property name="text" type="java.lang.String" value="Tab: navegar • Espaço: selecionar • Esc: fechar" />
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0" />
+              <Font name="Segoe UI" size="14" style="0" />
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color red="40" green="40" blue="40" type="rgb" />
@@ -79,28 +78,47 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="12" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
+              <GridBagConstraints gridX="0" gridY="2" gridWidth="2" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="8" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="classes.BotaoPadrao" name="baixaVisao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ativar modo de baixa visão" />
+            <Property name="text" type="java.lang.String" value="Baixa visão" />
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="1" />
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="baixaVisaoActionPerformed" />
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="3" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="12" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
+              <GridBagConstraints gridX="0" gridY="3" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="8" insetsRight="6" anchor="18" weightX="1.0" weightY="0.0" />
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="classes.BotaoPadrao" name="altoContraste">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Alto contraste" />
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="1" />
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="altoContrasteActionPerformed" />
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+              <GridBagConstraints gridX="1" gridY="3" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="6" insetsBottom="8" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="orientacaoBaixaVisao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Textos e controles ampliados, alto contraste&lt;br&gt;e layout ajustado ao espaço da tela.&lt;/html&gt;" />
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;Baixa visão amplia textos e controles.&lt;br&gt;Alto contraste usa fundo escuro e texto claro.&lt;/html&gt;" />
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0" />
+              <Font name="Segoe UI" size="14" style="0" />
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color red="40" green="40" blue="40" type="rgb" />
@@ -108,7 +126,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="4" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="12" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
+              <GridBagConstraints gridX="0" gridY="4" gridWidth="2" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="8" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
             </Constraint>
           </Constraints>
         </Component>
@@ -126,7 +144,10 @@
             <Component class="classes.BotaoPadrao" name="padrao">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Padrão" />
-                <Property name="toolTipText" type="java.lang.String" value="Restaura as cores originais do sistema." />
+                <Property name="toolTipText" type="java.lang.String" value="Restaura cores, fontes e dimensões originais do sistema." />
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="16" style="1" />
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="padraoActionPerformed" />
@@ -136,6 +157,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Protanopia" />
                 <Property name="toolTipText" type="java.lang.String" value="Adapta cores para dificuldade de distinção no eixo vermelho/verde." />
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="16" style="1" />
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="protanopiaActionPerformed" />
@@ -145,6 +169,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Deuteranopia" />
                 <Property name="toolTipText" type="java.lang.String" value="Adapta cores para dificuldade de distinção entre verde, vermelho e tons próximos." />
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="16" style="1" />
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deuteranopiaActionPerformed" />
@@ -154,6 +181,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tritanopia" />
                 <Property name="toolTipText" type="java.lang.String" value="Adapta cores para dificuldade de distinção no eixo azul/amarelo." />
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="16" style="1" />
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tritanopiaActionPerformed" />
@@ -162,15 +192,15 @@
           </SubComponents>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="5" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="12" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
+              <GridBagConstraints gridX="0" gridY="5" gridWidth="2" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="8" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
             </Constraint>
           </Constraints>
         </Container>
         <Component class="javax.swing.JLabel" name="orientacaoDaltonismo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Adaptação de cores com textos e símbolos.&lt;br&gt;A marca indica o modo selecionado.&lt;br&gt;Campos com * são obrigatórios.&lt;/html&gt;" />
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;Alto contraste e daltonismo são exclusivos.&lt;br&gt;Padrão restaura todas as opções visuais.&lt;/html&gt;" />
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0" />
+              <Font name="Segoe UI" size="14" style="0" />
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color red="40" green="40" blue="40" type="rgb" />
@@ -178,20 +208,23 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="6" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="12" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
+              <GridBagConstraints gridX="0" gridY="6" gridWidth="2" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="8" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="classes.BotaoPadrao" name="fechar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fechar" />
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="16" style="1" />
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fecharActionPerformed" />
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="0" gridY="7" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
+              <GridBagConstraints gridX="0" gridY="7" gridWidth="2" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
             </Constraint>
           </Constraints>
         </Component>

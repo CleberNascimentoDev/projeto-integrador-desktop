@@ -19,6 +19,10 @@ public class BarraMenu extends JMenuBar {
         super.addImpl(acessibilidade,null,-1);
     }
     @Override protected void addImpl(Component campo,Object restricoes,int indice) {
+        if (campo instanceof JMenu) {
+            // Mesmo espaço dos dois lados em todos os menus superiores, inclusive no GUI Builder.
+            ((JMenu) campo).setBorder(BorderFactory.createEmptyBorder(6,12,6,12));
+        }
         int antes = espaco == null ? -1 : getComponentZOrder(espaco);
         super.addImpl(campo,restricoes,campo instanceof JMenu && antes >= 0 ? antes : indice);
     }
