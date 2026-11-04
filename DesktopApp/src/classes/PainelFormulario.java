@@ -10,6 +10,14 @@ public final class PainelFormulario extends JPanel {
     private final JLabel titulo, descricao;
     private final JPanel conteudo, acoes;
 
+    /** Usado pelo GUI Builder, sem remover nem recriar os componentes do .form. */
+    public PainelFormulario() {
+        voltar = null; ajuda = null; titulo = null; descricao = null; conteudo = null; acoes = null;
+        PainelListagem.configurarSubtela(this);
+        setLayout(new GridBagLayout());
+        setPreferredSize(new Dimension(1040, 700));
+    }
+
     public PainelFormulario(JButton voltar, JLabel titulo, JButton ajuda, String descricao,
             JPanel campos, JButton... botoes) {
         this.voltar = voltar;

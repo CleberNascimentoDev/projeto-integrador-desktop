@@ -75,6 +75,7 @@ public final class BaixaVisao {
         if (estado == null || estado.ativo == ativo) return;
         organizarComponentes((Container) estado.tela);
         if (ativo) {
+            Acessibilidade.prepararAmpliacao(raiz);
             estado.conteudo = estado.tela.getContentPane();
             estado.tamanho = ((Component) estado.tela).getSize();
             estado.preferencia = estado.conteudo.isPreferredSizeSet()
@@ -112,6 +113,7 @@ public final class BaixaVisao {
                 ((Component) estado.tela).setSize(estado.tamanho);
         }
         estado.ativo = ativo;
+        if (ativo && Acessibilidade.isPaletaAdaptada()) Daltonismo.atualizarTela(raiz);
         raiz.revalidate();
         organizarComponentes((Container) estado.tela);
         raiz.repaint();
@@ -227,7 +229,7 @@ public final class BaixaVisao {
             if (estado.fonte != null) campo.setFont(estado.fonte.deriveFont(
                     Math.max(18f, (float) (estado.fonte.getSize2D() * ampliacao))));
             aplicarCores(campo);
-            if (campo instanceof JMenuItem) configurarMenu((JMenuItem) campo);
+            if (campo instanceof JMenuItem || campo instanceof JMenuBar) configurarMenu(campo);
             if (campo instanceof AbstractButton) {
                 ((AbstractButton) campo).setFocusPainted(true);
                 ((AbstractButton) campo).setBorderPainted(true);
@@ -264,9 +266,11 @@ public final class BaixaVisao {
             campo.setPreferredSize(estado.preferencia);
             if (campo instanceof JLabel && Boolean.TRUE.equals(campo.getClientProperty("baixaVisao.logo")))
                 ((JLabel) campo).setIcon(estado.icone);
-            if (campo instanceof JMenuItem) {
+            if (campo instanceof JMenuItem || campo instanceof JMenuBar) {
                 campo.putClientProperty("Nimbus.Overrides", estado.temaMenu);
                 campo.putClientProperty("Nimbus.Overrides.InheritDefaults", estado.herdarTemaMenu);
+                // A troca de estilo do Nimbus reinstala uma borda UIResource.
+                campo.setBorder(estado.borda);
             }
             if (campo instanceof AbstractButton) {
                 ((AbstractButton) campo).setFocusPainted(estado.focoPintado);
@@ -396,17 +400,19 @@ public final class BaixaVisao {
                 || campo instanceof JCheckBox || campo instanceof JRadioButton)) {
             campo.setForeground(texto);
         }
-        if (Acessibilidade.isDaltonismoAtivo()) {
+        if (Acessibilidade.isPaletaAdaptada()) {
             Color corTexto = Daltonismo.adaptarTexto(campo, campo.getForeground(), campo.getBackground());
             campo.setBackground(Daltonismo.adaptarFundo(campo, campo.getBackground()));
             campo.setForeground(corTexto);
         }
     }
 
-    private static void configurarMenu(JMenuItem menu) {
+    private static void configurarMenu(JComponent menu) {
         UIDefaults tema = new UIDefaults();
+        tema.putAll(UIManager.getLookAndFeelDefaults());
         Object original = menu.getClientProperty("Nimbus.Overrides");
         if (original instanceof UIDefaults) tema.putAll((UIDefaults) original);
+        Daltonismo.configurarFundoBarra(menu, tema);
         for (String prefixo : new String[]{"Menu", "MenuBar:Menu", "MenuItem"}) {
             tema.put(prefixo + "[Enabled].textForeground", new javax.swing.plaf.ColorUIResource(texto));
             tema.put(prefixo + "[Disabled].textForeground", new javax.swing.plaf.ColorUIResource(64, 64, 64));
@@ -419,7 +425,7 @@ public final class BaixaVisao {
                         });
             }
         }
-        menu.putClientProperty("Nimbus.Overrides.InheritDefaults", true);
+        menu.putClientProperty("Nimbus.Overrides.InheritDefaults", false);
         menu.putClientProperty("Nimbus.Overrides", tema);
     }
 
@@ -487,7 +493,7 @@ public final class BaixaVisao {
             // Placeholders e efeitos de mouse não devem reduzir o contraste no modo ampliado.
             preferenciaCores = e -> {
                 EstadoComponente atual = (EstadoComponente) campo.getClientProperty(chaveEstado);
-                if (atual == this && ativo && !ajustandoCores
+                if (atual == this && ativo && !ajustandoCores && !Acessibilidade.isRestaurando()
                         && ("foreground".equals(e.getPropertyName()) || "background".equals(e.getPropertyName()))) {
                     ajustandoCores = true;
                     aplicarCores(campo);
@@ -545,8 +551,8 @@ public final class BaixaVisao {
             coluna.setHeaderRenderer((t, valor, selecionado, foco, linha, indice) -> {
                 Component cabecalho = original.getTableCellRendererComponent(t, valor, selecionado, foco, linha, indice);
                 cabecalho.setFont(fonte.deriveFont(Math.max(18f, (float) (fonte.getSize2D() * ampliacao))));
-                cabecalho.setBackground(Daltonismo.corSelecao(destaque));
-                cabecalho.setForeground(fundo);
+                cabecalho.setBackground(Daltonismo.cor(destaque, PaletaAcessibilidade.Papel.PRIMARIO));
+                cabecalho.setForeground(Acessibilidade.isPaletaAdaptada() ? Acessibilidade.getPaleta().getTexto(PaletaAcessibilidade.Papel.PRIMARIO) : fundo);
                 return cabecalho;
             });
         }

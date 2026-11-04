@@ -157,7 +157,9 @@ public final class ModosDaltonismoTeste {
             JDialog dialogo = (JDialog) criarAjuda.invoke(botao);
             atualizar(dialogo.getRootPane()); organizar(dialogo);
             salvar(dialogo.getContentPane(), new File(imagens, modo.name() + "-ajuda.png"));
-            exigir(((JComponent) opcoes.getContentPane()).getBackground().equals(Acessibilidade.getPaleta().getSuperficie()),
+            // O formulário contém o painel visual dentro do content pane padrão do Swing.
+            JComponent superficieOpcoes = (JComponent)opcoes.getContentPane().getComponent(0);
+            exigir(superficieOpcoes.getBackground().equals(Acessibilidade.getPaleta().getSuperficie()),
                     "Nova janela não recebeu a paleta");
             dialogo.dispose(); opcoes.dispose();
         }

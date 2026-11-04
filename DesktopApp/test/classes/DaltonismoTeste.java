@@ -85,7 +85,15 @@ public class DaltonismoTeste {
                     exigir(contraste(campo.getForeground(), Color.WHITE) >= 4.5, "Asterisco sem contraste");
                 }
             }
-            exigir(((Component) tela).getSize().equals(tamanho), "Modo daltonismo alterou dimensões");
+            if (tela instanceof TelaAcessibilidade) {
+                // As opções recalculam o espaço para o resumo e a marca de seleção.
+                // O teste com janela aberta confere também cortes e a área útil de 1366x768.
+                Dimension atual = ((Component) tela).getSize();
+                exigir(atual.width <= 1366 && atual.height <= 728, "Opções ultrapassam a área útil da tela");
+            } else {
+                exigir(((Component) tela).getSize().equals(tamanho),
+                        "Modo daltonismo alterou dimensões de " + tela.getClass().getSimpleName());
+            }
             if (args.length > 0) {
                 File diretorio = new File(args[0]);
                 diretorio.mkdirs();

@@ -8,9 +8,15 @@ public final class PaletaAcessibilidade {
     private final Color primaria, sucesso, aviso, erro, informacao, fundo, superficie, subtela;
     private final Color texto, textoSecundario, borda, desabilitado, textoDesabilitado;
     private final Color exclusao, textoExclusao, textoAviso, badge, textoBadge;
+    private final boolean altoContraste;
 
     private PaletaAcessibilidade(int primaria, int sucesso, int aviso, int erro, int informacao,
             int fundo, int badge, int textoBadge) {
+        this(primaria, sucesso, aviso, erro, informacao, fundo, badge, textoBadge, false);
+    }
+    private PaletaAcessibilidade(int primaria, int sucesso, int aviso, int erro, int informacao,
+            int fundo, int badge, int textoBadge, boolean altoContraste) {
+        this.altoContraste = altoContraste;
         this.primaria = new Color(primaria);
         this.sucesso = new Color(sucesso);
         this.aviso = new Color(aviso);
@@ -19,16 +25,16 @@ public final class PaletaAcessibilidade {
         this.fundo = new Color(fundo);
         this.badge = new Color(badge);
         this.textoBadge = new Color(textoBadge);
-        superficie = Color.WHITE;
-        subtela = new Color(245, 245, 245);
-        texto = new Color(29, 45, 68);
-        textoSecundario = new Color(64, 64, 64);
-        borda = new Color(104, 116, 130);
-        desabilitado = new Color(230, 233, 238);
-        textoDesabilitado = new Color(64, 64, 64);
-        exclusao = primaria == 0x6e2455 ? new Color(237, 199, 217) : new Color(255, 210, 128);
-        textoExclusao = Color.BLACK;
-        textoAviso = new Color(83, 49, 0);
+        superficie = altoContraste ? new Color(18, 18, 18) : Color.WHITE;
+        subtela = altoContraste ? new Color(27, 27, 27) : new Color(245, 245, 245);
+        texto = altoContraste ? Color.WHITE : new Color(29, 45, 68);
+        textoSecundario = altoContraste ? new Color(218, 218, 218) : new Color(64, 64, 64);
+        borda = altoContraste ? Color.WHITE : new Color(104, 116, 130);
+        desabilitado = altoContraste ? new Color(32, 32, 32) : new Color(230, 233, 238);
+        textoDesabilitado = altoContraste ? new Color(191, 191, 191) : new Color(64, 64, 64);
+        exclusao = altoContraste ? Color.BLACK : primaria == 0x6e2455 ? new Color(237, 199, 217) : new Color(255, 210, 128);
+        textoExclusao = altoContraste ? Color.WHITE : Color.BLACK;
+        textoAviso = altoContraste ? Color.BLACK : new Color(83, 49, 0);
     }
 
     public static PaletaAcessibilidade paraModo(ModoDaltonismo modo) {
@@ -49,6 +55,9 @@ public final class PaletaAcessibilidade {
     // Ameixa/neutros: avisos e estados não dependem da oposição azul/amarelo.
     private static final PaletaAcessibilidade TRITANOPIA = new PaletaAcessibilidade(
             0x6e2455, 0x245a49, 0xe5ddd9, 0x7a3038, 0x6e2455, 0xf7f3f5, 0xeee3ea, 0x582044);
+    private static final PaletaAcessibilidade ALTO_CONTRASTE = new PaletaAcessibilidade(
+            0x000000, 0xffffff, 0xffff00, 0xffffff, 0xffffff, 0x000000, 0x000000, 0xffffff, true);
+    public static PaletaAcessibilidade altoContraste() { return ALTO_CONTRASTE; }
 
     public Color getPrimaria() { return primaria; }
     public Color getSecundaria() { return textoSecundario; }
@@ -62,8 +71,8 @@ public final class PaletaAcessibilidade {
     public Color getTexto() { return texto; }
     public Color getTextoSecundario() { return textoSecundario; }
     public Color getBorda() { return borda; }
-    public Color getSelecao() { return primaria; }
-    public Color getTextoSelecao() { return Color.WHITE; }
+    public Color getSelecao() { return altoContraste ? Color.YELLOW : primaria; }
+    public Color getTextoSelecao() { return altoContraste ? Color.BLACK : Color.WHITE; }
     public Color getHover() { return primaria.darker(); }
     public Color getDesabilitado() { return desabilitado; }
     public Color getTextoDesabilitado() { return textoDesabilitado; }
@@ -72,8 +81,9 @@ public final class PaletaAcessibilidade {
     public Color getTextoAviso() { return textoAviso; }
     public Color getBadge() { return badge; }
     public Color getTextoBadge() { return textoBadge; }
-    public Color getLogoBase() { return new Color(7, 31, 64); }
+    public Color getLogoBase() { return altoContraste ? Color.WHITE : new Color(7, 31, 64); }
     public Color getLogoDestaque() {
+        if (altoContraste) return Color.YELLOW;
         if (this == PROTANOPIA) return new Color(152, 96, 0);
         if (this == DEUTERANOPIA) return new Color(154, 98, 0);
         if (this == TRITANOPIA) return new Color(150, 88, 112);
@@ -90,6 +100,8 @@ public final class PaletaAcessibilidade {
         };
     }
     public Color getTexto(Papel papel) {
+        if (altoContraste && (papel == Papel.SUCESSO || papel == Papel.ERRO
+                || papel == Papel.INFORMACAO || papel == Papel.OBRIGATORIO)) return Color.BLACK;
         return switch (papel) {
             case EXCLUSAO -> textoExclusao;
             case AVISO -> textoAviso;

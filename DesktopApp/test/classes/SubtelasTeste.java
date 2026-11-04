@@ -108,9 +108,16 @@ public final class SubtelasTeste {
     }
 
     private static void verificarFundo(JComponent painel) {
+        // O .form agora contém o painel visual dentro do content pane padrão do Swing.
+        if (painel.getComponentCount() == 1 && painel.getComponent(0) instanceof JComponent
+                && Boolean.TRUE.equals(((JComponent)painel.getComponent(0)).getClientProperty("acessibilidade.subtela")))
+            painel = (JComponent)painel.getComponent(0);
         exigir(PainelListagem.fundoSubtela.equals(painel.getBackground()), "Subtela perdeu o fundo neutro");
-        exigir(painel.getBorder() instanceof javax.swing.border.LineBorder
-                && ((javax.swing.border.LineBorder) painel.getBorder()).getThickness() >= 2,
+        javax.swing.border.Border borda = painel.getBorder();
+        if (borda instanceof javax.swing.border.CompoundBorder)
+            borda = ((javax.swing.border.CompoundBorder)borda).getOutsideBorder();
+        exigir(borda instanceof javax.swing.border.LineBorder
+                && ((javax.swing.border.LineBorder)borda).getThickness() >= 2,
                 "Subtela sem borda de separação");
     }
 

@@ -26,6 +26,20 @@ public class PainelListagem extends JPanel {
     private final JPanel processos;
     private JComponent informacoes;
 
+    /** Construtor JavaBean: a hierarquia e o layout ficam no formulário do NetBeans. */
+    public PainelListagem() {
+        btVoltar = null; botaoAjuda = null; titulo = null; subtitulo = null;
+        ferramentas = null; processos = null;
+        setBackground(fundoTela);
+        setLayout(new GridBagLayout());
+        setPreferredSize(new Dimension(1280, 740));
+    }
+    public boolean isSubtela() { return Boolean.TRUE.equals(getClientProperty("acessibilidade.subtela")); }
+    public void setSubtela(boolean valor) {
+        putClientProperty("acessibilidade.subtela",valor);
+        setBackground(valor ? fundoSubtela : fundoTela);
+    }
+
     /** Diferencia as janelas de apoio sem alterar o fundo das listagens principais. */
     public static void configurarSubtela(JComponent painel) {
         painel.putClientProperty("acessibilidade.subtela", true);
@@ -172,9 +186,11 @@ public class PainelListagem extends JPanel {
 
     public static void configurarTabela(JTable tabela, JScrollPane rolagem, boolean recrutadores) {
         boolean ampliado = Acessibilidade.isBaixaVisaoAtiva() && tabela.getClientProperty("baixaVisao.estado") != null;
-        rolagem.putClientProperty("baixaVisao.alinharDireita", null);
-        rolagem.setBorder(new BordaArredondada(linha, 6, 0, 0));
-        rolagem.getViewport().setBackground(Color.WHITE);
+        if (rolagem != null) {
+            rolagem.putClientProperty("baixaVisao.alinharDireita", null);
+            rolagem.setBorder(new BordaArredondada(linha, 6, 0, 0));
+            rolagem.getViewport().setBackground(Color.WHITE);
+        }
         tabela.setBorder(null);
         tabela.setBackground(Color.WHITE);
         tabela.setForeground(Color.BLACK);
@@ -193,13 +209,14 @@ public class PainelListagem extends JPanel {
                     boolean selecionado, boolean foco, int linha, int coluna) {
                 super.getTableCellRendererComponent(tb, valor, selecionado, foco, linha, coluna);
                 setFont(tb.getTableHeader().getFont());
-                setBackground(Daltonismo.corSelecao(Acessibilidade.isBaixaVisaoAtiva() ? new Color(17, 48, 82) : azulTabela));
-                setForeground(Color.WHITE);
+                setBackground(Daltonismo.cor(Acessibilidade.isBaixaVisaoAtiva() ? new Color(17, 48, 82) : azulTabela, PaletaAcessibilidade.Papel.PRIMARIO));
+                setForeground(Acessibilidade.isPaletaAdaptada() ? Acessibilidade.getPaleta().getTexto(PaletaAcessibilidade.Papel.PRIMARIO) : Color.WHITE);
                 setHorizontalAlignment(SwingConstants.LEFT);
                 setBorder(BorderFactory.createEmptyBorder(0, 28, 0, 28));
                 return this;
             }
         };
+        tabela.getTableHeader().setDefaultRenderer(cabecalho);
         for (int i = 0; i < tabela.getColumnCount(); i++) {
             tabela.getColumnModel().getColumn(i).setHeaderRenderer(cabecalho);
             tabela.getColumnModel().getColumn(i).setPreferredWidth(600);
@@ -299,21 +316,21 @@ public class PainelListagem extends JPanel {
             super.paint(g, campo);
         }
         @Override protected void paintText(Graphics g, AbstractButton botao, Rectangle area, String texto) {
-            if (Acessibilidade.isDaltonismoAtivo() && !botao.isEnabled()) {
+            if (Acessibilidade.isPaletaAdaptada() && !botao.isEnabled()) {
                 g.setColor(Acessibilidade.getPaleta().getTextoDesabilitado());
                 g.drawString(texto, area.x, area.y + g.getFontMetrics().getAscent());
             } else super.paintText(g, botao, area, texto);
         }
         @Override protected void paintFocus(Graphics g, AbstractButton botao, Rectangle area, Rectangle texto, Rectangle icone) {
             Graphics2D grafico = preparar(g);
-            grafico.setColor(botao.getForeground());
+            grafico.setColor(Acessibilidade.isAltoContrasteAtivo() ? Acessibilidade.getPaleta().getSelecao() : botao.getForeground());
             grafico.setStroke(new BasicStroke(2));
             grafico.drawRoundRect(4, 4, botao.getWidth() - 9, botao.getHeight() - 9, 8, 8);
             grafico.dispose();
         }
     }
 
-    private static final class BordaArredondada extends AbstractBorder {
+    static final class BordaArredondada extends AbstractBorder {
         private final Color cor;
         private final int raio, vertical, horizontal;
         BordaArredondada(Color cor, int raio, int vertical, int horizontal) {
@@ -335,7 +352,7 @@ public class PainelListagem extends JPanel {
         }
     }
 
-    private static final class CampoBusca extends BasicTextFieldUI {
+    static final class CampoBusca extends BasicTextFieldUI {
         private final String placeholder;
         CampoBusca(String placeholder) { this.placeholder = placeholder; }
         @Override protected void paintSafely(Graphics g) {
@@ -355,7 +372,7 @@ public class PainelListagem extends JPanel {
         }
     }
 
-    private static final class Lupa implements Icon {
+    static final class Lupa implements Icon {
         @Override public int getIconWidth() { return 24; }
         @Override public int getIconHeight() { return 24; }
         @Override public void paintIcon(Component campo, Graphics g, int x, int y) {
@@ -381,7 +398,7 @@ public class PainelListagem extends JPanel {
             setBorder(BorderFactory.createEmptyBorder(0, 28, 0, 28));
             badge = recrutadores && coluna == 1 && "Não atribuído".equals(valor);
             if (recrutadores && !badge && valor instanceof String) setText(apresentarNome((String) valor, coluna == 0));
-            setIcon(Acessibilidade.isDaltonismoAtivo() && selecionado && coluna == 0
+            setIcon(Acessibilidade.isPaletaAdaptada() && selecionado && coluna == 0
                     ? new IconeSelecao(Math.max(16, getFont().getSize())) : null);
             setIconTextGap(8);
             return this;
@@ -396,10 +413,10 @@ public class PainelListagem extends JPanel {
             int altura = fonte.getHeight() + 12;
             int largura = Math.min(getWidth() - 56, fonte.stringWidth(getText()) + 28);
             int y = (getHeight() - altura) / 2;
-            grafico.setColor(Acessibilidade.isDaltonismoAtivo()
+            grafico.setColor(Acessibilidade.isPaletaAdaptada()
                     ? selecionada ? Acessibilidade.getPaleta().getTextoSelecao() : Acessibilidade.getPaleta().getBadge() : fundoTela);
             grafico.fillRoundRect(28, y, largura, altura, altura, altura);
-            grafico.setColor(Acessibilidade.isDaltonismoAtivo() ? Acessibilidade.getPaleta().getTextoBadge() : azulTabela);
+            grafico.setColor(Acessibilidade.isPaletaAdaptada() ? Acessibilidade.getPaleta().getTextoBadge() : azulTabela);
             grafico.drawString(getText(), 42, y + 6 + fonte.getAscent());
             grafico.dispose();
         }
