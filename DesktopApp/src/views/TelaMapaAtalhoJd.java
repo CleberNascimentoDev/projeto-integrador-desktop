@@ -20,6 +20,7 @@ public class TelaMapaAtalhoJd extends javax.swing.JDialog {
     public TelaMapaAtalhoJd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        classes.LeituraAcessivel.configurar(this, jPanel1, jLabel1, btEntendi, 560, 760);
         setResizable(false);
     }
 
@@ -33,7 +34,9 @@ public class TelaMapaAtalhoJd extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        spTexto = new javax.swing.JScrollPane();
+        painelRodape = new javax.swing.JPanel();
+        jLabel1 = new classes.RotuloHtml();
         btEntendi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -46,52 +49,22 @@ public class TelaMapaAtalhoJd extends javax.swing.JDialog {
         btEntendi.setBackground(new java.awt.Color(31, 53, 80));
         btEntendi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btEntendi.setForeground(new java.awt.Color(255, 255, 255));
+        btEntendi.setPreferredSize(new java.awt.Dimension(176, 45));
         btEntendi.setText("Entendi");
         btEntendi.setToolTipText("Entrar no MainRH");
         btEntendi.addActionListener(this::btEntendiActionPerformed);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(btEntendi, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btEntendi, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 705, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
+        jPanel1.setLayout(new java.awt.BorderLayout(0, 16));
+        spTexto.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        spTexto.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        spTexto.setViewportView(jLabel1);
+        jPanel1.add(spTexto, java.awt.BorderLayout.CENTER);
+        painelRodape.setOpaque(false);
+        painelRodape.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+        painelRodape.add(btEntendi);
+        jPanel1.add(painelRodape, java.awt.BorderLayout.SOUTH);
+        getContentPane().setLayout(new java.awt.BorderLayout());
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -141,5 +114,7 @@ public class TelaMapaAtalhoJd extends javax.swing.JDialog {
     private javax.swing.JButton btEntendi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane spTexto;
+    private javax.swing.JPanel painelRodape;
     // End of variables declaration//GEN-END:variables
 }

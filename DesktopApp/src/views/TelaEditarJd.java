@@ -138,9 +138,11 @@ public class TelaEditarJd extends javax.swing.JDialog {
         painelCabecalho = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         botaoAjuda = new classes.BotaoAjuda();
-        lbDescricao = new javax.swing.JLabel();
+        lbDescricao = new classes.RotuloHtml();
+        lbDescricao.setFocusable(false);
         painelCampos = new classes.PainelArredondado();
         gradeCampos = new classes.PainelCampos();
+        spCampos = new classes.RolagemFormulario();
         painelCampo1 = new javax.swing.JPanel();
         painelRotulo1 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
@@ -196,7 +198,7 @@ public class TelaEditarJd extends javax.swing.JDialog {
         botaoAjuda.setPreferredSize(new java.awt.Dimension(42, 42));
         painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
         painelFormulario.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
-        lbDescricao.setText("Atualize os dados do cargo. Campos com * são obrigatórios.");
+        lbDescricao.setText("<html>Atualize os dados do cargo. Campos com * são obrigatórios.</html>");
         lbDescricao.setFont(new java.awt.Font("Segoe UI",0,18));
         lbDescricao.setForeground(new java.awt.Color(64,64,64));
         painelFormulario.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,24,0),0,0));
@@ -334,7 +336,8 @@ public class TelaEditarJd extends javax.swing.JDialog {
         jScrollPane8.setViewportView(taEditarAtividade);
         painelCampo6.add(jScrollPane8,java.awt.BorderLayout.CENTER);
         gradeCampos.add(painelCampo6,new java.awt.GridBagConstraints(1,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,0,0),0,0));
-        painelCampos.add(gradeCampos,java.awt.BorderLayout.NORTH);
+        spCampos.setViewportView(gradeCampos);
+        painelCampos.add(spCampos,java.awt.BorderLayout.CENTER);
         painelFormulario.add(painelCampos,new java.awt.GridBagConstraints(0,3,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
         painelAcoes.setLayout(new java.awt.FlowLayout(2,16,0));
         btEditarCadastrarCargo.setText("Editar Cargo");
@@ -483,5 +486,6 @@ public class TelaEditarJd extends javax.swing.JDialog {
     private javax.swing.JTextField tfEditarNivel;
     private javax.swing.JTextField tfEditarNomeCargo;
     private javax.swing.JTextField tfEditarSetor;
+    private classes.RolagemFormulario spCampos;
     //GEN-END:variables
 }

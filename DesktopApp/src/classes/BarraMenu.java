@@ -32,4 +32,13 @@ public class BarraMenu extends JMenuBar {
     }
     public String getTextoAcessibilidade() { return acessibilidade.getText(); }
     public void setTextoAcessibilidade(String texto) { acessibilidade.setText(texto); }
+    @Override public java.awt.Dimension getPreferredSize() {
+        java.awt.Dimension tamanho = super.getPreferredSize();
+        int altura = 0;
+        for (Component campo : getComponents()) if (campo.isVisible())
+            altura = Math.max(altura, campo.getPreferredSize().height);
+        java.awt.Insets margens = getInsets();
+        return new java.awt.Dimension(tamanho.width,
+                Math.max(tamanho.height, altura + margens.top + margens.bottom));
+    }
 }

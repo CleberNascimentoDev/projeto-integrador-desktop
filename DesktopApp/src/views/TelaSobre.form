@@ -1,111 +1,106 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="defaultCloseOperation" type="int" value="2" />
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1" />
+    <SyntheticProperty name="generateCenter" type="boolean" value="false" />
   </SyntheticProperties>
   <AuxValues>
-    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
-    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
-    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
-    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true" />
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1" />
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3" />
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2" />
   </AuxValues>
-
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="566" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="807" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-      </Group>
-    </DimensionLayout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel5">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="ff" green="ff" red="ff" type="rgb" />
         </Property>
       </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel5" min="-2" pref="564" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                  <Component id="btEntendi4" min="-2" pref="176" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" pref="728" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="btEntendi4" min="-2" pref="45" max="-2" attributes="0"/>
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
+        <Property name="verticalGap" type="int" value="16" />
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Container class="javax.swing.JScrollPane" name="spTexto">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="17" style="0"/>
+            <Property name="horizontalScrollBarPolicy" type="int" value="31" />
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                <EmptyBorder />
+              </Border>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;body style=&quot;font-family: sans-serif; font-size: 12px; color: #333; margin: 0; padding: 10px;&quot;&gt;&#xa;&#xa;&lt;h2 style=&quot;font-size: 18px; margin-top: 0; border-bottom: 1px solid #ccc; padding-bottom: 5px;&quot;&gt;&#xa;        Sobre o MAINRH&#xa;    &lt;/h2&gt;&#xa;&#xa; &lt;p&gt;&#xa;        O &lt;b&gt;MAINRH&lt;/b&gt; &#xe9; um sistema desktop desenvolvido com o objetivo de apoiar&#xa;        o gerenciamento de cargos, processos seletivos e recrutadores em um ambiente&#xa;        educacional. A aplica&#xe7;&#xe3;o simula atividades e rotinas da &#xe1;rea de Recursos Humanos,&#xa;        permitindo a compreens&#xe3;o e a pr&#xe1;tica de processos administrativos e organizacionais&#xa;        por meio de uma ferramenta informatizada.&#xa;&lt;/p&gt;&#xa;&#xa;&lt;br&gt;&#xa;&#xa;    &lt;p&gt;&#xa;        O projeto surgiu como parte do &lt;b&gt;Projeto Integrador&lt;/b&gt; do curso T&#xe9;cnico em&#xa;        Desenvolvimento de Sistemas, a partir da proposta de transformar os conhecimentos&#xa;        adquiridos durante a forma&#xe7;&#xe3;o em uma solu&#xe7;&#xe3;o pr&#xe1;tica. A escolha da tem&#xe1;tica de&#xa;        Recursos Humanos foi motivada pela import&#xe2;ncia desse setor na organiza&#xe7;&#xe3;o das&#xa;        empresas, especialmente nas atividades de sele&#xe7;&#xe3;o, gest&#xe3;o de cargos e organiza&#xe7;&#xe3;o&#xa;        de equipes. Dessa forma, o MAINRH busca proporcionar uma experi&#xea;ncia educacional&#xa;        que aproxime os estudantes de situa&#xe7;&#xf5;es do cotidiano profissional, integrando&#xa;        tecnologia e gest&#xe3;o de pessoas.&#xa;    &lt;/p&gt;&#xa;&#xa;&lt;br&gt;&#xa;&#xa;&lt;p&gt;&#xa;        O desenvolvimento foi realizado pela turma &lt;b&gt;2025.26.81&lt;/b&gt;, em um trabalho&#xa;        colaborativo que envolveu pesquisa, planejamento, programa&#xe7;&#xe3;o e resolu&#xe7;&#xe3;o de&#xa;        desafios t&#xe9;cnicos. A constru&#xe7;&#xe3;o do sistema permitiu aplicar conhecimentos de&#xa;        desenvolvimento de software, banco de dados, interfaces gr&#xe1;ficas e acessibilidade,&#xa;        valorizando a troca de experi&#xea;ncias e o aprendizado coletivo.&#xa;&lt;/p&gt;&#xa;&#xa;&lt;br&gt;&#xa;&#xa;&lt;b&gt;Equipe de Desenvolvimento&lt;/b&gt;&#xa;    &lt;p&gt;&#xa;        Gabriela Carvalho, Ca&#xed;que Lemos, Cleber Nascimento, Raphael Issa,&#xa;        Rafael Castor, Leonardo Araujo, Israel Ribeiro e Eliaquim Lima.&#xa;    &lt;/p&gt;&#xa;&#xa;    &lt;br&gt;&#xa;&#xa;    &lt;b&gt;Docentes Orientadores&lt;/b&gt;&#xa;    &lt;p&gt;&#xa;        Andr&#xe9; Nascimento, Andr&#xe9; Dias, Leandro Campos e Ridis Pereira.&#xa;    &lt;/p&gt;&#xa;&#xa;    &lt;br&gt;&#xa;&#xa;    &lt;b&gt;Tecnologias Utilizadas&lt;/b&gt;&#xa;    &lt;p&gt;&#xa;        Java 17, Java Swing, MySQL, Apache NetBeans e Apache Ant.&#xa;    &lt;/p&gt;&#xa;&#xa;&lt;/body&gt;&#xa;&lt;/html&gt;&#xa;"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btEntendi4">
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout" />
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="Center" />
+            </Constraint>
+          </Constraints>
+          <SubComponents>
+            <Component class="classes.RotuloHtml" name="jLabel5">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="17" style="0" />
+                </Property>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xA;&lt;body style=&quot;font-family: sans-serif; font-size: 12px; color: #333; margin: 0; padding: 10px;&quot;&gt;&#xA;&#xA;&lt;h2 style=&quot;font-size: 18px; margin-top: 0; border-bottom: 1px solid #ccc; padding-bottom: 5px;&quot;&gt;&#xA;        Sobre o MAINRH&#xA;    &lt;/h2&gt;&#xA;&#xA; &lt;p&gt;&#xA;        O &lt;b&gt;MAINRH&lt;/b&gt; é um sistema desktop desenvolvido com o objetivo de apoiar&#xA;        o gerenciamento de cargos, processos seletivos e recrutadores em um ambiente&#xA;        educacional. A aplicação simula atividades e rotinas da área de Recursos Humanos,&#xA;        permitindo a compreensão e a prática de processos administrativos e organizacionais&#xA;        por meio de uma ferramenta informatizada.&#xA;&lt;/p&gt;&#xA;&#xA;&lt;br&gt;&#xA;&#xA;    &lt;p&gt;&#xA;        O projeto surgiu como parte do &lt;b&gt;Projeto Integrador&lt;/b&gt; do curso Técnico em&#xA;        Desenvolvimento de Sistemas, a partir da proposta de transformar os conhecimentos&#xA;        adquiridos durante a formação em uma solução prática. A escolha da temática de&#xA;        Recursos Humanos foi motivada pela importância desse setor na organização das&#xA;        empresas, especialmente nas atividades de seleção, gestão de cargos e organização&#xA;        de equipes. Dessa forma, o MAINRH busca proporcionar uma experiência educacional&#xA;        que aproxime os estudantes de situações do cotidiano profissional, integrando&#xA;        tecnologia e gestão de pessoas.&#xA;    &lt;/p&gt;&#xA;&#xA;&lt;br&gt;&#xA;&#xA;&lt;p&gt;&#xA;        O desenvolvimento foi realizado pela turma &lt;b&gt;2025.26.81&lt;/b&gt;, em um trabalho&#xA;        colaborativo que envolveu pesquisa, planejamento, programação e resolução de&#xA;        desafios técnicos. A construção do sistema permitiu aplicar conhecimentos de&#xA;        desenvolvimento de software, banco de dados, interfaces gráficas e acessibilidade,&#xA;        valorizando a troca de experiências e o aprendizado coletivo.&#xA;&lt;/p&gt;&#xA;&#xA;&lt;br&gt;&#xA;&#xA;&lt;b&gt;Equipe de Desenvolvimento&lt;/b&gt;&#xA;    &lt;p&gt;&#xA;        Gabriela Carvalho, Caíque Lemos, Cleber Nascimento, Raphael Issa,&#xA;        Rafael Castor, Leonardo Araujo, Israel Ribeiro e Eliaquim Lima.&#xA;    &lt;/p&gt;&#xA;&#xA;    &lt;br&gt;&#xA;&#xA;    &lt;b&gt;Docentes Orientadores&lt;/b&gt;&#xA;    &lt;p&gt;&#xA;        André Nascimento, André Dias, Leandro Campos e Ridis Pereira.&#xA;    &lt;/p&gt;&#xA;&#xA;    &lt;br&gt;&#xA;&#xA;    &lt;b&gt;Tecnologias Utilizadas&lt;/b&gt;&#xA;    &lt;p&gt;&#xA;        Java 17, Java Swing, MySQL, Apache NetBeans e Apache Ant.&#xA;    &lt;/p&gt;&#xA;&#xA;&lt;/body&gt;&#xA;&lt;/html&gt;&#xA;" />
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="painelRodape">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="50" green="35" red="1f" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Voltar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Entrar no MainRH"/>
+            <Property name="opaque" type="boolean" value="false" />
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEntendi4ActionPerformed"/>
-          </Events>
-        </Component>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+            <Property name="alignment" type="int" value="1" />
+            <Property name="horizontalGap" type="int" value="0" />
+            <Property name="verticalGap" type="int" value="0" />
+          </Layout>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="South" />
+            </Constraint>
+          </Constraints>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btEntendi4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="50" green="35" red="1f" type="rgb" />
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1" />
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb" />
+                </Property>
+                <Property name="text" type="java.lang.String" value="Voltar" />
+                <Property name="toolTipText" type="java.lang.String" value="Entrar no MainRH" />
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[176, 45]" />
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btEntendi4ActionPerformed" />
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Center" />
+        </Constraint>
+      </Constraints>
     </Container>
   </SubComponents>
 </Form>

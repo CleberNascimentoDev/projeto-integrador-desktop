@@ -20,6 +20,10 @@ public class BotaoAcessibilidade extends JButton {
         getAccessibleContext().setAccessibleDescription("Abrir opções de acessibilidade");
     }
 
+    @Override public Dimension getMaximumSize() {
+        return getPreferredSize();
+    }
+
     @Override protected void paintComponent(Graphics graphics) {
         Graphics2D g = (Graphics2D) graphics.create();
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

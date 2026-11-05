@@ -234,7 +234,12 @@ public final class BaixaVisao {
                 ((AbstractButton) campo).setFocusPainted(true);
                 ((AbstractButton) campo).setBorderPainted(true);
             }
-            if (estado.preferencia != null) campo.setPreferredSize(ampliar(estado.preferencia, fator));
+            if (estado.preferencia != null) {
+                // Os campos podem rolar: não precisam encolher para caber na janela.
+                double fatorCampo = SwingUtilities.getAncestorOfClass(PainelCampos.class, campo) != null
+                        ? ampliacao : fator;
+                campo.setPreferredSize(ampliar(estado.preferencia, fatorCampo));
+            }
             if (campo instanceof JLabel && Boolean.TRUE.equals(campo.getClientProperty("baixaVisao.logo"))
                     && estado.icone != null) {
                 ((JLabel) campo).setIcon(new IconeImagem("/images/Logo.png",

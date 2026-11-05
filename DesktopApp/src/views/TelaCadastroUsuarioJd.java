@@ -119,9 +119,11 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         painelCabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botaoAjuda = new classes.BotaoAjuda();
-        lbDescricao = new javax.swing.JLabel();
+        lbDescricao = new classes.RotuloHtml();
+        lbDescricao.setFocusable(false);
         painelCampos = new classes.PainelArredondado();
         gradeCampos = new classes.PainelCampos();
+        spCampos = new classes.RolagemFormulario();
         painelCampo1 = new javax.swing.JPanel();
         painelRotulo1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -180,7 +182,7 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         botaoAjuda.setPreferredSize(new java.awt.Dimension(42, 42));
         painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
         painelFormulario.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
-        lbDescricao.setText("Preencha os dados abaixo para criar uma conta.");
+        lbDescricao.setText("<html>Preencha os dados abaixo para criar uma conta.</html>");
         lbDescricao.setFont(new java.awt.Font("Segoe UI",0,18));
         lbDescricao.setForeground(new java.awt.Color(64,64,64));
         painelFormulario.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,24,0),0,0));
@@ -344,7 +346,8 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
         cbCampoFuncao.addActionListener(this::cbCampoFuncaoActionPerformed);
         painelCampo8.add(cbCampoFuncao,java.awt.BorderLayout.CENTER);
         gradeCampos.add(painelCampo8,new java.awt.GridBagConstraints(1,3,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,0,0),0,0));
-        painelCampos.add(gradeCampos,java.awt.BorderLayout.NORTH);
+        spCampos.setViewportView(gradeCampos);
+        painelCampos.add(spCampos,java.awt.BorderLayout.CENTER);
         painelFormulario.add(painelCampos,new java.awt.GridBagConstraints(0,3,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
         painelAcoes.setLayout(new java.awt.FlowLayout(2,16,0));
         jButton1.setText("Cadastrar");
@@ -595,5 +598,6 @@ public class TelaCadastroUsuarioJd extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField tfCampoDataNascimento;
     private javax.swing.JTextField tfCampoEmail;
     private javax.swing.JTextField tfCampoNome;
+    private classes.RolagemFormulario spCampos;
 //GEN-END:variables
 }

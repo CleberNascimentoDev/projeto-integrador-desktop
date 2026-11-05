@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2" />
@@ -97,15 +96,16 @@
             </Constraint>
           </Constraints>
         </Container>
-        <Component class="javax.swing.JLabel" name="lbDescricao">
+        <Component class="classes.RotuloHtml" name="lbDescricao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Informe o nome, o cargo e o período do processo seletivo." />
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;Informe o nome, o cargo e o período do processo seletivo.&lt;/html&gt;" />
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0" />
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color red="40" green="40" blue="40" type="rgb" />
             </Property>
+            <Property name="focusable" type="boolean" value="false" />
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -116,332 +116,337 @@
         <Container class="classes.PainelArredondado" name="painelCampos">
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" />
           <SubComponents>
-            <Container class="classes.PainelCampos" name="gradeCampos">
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" />
+            <Container class="classes.RolagemFormulario" name="spCampos">
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout" />
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="painelCampo1">
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
-                    <Property name="verticalGap" type="int" value="10" />
-                  </Layout>
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false" />
-                  </Properties>
+                <Container class="classes.PainelCampos" name="gradeCampos">
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" />
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="painelRotulo1">
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                        <Property name="alignment" type="int" value="0" />
-                        <Property name="horizontalGap" type="int" value="0" />
-                        <Property name="verticalGap" type="int" value="0" />
+                    <Container class="javax.swing.JPanel" name="painelCampo1">
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
+                        <Property name="verticalGap" type="int" value="10" />
                       </Layout>
                       <Properties>
                         <Property name="opaque" type="boolean" value="false" />
                       </Properties>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="jLabel2">
+                        <Container class="javax.swing.JPanel" name="painelRotulo1">
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                            <Property name="alignment" type="int" value="0" />
+                            <Property name="horizontalGap" type="int" value="0" />
+                            <Property name="verticalGap" type="int" value="0" />
+                          </Layout>
                           <Properties>
+                            <Property name="opaque" type="boolean" value="false" />
+                          </Properties>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="jLabel2">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="44" green="2d" red="1d" type="rgb" />
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Nome" />
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="18" style="1" />
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color red="0" green="0" blue="0" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="North" />
+                            </Constraint>
+                          </Constraints>
+                        </Container>
+                        <Component class="javax.swing.JTextField" name="jtNome">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="99" green="99" red="99" type="rgb" />
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Digite o nome do processo..." />
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="18" style="0" />
+                            </Property>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="44" green="2d" red="1d" type="rgb" />
+                              <Color red="ff" green="ff" blue="ff" type="rgb" />
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Nome" />
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="18" style="1" />
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[320, 52]" />
                             </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color red="0" green="0" blue="0" type="rgb" />
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                                <CompoundBorder>
+                                  <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder>
+                                      <Color PropertyName="color" red="99" green="99" blue="99" type="rgb" />
+                                    </LineBorder>
+                                  </Border>
+                                  <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                    <EmptyBorder top="8" left="12" bottom="8" right="12" />
+                                  </Border>
+                                </CompoundBorder>
+                              </Border>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtNomeFocusGained" />
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtNomeFocusLost" />
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="Center" />
+                            </Constraint>
+                          </Constraints>
                         </Component>
                       </SubComponents>
                       <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="North" />
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="20" insetsRight="14" anchor="18" weightX="1.0" weightY="0.0" />
                         </Constraint>
                       </Constraints>
                     </Container>
-                    <Component class="javax.swing.JTextField" name="jtNome">
-                      <Properties>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="99" green="99" red="99" type="rgb" />
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Digite o nome do processo..." />
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="18" style="0" />
-                        </Property>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color red="ff" green="ff" blue="ff" type="rgb" />
-                        </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[320, 52]" />
-                        </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
-                            <CompoundBorder>
-                              <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                <LineBorder>
-                                  <Color PropertyName="color" red="99" green="99" blue="99" type="rgb" />
-                                </LineBorder>
-                              </Border>
-                              <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                                <EmptyBorder top="8" left="12" bottom="8" right="12" />
-                              </Border>
-                            </CompoundBorder>
-                          </Border>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtNomeFocusGained" />
-                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtNomeFocusLost" />
-                      </Events>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="Center" />
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                  </SubComponents>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                      <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="20" insetsRight="14" anchor="18" weightX="1.0" weightY="0.0" />
-                    </Constraint>
-                  </Constraints>
-                </Container>
-                <Container class="javax.swing.JPanel" name="painelCampo2">
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
-                    <Property name="verticalGap" type="int" value="10" />
-                  </Layout>
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false" />
-                  </Properties>
-                  <SubComponents>
-                    <Container class="javax.swing.JPanel" name="painelRotulo2">
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                        <Property name="alignment" type="int" value="0" />
-                        <Property name="horizontalGap" type="int" value="0" />
-                        <Property name="verticalGap" type="int" value="0" />
+                    <Container class="javax.swing.JPanel" name="painelCampo2">
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
+                        <Property name="verticalGap" type="int" value="10" />
                       </Layout>
                       <Properties>
                         <Property name="opaque" type="boolean" value="false" />
                       </Properties>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="jLabel3">
+                        <Container class="javax.swing.JPanel" name="painelRotulo2">
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                            <Property name="alignment" type="int" value="0" />
+                            <Property name="horizontalGap" type="int" value="0" />
+                            <Property name="verticalGap" type="int" value="0" />
+                          </Layout>
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Cargo" />
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="18" style="1" />
+                            <Property name="opaque" type="boolean" value="false" />
+                          </Properties>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="jLabel3">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Cargo" />
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="18" style="1" />
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color red="0" green="0" blue="0" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="North" />
+                            </Constraint>
+                          </Constraints>
+                        </Container>
+                        <Component class="javax.swing.JComboBox" name="jcbCargo">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="1">
+                                <StringItem index="0" value="Selecione um cargo..." />
+                              </StringArray>
                             </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color red="0" green="0" blue="0" type="rgb" />
+                            <Property name="toolTipText" type="java.lang.String" value="" />
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="18" style="0" />
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color red="ff" green="ff" blue="ff" type="rgb" />
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[320, 52]" />
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbCargoActionPerformed" />
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;" />
+                          </AuxValues>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="Center" />
+                            </Constraint>
+                          </Constraints>
                         </Component>
                       </SubComponents>
                       <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="North" />
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                          <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="14" insetsBottom="20" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
                         </Constraint>
                       </Constraints>
                     </Container>
-                    <Component class="javax.swing.JComboBox" name="jcbCargo">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="1">
-                            <StringItem index="0" value="Selecione um cargo..." />
-                          </StringArray>
-                        </Property>
-                        <Property name="toolTipText" type="java.lang.String" value="" />
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="18" style="0" />
-                        </Property>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color red="ff" green="ff" blue="ff" type="rgb" />
-                        </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[320, 52]" />
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbCargoActionPerformed" />
-                      </Events>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;" />
-                      </AuxValues>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="Center" />
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                  </SubComponents>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                      <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="14" insetsBottom="20" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
-                    </Constraint>
-                  </Constraints>
-                </Container>
-                <Container class="javax.swing.JPanel" name="painelCampo3">
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
-                    <Property name="verticalGap" type="int" value="10" />
-                  </Layout>
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false" />
-                  </Properties>
-                  <SubComponents>
-                    <Container class="javax.swing.JPanel" name="painelRotulo3">
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                        <Property name="alignment" type="int" value="0" />
-                        <Property name="horizontalGap" type="int" value="0" />
-                        <Property name="verticalGap" type="int" value="0" />
+                    <Container class="javax.swing.JPanel" name="painelCampo3">
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
+                        <Property name="verticalGap" type="int" value="10" />
                       </Layout>
                       <Properties>
                         <Property name="opaque" type="boolean" value="false" />
                       </Properties>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="jLabel4">
+                        <Container class="javax.swing.JPanel" name="painelRotulo3">
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                            <Property name="alignment" type="int" value="0" />
+                            <Property name="horizontalGap" type="int" value="0" />
+                            <Property name="verticalGap" type="int" value="0" />
+                          </Layout>
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Data Início" />
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="18" style="1" />
+                            <Property name="opaque" type="boolean" value="false" />
+                          </Properties>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="jLabel4">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Data Início" />
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="18" style="1" />
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color red="0" green="0" blue="0" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="North" />
+                            </Constraint>
+                          </Constraints>
+                        </Container>
+                        <Component class="javax.swing.JFormattedTextField" name="jtDataInicio">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xA;ex.printStackTrace();&#xA;}">
+                              <Format format="##/##/####" subtype="-1" type="5" />
                             </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color red="0" green="0" blue="0" type="rgb" />
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="18" style="0" />
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color red="ff" green="ff" blue="ff" type="rgb" />
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[320, 52]" />
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                                <CompoundBorder>
+                                  <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder>
+                                      <Color PropertyName="color" red="99" green="99" blue="99" type="rgb" />
+                                    </LineBorder>
+                                  </Border>
+                                  <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                    <EmptyBorder top="8" left="12" bottom="8" right="12" />
+                                  </Border>
+                                </CompoundBorder>
+                              </Border>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtDataInicioFocusGained" />
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtDataInicioFocusLost" />
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="Center" />
+                            </Constraint>
+                          </Constraints>
                         </Component>
                       </SubComponents>
                       <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="North" />
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                          <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="14" anchor="18" weightX="1.0" weightY="0.0" />
                         </Constraint>
                       </Constraints>
                     </Container>
-                    <Component class="javax.swing.JFormattedTextField" name="jtDataInicio">
-                      <Properties>
-                        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#10;ex.printStackTrace();&#10;}">
-                          <Format format="##/##/####" subtype="-1" type="5" />
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="18" style="0" />
-                        </Property>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color red="ff" green="ff" blue="ff" type="rgb" />
-                        </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[320, 52]" />
-                        </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
-                            <CompoundBorder>
-                              <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                <LineBorder>
-                                  <Color PropertyName="color" red="99" green="99" blue="99" type="rgb" />
-                                </LineBorder>
-                              </Border>
-                              <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                                <EmptyBorder top="8" left="12" bottom="8" right="12" />
-                              </Border>
-                            </CompoundBorder>
-                          </Border>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtDataInicioFocusGained" />
-                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jtDataInicioFocusLost" />
-                      </Events>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="Center" />
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                  </SubComponents>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                      <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="14" anchor="18" weightX="1.0" weightY="0.0" />
-                    </Constraint>
-                  </Constraints>
-                </Container>
-                <Container class="javax.swing.JPanel" name="painelCampo4">
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
-                    <Property name="verticalGap" type="int" value="10" />
-                  </Layout>
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false" />
-                  </Properties>
-                  <SubComponents>
-                    <Container class="javax.swing.JPanel" name="painelRotulo4">
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-                        <Property name="alignment" type="int" value="0" />
-                        <Property name="horizontalGap" type="int" value="0" />
-                        <Property name="verticalGap" type="int" value="0" />
+                    <Container class="javax.swing.JPanel" name="painelCampo4">
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
+                        <Property name="verticalGap" type="int" value="10" />
                       </Layout>
                       <Properties>
                         <Property name="opaque" type="boolean" value="false" />
                       </Properties>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="jLabel5">
+                        <Container class="javax.swing.JPanel" name="painelRotulo4">
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                            <Property name="alignment" type="int" value="0" />
+                            <Property name="horizontalGap" type="int" value="0" />
+                            <Property name="verticalGap" type="int" value="0" />
+                          </Layout>
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Data Fim" />
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="18" style="1" />
+                            <Property name="opaque" type="boolean" value="false" />
+                          </Properties>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="jLabel5">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Data Fim" />
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="18" style="1" />
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color red="0" green="0" blue="0" type="rgb" />
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="North" />
+                            </Constraint>
+                          </Constraints>
+                        </Container>
+                        <Component class="javax.swing.JFormattedTextField" name="jtDataFim">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xA;ex.printStackTrace();&#xA;}">
+                              <Format format="##/##/####" subtype="-1" type="5" />
                             </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color red="0" green="0" blue="0" type="rgb" />
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI" size="18" style="0" />
+                            </Property>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color red="ff" green="ff" blue="ff" type="rgb" />
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[320, 52]" />
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                                <CompoundBorder>
+                                  <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder>
+                                      <Color PropertyName="color" red="99" green="99" blue="99" type="rgb" />
+                                    </LineBorder>
+                                  </Border>
+                                  <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                    <EmptyBorder top="8" left="12" bottom="8" right="12" />
+                                  </Border>
+                                </CompoundBorder>
+                              </Border>
                             </Property>
                           </Properties>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                              <BorderConstraints direction="Center" />
+                            </Constraint>
+                          </Constraints>
                         </Component>
                       </SubComponents>
                       <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="North" />
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                          <GridBagConstraints gridX="1" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="14" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
                         </Constraint>
                       </Constraints>
                     </Container>
-                    <Component class="javax.swing.JFormattedTextField" name="jtDataFim">
-                      <Properties>
-                        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#10;ex.printStackTrace();&#10;}">
-                          <Format format="##/##/####" subtype="-1" type="5" />
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="18" style="0" />
-                        </Property>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color red="ff" green="ff" blue="ff" type="rgb" />
-                        </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[320, 52]" />
-                        </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
-                            <CompoundBorder>
-                              <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                                <LineBorder>
-                                  <Color PropertyName="color" red="99" green="99" blue="99" type="rgb" />
-                                </LineBorder>
-                              </Border>
-                              <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                                <EmptyBorder top="8" left="12" bottom="8" right="12" />
-                              </Border>
-                            </CompoundBorder>
-                          </Border>
-                        </Property>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                          <BorderConstraints direction="Center" />
-                        </Constraint>
-                      </Constraints>
-                    </Component>
                   </SubComponents>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                      <GridBagConstraints gridX="1" gridY="1" gridWidth="1" gridHeight="1" fill="2" ipadx="0" ipady="0" insetsTop="0" insetsLeft="14" insetsBottom="0" insetsRight="0" anchor="18" weightX="1.0" weightY="0.0" />
-                    </Constraint>
-                  </Constraints>
                 </Container>
               </SubComponents>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                  <BorderConstraints direction="North" />
+                  <BorderConstraints direction="Center" />
                 </Constraint>
               </Constraints>
             </Container>

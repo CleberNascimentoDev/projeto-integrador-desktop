@@ -269,7 +269,8 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         painelCabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botaoAjuda = new classes.BotaoAjuda();
-        lbDescricao = new javax.swing.JLabel();
+        lbDescricao = new classes.RotuloHtml();
+        lbDescricao.setFocusable(false);
         painelFerramentas = new classes.PainelFerramentas();
         painelBusca = new classes.PainelBusca();
         lbLupa = new classes.RotuloLupa();
@@ -302,7 +303,7 @@ public class TelaProcessoSeletivo extends javax.swing.JInternalFrame {
         botaoAjuda.setPreferredSize(new java.awt.Dimension(42, 42));
         painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
         painelListagem.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
-        lbDescricao.setText("Consulte e gerencie os processos seletivos.");
+        lbDescricao.setText("<html>Consulte e gerencie os processos seletivos.</html>");
         lbDescricao.setFont(new java.awt.Font("Segoe UI",0,19));
         lbDescricao.setForeground(new java.awt.Color(64,64,64));
         painelListagem.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,28,0),0,0));

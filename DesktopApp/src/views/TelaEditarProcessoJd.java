@@ -116,9 +116,11 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
         jbCancelar = new classes.BotaoPadrao();
         painelCabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lbDescricao = new javax.swing.JLabel();
+        lbDescricao = new classes.RotuloHtml();
+        lbDescricao.setFocusable(false);
         painelCampos = new classes.PainelArredondado();
         gradeCampos = new classes.PainelCampos();
+        spCampos = new classes.RolagemFormulario();
         painelCampo1 = new javax.swing.JPanel();
         painelRotulo1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -155,7 +157,7 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(0,0,0));
         painelCabecalho.add(jLabel1,java.awt.BorderLayout.CENTER);
         painelFormulario.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
-        lbDescricao.setText("Informe o nome, o cargo e o período do processo seletivo.");
+        lbDescricao.setText("<html>Informe o nome, o cargo e o período do processo seletivo.</html>");
         lbDescricao.setFont(new java.awt.Font("Segoe UI",0,18));
         lbDescricao.setForeground(new java.awt.Color(64,64,64));
         painelFormulario.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,24,0),0,0));
@@ -232,7 +234,8 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
         jtDataFim.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(153,153,153),1,false),javax.swing.BorderFactory.createEmptyBorder(8,12,8,12)));
         painelCampo4.add(jtDataFim,java.awt.BorderLayout.CENTER);
         gradeCampos.add(painelCampo4,new java.awt.GridBagConstraints(1,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,0,0),0,0));
-        painelCampos.add(gradeCampos,java.awt.BorderLayout.NORTH);
+        spCampos.setViewportView(gradeCampos);
+        painelCampos.add(spCampos,java.awt.BorderLayout.CENTER);
         painelFormulario.add(painelCampos,new java.awt.GridBagConstraints(0,3,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
         painelAcoes.setLayout(new java.awt.FlowLayout(2,16,0));
         jbEditar.setText("Editar");
@@ -432,5 +435,6 @@ public class TelaEditarProcessoJd extends javax.swing.JDialog {
     private javax.swing.JPanel painelRotulo2;
     private javax.swing.JPanel painelRotulo3;
     private javax.swing.JPanel painelRotulo4;
+    private classes.RolagemFormulario spCampos;
     //GEN-END:variables
 }

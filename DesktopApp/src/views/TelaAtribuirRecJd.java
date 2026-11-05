@@ -281,7 +281,8 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         painelCabecalho = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         botaoAjuda = new classes.BotaoAjuda();
-        lbDescricao = new javax.swing.JLabel();
+        lbDescricao = new classes.RotuloHtml();
+        lbDescricao.setFocusable(false);
         painelInformacoes = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         lbProcesso = new javax.swing.JLabel();
@@ -319,7 +320,7 @@ public class TelaAtribuirRecJd extends javax.swing.JDialog {
         botaoAjuda.setPreferredSize(new java.awt.Dimension(42, 42));
         painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
         painelListagem.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
-        lbDescricao.setText("Escolha um recrutador cadastrado para este processo seletivo.");
+        lbDescricao.setText("<html>Escolha um recrutador cadastrado para este processo seletivo.</html>");
         lbDescricao.setFont(new java.awt.Font("Segoe UI",0,19));
         lbDescricao.setForeground(new java.awt.Color(64,64,64));
         painelListagem.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,28,0),0,0));

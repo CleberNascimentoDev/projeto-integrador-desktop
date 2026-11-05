@@ -59,9 +59,11 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
         painelCabecalho = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         botaoAjuda = new classes.BotaoAjuda();
-        lbDescricao = new javax.swing.JLabel();
+        lbDescricao = new classes.RotuloHtml();
+        lbDescricao.setFocusable(false);
         painelCampos = new classes.PainelArredondado();
         gradeCampos = new classes.PainelCampos();
+        spCampos = new classes.RolagemFormulario();
         jPanel2 = new javax.swing.JPanel();
         painelRotulo1 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
@@ -108,7 +110,7 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
         botaoAjuda.addActionListener(this::botaoAjudaActionPerformed);
         painelCabecalho.add(botaoAjuda,java.awt.BorderLayout.EAST);
         painelFormulario.add(painelCabecalho,new java.awt.GridBagConstraints(0,1,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,4,0),0,0));
-        lbDescricao.setText("Consulte as informações e os requisitos do cargo.");
+        lbDescricao.setText("<html>Consulte as informações e os requisitos do cargo.</html>");
         lbDescricao.setFont(new java.awt.Font("Segoe UI",0,18));
         lbDescricao.setForeground(new java.awt.Color(64,64,64));
         painelFormulario.add(lbDescricao,new java.awt.GridBagConstraints(0,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,0,24,0),0,0));
@@ -232,7 +234,8 @@ public class TelaDetalhesCargo extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(taAtividades);
         jPanel9.add(jScrollPane2,java.awt.BorderLayout.CENTER);
         gradeCampos.add(jPanel9,new java.awt.GridBagConstraints(1,2,1,1,1.0,0.0,18,2,new java.awt.Insets(0,14,0,0),0,0));
-        painelCampos.add(gradeCampos,java.awt.BorderLayout.NORTH);
+        spCampos.setViewportView(gradeCampos);
+        painelCampos.add(spCampos,java.awt.BorderLayout.CENTER);
         painelFormulario.add(painelCampos,new java.awt.GridBagConstraints(0,3,1,1,1.0,1,18,1,new java.awt.Insets(0,0,0,0),0,0));
         getContentPane().add(painelFormulario,java.awt.BorderLayout.CENTER);
         pack();
@@ -322,5 +325,6 @@ this.dispose();         // TODO add your handling code here:
     private javax.swing.JTextField tfNomeCargo;
     private javax.swing.JTextField tfSalario;
     private javax.swing.JTextField tfSetor;
+    private classes.RolagemFormulario spCampos;
     //GEN-END:variables
 }
