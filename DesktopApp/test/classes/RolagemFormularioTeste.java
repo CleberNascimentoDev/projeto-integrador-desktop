@@ -36,6 +36,7 @@ public final class RolagemFormularioTeste {
 
     private static void verificar(JDialog tela) throws Exception {
         tela.setVisible(true);
+        preencherTextos(tela);
         for (int modo : new int[]{0,1,2,0}) {
             Acessibilidade.setAltoContrasteAtivo(modo == 2);
             Acessibilidade.setBaixaVisaoAtiva(modo != 0);
@@ -67,8 +68,21 @@ public final class RolagemFormularioTeste {
         tela.dispose();
     }
 
+    private static void preencherTextos(Container painel) {
+        for (Component campo : painel.getComponents()) {
+            if (campo instanceof JTextField && !(campo instanceof JFormattedTextField)
+                    && !(campo instanceof JPasswordField))
+                ((JTextField)campo).setText("ANALISTA DE SISTEMAS E TECNOLOGIA DA INFORMAÇÃO");
+            if (campo instanceof Container) preencherTextos((Container)campo);
+        }
+    }
+
     private static void verificarCampos(Container painel, PainelCampos grade) {
         for (Component campo : painel.getComponents()) {
+            if (campo instanceof JLabel && ((JLabel)campo).getText() != null) {
+                if (campo.getWidth() < campo.getPreferredSize().width || campo.getHeight() < campo.getPreferredSize().height)
+                    throw new AssertionError("Rótulo cortado: " + ((JLabel)campo).getText());
+            }
             if (campo instanceof JTextComponent || campo instanceof JComboBox) {
                 Component entrada = campo instanceof JTextArea
                         ? (Component) SwingUtilities.getAncestorOfClass(JScrollPane.class, campo) : campo;

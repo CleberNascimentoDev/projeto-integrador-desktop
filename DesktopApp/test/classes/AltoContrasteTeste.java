@@ -87,6 +87,10 @@ public final class AltoContrasteTeste {
                 for (JComponent c : new JComponent[]{botao,inativo,campo,senha,combo,menu}) verificarTexto(c);
                 Component celula = tabela.prepareRenderer(tabela.getCellRenderer(0,0),0,0);
                 verificarTexto(celula); exigir(((JLabel)celula).getIcon() instanceof IconeSelecao, "Seleção sem marca");
+                tabela.clearSelection();
+                verificarPinturaCelula(tabela, 0, 0);
+                verificarPinturaCelula(tabela, 0, 1);
+                tabela.setRowSelectionInterval(0, 0);
                 Component cabecalho = tabela.getColumnModel().getColumn(0).getHeaderRenderer().getTableCellRendererComponent(tabela,"Processo",false,false,-1,0);
                 verificarTexto(cabecalho);
                 exigir(contraste(p.getBorda(),p.getSuperficie()) >= 3, "Borda sem contraste");
@@ -142,6 +146,19 @@ public final class AltoContrasteTeste {
         salvar(dialogo.getContentPane(),new File(pasta,"Ajuda.png")); dialogo.dispose();
         for (RootPaneContainer tela:telas) if(tela instanceof Window)((Window)tela).dispose();else((JInternalFrame)tela).dispose();
         janela.dispose();
+    }
+    private static void verificarPinturaCelula(JTable tabela, int linha, int coluna) {
+        JComponent celula = (JComponent)tabela.prepareRenderer(tabela.getCellRenderer(linha,coluna),linha,coluna);
+        verificarTexto(celula);
+        celula.setSize(480, tabela.getRowHeight());
+        BufferedImage imagem = new BufferedImage(480,celula.getHeight(),BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = imagem.createGraphics(); celula.paint(g); g.dispose();
+        int claros = 0;
+        for (int y=4;y<imagem.getHeight()-4;y++) for(int x=30;x<450;x++) {
+            Color pixel = new Color(imagem.getRGB(x,y));
+            if (pixel.getRed()>220 && pixel.getGreen()>220 && pixel.getBlue()>220) claros++;
+        }
+        exigir(claros > 40, "Texto da célula não foi pintado com contraste, coluna " + coluna);
     }
     private static void atualizar(RootPaneContainer tela) throws Exception {
         Method m=Daltonismo.class.getDeclaredMethod("atualizarTela",JRootPane.class);m.setAccessible(true);m.invoke(null,tela.getRootPane());

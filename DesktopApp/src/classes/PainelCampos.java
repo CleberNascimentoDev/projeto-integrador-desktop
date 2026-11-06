@@ -15,6 +15,9 @@ public class PainelCampos extends JPanel implements Scrollable {
             posicoes.keySet().removeIf(campo -> campo.getParent() != this);
             GridBagLayout grade = (GridBagLayout)getLayout();
             for (Component campo : getComponents()) {
+                // O texto digitado não deve impor uma largura mínima à coluna.
+                // A altura preferida preserva rótulos e entradas quando a grade encolhe.
+                campo.setMinimumSize(new Dimension(0, campo.getPreferredSize().height));
                 GridBagConstraints original = posicoes.computeIfAbsent(campo, grade::getConstraints);
                 GridBagConstraints atual = (GridBagConstraints)original.clone();
                 if (getWidth() > 0 && getWidth() < (Acessibilidade.isBaixaVisaoAtiva() ? 820 : 650)) {
@@ -31,8 +34,9 @@ public class PainelCampos extends JPanel implements Scrollable {
         // GridBagLayout centraliza grades sem pesos verticais; formulários começam no topo.
         int topo = Integer.MAX_VALUE;
         for (Component campo : getComponents()) if (campo.isVisible()) topo = Math.min(topo, campo.getY());
-        if (topo > 0 && topo != Integer.MAX_VALUE)
-            for (Component campo : getComponents()) campo.setLocation(campo.getX(), campo.getY() - topo);
+        int margem = getInsets().top;
+        if (topo > margem && topo != Integer.MAX_VALUE)
+            for (Component campo : getComponents()) campo.setLocation(campo.getX(), campo.getY() - topo + margem);
     }
     @Override public Dimension getPreferredSize() {
         atualizarColunas();

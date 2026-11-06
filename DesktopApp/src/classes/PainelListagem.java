@@ -390,9 +390,15 @@ public class PainelListagem extends JPanel {
         CelulaProcesso(boolean recrutadores) { this.recrutadores = recrutadores; }
         private boolean badge;
         private boolean selecionada;
+        @Override public void updateUI() {
+            // Usa as cores do renderizador sem herdar o textForeground do Nimbus.
+            setUI(new javax.swing.plaf.basic.BasicLabelUI());
+        }
         @Override public Component getTableCellRendererComponent(JTable tabela, Object valor,
                 boolean selecionado, boolean foco, int linha, int coluna) {
             super.getTableCellRendererComponent(tabela, valor, selecionado, foco, linha, coluna);
+            setForeground(selecionado ? tabela.getSelectionForeground() : tabela.getForeground());
+            setBackground(selecionado ? tabela.getSelectionBackground() : tabela.getBackground());
             selecionada = selecionado;
             setFont(tabela.getFont());
             setBorder(BorderFactory.createEmptyBorder(0, 28, 0, 28));

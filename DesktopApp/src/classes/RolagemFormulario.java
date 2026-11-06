@@ -17,6 +17,12 @@ public class RolagemFormulario extends JScrollPane {
         setOpaque(false);
     }
 
+    @Override public void updateUI() {
+        // Nimbus pinta uma borda interna mesmo com border vazio, sobre os campos.
+        // A rolagem externa só organiza a viewport; a moldura pertence ao painel.
+        setUI(new javax.swing.plaf.basic.BasicScrollPaneUI());
+    }
+
     @Override public void setViewportView(Component campos) {
         super.setViewportView(campos);
         acompanharFoco(campos);
